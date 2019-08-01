@@ -15,9 +15,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/frontend/base",
+            "outputPath": "dist/apps/frontend/base/browser",
             "index": "apps/frontend/base/src/index.html",
-            "main": "apps/frontend/base/src/main.ts",
+            "main": "apps/frontend/base/src/main.browser.ts",
             "polyfills": "apps/frontend/base/src/polyfills.ts",
             "tsConfig": "apps/frontend/base/tsconfig.app.json",
             "aot": false,
@@ -25,7 +25,9 @@
               "apps/frontend/base/src/favicon.ico",
               "apps/frontend/base/src/assets"
             ],
-            "styles": ["apps/frontend/base/src/styles.scss"],
+            "styles": [
+              "apps/frontend/base/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -88,6 +90,31 @@
             "jestConfig": "apps/frontend/base/jest.config.js",
             "tsConfig": "apps/frontend/base/tsconfig.spec.json",
             "setupFile": "apps/frontend/base/src/test-setup.ts"
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "bundleDependencies": "none",
+            "outputPath": "dist/apps/frontend/base/server",
+            "main": "apps/frontend/base/src/main.server.ts",
+            "tsConfig": "apps/frontend/base/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "bundleDependencies": "all",
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/base/src/environments/environment.ts",
+                  "with": "apps/frontend/base/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": {
+                "scripts": false,
+                "styles": true
+              }
+            }
           }
         }
       }

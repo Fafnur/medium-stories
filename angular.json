@@ -5,7 +5,8 @@
       "projectType": "application",
       "schematics": {
         "@nrwl/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "changeDetection": "OnPush"
         }
       },
       "root": "apps/frontend/base",
@@ -139,6 +140,117 @@
         }
       }
     },
+    "frontend-storage": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush"
+        }
+      },
+      "root": "apps/frontend/storage",
+      "sourceRoot": "apps/frontend/storage/src",
+      "prefix": "medium-stories",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/frontend/storage/browser",
+            "index": "apps/frontend/storage/src/index.html",
+            "main": "apps/frontend/storage/src/main.browser.ts",
+            "polyfills": "apps/frontend/storage/src/polyfills.ts",
+            "tsConfig": "apps/frontend/storage/tsconfig.app.json",
+            "aot": false,
+            "assets": ["apps/frontend/storage/src/favicon.ico", "apps/frontend/storage/src/assets"],
+            "styles": ["apps/frontend/storage/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/storage/src/environments/environment.ts",
+                  "with": "apps/frontend/storage/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "frontend-storage:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-storage:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "frontend-storage:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/frontend/storage/tsconfig.app.json", "apps/frontend/storage/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/frontend/storage/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/frontend/storage/jest.config.js",
+            "tsConfig": "apps/frontend/storage/tsconfig.spec.json",
+            "setupFile": "apps/frontend/storage/src/test-setup.ts"
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "bundleDependencies": "none",
+            "outputPath": "dist/apps/frontend/storage/server",
+            "main": "apps/frontend/storage/src/main.server.ts",
+            "tsConfig": "apps/frontend/storage/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "bundleDependencies": "all",
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/storage/src/environments/environment.ts",
+                  "with": "apps/frontend/storage/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": {
+                "scripts": false,
+                "styles": true
+              }
+            }
+          }
+        }
+      }
+    },
     "common": {
       "projectType": "library",
       "root": "libs/common",
@@ -163,7 +275,37 @@
       },
       "schematics": {
         "@nrwl/angular:component": {
-          "styleext": "scss"
+          "styleext": "scss",
+          "changeDetection": "OnPush"
+        }
+      }
+    },
+    "storage": {
+      "projectType": "library",
+      "root": "libs/storage",
+      "sourceRoot": "libs/storage/src",
+      "prefix": "medium-stories",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/storage/tsconfig.lib.json", "libs/storage/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/storage/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/storage/jest.config.js",
+            "tsConfig": "libs/storage/tsconfig.spec.json",
+            "setupFile": "libs/storage/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss",
+          "changeDetection": "OnPush"
         }
       }
     }

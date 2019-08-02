@@ -8,13 +8,19 @@
     "nx.json": "*"
   },
   "projects": {
-    "frontend/base-e2e": {
-      "tags": []
-    },
     "frontend-base": {
       "tags": []
     },
+    "frontend/base-e2e": {
+      "tags": []
+    },
+    "frontend-base-storage": {
+      "tags": []
+    },
     "common": {
+      "tags": []
+    },
+    "storage": {
       "tags": []
     }
   }

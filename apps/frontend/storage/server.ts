@@ -25,7 +25,7 @@ const app = express();
 
 const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = join(process.cwd(), 'dist', 'apps');
-const appName = 'frontend/base';
+const appName = 'frontend/storage';
 const appBrowser = join(DIST_FOLDER, appName, 'browser');
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
@@ -34,7 +34,7 @@ const {
   LAZY_MODULE_MAP,
   ngExpressEngine,
   provideModuleMap
-} = require('../../../dist/apps/frontend/base/server/main');
+} = require('../../../dist/apps/frontend/storage/server/main');
 
 // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
 app.engine(

@@ -5,7 +5,7 @@ const webpack = require('webpack');
 
 const distFolder = path.join(process.cwd(), 'dist');
 const appsFolder = path.join(process.cwd(), 'apps');
-const appName = 'frontend/base';
+const appName = 'frontend/storage';
 
 module.exports = {
   mode: 'none',
@@ -14,7 +14,7 @@ module.exports = {
     server: path.join(appsFolder, appName, 'server.ts')
   },
   externals: {
-    '../../../dist/apps/frontend/base/server/main': 'require("./server/main")'
+    '../../../dist/apps/frontend/storage/server/main': 'require("./server/main")'
   },
   target: 'node',
   resolve: { extensions: ['.ts', '.js'] },

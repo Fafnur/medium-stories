@@ -5,7 +5,8 @@
       "projectType": "application",
       "schematics": {
         "@nrwl/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "changeDetection": "OnPush"
         }
       },
       "root": "apps/frontend/base",
@@ -163,7 +164,37 @@
       },
       "schematics": {
         "@nrwl/angular:component": {
-          "styleext": "scss"
+          "styleext": "scss",
+          "changeDetection": "OnPush"
+        }
+      }
+    },
+    "storage": {
+      "projectType": "library",
+      "root": "libs/storage",
+      "sourceRoot": "libs/storage/src",
+      "prefix": "medium-stories",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/storage/tsconfig.lib.json", "libs/storage/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/storage/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/storage/jest.config.js",
+            "tsConfig": "libs/storage/tsconfig.spec.json",
+            "setupFile": "libs/storage/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss",
+          "changeDetection": "OnPush"
         }
       }
     }

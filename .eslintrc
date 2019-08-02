@@ -1,0 +1,10 @@
+{
+  "extends": ["plugin:prettier/recommended", "plugin:angular/johnpapa"],
+  "rules": {},
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "env": {
+    "es6": true
+  }
+}

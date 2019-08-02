@@ -29,7 +29,9 @@
     "compile:server": "webpack --config apps/frontend/base/webpack.ssr.config.js --progress --colors",
     "serve:ssr": "node dist/apps/frontend/base/server.js",
     "build:ssr": "yarn run build:client-and-server-bundles && yarn run compile:server",
-    "build:client-and-server-bundles": "ng build --prod && ng run frontend-base:server:production"
+    "build:client-and-server-bundles": "ng build --prod && ng run frontend-base:server:production",
+    "eslint-check": "eslint --print-config path/to/main.js | eslint-config-prettier-check",
+    "tslint-check": "tslint-config-prettier-check ./tslint.json"
   },
   "private": true,
   "dependencies": {

@@ -6,6 +6,7 @@
     "ng": "ng",
     "nx": "nx",
     "start": "ng serve",
+    "start:storage": "ng serve frontend-storage",
     "build": "ng build",
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",

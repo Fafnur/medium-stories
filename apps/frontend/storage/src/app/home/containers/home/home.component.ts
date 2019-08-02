@@ -1,4 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+import { CookieStorage } from '@medium-stories/storage';
 
 @Component({
   selector: 'medium-stories-home',
@@ -6,8 +8,27 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeComponent implements OnInit {
-  constructor() {}
+export class HomeComponent {
+  /**
+   * Counter storage key
+   */
+  static readonly counterKey = 'myCounter';
 
-  ngOnInit() {}
+  /**
+   * Counter
+   */
+  counter: number;
+
+  constructor(private cookieStorage: CookieStorage) {
+    const savedCounter = this.cookieStorage.getItem(HomeComponent.counterKey);
+    this.counter = savedCounter ? +savedCounter : 0;
+  }
+
+  /**
+   * To increment the counter
+   */
+  add(): void {
+    this.counter++;
+    this.cookieStorage.setItem(HomeComponent.counterKey, this.counter.toString());
+  }
 }

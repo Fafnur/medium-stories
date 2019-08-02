@@ -29,7 +29,9 @@
     "compile:server": "webpack --config apps/frontend/base/webpack.ssr.config.js --progress --colors",
     "serve:ssr": "node dist/apps/frontend/base/server.js",
     "build:ssr": "yarn run build:client-and-server-bundles && yarn run compile:server",
-    "build:client-and-server-bundles": "ng build --prod && ng run frontend-base:server:production"
+    "build:client-and-server-bundles": "ng build --prod && ng run frontend-base:server:production",
+    "eslint-check": "eslint --print-config path/to/main.js | eslint-config-prettier-check",
+    "tslint-check": "tslint-config-prettier-check ./tslint.json"
   },
   "private": true,
   "dependencies": {
@@ -64,6 +66,10 @@
     "codelyzer": "^5.1.0",
     "cypress": "^3.4.1",
     "dotenv": "6.2.0",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-angular": "^4.0.1",
+    "eslint-plugin-prettier": "^3.1.0",
     "jest": "^24.8.0",
     "jest-preset-angular": "^7.1.1",
     "prettier": "^1.18.2",
@@ -71,6 +77,8 @@
     "ts-loader": "^6.0.4",
     "ts-node": "^8.3.0",
     "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
     "typescript": "~3.4.5",
     "webpack": "^4.38.0",
     "webpack-cli": "^3.3.6",

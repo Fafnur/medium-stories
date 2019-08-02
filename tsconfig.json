@@ -15,7 +15,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@medium-stories/common": ["libs/common/src/index.ts"],
+      "@medium-stories/common/testing": ["libs/common/src/testing/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

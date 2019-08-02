@@ -49,6 +49,7 @@
     "@nrwl/angular": "^8.4.2",
     "core-js": "^2.6.9",
     "express": "^4.17.1",
+    "ngx-cookie": "^4.1.2",
     "rxjs": "~6.4.0",
     "zone.js": "^0.9.1"
   },

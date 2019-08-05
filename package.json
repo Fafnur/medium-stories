@@ -27,14 +27,16 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
+    "eslint-check": "eslint --print-config path/to/main.js | eslint-config-prettier-check",
+    "tslint-check": "tslint-config-prettier-check ./tslint.json",
     "build:client-and-server-bundles": "ng build --prod && ng run frontend-base:server:production",
     "compile:server": "webpack --config apps/frontend/base/webpack.ssr.config.js --progress --colors",
     "build:ssr": "ng build --prod && ng run frontend-base:server:production && webpack --config apps/frontend/base/webpack.ssr.config.js --progress --colors",
     "serve:ssr": "node dist/apps/frontend/base/server.js",
     "build:ssr:storage": "ng build frontend-storage --prod && ng run frontend-storage:server:production && webpack --config apps/frontend/storage/webpack.ssr.config.js --progress --colors",
     "serve:ssr:storage": "node dist/apps/frontend/storage/server.js",
-    "eslint-check": "eslint --print-config path/to/main.js | eslint-config-prettier-check",
-    "tslint-check": "tslint-config-prettier-check ./tslint.json"
+    "build:ssr:translation": "ng build frontend-translation --prod && ng run frontend-translation:server:production && webpack --config apps/frontend/translation/webpack.ssr.config.js --progress --colors",
+    "serve:ssr:translation": "node dist/apps/frontend/translation/server.js"
   },
   "private": true,
   "dependencies": {

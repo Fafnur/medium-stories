@@ -251,6 +251,117 @@
         }
       }
     },
+    "frontend-translation": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush"
+        }
+      },
+      "root": "apps/frontend/translation",
+      "sourceRoot": "apps/frontend/translation/src",
+      "prefix": "medium-stories",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/frontend/translation/browser",
+            "index": "apps/frontend/translation/src/index.html",
+            "main": "apps/frontend/translation/src/main.browser.ts",
+            "polyfills": "apps/frontend/translation/src/polyfills.ts",
+            "tsConfig": "apps/frontend/translation/tsconfig.app.json",
+            "aot": false,
+            "assets": ["apps/frontend/translation/src/favicon.ico", "apps/frontend/translation/src/assets"],
+            "styles": ["apps/frontend/translation/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/translation/src/environments/environment.ts",
+                  "with": "apps/frontend/translation/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "frontend-translation:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-translation:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "frontend-translation:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/frontend/translation/tsconfig.app.json", "apps/frontend/translation/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/frontend/storage/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/frontend/translation/jest.config.js",
+            "tsConfig": "apps/frontend/translation/tsconfig.spec.json",
+            "setupFile": "apps/frontend/translation/src/test-setup.ts"
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "bundleDependencies": "none",
+            "outputPath": "dist/apps/frontend/translation/server",
+            "main": "apps/frontend/translation/src/main.server.ts",
+            "tsConfig": "apps/frontend/translation/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "bundleDependencies": "all",
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/translation/src/environments/environment.ts",
+                  "with": "apps/frontend/translation/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": {
+                "scripts": false,
+                "styles": true
+              }
+            }
+          }
+        }
+      }
+    },
     "common": {
       "projectType": "library",
       "root": "libs/common",

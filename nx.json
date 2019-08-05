@@ -17,10 +17,16 @@
     "frontend-storage": {
       "tags": []
     },
+    "frontend-translation": {
+      "tags": []
+    },
     "common": {
       "tags": []
     },
     "storage": {
+      "tags": []
+    },
+    "translation": {
       "tags": []
     }
   }

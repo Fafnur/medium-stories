@@ -6,7 +6,7 @@ export * from './lib/interfaces/storage-options.interface';
 
 // export * from './lib/storages/browser-local.storage';
 // export * from './lib/storages/browser-session.storage';
-// export * from './lib/storages/memory.storage';
+export * from './lib/storages/memory.storage';
 
 export * from './lib/utils/storage.util';
 

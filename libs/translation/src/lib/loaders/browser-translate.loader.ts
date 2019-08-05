@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { makeStateKey, StateKey, TransferState } from '@angular/platform-browser';
+import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Observable } from 'rxjs';
@@ -8,7 +8,12 @@ import { Observable } from 'rxjs';
  * Browser TranslateLoader
  */
 export class BrowserTranslateLoader implements TranslateLoader {
-  constructor(private transferState: TransferState, private httpClient: HttpClient, private prefix: string, private suffix: string) {}
+  constructor(
+    private transferState: TransferState,
+    private httpClient: HttpClient,
+    private prefix: string = '',
+    private suffix: string = ''
+  ) {}
 
   getTranslation(lang: string): Observable<any> {
     const key = makeStateKey<number>(`transfer-translate-${lang}`);

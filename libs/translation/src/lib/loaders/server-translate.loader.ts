@@ -6,7 +6,12 @@ import * as fs from 'fs';
 import { join } from 'path';
 
 export class ServerTranslateLoader implements TranslateLoader {
-  constructor(private transferState: TransferState, private appDist: string = '', private prefix: string, private suffix: string) {}
+  constructor(
+    private transferState: TransferState,
+    private appDist: string = '',
+    private prefix: string = '',
+    private suffix: string = ''
+  ) {}
 
   getTranslation(lang: string): Observable<any> {
     return new Observable(observer => {

@@ -14,7 +14,7 @@
     "frontend/base-e2e": {
       "tags": []
     },
-    "frontend-base-storage": {
+    "frontend-storage": {
       "tags": []
     },
     "common": {

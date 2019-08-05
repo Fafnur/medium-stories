@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { CookieStorage } from '@medium-stories/storage';
+import { TranslationService } from '@medium-stories/translation';
 
 @Component({
   selector: 'medium-stories-home',
@@ -19,7 +20,7 @@ export class HomeComponent {
    */
   counter: number;
 
-  constructor(private cookieStorage: CookieStorage) {
+  constructor(private cookieStorage: CookieStorage, private translationService: TranslationService) {
     const savedCounter = this.cookieStorage.getItem(HomeComponent.counterKey);
     this.counter = savedCounter ? +savedCounter : 0;
   }
@@ -30,5 +31,13 @@ export class HomeComponent {
   add(): void {
     this.counter++;
     this.cookieStorage.setItem(HomeComponent.counterKey, this.counter.toString());
+  }
+
+  /**
+   * Set language
+   * @param language Language
+   */
+  setLang(language: string): void {
+    this.translationService.setLanguage(language);
   }
 }

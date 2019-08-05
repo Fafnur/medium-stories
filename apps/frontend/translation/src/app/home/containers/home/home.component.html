@@ -1,6 +1,16 @@
-<h2>Translation app. Home page</h2>
+<h2>{{ 'home.title' | translate }}</h2>
 
-<div>
-  <div>Count: {{ counter }}</div>
-  <button type="btn btn-default" (click)="add()">Add count</button>
+<div class="home-page">
+  <div class="home-langs">
+    <button type="button" (click)="setLang('ru')">RU</button> /
+    <button type="button" (click)="setLang('en')">En</button>
+  </div>
+
+  <div class="home-title">{{ 'home.count' | translate }}: {{ counter }}</div>
+
+  <div class="home-actions">
+    <button type="btn btn-default home-action" (click)="add()">
+      {{ 'home.actions.add' | translate }}
+    </button>
+  </div>
 </div>

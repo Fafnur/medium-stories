@@ -19,7 +19,9 @@
       "@medium-stories/common": ["libs/common/src/index.ts"],
       "@medium-stories/common/testing": ["libs/common/src/testing/index.ts"],
       "@medium-stories/storage": ["libs/storage/src/index.ts"],
-      "@medium-stories/storage/testing": ["libs/storage/src/testing/index.ts"]
+      "@medium-stories/storage/testing": ["libs/storage/src/testing/index.ts"],
+      "@medium-stories/translation": ["libs/translation/src/index.ts"],
+      "@medium-stories/translation/testing": ["libs/translation/src/testing/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

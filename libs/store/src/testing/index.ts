@@ -1,1 +1,1 @@
-export const storeTest = 1;
+export * from './utils/store.util';

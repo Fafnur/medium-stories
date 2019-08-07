@@ -1,7 +1,7 @@
 import { ActionReducerMap } from '@ngrx/store';
 import { routerReducer, RouterReducerState } from '@ngrx/router-store';
 
-import { RouterStateUrl } from '../interfaces/router-state.interface';
+import { RouterUrlState } from '../interfaces/router-url-state.interface';
 
 /**
  * Root state for all application
@@ -13,7 +13,7 @@ export interface RootState {
   /**
    * Router state
    */
-  router: RouterReducerState<RouterStateUrl>;
+  router: RouterReducerState<RouterUrlState>;
 }
 
 /**

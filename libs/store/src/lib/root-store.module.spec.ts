@@ -1,15 +1,15 @@
 import { async, TestBed } from '@angular/core/testing';
 
-import { StoreModule } from './store.module';
+import { RootStoreModule } from './root-store.module';
 
-describe('StoreModule', () => {
+describe('RootStoreModule', () => {
   beforeEach(async(() => {
     return TestBed.configureTestingModule({
-      imports: [StoreModule]
+      imports: [RootStoreModule]
     }).compileComponents();
   }));
 
   it('should create', () => {
-    expect(StoreModule).toBeTruthy();
+    expect(RootStoreModule).toBeTruthy();
   });
 });

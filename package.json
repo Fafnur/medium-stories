@@ -69,6 +69,7 @@
     "@angular/cli": "^8.2.0",
     "@angular/compiler-cli": "^8.2.0",
     "@angular/language-service": "^8.2.0",
+    "@ngrx/schematics": "^8.2.0",
     "@ngrx/store-devtools": "^8.2.0",
     "@nrwl/cypress": "^8.4.4",
     "@nrwl/jest": "^8.4.4",

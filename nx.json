@@ -17,6 +17,9 @@
     "frontend-storage": {
       "tags": []
     },
+    "frontend-store": {
+      "tags": []
+    },
     "frontend-translation": {
       "tags": []
     },

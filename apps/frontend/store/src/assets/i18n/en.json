@@ -4,7 +4,7 @@
     "en": "English"
   },
   "home": {
-    "title": "Home page with ngx-translate",
+    "title": "Home page with ngrx",
     "count": "Count",
     "actions": {
       "add": "Add"

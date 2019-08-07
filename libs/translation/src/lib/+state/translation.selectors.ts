@@ -1,41 +1,56 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+
 import { TRANSLATION_FEATURE_KEY, TranslationState } from './translation.reducer';
 
-// Lookup the 'Translation' feature state managed by NgRx
 const getTranslationState = createFeatureSelector<TranslationState>(TRANSLATION_FEATURE_KEY);
 
-const getLoaded = createSelector(
+const getCurrentLanguage = createSelector(
   getTranslationState,
-  (state: TranslationState) => state.loaded
-);
-const getError = createSelector(
-  getTranslationState,
-  (state: TranslationState) => state.error
+  (state: TranslationState) => state.currentLanguage
 );
 
-const getAllTranslation = createSelector(
+const getInitialized = createSelector(
   getTranslationState,
-  getLoaded,
-  (state: TranslationState, isLoaded) => {
-    return isLoaded ? state.list : [];
-  }
+  (state: TranslationState) => state.initialized
 );
-const getSelectedId = createSelector(
+
+const getInitError = createSelector(
   getTranslationState,
-  (state: TranslationState) => state.selectedId
+  (state: TranslationState) => state.initError
 );
-const getSelectedTranslation = createSelector(
-  getAllTranslation,
-  getSelectedId,
-  (translation, id) => {
-    const result = translation.find(it => it['id'] === id);
-    return result ? Object.assign({}, result) : undefined;
-  }
+
+const getInitiating = createSelector(
+  getTranslationState,
+  (state: TranslationState) => state.initiating
+);
+
+const getLanguage = createSelector(
+  getTranslationState,
+  (state: TranslationState) => state.language
+);
+
+const getLanguages = createSelector(
+  getTranslationState,
+  (state: TranslationState) => state.languages
+);
+
+const getSetError = createSelector(
+  getTranslationState,
+  (state: TranslationState) => state.setError
+);
+
+const getSetting = createSelector(
+  getTranslationState,
+  (state: TranslationState) => state.setting
 );
 
 export const translationQuery = {
-  getLoaded,
-  getError,
-  getAllTranslation,
-  getSelectedTranslation
+  getCurrentLanguage,
+  getInitialized,
+  getInitError,
+  getInitiating,
+  getLanguage,
+  getLanguages,
+  getSetError,
+  getSetting
 };

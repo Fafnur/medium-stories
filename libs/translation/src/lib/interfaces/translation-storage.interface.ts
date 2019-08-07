@@ -1,7 +1,7 @@
 /**
  * Translation storage interface
  */
-export abstract class TranslationStorage<T = any> {
+export abstract class TranslationStorage<T = string> {
   /**
    * Return language from storage
    */

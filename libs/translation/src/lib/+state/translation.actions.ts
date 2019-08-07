@@ -1,30 +1,89 @@
 import { Action } from '@ngrx/store';
-import { Entity } from './translation.reducer';
+
+import { TranslationConfig } from '../interfaces/translation-config.interface';
 
 export enum TranslationActionTypes {
-  LoadTranslation = '[Translation] Load Translation',
-  TranslationLoaded = '[Translation] Translation Loaded',
-  TranslationLoadError = '[Translation] Translation Load Error'
+  InitTranslation = '[Translation] Init translation',
+  TranslationInitCanceled = '[Translation] Translation init canceled',
+  InitiatingTranslation = '[Translation] Initiating translation',
+  TranslationInitialized = '[Translation] Translation initialized',
+  TranslationInitError = '[Translation] Translation init error',
+
+  SetLanguage = '[Translation] Set language',
+  LanguageSetCanceled = '[Translation] Language set canceled',
+  SettingLanguage = '[Translation] Setting language',
+  LanguageSet = '[Translation] Language set',
+  LanguageSetError = '[Translation] Language set error'
 }
 
-export class LoadTranslation implements Action {
-  readonly type = TranslationActionTypes.LoadTranslation;
+export class InitTranslation implements Action {
+  readonly type = TranslationActionTypes.InitTranslation;
+
+  constructor(public payload?: boolean) {}
 }
 
-export class TranslationLoadError implements Action {
-  readonly type = TranslationActionTypes.TranslationLoadError;
-  constructor(public payload: any) {}
+export class TranslationInitCanceled implements Action {
+  readonly type = TranslationActionTypes.TranslationInitCanceled;
 }
 
-export class TranslationLoaded implements Action {
-  readonly type = TranslationActionTypes.TranslationLoaded;
-  constructor(public payload: Entity[]) {}
+export class InitiatingTranslation implements Action {
+  readonly type = TranslationActionTypes.InitiatingTranslation;
 }
 
-export type TranslationAction = LoadTranslation | TranslationLoaded | TranslationLoadError;
+export class TranslationInitialized implements Action {
+  readonly type = TranslationActionTypes.TranslationInitialized;
+  constructor(public payload: TranslationConfig) {}
+}
+
+export class TranslationInitError implements Action {
+  readonly type = TranslationActionTypes.TranslationInitError;
+  constructor(public payload: string) {}
+}
+
+export class SetLanguage implements Action {
+  readonly type = TranslationActionTypes.SetLanguage;
+  constructor(public payload: string, public force?: boolean) {}
+}
+
+export class LanguageSetCanceled implements Action {
+  readonly type = TranslationActionTypes.LanguageSetCanceled;
+}
+
+export class SettingLanguage implements Action {
+  readonly type = TranslationActionTypes.SettingLanguage;
+  constructor(public payload: string) {}
+}
+
+export class LanguageSet implements Action {
+  readonly type = TranslationActionTypes.LanguageSet;
+}
+
+export class LanguageSetError implements Action {
+  readonly type = TranslationActionTypes.LanguageSetError;
+  constructor(public payload: string) {}
+}
+
+export type TranslationAction =
+  | InitTranslation
+  | TranslationInitCanceled
+  | InitiatingTranslation
+  | TranslationInitialized
+  | TranslationInitError
+  | SetLanguage
+  | LanguageSetCanceled
+  | SettingLanguage
+  | LanguageSet
+  | LanguageSetError;
 
 export const fromTranslationActions = {
-  LoadTranslation,
-  TranslationLoaded,
-  TranslationLoadError
+  InitTranslation,
+  TranslationInitCanceled,
+  InitiatingTranslation,
+  TranslationInitialized,
+  TranslationInitError,
+  SetLanguage,
+  LanguageSetCanceled,
+  SettingLanguage,
+  LanguageSet,
+  LanguageSetError
 };

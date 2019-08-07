@@ -2,8 +2,8 @@
 
 <div class="home-page">
   <div class="home-langs">
-    <button type="button" (click)="setLang('ru')">RU</button> /
-    <button type="button" (click)="setLang('en')">En</button>
+    <button type="button" (click)="translationFacade.setLanguage('ru')">RU</button> /
+    <button type="button" (click)="translationFacade.setLanguage('en')">En</button>
   </div>
 
   <div class="home-title">{{ 'home.count' | translate }}: {{ counter }}</div>

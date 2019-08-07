@@ -16,8 +16,35 @@ export class BaseTranslationService implements TranslationService {
     private translationStorage: TranslationStorage,
     @Inject(PLATFORM_ID) private platformId: any,
     @Inject(TRANSLATION_CONFIG) private translationConfig: TranslationConfig
-  ) {
-    this.init();
+  ) {}
+
+  init(config: TranslationConfig): Observable<any> {
+    this.translateService.addLangs(config.languages);
+    this.translateService.setDefaultLang(config.language);
+    this.translationStorage.setLanguage(config.currentLanguage);
+
+    return this.translateService.use(config.currentLanguage);
+  }
+
+  getConfig(): TranslationConfig {
+    const languages = this.translationConfig.languages || [TRANSLATION_LANG_DEFAULT];
+    let language = this.translationConfig.language || null;
+    if (!language) {
+      // If browser, select locale from browser
+      if (isPlatformBrowser(this.platformId)) {
+        language = window.navigator.language.split('-').shift();
+      }
+      if (!language) {
+        language = languages[0];
+      }
+    }
+    const currentLanguage = this.translationStorage.getLanguage() || language;
+
+    return {
+      languages,
+      language,
+      currentLanguage
+    };
   }
 
   getLanguage(): string {
@@ -32,28 +59,5 @@ export class BaseTranslationService implements TranslationService {
     this.translationStorage.setLanguage(language);
 
     return this.translateService.use(language);
-  }
-
-  /**
-   * Init
-   */
-  private init(): void {
-    const languages = this.translationConfig.languages || [TRANSLATION_LANG_DEFAULT];
-    let language = this.translationConfig.language || null;
-    if (!language) {
-      // If browser, select locale from browser
-      if (isPlatformBrowser(this.platformId)) {
-        language = window.navigator.language.split('-').shift();
-      }
-      if (!language) {
-        language = languages[0];
-      }
-    }
-    const currentLanguage = this.translationStorage.getLanguage() || language;
-
-    this.translateService.addLangs(languages);
-    this.translateService.setDefaultLang(language);
-    this.translateService.use(currentLanguage);
-    this.translationStorage.setLanguage(currentLanguage);
   }
 }

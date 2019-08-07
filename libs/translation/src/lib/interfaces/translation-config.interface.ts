@@ -1,7 +1,12 @@
 /**
  * Translation config
  */
-export interface TranslationConfig<T = any> {
+export interface TranslationConfig<T = string> {
+  /**
+   * Selected language
+   */
+  currentLanguage?: T;
+
   /**
    * Default language
    */

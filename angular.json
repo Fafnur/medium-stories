@@ -420,6 +420,35 @@
         }
       }
     },
+    "store": {
+      "projectType": "library",
+      "root": "libs/store",
+      "sourceRoot": "libs/store/src",
+      "prefix": "medium-stories",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/store/tsconfig.lib.json", "libs/store/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/store/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/store/jest.config.js",
+            "tsConfig": "libs/store/tsconfig.spec.json",
+            "setupFile": "libs/store/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss",
+          "changeDetection": "OnPush"
+        }
+      }
+    },
     "translation": {
       "projectType": "library",
       "root": "libs/translation",

@@ -1,1 +1,1 @@
-export const translationTest = 1;
+export * from './stubs/translation.stub';

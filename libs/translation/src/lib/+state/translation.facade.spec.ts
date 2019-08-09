@@ -1,96 +1,73 @@
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { readFirst } from '@nrwl/angular/testing';
-
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule, Store } from '@ngrx/store';
-
 import { NxModule } from '@nrwl/angular';
+import { readFirst } from '@nrwl/angular/testing';
+import { of } from 'rxjs';
 
+import { translationConfigStub } from '../../testing';
+import { TranslationService } from '../interfaces/translation-service.interface';
 import { TranslationEffects } from './translation.effects';
 import { TranslationFacade } from './translation.facade';
-
-import { translationQuery } from './translation.selectors';
-import { LoadTranslation, TranslationLoaded } from './translation.actions';
-import { TranslationState, Entity, initialState, reducer } from './translation.reducer';
-
-interface TestSchema {
-  translation: TranslationState;
-}
+import { initialState, TRANSLATION_FEATURE_KEY, TranslationPartialState, translationReducer } from './translation.reducer';
 
 describe('TranslationFacade', () => {
   let facade: TranslationFacade;
-  let store: Store<TestSchema>;
-  let createTranslation;
+  let store: Store<TranslationPartialState>;
 
-  beforeEach(() => {
-    createTranslation = (id: string, name = ''): Entity => ({
-      id,
-      name: name || `name-${id}`
-    });
-  });
+  beforeEach(() => {});
 
   describe('used in NgModule', () => {
     beforeEach(() => {
       @NgModule({
-        imports: [StoreModule.forFeature('translation', reducer, { initialState }), EffectsModule.forFeature([TranslationEffects])],
-        providers: [TranslationFacade]
+        imports: [
+          StoreModule.forFeature(TRANSLATION_FEATURE_KEY, translationReducer, { initialState }),
+          EffectsModule.forFeature([TranslationEffects])
+        ],
+        providers: [
+          TranslationFacade,
+          {
+            provide: TranslationService,
+            useValue: {
+              init: jest.fn(() => of(null)),
+              getConfig: jest.fn(() => translationConfigStub),
+              setLanguage: jest.fn(() => of(null))
+            }
+          }
+        ]
       })
       class CustomFeatureModule {}
 
       @NgModule({
-        imports: [NxModule.forRoot(), StoreModule.forRoot({}), EffectsModule.forRoot([]), CustomFeatureModule]
+        imports: [
+          NxModule.forRoot(),
+          StoreModule.forRoot(
+            {},
+            {
+              runtimeChecks: { strictActionImmutability: false }
+            }
+          ),
+          EffectsModule.forRoot([]),
+          CustomFeatureModule
+        ]
       })
       class RootModule {}
+
       TestBed.configureTestingModule({ imports: [RootModule] });
 
       store = TestBed.get(Store);
       facade = TestBed.get(TranslationFacade);
     });
 
-    /**
-     * The initially generated facade::loadAll() returns empty array
-     */
-    it('loadAll() should return empty list with loaded == true', async done => {
+    it('init() should initialized language on app', async done => {
       try {
-        let list = await readFirst(facade.allTranslation$);
-        let isLoaded = await readFirst(facade.loaded$);
+        let initialized = await readFirst(facade.initialized$);
+        expect(initialized).toBeFalsy();
 
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(false);
-
-        facade.loadAll();
-
-        list = await readFirst(facade.allTranslation$);
-        isLoaded = await readFirst(facade.loaded$);
-
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(true);
-
-        done();
-      } catch (err) {
-        done.fail(err);
-      }
-    });
-
-    /**
-     * Use `TranslationLoaded` to manually submit list for state management
-     */
-    it('allTranslation$ should return the loaded list; and loaded flag == true', async done => {
-      try {
-        let list = await readFirst(facade.allTranslation$);
-        let isLoaded = await readFirst(facade.loaded$);
-
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(false);
-
-        store.dispatch(new TranslationLoaded([createTranslation('AAA'), createTranslation('BBB')]));
-
-        list = await readFirst(facade.allTranslation$);
-        isLoaded = await readFirst(facade.loaded$);
-
-        expect(list.length).toBe(2);
-        expect(isLoaded).toBe(true);
+        facade.init();
+        initialized = await readFirst(facade.initialized$);
+        expect(initialized).toBeTruthy();
 
         done();
       } catch (err) {

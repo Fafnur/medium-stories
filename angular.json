@@ -164,7 +164,7 @@
             "assets": ["apps/frontend/common-styles/src/favicon.ico", "apps/frontend/common-styles/src/assets"],
             "styles": ["apps/frontend/common-styles/src/styles.scss"],
             "stylePreprocessorOptions": {
-              "includePaths": ["styles"]
+              "includePaths": ["apps/frontend/common-styles/src/styles"]
             },
             "scripts": []
           },
@@ -235,7 +235,7 @@
             "main": "apps/frontend/common-styles/src/main.server.ts",
             "tsConfig": "apps/frontend/common-styles/tsconfig.server.json",
             "stylePreprocessorOptions": {
-              "includePaths": ["styles"]
+              "includePaths": ["apps/frontend/common-styles/src/styles"]
             }
           },
           "configurations": {
@@ -613,6 +613,9 @@
             "aot": false,
             "assets": ["apps/frontend/translation-state/src/favicon.ico", "apps/frontend/translation-state/src/assets"],
             "styles": ["apps/frontend/translation-state/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/frontend/translation-state/src/styles"]
+            },
             "scripts": []
           },
           "configurations": {
@@ -680,7 +683,10 @@
             "bundleDependencies": "none",
             "outputPath": "dist/apps/frontend/translation-state/server",
             "main": "apps/frontend/translation-state/src/main.server.ts",
-            "tsConfig": "apps/frontend/translation-state/tsconfig.server.json"
+            "tsConfig": "apps/frontend/translation-state/tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/frontend/translation-state/src/styles"]
+            }
           },
           "configurations": {
             "production": {

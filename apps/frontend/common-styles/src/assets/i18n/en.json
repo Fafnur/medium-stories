@@ -4,7 +4,7 @@
     "en": "English"
   },
   "home": {
-    "title": "Home page with ngrx",
+    "title": "Home page with Common styles",
     "count": "Count",
     "actions": {
       "add": "Add"

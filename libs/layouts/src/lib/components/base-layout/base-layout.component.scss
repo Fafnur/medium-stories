@@ -1,10 +1,12 @@
-// Import app utils
 @import 'utils';
 
-// Import common styles
-@import 'styles/style';
+:host {
+  display: block;
+  padding: 30px;
+}
 
-body {
+.layout {
   background-color: $default-bg;
   color: $default-color;
+  padding: 30px;
 }

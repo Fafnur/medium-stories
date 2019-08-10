@@ -730,6 +730,35 @@
         }
       }
     },
+    "layouts": {
+      "projectType": "library",
+      "root": "libs/layouts",
+      "sourceRoot": "libs/layouts/src",
+      "prefix": "medium-stories",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/layouts/tsconfig.lib.json", "libs/layouts/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/layouts/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/layouts/jest.config.js",
+            "tsConfig": "libs/layouts/tsconfig.spec.json",
+            "setupFile": "libs/layouts/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss",
+          "changeDetection": "OnPush"
+        }
+      }
+    },
     "storage": {
       "projectType": "library",
       "root": "libs/storage",

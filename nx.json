@@ -14,6 +14,9 @@
     "frontend/base-e2e": {
       "tags": []
     },
+    "frontend-common-styles": {
+      "tags": []
+    },
     "frontend-storage": {
       "tags": []
     },
@@ -36,6 +39,9 @@
       "tags": []
     },
     "translation": {
+      "tags": []
+    },
+    "layouts": {
       "tags": []
     }
   }

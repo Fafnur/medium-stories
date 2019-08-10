@@ -140,6 +140,123 @@
         }
       }
     },
+    "frontend-common-styles": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush"
+        }
+      },
+      "root": "apps/frontend/common-styles",
+      "sourceRoot": "apps/frontend/common-styles/src",
+      "prefix": "medium-stories",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/frontend/common-styles/browser",
+            "index": "apps/frontend/common-styles/src/index.html",
+            "main": "apps/frontend/common-styles/src/main.browser.ts",
+            "polyfills": "apps/frontend/common-styles/src/polyfills.ts",
+            "tsConfig": "apps/frontend/common-styles/tsconfig.app.json",
+            "aot": false,
+            "assets": ["apps/frontend/common-styles/src/favicon.ico", "apps/frontend/common-styles/src/assets"],
+            "styles": ["apps/frontend/common-styles/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/frontend/common-styles/src/styles"]
+            },
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/common-styles/src/environments/environment.ts",
+                  "with": "apps/frontend/common-styles/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "frontend-common-styles:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-common-styles:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "frontend-common-styles:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/frontend/common-styles/tsconfig.app.json", "apps/frontend/common-styles/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/frontend/common-styles/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/frontend/common-styles/jest.config.js",
+            "tsConfig": "apps/frontend/common-styles/tsconfig.spec.json",
+            "setupFile": "apps/frontend/common-styles/src/test-setup.ts"
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "bundleDependencies": "none",
+            "outputPath": "dist/apps/frontend/common-styles/server",
+            "main": "apps/frontend/common-styles/src/main.server.ts",
+            "tsConfig": "apps/frontend/common-styles/tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/frontend/common-styles/src/styles"]
+            }
+          },
+          "configurations": {
+            "production": {
+              "bundleDependencies": "all",
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/common-styles/src/environments/environment.ts",
+                  "with": "apps/frontend/common-styles/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": {
+                "scripts": false,
+                "styles": true
+              }
+            }
+          }
+        }
+      }
+    },
     "frontend-storage": {
       "projectType": "application",
       "schematics": {
@@ -496,6 +613,9 @@
             "aot": false,
             "assets": ["apps/frontend/translation-state/src/favicon.ico", "apps/frontend/translation-state/src/assets"],
             "styles": ["apps/frontend/translation-state/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/frontend/translation-state/src/styles"]
+            },
             "scripts": []
           },
           "configurations": {
@@ -563,7 +683,10 @@
             "bundleDependencies": "none",
             "outputPath": "dist/apps/frontend/translation-state/server",
             "main": "apps/frontend/translation-state/src/main.server.ts",
-            "tsConfig": "apps/frontend/translation-state/tsconfig.server.json"
+            "tsConfig": "apps/frontend/translation-state/tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/frontend/translation-state/src/styles"]
+            }
           },
           "configurations": {
             "production": {
@@ -603,6 +726,35 @@
             "jestConfig": "libs/common/jest.config.js",
             "tsConfig": "libs/common/tsconfig.spec.json",
             "setupFile": "libs/common/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss",
+          "changeDetection": "OnPush"
+        }
+      }
+    },
+    "layouts": {
+      "projectType": "library",
+      "root": "libs/layouts",
+      "sourceRoot": "libs/layouts/src",
+      "prefix": "medium-stories",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/layouts/tsconfig.lib.json", "libs/layouts/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/layouts/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/layouts/jest.config.js",
+            "tsConfig": "libs/layouts/tsconfig.spec.json",
+            "setupFile": "libs/layouts/src/test-setup.ts"
           }
         }
       },

@@ -40,7 +40,9 @@
     "build:ssr:store": "ng build frontend-store --prod && ng run frontend-store:server:production && webpack --config apps/frontend/store/webpack.ssr.config.js --progress --colors",
     "serve:ssr:store": "node dist/apps/frontend/store/server.js",
     "build:ssr:translation-state": "ng build frontend-translation-state --prod && ng run frontend-translation-state:server:production && webpack --config apps/frontend/translation-state/webpack.ssr.config.js --progress --colors",
-    "serve:ssr:translation-state": "node dist/apps/frontend/translation-state/server.js"
+    "serve:ssr:translation-state": "node dist/apps/frontend/translation-state/server.js",
+    "build:ssr:common-styles": "ng build frontend-common-styles --prod && ng run frontend-common-styles:server:production && webpack --config apps/frontend/common-styles/webpack.ssr.config.js --progress --colors",
+    "serve:ssr:common-styles": "node dist/apps/frontend/common-styles/server.js"
   },
   "private": true,
   "dependencies": {

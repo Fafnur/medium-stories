@@ -1,0 +1,13 @@
+{
+  "languages": {
+    "ru": "Русский",
+    "en": "English"
+  },
+  "home": {
+    "title": "Главная страница с Common styles",
+    "count": "Количество",
+    "actions": {
+      "add": "Добавить"
+    }
+  }
+}

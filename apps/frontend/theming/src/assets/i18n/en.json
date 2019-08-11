@@ -1,0 +1,13 @@
+{
+  "languages": {
+    "ru": "Русский",
+    "en": "English"
+  },
+  "home": {
+    "title": "Home page with Theming",
+    "count": "Count",
+    "actions": {
+      "add": "Add"
+    }
+  }
+}

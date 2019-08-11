@@ -42,7 +42,9 @@
     "build:ssr:translation-state": "ng build frontend-translation-state --prod && ng run frontend-translation-state:server:production && webpack --config apps/frontend/translation-state/webpack.ssr.config.js --progress --colors",
     "serve:ssr:translation-state": "node dist/apps/frontend/translation-state/server.js",
     "build:ssr:common-styles": "ng build frontend-common-styles --prod && ng run frontend-common-styles:server:production && webpack --config apps/frontend/common-styles/webpack.ssr.config.js --progress --colors",
-    "serve:ssr:common-styles": "node dist/apps/frontend/common-styles/server.js"
+    "serve:ssr:common-styles": "node dist/apps/frontend/common-styles/server.js",
+    "build:ssr:theming": "ng build frontend-theming --prod && ng run frontend-theming:server:production && webpack --config apps/frontend/theming/webpack.ssr.config.js --progress --colors",
+    "serve:ssr:theming": "node dist/apps/frontend/theming/server.js"
   },
   "private": true,
   "dependencies": {
@@ -71,6 +73,7 @@
     "bootstrap": "^4.3.1",
     "core-js": "^2.6.9",
     "express": "^4.17.1",
+    "hammerjs": "^2.0.8",
     "ngx-cookie": "^4.1.2",
     "rxjs": "~6.5.2",
     "zone.js": "^0.9.1"

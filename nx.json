@@ -23,6 +23,9 @@
     "frontend-store": {
       "tags": []
     },
+    "frontend-theming": {
+      "tags": []
+    },
     "frontend-translation": {
       "tags": []
     },

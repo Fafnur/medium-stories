@@ -1,18 +1,20 @@
 <div class="home-page">
-  <h2>{{ 'home.title' | translate }}</h2>
+  <div class="container">
+    <h2>{{ 'home.title' | translate }}</h2>
 
-  <mat-card class="home-card">
-    <div class="home-langs">
-      <button type="button" (click)="translationFacade.setLanguage('ru')">RU</button> /
-      <button type="button" (click)="translationFacade.setLanguage('en')">En</button>
-    </div>
+    <mat-card class="home-card">
+      <div class="home-langs">
+        <button type="button" (click)="translationFacade.setLanguage('ru')">RU</button> /
+        <button type="button" (click)="translationFacade.setLanguage('en')">En</button>
+      </div>
 
-    <div class="home-title">{{ 'home.count' | translate }}: {{ counter }}</div>
+      <div class="home-title">{{ 'home.count' | translate }}: {{ counter }}</div>
 
-    <div class="home-actions">
-      <button type="btn btn-default home-action" (click)="add()">
-        {{ 'home.actions.add' | translate }}
-      </button>
-    </div>
-  </mat-card>
+      <div class="home-actions">
+        <button type="btn btn-default home-action" (click)="add()">
+          {{ 'home.actions.add' | translate }}
+        </button>
+      </div>
+    </mat-card>
+  </div>
 </div>

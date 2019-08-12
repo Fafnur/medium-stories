@@ -20,6 +20,8 @@
       "@medium-stories/common/testing": ["libs/common/src/testing/index.ts"],
       "@medium-stories/layouts": ["libs/layouts/src/index.ts"],
       "@medium-stories/layouts/testing": ["libs/layouts/src/testing/index.ts"],
+      "@medium-stories/responsive": ["libs/responsive/src/index.ts"],
+      "@medium-stories/responsive/testing": ["libs/responsive/src/testing/index.ts"],
       "@medium-stories/storage": ["libs/storage/src/index.ts"],
       "@medium-stories/storage/testing": ["libs/storage/src/testing/index.ts"],
       "@medium-stories/store": ["libs/store/src/index.ts"],

@@ -882,6 +882,34 @@
         }
       }
     },
+    "responsive": {
+      "projectType": "library",
+      "root": "libs/responsive",
+      "sourceRoot": "libs/responsive/src",
+      "prefix": "medium-stories",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/responsive/tsconfig.lib.json", "libs/responsive/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/responsive/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/responsive/jest.config.js",
+            "tsConfig": "libs/responsive/tsconfig.spec.json",
+            "setupFile": "libs/responsive/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
     "storage": {
       "projectType": "library",
       "root": "libs/storage",

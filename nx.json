@@ -35,6 +35,12 @@
     "common": {
       "tags": []
     },
+    "layouts": {
+      "tags": []
+    },
+    "responsive": {
+      "tags": []
+    },
     "storage": {
       "tags": []
     },
@@ -42,9 +48,6 @@
       "tags": []
     },
     "translation": {
-      "tags": []
-    },
-    "layouts": {
       "tags": []
     }
   }

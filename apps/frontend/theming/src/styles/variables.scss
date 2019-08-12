@@ -1,0 +1,27 @@
+// Override bootstrap variables
+
+$grid-breakpoints: (
+  xs: 0,
+  nm: 320px,
+  mkm: 400px,
+  mm: 480px,
+  sm: 550px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  hg: 1400px,
+  zh: 1600px
+);
+
+$container-max-widths: (
+  // sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  hg: 1340px,
+);
+
+// Custom variables
+
+$default-bg: #300a24;
+$default-color: #fff;

@@ -2,5 +2,4 @@
 @import 'styles/utils';
 
 // Override common variables and mixins
-$default-bg: #300a24;
-$default-color: #fff;
+@import 'variables';

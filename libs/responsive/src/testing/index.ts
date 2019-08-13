@@ -1,1 +1,1 @@
-export const responsiveTest = 1;
+export * from './stubs/responsive.stub';

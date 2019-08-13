@@ -15,7 +15,7 @@ import { APP_DIST } from '@medium-stories/common';
   providers: [
     {
       provide: APP_DIST, // need to get translation path on Universal
-      useValue: 'frontend/translation'
+      useValue: 'frontend/store'
     }
   ]
 })

@@ -17,6 +17,9 @@
     "frontend-common-styles": {
       "tags": []
     },
+    "frontend-responsive": {
+      "tags": []
+    },
     "frontend-storage": {
       "tags": []
     },
@@ -35,6 +38,12 @@
     "common": {
       "tags": []
     },
+    "layouts": {
+      "tags": []
+    },
+    "responsive": {
+      "tags": []
+    },
     "storage": {
       "tags": []
     },
@@ -42,9 +51,6 @@
       "tags": []
     },
     "translation": {
-      "tags": []
-    },
-    "layouts": {
       "tags": []
     }
   }

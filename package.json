@@ -44,7 +44,9 @@
     "build:ssr:common-styles": "ng build frontend-common-styles --prod && ng run frontend-common-styles:server:production && webpack --config apps/frontend/common-styles/webpack.ssr.config.js --progress --colors",
     "serve:ssr:common-styles": "node dist/apps/frontend/common-styles/server.js",
     "build:ssr:theming": "ng build frontend-theming --prod && ng run frontend-theming:server:production && webpack --config apps/frontend/theming/webpack.ssr.config.js --progress --colors",
-    "serve:ssr:theming": "node dist/apps/frontend/theming/server.js"
+    "serve:ssr:theming": "node dist/apps/frontend/theming/server.js",
+    "build:ssr:responsive": "ng build frontend-responsive --prod && ng run frontend-responsive:server:production && webpack --config apps/frontend/responsive/webpack.ssr.config.js --progress --colors",
+    "serve:ssr:responsive": "node dist/apps/frontend/responsive/server.js"
   },
   "private": true,
   "dependencies": {

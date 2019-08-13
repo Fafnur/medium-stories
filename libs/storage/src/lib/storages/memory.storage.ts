@@ -13,7 +13,7 @@ export class MemoryStorage implements AbstractStorage {
   /**
    * Storage data
    */
-  private data: Dictionary<string> = {};
+  protected data: Dictionary<string> = {};
 
   get length(): number {
     return Object.keys(this.data).length;
@@ -24,7 +24,7 @@ export class MemoryStorage implements AbstractStorage {
   }
 
   getItem(key: string): string | null {
-    return this.data.hasOwnProperty(key) ? this.data[key] : null;
+    return key in this.data ? this.data[key] : null;
   }
 
   key(index: number): string | null {
@@ -34,10 +34,10 @@ export class MemoryStorage implements AbstractStorage {
   }
 
   removeItem(key: string): void {
-    delete this.data.key;
+    delete this.data[key];
   }
 
   setItem(key: string, value: string): void {
-    this.data.key = value;
+    this.data[key] = value;
   }
 }

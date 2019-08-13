@@ -5,7 +5,8 @@ import { ResponsiveService } from '../interfaces/responsive-service.interface';
 import { ResponsiveStorage } from '../interfaces/responsive-storage.interface';
 
 @Pipe({
-  name: 'adaptiveSync'
+  name: 'adaptiveSync',
+  pure: false
 })
 export class AdaptiveSyncPipe implements PipeTransform {
   constructor(private responsiveService: ResponsiveService, private responsiveStorage: ResponsiveStorage) {}

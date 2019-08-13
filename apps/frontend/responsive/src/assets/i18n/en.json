@@ -11,6 +11,7 @@
     }
   },
   "responsive": {
-    "title": "Block with dynamic adaptive"
+    "title": "Block with dynamic adaptive",
+    "titleSync": "Block with dynamic adaptive (sync)"
   }
 }

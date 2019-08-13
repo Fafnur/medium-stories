@@ -40,5 +40,29 @@
         </div>
       </mat-card-content>
     </mat-card>
+
+    <mat-card class="responsive-card">
+      <mat-card-header>
+        <mat-card-title>{{ 'responsive.titleSync' | translate }}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div *ngIf="'sm' | adaptiveSync">
+          <h3>SM equal</h3>
+        </div>
+
+        <div *ngIf="'md' | adaptiveSync: 'min'">
+          <h3>MD min</h3>
+        </div>
+
+        <div *ngIf="'lg' | adaptiveSync: 'max'">
+          <h3>LG max</h3>
+        </div>
+
+        <div *ngIf="'xl,hg' | adaptiveSync: 'between'">
+          <h3>XL,HG between</h3>
+        </div>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>

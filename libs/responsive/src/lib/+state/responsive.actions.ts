@@ -1,30 +1,63 @@
 import { Action } from '@ngrx/store';
-import { Entity } from './responsive.reducer';
+
+import { ResponsiveProperties } from '../interfaces/responsive.interface';
 
 export enum ResponsiveActionTypes {
-  LoadResponsive = '[Responsive] Load Responsive',
-  ResponsiveLoaded = '[Responsive] Responsive Loaded',
-  ResponsiveLoadError = '[Responsive] Responsive Load Error'
+  InitWindowProps = '[Responsive] Init window properties',
+  WindowPropsInitCanceled = '[Responsive] Window properties inited',
+  InitiatingWindowProps = '[Responsive] Initiating window properties',
+  WindowPropsInitialized = '[Responsive] Window properties initialized',
+  WindowPropsInitError = '[Responsive] Window properties init error',
+
+  ChangeWindowProps = '[Responsive] Change window properties',
+  SetWindowProps = '[Responsive] Set window properties'
 }
 
-export class LoadResponsive implements Action {
-  readonly type = ResponsiveActionTypes.LoadResponsive;
+export class InitWindowProps implements Action {
+  readonly type = ResponsiveActionTypes.InitWindowProps;
+
+  constructor(public payload?: boolean) {}
 }
 
-export class ResponsiveLoadError implements Action {
-  readonly type = ResponsiveActionTypes.ResponsiveLoadError;
-  constructor(public payload: any) {}
+export class WindowPropsInitCanceled implements Action {
+  readonly type = ResponsiveActionTypes.WindowPropsInitCanceled;
 }
 
-export class ResponsiveLoaded implements Action {
-  readonly type = ResponsiveActionTypes.ResponsiveLoaded;
-  constructor(public payload: Entity[]) {}
+export class InitiatingWindowProps implements Action {
+  readonly type = ResponsiveActionTypes.InitiatingWindowProps;
 }
 
-export type ResponsiveAction = LoadResponsive | ResponsiveLoaded | ResponsiveLoadError;
+export class WindowPropsInitialized implements Action {
+  readonly type = ResponsiveActionTypes.WindowPropsInitialized;
+
+  constructor(public payload: ResponsiveProperties) {}
+}
+
+export class WindowPropsInitError implements Action {
+  readonly type = ResponsiveActionTypes.WindowPropsInitError;
+
+  constructor(public payload: string) {}
+}
+
+export class SetWindowProps implements Action {
+  readonly type = ResponsiveActionTypes.SetWindowProps;
+
+  constructor(public payload: object) {}
+}
+
+export type ResponsiveAction =
+  | InitWindowProps
+  | WindowPropsInitCanceled
+  | InitiatingWindowProps
+  | WindowPropsInitialized
+  | WindowPropsInitError
+  | SetWindowProps;
 
 export const fromResponsiveActions = {
-  LoadResponsive,
-  ResponsiveLoaded,
-  ResponsiveLoadError
+  InitWindowProps,
+  WindowPropsInitCanceled,
+  InitiatingWindowProps,
+  WindowPropsInitialized,
+  WindowPropsInitError,
+  SetWindowProps
 };

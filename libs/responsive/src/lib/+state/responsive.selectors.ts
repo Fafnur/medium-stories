@@ -1,41 +1,56 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+
 import { RESPONSIVE_FEATURE_KEY, ResponsiveState } from './responsive.reducer';
 
-// Lookup the 'Responsive' feature state managed by NgRx
 const getResponsiveState = createFeatureSelector<ResponsiveState>(RESPONSIVE_FEATURE_KEY);
 
-const getLoaded = createSelector(
+const getHeight = createSelector(
   getResponsiveState,
-  (state: ResponsiveState) => state.loaded
-);
-const getError = createSelector(
-  getResponsiveState,
-  (state: ResponsiveState) => state.error
+  (state: ResponsiveState) => state.height
 );
 
-const getAllResponsive = createSelector(
+const getInitError = createSelector(
   getResponsiveState,
-  getLoaded,
-  (state: ResponsiveState, isLoaded) => {
-    return isLoaded ? state.list : [];
-  }
+  (state: ResponsiveState) => state.initError
 );
-const getSelectedId = createSelector(
+
+const getInitialized = createSelector(
   getResponsiveState,
-  (state: ResponsiveState) => state.selectedId
+  (state: ResponsiveState) => state.initialized
 );
-const getSelectedResponsive = createSelector(
-  getAllResponsive,
-  getSelectedId,
-  (responsive, id) => {
-    const result = responsive.find(it => it['id'] === id);
-    return result ? Object.assign({}, result) : undefined;
-  }
+
+const getInitiating = createSelector(
+  getResponsiveState,
+  (state: ResponsiveState) => state.initiating
+);
+
+const getMobile = createSelector(
+  getResponsiveState,
+  (state: ResponsiveState) => state.mobile
+);
+
+const getProperties = createSelector(
+  getResponsiveState,
+  (state: ResponsiveState) => ({ height: state.height, mobile: state.mobile, width: state.width })
+);
+
+const getResponsiveType = createSelector(
+  getResponsiveState,
+  (state: ResponsiveState) => state.responsiveType
+);
+
+const getWidth = createSelector(
+  getResponsiveState,
+  (state: ResponsiveState) => state.width
 );
 
 export const responsiveQuery = {
-  getLoaded,
-  getError,
-  getAllResponsive,
-  getSelectedResponsive
+  getHeight,
+  getInitError,
+  getInitialized,
+  getInitiating,
+  getMobile,
+  getProperties,
+  getResponsiveType,
+  getWidth
 };

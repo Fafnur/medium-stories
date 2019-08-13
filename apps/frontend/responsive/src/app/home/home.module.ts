@@ -4,10 +4,12 @@ import { MatCardModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { ResponsiveModule } from '@medium-stories/responsive';
+
 import { homeContainers, homeRoutes } from './home.common';
 
 @NgModule({
-  imports: [CommonModule, MatCardModule, RouterModule.forChild(homeRoutes), TranslateModule],
+  imports: [CommonModule, MatCardModule, ResponsiveModule, RouterModule.forChild(homeRoutes), TranslateModule],
   declarations: [...homeContainers]
 })
 export class HomeModule {}

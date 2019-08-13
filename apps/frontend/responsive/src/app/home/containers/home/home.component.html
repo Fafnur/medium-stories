@@ -16,5 +16,29 @@
         </button>
       </div>
     </mat-card>
+
+    <mat-card class="responsive-card">
+      <mat-card-header>
+        <mat-card-title>{{ 'responsive.title' | translate }}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div *ngIf="'sm' | adaptive | async">
+          <h3>SM equal</h3>
+        </div>
+
+        <div *ngIf="'md' | adaptive: 'min' | async">
+          <h3>MD min</h3>
+        </div>
+
+        <div *ngIf="'lg' | adaptive: 'max' | async">
+          <h3>LG max</h3>
+        </div>
+
+        <div *ngIf="'xl,hg' | adaptive: 'between' | async">
+          <h3>XL,HG between</h3>
+        </div>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>

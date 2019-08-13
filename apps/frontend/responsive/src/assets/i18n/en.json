@@ -9,5 +9,8 @@
     "actions": {
       "add": "Add"
     }
+  },
+  "responsive": {
+    "title": "Block with dynamic adaptive"
   }
 }

@@ -7,8 +7,8 @@ import { ServerTranslationModule } from '@medium-stories/translation';
 
 import { environment } from '../environments/environment';
 import { AppModule } from './app.module';
-import { CoreModule } from './core/core.module';
 import { AppComponent } from './core/containers/app/app.component';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   imports: [

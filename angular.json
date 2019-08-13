@@ -257,6 +257,123 @@
         }
       }
     },
+    "frontend-responsive": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush"
+        }
+      },
+      "root": "apps/frontend/responsive",
+      "sourceRoot": "apps/frontend/responsive/src",
+      "prefix": "medium-stories",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/frontend/responsive/browser",
+            "index": "apps/frontend/responsive/src/index.html",
+            "main": "apps/frontend/responsive/src/main.browser.ts",
+            "polyfills": "apps/frontend/responsive/src/polyfills.ts",
+            "tsConfig": "apps/frontend/responsive/tsconfig.app.json",
+            "aot": false,
+            "assets": ["apps/frontend/responsive/src/favicon.ico", "apps/frontend/responsive/src/assets"],
+            "styles": ["apps/frontend/responsive/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/frontend/responsive/src/styles"]
+            },
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/responsive/src/environments/environment.ts",
+                  "with": "apps/frontend/responsive/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "frontend-responsive:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-responsive:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "frontend-responsive:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/frontend/responsive/tsconfig.app.json", "apps/frontend/responsive/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/frontend/responsive/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/frontend/responsive/jest.config.js",
+            "tsConfig": "apps/frontend/responsive/tsconfig.spec.json",
+            "setupFile": "apps/frontend/responsive/src/test-setup.ts"
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "bundleDependencies": "none",
+            "outputPath": "dist/apps/frontend/responsive/server",
+            "main": "apps/frontend/responsive/src/main.server.ts",
+            "tsConfig": "apps/frontend/responsive/tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/frontend/responsive/src/styles"]
+            }
+          },
+          "configurations": {
+            "production": {
+              "bundleDependencies": "all",
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/responsive/src/environments/environment.ts",
+                  "with": "apps/frontend/responsive/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": {
+                "scripts": false,
+                "styles": true
+              }
+            }
+          }
+        }
+      }
+    },
     "frontend-storage": {
       "projectType": "application",
       "schematics": {

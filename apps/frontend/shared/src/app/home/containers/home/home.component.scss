@@ -1,0 +1,15 @@
+@import 'utils';
+
+:host {
+  background-color: mat-color($mat-gray, 200);
+  display: block;
+  height: 100vh;
+}
+
+.home-page {
+  padding: 1rem 2rem;
+}
+
+.responsive-card {
+  margin-top: 2rem;
+}

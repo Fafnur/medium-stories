@@ -46,7 +46,9 @@
     "build:ssr:theming": "ng build frontend-theming --prod && ng run frontend-theming:server:production && webpack --config apps/frontend/theming/webpack.ssr.config.js --progress --colors",
     "serve:ssr:theming": "node dist/apps/frontend/theming/server.js",
     "build:ssr:responsive": "ng build frontend-responsive --prod && ng run frontend-responsive:server:production && webpack --config apps/frontend/responsive/webpack.ssr.config.js --progress --colors",
-    "serve:ssr:responsive": "node dist/apps/frontend/responsive/server.js"
+    "serve:ssr:responsive": "node dist/apps/frontend/responsive/server.js",
+    "build:ssr:shared": "ng build frontend-shared --prod && ng run frontend-shared:server:production && webpack --config apps/frontend/shared/webpack.ssr.config.js --progress --colors",
+    "serve:ssr:shared": "node dist/apps/frontend/shared/server.js"
   },
   "private": true,
   "dependencies": {

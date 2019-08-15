@@ -22,6 +22,8 @@
       "@medium-stories/layouts/testing": ["libs/layouts/src/testing/index.ts"],
       "@medium-stories/responsive": ["libs/responsive/src/index.ts"],
       "@medium-stories/responsive/testing": ["libs/responsive/src/testing/index.ts"],
+      "@medium-stories/shared": ["libs/shared/src/index.ts"],
+      "@medium-stories/shared/testing": ["libs/shared/src/testing/index.ts"],
       "@medium-stories/storage": ["libs/storage/src/index.ts"],
       "@medium-stories/storage/testing": ["libs/storage/src/testing/index.ts"],
       "@medium-stories/store": ["libs/store/src/index.ts"],

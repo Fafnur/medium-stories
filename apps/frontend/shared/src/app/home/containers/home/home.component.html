@@ -1,0 +1,33 @@
+<div class="home-page">
+  <div class="container">
+    <div class="home-header">
+      <div class="home-actions">
+        <button type="button" (click)="translationFacade.setLanguage('ru')">RU</button> /
+        <button type="button" (click)="translationFacade.setLanguage('en')">En</button>
+      </div>
+      <h2 class="home-title">
+        {{ 'home.title' | translate }}
+      </h2>
+    </div>
+
+    <mat-card class="shared-card">
+      <mat-card-title>{{ 'shared.title' | translate }}</mat-card-title>
+
+      <mat-card-content>
+        <ng-container *msLet="let newVar of getCalcVar()">
+          <h4>{{ 'shared.calc' | translate }}:</h4>
+          <div>{{ newVar }}</div>
+        </ng-container>
+      </mat-card-content>
+
+      <mat-card-content>
+        <ng-container *msRun="preload$ | async">
+          <h4>{{ 'shared.preload' | translate }}</h4>
+          <div *ngIf="data">
+            <div *ngFor="let item of data">{{ item }}</div>
+          </div>
+        </ng-container>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

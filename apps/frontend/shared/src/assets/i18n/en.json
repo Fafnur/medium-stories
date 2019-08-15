@@ -1,0 +1,22 @@
+{
+  "languages": {
+    "ru": "Русский",
+    "en": "English"
+  },
+  "home": {
+    "title": "Home page with Theming",
+    "count": "Count",
+    "actions": {
+      "add": "Add"
+    }
+  },
+  "responsive": {
+    "title": "Block with dynamic adaptive",
+    "titleSync": "Block with dynamic adaptive (sync)"
+  },
+  "shared": {
+    "title": "Block with shared directives",
+    "calc": "Calculated value",
+    "preload": "Async data"
+  }
+}

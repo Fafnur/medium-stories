@@ -20,6 +20,9 @@
     "frontend-responsive": {
       "tags": []
     },
+    "frontend-shared": {
+      "tags": []
+    },
     "frontend-storage": {
       "tags": []
     },
@@ -42,6 +45,9 @@
       "tags": []
     },
     "responsive": {
+      "tags": []
+    },
+    "shared": {
       "tags": []
     },
     "storage": {

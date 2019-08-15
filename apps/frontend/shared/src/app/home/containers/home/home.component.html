@@ -1,67 +1,32 @@
 <div class="home-page">
   <div class="container">
-    <h2>{{ 'home.title' | translate }}</h2>
-
-    <mat-card class="home-card">
-      <div class="home-langs">
+    <div class="home-header">
+      <div class="home-actions">
         <button type="button" (click)="translationFacade.setLanguage('ru')">RU</button> /
         <button type="button" (click)="translationFacade.setLanguage('en')">En</button>
       </div>
+      <h2 class="home-title">
+        {{ 'home.title' | translate }}
+      </h2>
+    </div>
 
-      <div class="home-title">{{ 'home.count' | translate }}: {{ counter }}</div>
-
-      <div class="home-actions">
-        <button type="btn btn-default home-action" (click)="add()">
-          {{ 'home.actions.add' | translate }}
-        </button>
-      </div>
-    </mat-card>
-
-    <mat-card class="responsive-card">
-      <mat-card-header>
-        <mat-card-title>{{ 'responsive.title' | translate }}</mat-card-title>
-      </mat-card-header>
+    <mat-card class="shared-card">
+      <mat-card-title>{{ 'shared.title' | translate }}</mat-card-title>
 
       <mat-card-content>
-        <div *ngIf="'sm' | adaptive | async">
-          <h3>SM equal</h3>
-        </div>
-
-        <div *ngIf="'md' | adaptive: 'min' | async">
-          <h3>MD min</h3>
-        </div>
-
-        <div *ngIf="'lg' | adaptive: 'max' | async">
-          <h3>LG max</h3>
-        </div>
-
-        <div *ngIf="'xl,hg' | adaptive: 'between' | async">
-          <h3>XL,HG between</h3>
-        </div>
+        <ng-container *msLet="let newVar of getCalcVar()">
+          <h4>{{ 'shared.calc' | translate }}:</h4>
+          <div>{{ newVar }}</div>
+        </ng-container>
       </mat-card-content>
-    </mat-card>
-
-    <mat-card class="responsive-card">
-      <mat-card-header>
-        <mat-card-title>{{ 'responsive.titleSync' | translate }}</mat-card-title>
-      </mat-card-header>
 
       <mat-card-content>
-        <div *ngIf="'sm' | adaptiveSync">
-          <h3>SM equal</h3>
-        </div>
-
-        <div *ngIf="'md' | adaptiveSync: 'min'">
-          <h3>MD min</h3>
-        </div>
-
-        <div *ngIf="'lg' | adaptiveSync: 'max'">
-          <h3>LG max</h3>
-        </div>
-
-        <div *ngIf="'xl,hg' | adaptiveSync: 'between'">
-          <h3>XL,HG between</h3>
-        </div>
+        <ng-container *msRun="preload$ | async">
+          <h4>{{ 'shared.preload' | translate }}</h4>
+          <div *ngIf="data">
+            <div *ngFor="let item of data">{{ item }}</div>
+          </div>
+        </ng-container>
       </mat-card-content>
     </mat-card>
   </div>

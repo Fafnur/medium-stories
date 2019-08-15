@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-
-import { CookieStorage } from '@medium-stories/storage';
+import { timer } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { TranslationFacade } from '@medium-stories/translation';
 
 @Component({
@@ -10,26 +10,17 @@ import { TranslationFacade } from '@medium-stories/translation';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent {
-  /**
-   * Counter storage key
-   */
-  static readonly counterKey = 'myCounter';
+  data = null;
 
-  /**
-   * Counter
-   */
-  counter: number;
+  preload$ = timer(3000).pipe(
+    tap(() => {
+      this.data = [1, 2, 3, 4, 5, 6];
+    })
+  );
 
-  constructor(public translationFacade: TranslationFacade, private cookieStorage: CookieStorage) {
-    const savedCounter = this.cookieStorage.getItem(HomeComponent.counterKey);
-    this.counter = savedCounter ? +savedCounter : 0;
-  }
+  constructor(public translationFacade: TranslationFacade) {}
 
-  /**
-   * To increment the counter
-   */
-  add(): void {
-    this.counter++;
-    this.cookieStorage.setItem(HomeComponent.counterKey, this.counter.toString());
+  getCalcVar(): string {
+    return this.data ? this.data.length : 0;
   }
 }

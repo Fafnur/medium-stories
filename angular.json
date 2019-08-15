@@ -257,6 +257,123 @@
         }
       }
     },
+    "frontend-markup": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush"
+        }
+      },
+      "root": "apps/frontend/markup",
+      "sourceRoot": "apps/frontend/markup/src",
+      "prefix": "medium-stories",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/frontend/markup/browser",
+            "index": "apps/frontend/markup/src/index.html",
+            "main": "apps/frontend/markup/src/main.browser.ts",
+            "polyfills": "apps/frontend/markup/src/polyfills.ts",
+            "tsConfig": "apps/frontend/markup/tsconfig.app.json",
+            "aot": false,
+            "assets": ["apps/frontend/markup/src/favicon.ico", "apps/frontend/markup/src/assets"],
+            "styles": ["apps/frontend/markup/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/frontend/markup/src/styles"]
+            },
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/markup/src/environments/environment.ts",
+                  "with": "apps/frontend/markup/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "frontend-markup:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-markup:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "frontend-markup:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/frontend/markup/tsconfig.app.json", "apps/frontend/markup/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/frontend/markup/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/frontend/markup/jest.config.js",
+            "tsConfig": "apps/frontend/markup/tsconfig.spec.json",
+            "setupFile": "apps/frontend/markup/src/test-setup.ts"
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "bundleDependencies": "none",
+            "outputPath": "dist/apps/frontend/markup/server",
+            "main": "apps/frontend/markup/src/main.server.ts",
+            "tsConfig": "apps/frontend/markup/tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/frontend/markup/src/styles"]
+            }
+          },
+          "configurations": {
+            "production": {
+              "bundleDependencies": "all",
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/markup/src/environments/environment.ts",
+                  "with": "apps/frontend/markup/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": {
+                "scripts": false,
+                "styles": true
+              }
+            }
+          }
+        }
+      }
+    },
     "frontend-responsive": {
       "projectType": "application",
       "schematics": {

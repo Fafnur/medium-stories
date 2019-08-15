@@ -1,6 +1,6 @@
 import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 
-export interface NgLetContext {
+export interface MsLetContext {
   [p: string]: any;
 
   $implicit: any;
@@ -10,7 +10,7 @@ export interface NgLetContext {
   selector: '[msLet]'
 })
 export class MsLetDirective implements OnInit {
-  context: NgLetContext = {
+  context: MsLetContext = {
     $implicit: null
   };
 

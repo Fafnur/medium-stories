@@ -1,11 +1,14 @@
 import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
-import { NgLetContext } from './ms-let.directive';
+
+export interface MsRunContext {
+  $implicit: any;
+}
 
 @Directive({
   selector: '[msRun]'
 })
 export class MsRunDirective implements OnInit {
-  context: NgLetContext = {
+  context: MsRunContext = {
     $implicit: null
   };
 

@@ -52,7 +52,6 @@ describe('AdaptivePipe', () => {
     pipe = TestBed.get(AdaptivePipe);
     facade = TestBed.get(ResponsiveFacade);
     scheduler = getTestScheduler();
-    const duration = scheduler.createTime('-|');
   });
 
   it('should create', () => {

@@ -1,15 +1,21 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Inject, Pipe, PipeTransform } from '@angular/core';
 
 import { AdaptiveMode } from '../interfaces/adaptive.interface';
+import { ResponsiveMode } from '../interfaces/responsive.interface';
 import { ResponsiveService } from '../interfaces/responsive-service.interface';
 import { ResponsiveStorage } from '../interfaces/responsive-storage.interface';
+import { RESPONSIVE_MODE } from '../responsive.tokens';
 
 @Pipe({
   name: 'adaptiveSync',
   pure: false
 })
 export class AdaptiveSyncPipe implements PipeTransform {
-  constructor(private responsiveService: ResponsiveService, private responsiveStorage: ResponsiveStorage) {}
+  constructor(
+    private responsiveService: ResponsiveService,
+    private responsiveStorage: ResponsiveStorage,
+    @Inject(RESPONSIVE_MODE) protected responsiveMode: ResponsiveMode
+  ) {}
 
   /**
    * Example use 'sm,md|hd,xh' | adaptiveSync:'between'
@@ -23,12 +29,19 @@ export class AdaptiveSyncPipe implements PipeTransform {
     if (typeof expression === 'string') {
       const type = this.getType();
 
+      if (expression === 'mobile') {
+        expression = this.responsiveMode.mobile;
+      }
+
       if (!mode || typeof mode !== 'string') {
         mode = AdaptiveMode.Equal;
       }
       const expressions = expression.split('|');
 
       switch (mode) {
+        case AdaptiveMode.Mobile:
+          result = type === this.responsiveMode.mobile;
+          break;
         case AdaptiveMode.Min:
           result = this.responsiveService.checkMin(type, expressions);
           break;

@@ -33,6 +33,10 @@ export class BaseResponsiveStorage implements ResponsiveStorage {
     }
     const mobile = this.storage.getItem(RESPONSIVE_STORAGE_KEYS.mobile);
     props.mobile = mobile === 'true';
+    const responsiveType = this.storage.getItem(RESPONSIVE_STORAGE_KEYS.responsiveType);
+    if (responsiveType) {
+      props.responsiveType = responsiveType;
+    }
 
     return props;
   }

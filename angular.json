@@ -278,7 +278,15 @@
             "polyfills": "apps/frontend/markup/src/polyfills.ts",
             "tsConfig": "apps/frontend/markup/tsconfig.app.json",
             "aot": false,
-            "assets": ["apps/frontend/markup/src/favicon.ico", "apps/frontend/markup/src/assets"],
+            "assets": [
+              "apps/frontend/markup/src/favicon.ico",
+              "apps/frontend/markup/src/assets",
+              {
+                "glob": "**/*",
+                "input": "libs/layouts/src/assets",
+                "output": "./assets"
+              }
+            ],
             "styles": ["apps/frontend/markup/src/styles.scss"],
             "stylePreprocessorOptions": {
               "includePaths": ["apps/frontend/markup/src/styles"]

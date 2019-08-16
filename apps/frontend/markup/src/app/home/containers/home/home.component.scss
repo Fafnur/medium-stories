@@ -1,19 +1,10 @@
 @import 'utils';
 
 :host {
-  background-color: mat-color($mat-gray, 200);
-  display: block;
-  height: 100vh;
 }
 
 .home-page {
-  padding: 1rem 2rem;
-}
-
-.home-actions {
-  float: right;
-}
-
-.shared-card {
-  margin-top: 2rem;
+  background: url(/assets/images/home/main.webp) no-repeat 50% 50%;
+  background-size: cover;
+  height: 100vh;
 }

@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { NxModule } from '@nrwl/angular';
 
-import { ResponsiveModule } from '@medium-stories/responsive';
+import { RESPONSIVE_SIZE_DEFAULT, ResponsiveModule } from '@medium-stories/responsive';
 import { RootStoreModule } from '@medium-stories/store';
 
 import { coreContainers, coreRoutes } from './core.common';
@@ -13,7 +13,12 @@ import { coreContainers, coreRoutes } from './core.common';
   imports: [
     CommonModule,
     NxModule.forRoot(),
-    ResponsiveModule.forRoot(),
+    ResponsiveModule.forRoot({
+      mode: {
+        mobile: 'lg',
+        sizes: RESPONSIVE_SIZE_DEFAULT
+      }
+    }),
     RouterModule.forRoot(coreRoutes, { initialNavigation: 'enabled' }),
     RootStoreModule,
     TranslateModule

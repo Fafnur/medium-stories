@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'medium-stories-base-layout',
@@ -6,4 +6,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./base-layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BaseLayoutComponent {}
+export class BaseLayoutComponent {
+  /**
+   * Classes for host component
+   */
+  @HostBinding('class') classes = 'layout layout-base';
+}

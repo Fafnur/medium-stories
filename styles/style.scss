@@ -1,4 +1,9 @@
 // Commons
+
+// Normalize default styles browsers
+@import '~bootstrap/scss/reboot';
+
+// Import common applications styles
 @import 'common/typography';
 @import 'common/buttons';
 @import 'common/fonts';

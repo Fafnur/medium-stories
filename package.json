@@ -49,6 +49,7 @@
     "serve:ssr:responsive": "node dist/apps/frontend/responsive/server.js",
     "build:ssr:shared": "ng build frontend-shared --prod && ng run frontend-shared:server:production && webpack --config apps/frontend/shared/webpack.ssr.config.js --progress --colors",
     "serve:ssr:shared": "node dist/apps/frontend/shared/server.js",
+    "serve:markup": "ng serve frontend-markup",
     "build:ssr:markup": "ng build frontend-markup --prod && ng run frontend-markup:server:production && webpack --config apps/frontend/markup/webpack.ssr.config.js --progress --colors",
     "serve:ssr:markup": "node dist/apps/frontend/markup/server.js"
   },

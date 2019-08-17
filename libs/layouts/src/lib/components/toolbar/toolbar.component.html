@@ -1,1 +1,10 @@
-<p>toolbar works!</p>
+<ng-container *msMobile>
+  <button class="hamburger hamburger--spin" type="button" [class.is-active]="active" (click)="active = !active">
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+  </button>
+</ng-container>
+<ng-container *msMobile="false">
+  tools
+</ng-container>

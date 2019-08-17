@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCog } from '@fortawesome/free-solid-svg-icons';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { sharedComponents, sharedDirectives } from './shared.common';
@@ -16,6 +16,6 @@ export class SharedModule {
     /**
      * Add an icon to the library for convenient access in other components
      */
-    this.library.addIcons(faBars);
+    this.library.addIcons(faBars, faCog);
   }
 }

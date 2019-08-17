@@ -1,0 +1,20 @@
+@import 'utils';
+
+:host {
+  position: fixed;
+  left: 0;
+  top: 4rem;
+  width: 100%;
+  height: calc(100vh - 4rem);
+  background-color: #000;
+  color: #fff;
+}
+
+.menu {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: calc(100vh - 4rem);
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}

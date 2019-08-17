@@ -1,53 +1,20 @@
-import { Entity, LayoutState } from './layout.reducer';
+import { createStore } from '@medium-stories/store/testing';
+
+import { LAYOUT_FEATURE_KEY, layoutInitialState, LayoutPartialState } from './layout.reducer';
 import { layoutQuery } from './layout.selectors';
 
-describe('Layout Selectors', () => {
-  const ERROR_MSG = 'No Error Available';
-  const getLayoutId = it => it['id'];
-
-  let storeState;
+describe('LayoutSelectors', () => {
+  const key = LAYOUT_FEATURE_KEY;
+  let store: LayoutPartialState;
 
   beforeEach(() => {
-    const createLayout = (id: string, name = ''): Entity => ({
-      id,
-      name: name || `name-${id}`
-    });
-    storeState = {
-      layout: {
-        list: [createLayout('PRODUCT-AAA'), createLayout('PRODUCT-BBB'), createLayout('PRODUCT-CCC')],
-        selectedId: 'PRODUCT-BBB',
-        error: ERROR_MSG,
-        loaded: true
-      }
-    };
+    store = createStore(key, layoutInitialState);
   });
 
-  describe('Layout Selectors', () => {
-    it('getAllLayout() should return the list of Layout', () => {
-      const results = layoutQuery.getAllLayout(storeState);
-      const selId = getLayoutId(results[1]);
+  it('getOpenedSideMenu() should return openedSideMenu', () => {
+    store = createStore(key, layoutInitialState, { openedSideMenu: true });
+    const results = layoutQuery.getOpenedSideMenu(store);
 
-      expect(results.length).toBe(3);
-      expect(selId).toBe('PRODUCT-BBB');
-    });
-
-    it('getSelectedLayout() should return the selected Entity', () => {
-      const result = layoutQuery.getSelectedLayout(storeState);
-      const selId = getLayoutId(result);
-
-      expect(selId).toBe('PRODUCT-BBB');
-    });
-
-    it("getLoaded() should return the current 'loaded' status", () => {
-      const result = layoutQuery.getLoaded(storeState);
-
-      expect(result).toBe(true);
-    });
-
-    it("getError() should return the current 'error' storeState", () => {
-      const result = layoutQuery.getError(storeState);
-
-      expect(result).toBe(ERROR_MSG);
-    });
+    expect(results).toBeTruthy();
   });
 });

@@ -1,30 +1,27 @@
 import { Action } from '@ngrx/store';
-import { Entity } from './layout.reducer';
 
 export enum LayoutActionTypes {
-  LoadLayout = '[Layout] Load Layout',
-  LayoutLoaded = '[Layout] Layout Loaded',
-  LayoutLoadError = '[Layout] Layout Load Error'
+  OpenSideMenu = '[Layout] Open side menu',
+  CloseSideMenu = '[Layout] Close side menu',
+  ToggleSideMenu = '[Layout] Toggle side menu'
 }
 
-export class LoadLayout implements Action {
-  readonly type = LayoutActionTypes.LoadLayout;
+export class OpenSideMenu implements Action {
+  readonly type = LayoutActionTypes.OpenSideMenu;
 }
 
-export class LayoutLoadError implements Action {
-  readonly type = LayoutActionTypes.LayoutLoadError;
-  constructor(public payload: any) {}
+export class CloseSideMenu implements Action {
+  readonly type = LayoutActionTypes.CloseSideMenu;
 }
 
-export class LayoutLoaded implements Action {
-  readonly type = LayoutActionTypes.LayoutLoaded;
-  constructor(public payload: Entity[]) {}
+export class ToggleSideMenu implements Action {
+  readonly type = LayoutActionTypes.ToggleSideMenu;
 }
 
-export type LayoutAction = LoadLayout | LayoutLoaded | LayoutLoadError;
+export type LayoutAction = OpenSideMenu | CloseSideMenu | ToggleSideMenu;
 
 export const fromLayoutActions = {
-  LoadLayout,
-  LayoutLoaded,
-  LayoutLoadError
+  OpenSideMenu,
+  CloseSideMenu,
+  ToggleSideMenu
 };

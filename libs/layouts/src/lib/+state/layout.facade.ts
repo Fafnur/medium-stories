@@ -1,20 +1,37 @@
 import { Injectable } from '@angular/core';
-
 import { select, Store } from '@ngrx/store';
 
+import { fromLayoutActions } from './layout.actions';
 import { LayoutPartialState } from './layout.reducer';
 import { layoutQuery } from './layout.selectors';
-import { LoadLayout } from './layout.actions';
 
 @Injectable()
 export class LayoutFacade {
-  loaded$ = this.store.pipe(select(layoutQuery.getLoaded));
-  allLayout$ = this.store.pipe(select(layoutQuery.getAllLayout));
-  selectedLayout$ = this.store.pipe(select(layoutQuery.getSelectedLayout));
+  /**
+   * Observed opened side menu
+   */
+  openedSideMenu$ = this.store.pipe(select(layoutQuery.getOpenedSideMenu));
 
   constructor(private store: Store<LayoutPartialState>) {}
 
-  loadAll() {
-    this.store.dispatch(new LoadLayout());
+  /**
+   * Close mobile menu
+   */
+  closeSideMenu(): void {
+    this.store.dispatch(new fromLayoutActions.CloseSideMenu());
+  }
+
+  /**
+   * Close mobile menu
+   */
+  openSideMenu(): void {
+    this.store.dispatch(new fromLayoutActions.OpenSideMenu());
+  }
+
+  /**
+   * Toggle mobile menu
+   */
+  toggleSideMenu(): void {
+    this.store.dispatch(new fromLayoutActions.ToggleSideMenu());
   }
 }

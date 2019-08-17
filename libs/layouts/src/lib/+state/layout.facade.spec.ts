@@ -1,40 +1,25 @@
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { readFirst } from '@nrwl/angular/testing';
-
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule, Store } from '@ngrx/store';
-
 import { NxModule } from '@nrwl/angular';
+import { readFirst } from '@nrwl/angular/testing';
 
 import { LayoutEffects } from './layout.effects';
 import { LayoutFacade } from './layout.facade';
-
-import { layoutQuery } from './layout.selectors';
-import { LoadLayout, LayoutLoaded } from './layout.actions';
-import { LayoutState, Entity, layoutInitialState, layoutReducer } from './layout.reducer';
-
-interface TestSchema {
-  layout: LayoutState;
-}
+import { layoutReducer, LayoutPartialState, LAYOUT_FEATURE_KEY, layoutInitialState } from './layout.reducer';
 
 describe('LayoutFacade', () => {
   let facade: LayoutFacade;
-  let store: Store<TestSchema>;
-  let createLayout;
+  let store: Store<LayoutPartialState>;
 
-  beforeEach(() => {
-    createLayout = (id: string, name = ''): Entity => ({
-      id,
-      name: name || `name-${id}`
-    });
-  });
+  beforeEach(() => {});
 
   describe('used in NgModule', () => {
     beforeEach(() => {
       @NgModule({
         imports: [
-          StoreModule.forFeature('layout', layoutReducer, { initialState: layoutInitialState }),
+          StoreModule.forFeature(LAYOUT_FEATURE_KEY, layoutReducer, { initialState: layoutInitialState }),
           EffectsModule.forFeature([LayoutEffects])
         ],
         providers: [LayoutFacade]
@@ -42,58 +27,38 @@ describe('LayoutFacade', () => {
       class CustomFeatureModule {}
 
       @NgModule({
-        imports: [NxModule.forRoot(), StoreModule.forRoot({}), EffectsModule.forRoot([]), CustomFeatureModule]
+        imports: [
+          NxModule.forRoot(),
+          StoreModule.forRoot(
+            {},
+            {
+              runtimeChecks: { strictActionImmutability: false }
+            }
+          ),
+          EffectsModule.forRoot([]),
+          CustomFeatureModule
+        ]
       })
       class RootModule {}
+
       TestBed.configureTestingModule({ imports: [RootModule] });
 
       store = TestBed.get(Store);
       facade = TestBed.get(LayoutFacade);
     });
 
-    /**
-     * The initially generated facade::loadAll() returns empty array
-     */
-    it('loadAll() should return empty list with loaded == true', async done => {
-      try {
-        let list = await readFirst(facade.allLayout$);
-        let isLoaded = await readFirst(facade.loaded$);
-
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(false);
-
-        facade.loadAll();
-
-        list = await readFirst(facade.allLayout$);
-        isLoaded = await readFirst(facade.loaded$);
-
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(true);
-
-        done();
-      } catch (err) {
-        done.fail(err);
-      }
+    it('should create', () => {
+      expect(facade).toBeTruthy();
     });
 
-    /**
-     * Use `LayoutLoaded` to manually submit list for state management
-     */
-    it('allLayout$ should return the loaded list; and loaded flag == true', async done => {
+    it('toggleMenu() should toggle menu', async done => {
       try {
-        let list = await readFirst(facade.allLayout$);
-        let isLoaded = await readFirst(facade.loaded$);
+        let openedSideMenu = await readFirst(facade.openedSideMenu$);
+        expect(openedSideMenu).toBeFalsy();
 
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(false);
-
-        store.dispatch(new LayoutLoaded([createLayout('AAA'), createLayout('BBB')]));
-
-        list = await readFirst(facade.allLayout$);
-        isLoaded = await readFirst(facade.loaded$);
-
-        expect(list.length).toBe(2);
-        expect(isLoaded).toBe(true);
+        facade.toggleSideMenu();
+        openedSideMenu = await readFirst(facade.openedSideMenu$);
+        expect(openedSideMenu).toBeTruthy();
 
         done();
       } catch (err) {

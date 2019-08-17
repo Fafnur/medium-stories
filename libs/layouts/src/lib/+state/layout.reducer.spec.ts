@@ -1,36 +1,33 @@
-import { LayoutLoaded } from './layout.actions';
-import { LayoutState, Entity, layoutInitialState, layoutReducer } from './layout.reducer';
+import { fromLayoutActions } from './layout.actions';
+import { layoutInitialState, layoutReducer, LayoutState } from './layout.reducer';
 
-describe('Layout Reducer', () => {
-  const getLayoutId = it => it['id'];
-  let createLayout;
+describe('LayoutReducer', () => {
+  let state: LayoutState;
 
   beforeEach(() => {
-    createLayout = (id: string, name = ''): Entity => ({
-      id,
-      name: name || `name-${id}`
-    });
+    state = layoutInitialState;
   });
 
-  describe('valid Layout actions ', () => {
-    it('should return set the list of known Layout', () => {
-      const layouts = [createLayout('PRODUCT-AAA'), createLayout('PRODUCT-zzz')];
-      const action = new LayoutLoaded(layouts);
-      const result: LayoutState = layoutReducer(layoutInitialState, action);
-      const selId: string = getLayoutId(result.list[1]);
+  it('OpenMobileMenu() should open mobile menu', () => {
+    const action = new fromLayoutActions.OpenSideMenu();
+    state = layoutReducer(state, action);
 
-      expect(result.loaded).toBe(true);
-      expect(result.list.length).toBe(2);
-      expect(selId).toBe('PRODUCT-zzz');
-    });
+    expect(state.openedSideMenu).toBeTruthy();
   });
 
-  describe('unknown action', () => {
-    it('should return the previous state', () => {
-      const action = {} as any;
-      const result = layoutReducer(layoutInitialState, action);
+  it('CloseMobileMenu() should close mobile menu', () => {
+    const action = new fromLayoutActions.CloseSideMenu();
+    state = layoutReducer(state, action);
 
-      expect(result).toBe(layoutInitialState);
-    });
+    expect(state.openedSideMenu).toBeFalsy();
+  });
+
+  it('ToggleMobileMenu() should toggle mobile menu', () => {
+    const action = new fromLayoutActions.ToggleSideMenu();
+    state = layoutReducer(state, action);
+    expect(state.openedSideMenu).toBeTruthy();
+
+    state = layoutReducer(state, action);
+    expect(state.openedSideMenu).toBeFalsy();
   });
 });

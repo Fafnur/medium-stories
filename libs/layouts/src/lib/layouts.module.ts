@@ -7,9 +7,10 @@ import { ResponsiveModule } from '@medium-stories/responsive';
 import { SharedModule } from '@medium-stories/shared';
 
 import { layoutsComponents, layoutsExportComponents } from './layouts.common';
+import { LayoutsCommonModule } from './layouts-common.module';
 
 @NgModule({
-  imports: [CommonModule, ResponsiveModule, RouterModule, SharedModule, TranslateModule],
+  imports: [CommonModule, LayoutsCommonModule, ResponsiveModule, RouterModule, SharedModule, TranslateModule],
   declarations: [...layoutsComponents],
   exports: [...layoutsExportComponents]
 })

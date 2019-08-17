@@ -1,4 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
+import { MockDirective } from 'ng-mocks';
+
+import { MsMobileDirective } from '@medium-stories/responsive';
 
 import { ToolbarComponent } from './toolbar.component';
 
@@ -7,8 +11,9 @@ describe('ToolbarComponent', () => {
   let fixture: ComponentFixture<ToolbarComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ToolbarComponent]
+    return TestBed.configureTestingModule({
+      imports: [TranslateModule.forRoot()],
+      declarations: [ToolbarComponent, MockDirective(MsMobileDirective)]
     }).compileComponents();
   }));
 

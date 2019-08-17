@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { SideMenuComponent } from './side-menu.component';
 
@@ -7,7 +8,8 @@ describe('SideMenuComponent', () => {
   let fixture: ComponentFixture<SideMenuComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
+    return TestBed.configureTestingModule({
+      imports: [TranslateModule.forRoot()],
       declarations: [SideMenuComponent]
     }).compileComponents();
   }));

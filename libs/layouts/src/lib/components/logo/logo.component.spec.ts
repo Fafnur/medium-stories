@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { LogoComponent } from './logo.component';
 
@@ -7,7 +8,8 @@ describe('LogoComponent', () => {
   let fixture: ComponentFixture<LogoComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
+    return TestBed.configureTestingModule({
+      imports: [TranslateModule.forRoot()],
       declarations: [LogoComponent]
     }).compileComponents();
   }));

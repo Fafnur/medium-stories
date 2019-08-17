@@ -1,5 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MockComponent, MockDirective } from 'ng-mocks';
 
+import { MsMobileDirective } from '@medium-stories/responsive';
+import { SharedModule } from '@medium-stories/shared';
+
+import { HeaderComponent } from '../header/header.component';
+import { SideMenuComponent } from '../side-menu/side-menu.component';
 import { BaseLayoutComponent } from './base-layout.component';
 
 describe('BaseLayoutComponent', () => {
@@ -7,8 +14,14 @@ describe('BaseLayoutComponent', () => {
   let fixture: ComponentFixture<BaseLayoutComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [BaseLayoutComponent]
+    return TestBed.configureTestingModule({
+      imports: [RouterTestingModule, SharedModule],
+      declarations: [
+        BaseLayoutComponent,
+        MockComponent(HeaderComponent),
+        MockComponent(SideMenuComponent),
+        MockDirective(MsMobileDirective)
+      ]
     }).compileComponents();
   }));
 

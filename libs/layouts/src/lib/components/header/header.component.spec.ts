@@ -1,5 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MockComponent, MockDirective } from 'ng-mocks';
 
+import { MsMobileDirective } from '@medium-stories/responsive';
+
+import { LogoComponent } from '../logo/logo.component';
+import { NavMenuComponent } from '../nav-menu/nav-menu.component';
+import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
@@ -7,8 +13,15 @@ describe('HeaderComponent', () => {
   let fixture: ComponentFixture<HeaderComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [HeaderComponent]
+    return TestBed.configureTestingModule({
+      imports: [],
+      declarations: [
+        HeaderComponent,
+        MockComponent(LogoComponent),
+        MockComponent(NavMenuComponent),
+        MockComponent(ToolbarComponent),
+        MockDirective(MsMobileDirective)
+      ]
     }).compileComponents();
   }));
 

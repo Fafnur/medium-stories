@@ -4,12 +4,12 @@ import { LayoutsCommonModule } from './layouts-common.module';
 
 describe('LayoutsCommonModule', () => {
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
+    return TestBed.configureTestingModule({
       imports: [LayoutsCommonModule]
     }).compileComponents();
   }));
 
   it('should create', () => {
-    expect(LayoutsCommonModule).toBeDefined();
+    expect(LayoutsCommonModule).toBeTruthy();
   });
 });

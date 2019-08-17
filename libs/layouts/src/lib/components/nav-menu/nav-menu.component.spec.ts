@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { NavMenuComponent } from './nav-menu.component';
 
@@ -7,7 +8,8 @@ describe('NavMenuComponent', () => {
   let fixture: ComponentFixture<NavMenuComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
+    return TestBed.configureTestingModule({
+      imports: [TranslateModule.forRoot()],
       declarations: [NavMenuComponent]
     }).compileComponents();
   }));

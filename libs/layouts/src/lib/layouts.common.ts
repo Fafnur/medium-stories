@@ -1,4 +1,4 @@
-import { BaseLayoutComponent } from './components/base-layout/base-layout.component';
+import { BaseLayoutComponent } from './containers/base-layout/base-layout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
@@ -14,4 +14,4 @@ export const layoutsComponents: any[] = [
   ToolbarComponent
 ];
 
-export const layoutsExportComponents: any[] = [BaseLayoutComponent];
+export const layoutsContainers: any[] = [BaseLayoutComponent];

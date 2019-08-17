@@ -5,8 +5,8 @@ import { MockComponent, MockDirective } from 'ng-mocks';
 import { MsMobileDirective } from '@medium-stories/responsive';
 import { SharedModule } from '@medium-stories/shared';
 
-import { HeaderComponent } from '../header/header.component';
-import { SideMenuComponent } from '../side-menu/side-menu.component';
+import { HeaderComponent } from '../../components/header/header.component';
+import { SideMenuComponent } from '../../components/side-menu/side-menu.component';
 import { BaseLayoutComponent } from './base-layout.component';
 
 describe('BaseLayoutComponent', () => {

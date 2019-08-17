@@ -1,4 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+import { LayoutFacade } from '../../+state/layout.facade';
 
 @Component({
   selector: 'medium-stories-toolbar',
@@ -6,9 +8,6 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./toolbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ToolbarComponent implements OnInit {
-  active = false;
-  constructor() {}
-
-  ngOnInit() {}
+export class ToolbarComponent {
+  constructor(public layoutFacade: LayoutFacade) {}
 }

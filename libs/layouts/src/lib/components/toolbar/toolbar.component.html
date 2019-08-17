@@ -1,5 +1,10 @@
 <ng-container *msMobile>
-  <button class="hamburger hamburger--spin" type="button" [class.is-active]="active" (click)="active = !active">
+  <button
+    class="hamburger hamburger--spin"
+    type="button"
+    [class.is-active]="layoutFacade.openedSideMenu$ | async"
+    (click)="layoutFacade.toggleSideMenu()"
+  >
     <span class="hamburger-box">
       <span class="hamburger-inner"></span>
     </span>

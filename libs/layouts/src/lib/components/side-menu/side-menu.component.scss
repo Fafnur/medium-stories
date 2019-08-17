@@ -1,8 +1,11 @@
 @import 'utils';
 
 :host {
+}
+
+.sidemenu {
   position: fixed;
-  left: 0;
+  left: 100%;
   top: 4rem;
   width: 100%;
   height: calc(100vh - 4rem);
@@ -10,10 +13,11 @@
   color: #fff;
 }
 
-.menu {
+.sidemenu-container {
   overflow-x: hidden;
   overflow-y: scroll;
   height: calc(100vh - 4rem);
+
   &::-webkit-scrollbar {
     width: 0;
   }

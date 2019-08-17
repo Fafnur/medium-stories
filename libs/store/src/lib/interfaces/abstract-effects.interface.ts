@@ -25,7 +25,7 @@ export abstract class AbstractEffects<T = any> {
    * @param state State
    * @param key External state key
    */
-  getState<S = any>(state: S, key?: string): T {
+  getState<S = T>(state: any, key?: string): S {
     return state[key || this.key];
   }
 

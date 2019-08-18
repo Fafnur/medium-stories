@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Directive, Inject, Input, OnDestroy, OnInit, PLATFORM_ID, TemplateRef, ViewContainerRef } from '@angular/core';
+import { ChangeDetectorRef, Directive, Inject, Input, OnDestroy, OnInit, PLATFORM_ID, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { ResponsiveFacade } from '../+state/responsive.facade';
@@ -24,6 +24,7 @@ export class MsMobileDirective implements OnInit, OnDestroy {
   }
 
   constructor(
+    private changeDetectorRef: ChangeDetectorRef,
     private templateRef: TemplateRef<any>,
     private viewContainer: ViewContainerRef,
     private responsiveFacade: ResponsiveFacade,
@@ -58,5 +59,6 @@ export class MsMobileDirective implements OnInit, OnDestroy {
     } else {
       this.viewContainer.clear();
     }
+    this.changeDetectorRef.detectChanges();
   }
 }

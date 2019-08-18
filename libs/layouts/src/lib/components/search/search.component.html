@@ -1,0 +1,20 @@
+<button class="btn btn-search" (click)="open(content)">
+  <ms-icon icon="search"></ms-icon>
+</button>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">{{ 'search.title' | translate }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="search-form">
+      <mat-form-field>
+        <input matInput placeholder="{{ 'search.placeholder' | translate }}" />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </form>
+  </div>
+</ng-template>

@@ -1,7 +1,7 @@
 @import 'utils';
 
 .logo-image {
-  max-height: 2rem;
+  max-height: 2.5rem;
 
   @include media-breakpoint-up(xl) {
     max-height: 4.25rem;

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { LayoutFacade } from '@medium-stories/layouts';
+import { LayoutFacade } from '../../+state/layout.facade';
 
 @Component({
   selector: 'medium-stories-hamburger',

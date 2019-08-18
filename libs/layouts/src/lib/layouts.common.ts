@@ -1,5 +1,6 @@
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
 import { HeaderComponent } from './components/header/header.component';
+import { LanguagesComponent } from './components/languages/languages.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { SearchComponent } from './components/search/search.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
@@ -10,6 +11,7 @@ import { BaseLayoutComponent } from './containers/base-layout/base-layout.compon
 export const layoutsComponents: any[] = [
   HamburgerComponent,
   HeaderComponent,
+  LanguagesComponent,
   LogoComponent,
   NavMenuComponent,
   SearchComponent,

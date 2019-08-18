@@ -18,6 +18,10 @@
     margin-bottom: auto;
   }
 
+  .modal-open & {
+    width: calc(100% - 15px);
+  }
+
   @include media-breakpoint-up(lg) {
     padding: 1rem 3rem;
   }

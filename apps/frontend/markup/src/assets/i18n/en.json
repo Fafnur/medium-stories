@@ -1,10 +1,21 @@
 {
   "languages": {
-    "ru": "Русский",
-    "en": "English"
+    "full": {
+      "ru": "Русский",
+      "en": "English"
+    },
+    "short": {
+      "ru": "Ру",
+      "en": "En"
+    }
   },
-  "search": {
-    "title": "Search",
-    "placeholder": "Search on Medium Stories"
+  "layouts": {
+    "languages": {
+      "title": "Choose <strong>Your language</strong>"
+    },
+    "search": {
+      "title": "Search",
+      "placeholder": "Search on Medium Stories"
+    }
   }
 }

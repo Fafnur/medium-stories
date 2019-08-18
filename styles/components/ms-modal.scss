@@ -1,0 +1,41 @@
+@import 'utils';
+
+.ms-modal {
+  .modal-content {
+    border-radius: 0;
+  }
+
+  .modal-header {
+    border-bottom: none;
+    border-radius: 0;
+  }
+
+  .modal-header ~ .modal-body {
+    padding-top: 0;
+  }
+
+  .modal-header .close {
+    line-height: 0.5;
+    font-size: 2rem;
+    font-weight: 300;
+    padding: 1rem;
+    margin: -1rem;
+
+    &:hover {
+      color: $primary;
+    }
+
+    &:focus {
+      box-shadow: none;
+      outline: none;
+    }
+  }
+
+  .modal-title {
+    font-weight: 400;
+    padding-left: 1rem;
+    margin: 0 auto;
+    user-select: none;
+    text-transform: uppercase;
+  }
+}

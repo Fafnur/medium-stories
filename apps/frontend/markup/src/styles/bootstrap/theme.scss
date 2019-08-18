@@ -22,3 +22,10 @@ html {
 
 // Bootstrap components
 @import '~bootstrap/scss/buttons';
+@import '~bootstrap/scss/close';
+@import '~bootstrap/scss/modal';
+
+.modal-open {
+  padding-right: 0 !important;
+  overflow-y: scroll;
+}

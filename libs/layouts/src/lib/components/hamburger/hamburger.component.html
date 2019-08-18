@@ -1,0 +1,10 @@
+<button
+  class="hamburger hamburger_spin"
+  type="button"
+  [class.is-active]="layoutFacade.openedSideMenu$ | async"
+  (click)="layoutFacade.toggleSideMenu()"
+>
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>

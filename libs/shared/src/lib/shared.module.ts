@@ -4,12 +4,12 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { faBars, faCog, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { sharedComponents, sharedDirectives } from './shared.common';
+import { sharedComponents, sharedDirectives, sharedPipes } from './shared.common';
 
 @NgModule({
   imports: [CommonModule, FontAwesomeModule, TranslateModule],
-  declarations: [...sharedComponents, ...sharedDirectives],
-  exports: [...sharedComponents, ...sharedDirectives]
+  declarations: [...sharedComponents, ...sharedDirectives, ...sharedPipes],
+  exports: [...sharedComponents, ...sharedDirectives, ...sharedPipes]
 })
 export class SharedModule {
   constructor(private library: FaIconLibrary) {

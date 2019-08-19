@@ -8,9 +8,24 @@ import { layoutQuery } from './layout.selectors';
 @Injectable()
 export class LayoutFacade {
   /**
+   * Observed hovered nav item
+   */
+  hoveredNavItem$ = this.store.pipe(select(layoutQuery.getHoveredNavItem));
+
+  /**
+   * Observed hovered nav sub item
+   */
+  hoveredNavSubItem$ = this.store.pipe(select(layoutQuery.getHoveredNavSubItem));
+
+  /**
    * Observed opened side menu
    */
   openedSideMenu$ = this.store.pipe(select(layoutQuery.getOpenedSideMenu));
+
+  /**
+   * Observed opened side menu
+   */
+  showNavSubMenu$ = this.store.pipe(select(layoutQuery.getShowNavSubMenu));
 
   constructor(private store: Store<LayoutPartialState>) {}
 
@@ -19,6 +34,13 @@ export class LayoutFacade {
    */
   closeSideMenu(): void {
     this.store.dispatch(new fromLayoutActions.CloseSideMenu());
+  }
+
+  /**
+   * Hide nav sub menus
+   */
+  hideSubMenu(): void {
+    this.store.dispatch(new fromLayoutActions.HideNavSubMenu());
   }
 
   /**
@@ -33,5 +55,19 @@ export class LayoutFacade {
    */
   toggleSideMenu(): void {
     this.store.dispatch(new fromLayoutActions.ToggleSideMenu());
+  }
+
+  /**
+   * Set hovered nav item
+   */
+  setNavItem(id: number, showNavSubMenu: boolean): void {
+    this.store.dispatch(new fromLayoutActions.SetHoveredNavItem({ id, showNavSubMenu }));
+  }
+
+  /**
+   * Set hovered nav sub item
+   */
+  setNavSubItem(payload: number): void {
+    this.store.dispatch(new fromLayoutActions.SetHoveredNavSubItem(payload));
   }
 }

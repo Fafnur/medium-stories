@@ -9,6 +9,29 @@
       "en": "En"
     }
   },
+  "menu": {
+    "models": {
+      "title": "Модели",
+      "urus": "Urus",
+      "huracan": "Huracán",
+      "huracanEVO": "Huracán EVO",
+      "huracanEVOSpyder": "Huracán EVO Spyder",
+      "huracanRWD": "Huracán RWD",
+      "huracanRWDSpyder": "Huracán RWD Spyder",
+      "huracanPerformante": "Huracán Performante",
+      "huracanPerformanteSpyder": "Huracán Performante Spyder",
+      "aventador": "Aventador",
+      "aventadorS": "Aventador S",
+      "aventadorSRoadster": "Aventador S Roadster",
+      "aventadorSVJ": "Aventador SVJ",
+      "aventadorSVJRoadster": "Aventador SVJ Roadster"
+    },
+    "brand": "О Lamborghini",
+    "ownership": "Услуги и сервис",
+    "experience": "События",
+    "motorsport": "Автоспорт",
+    "store": "Магазин"
+  },
   "layouts": {
     "languages": {
       "title": "Выберите <strong>свой язык</strong>"

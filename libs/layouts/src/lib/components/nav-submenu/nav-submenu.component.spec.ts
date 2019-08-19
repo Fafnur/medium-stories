@@ -1,24 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
+import { MockDirective } from 'ng-mocks';
+
+import { MsLetDirective } from '@medium-stories/shared';
 
 import { LayoutFacade } from '../../+state/layout.facade';
 import { NAV_LINKS } from '../../layouts.tokens';
-import { NavMenuComponent } from './nav-menu.component';
+import { NavSubmenuComponent } from './nav-submenu.component';
 
-describe('NavMenuComponent', () => {
-  let component: NavMenuComponent;
-  let fixture: ComponentFixture<NavMenuComponent>;
+describe('NavSubmenuComponent', () => {
+  let component: NavSubmenuComponent;
+  let fixture: ComponentFixture<NavSubmenuComponent>;
 
   beforeEach(async(() => {
     return TestBed.configureTestingModule({
       imports: [RouterTestingModule, TranslateModule.forRoot()],
-      declarations: [NavMenuComponent],
+      declarations: [NavSubmenuComponent, MockDirective(MsLetDirective)],
       providers: [
         {
           provide: LayoutFacade,
           useValue: {
-            setNavItem: jest.fn()
+            setNavSubItem: jest.fn()
           }
         },
         {
@@ -30,7 +33,7 @@ describe('NavMenuComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavMenuComponent);
+    fixture = TestBed.createComponent(NavSubmenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

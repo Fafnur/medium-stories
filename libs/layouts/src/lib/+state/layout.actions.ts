@@ -3,7 +3,11 @@ import { Action } from '@ngrx/store';
 export enum LayoutActionTypes {
   OpenSideMenu = '[Layout] Open side menu',
   CloseSideMenu = '[Layout] Close side menu',
-  ToggleSideMenu = '[Layout] Toggle side menu'
+  ToggleSideMenu = '[Layout] Toggle side menu',
+
+  SetHoveredNavItem = '[Layout] Set hovered nav item',
+  SetHoveredNavSubItem = '[Layout] Set hovered nav sub item',
+  HideNavSubMenu = '[Layout] Hide nav sub menu'
 }
 
 export class OpenSideMenu implements Action {
@@ -18,10 +22,35 @@ export class ToggleSideMenu implements Action {
   readonly type = LayoutActionTypes.ToggleSideMenu;
 }
 
-export type LayoutAction = OpenSideMenu | CloseSideMenu | ToggleSideMenu;
+export interface HoveredNavItemPayload {
+  id: number;
+
+  showNavSubMenu: boolean;
+}
+
+export class SetHoveredNavItem implements Action {
+  readonly type = LayoutActionTypes.SetHoveredNavItem;
+
+  constructor(public payload: HoveredNavItemPayload) {}
+}
+
+export class SetHoveredNavSubItem implements Action {
+  readonly type = LayoutActionTypes.SetHoveredNavSubItem;
+
+  constructor(public payload: number) {}
+}
+
+export class HideNavSubMenu implements Action {
+  readonly type = LayoutActionTypes.HideNavSubMenu;
+}
+
+export type LayoutAction = OpenSideMenu | CloseSideMenu | ToggleSideMenu | SetHoveredNavItem | SetHoveredNavSubItem | HideNavSubMenu;
 
 export const fromLayoutActions = {
   OpenSideMenu,
   CloseSideMenu,
-  ToggleSideMenu
+  ToggleSideMenu,
+  SetHoveredNavItem,
+  SetHoveredNavSubItem,
+  HideNavSubMenu
 };

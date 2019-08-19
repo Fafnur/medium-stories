@@ -1,1 +1,1 @@
-export const layoutTest = 1;
+export * from './stubs/payloads.stub';

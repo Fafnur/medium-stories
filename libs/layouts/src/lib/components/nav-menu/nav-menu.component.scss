@@ -1,0 +1,15 @@
+@import 'utils';
+
+:host {
+  display: block;
+  padding: 0 2rem;
+}
+
+.nav-link {
+  color: #fff;
+  text-transform: uppercase;
+
+  &:hover {
+    color: $primary;
+  }
+}

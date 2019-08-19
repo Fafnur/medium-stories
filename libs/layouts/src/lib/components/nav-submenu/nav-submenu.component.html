@@ -1,0 +1,36 @@
+<div class="submenus" *ngIf="layoutFacade.showNavSubMenu$ | async" (mouseleave)="onMouseleave($event)">
+  <div class="row" *msLet="let navItem of layoutFacade.hoveredNavItem$ | async">
+    <div class="col-4">
+      <ul class="submenu" *ngIf="navItem != null">
+        <li class="submenu-item" *ngFor="let subLink of navLinks[navItem].children; let index = index">
+          <ng-container *ngIf="subLink.external">
+            <a class="submenu-link" [href]="subLink.route">
+              {{ subLink.label | translate }}
+            </a>
+          </ng-container>
+          <ng-container *ngIf="!subLink.external">
+            <a class="submenu-link" [routerLink]="subLink.route" (mouseenter)="layoutFacade.setNavSubItem(index)">
+              {{ subLink.label | translate }}
+            </a>
+          </ng-container>
+        </li>
+      </ul>
+    </div>
+    <div class="col-4" *msLet="let navSubItem of layoutFacade.hoveredNavSubItem$ | async">
+      <ul class="submenu" *ngIf="navSubItem != null">
+        <li class="submenu-item" *ngFor="let subLink of navLinks[navItem].children[navSubItem].children">
+          <ng-container *ngIf="subLink.external">
+            <a class="submenu-link" [href]="subLink.route">
+              {{ subLink.label | translate }}
+            </a>
+          </ng-container>
+          <ng-container *ngIf="!subLink.external">
+            <a class="submenu-link" [routerLink]="subLink.route">
+              {{ subLink.label | translate }}
+            </a>
+          </ng-container>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

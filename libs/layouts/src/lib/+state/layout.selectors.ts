@@ -4,11 +4,29 @@ import { LAYOUT_FEATURE_KEY, LayoutState } from './layout.reducer';
 
 const getLayoutState = createFeatureSelector<LayoutState>(LAYOUT_FEATURE_KEY);
 
+export const getHoveredNavItem = createSelector(
+  getLayoutState,
+  (state: LayoutState) => state.hoveredNavItem
+);
+
+export const getHoveredNavSubItem = createSelector(
+  getLayoutState,
+  (state: LayoutState) => state.hoveredNavSubItem
+);
+
 export const getOpenedSideMenu = createSelector(
   getLayoutState,
   (state: LayoutState) => state.openedSideMenu
 );
 
+export const getShowNavSubMenu = createSelector(
+  getLayoutState,
+  (state: LayoutState) => state.showNavSubMenu
+);
+
 export const layoutQuery = {
-  getOpenedSideMenu
+  getHoveredNavItem,
+  getHoveredNavSubItem,
+  getOpenedSideMenu,
+  getShowNavSubMenu
 };

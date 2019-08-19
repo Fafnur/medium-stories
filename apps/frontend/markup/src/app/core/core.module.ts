@@ -4,10 +4,11 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { NxModule } from '@nrwl/angular';
 
+import { NAV_LINKS } from '@medium-stories/layouts';
 import { RESPONSIVE_SIZE_DEFAULT, ResponsiveModule } from '@medium-stories/responsive';
 import { RootStoreModule } from '@medium-stories/store';
 
-import { coreContainers, coreRoutes } from './core.common';
+import { coreContainers, coreNavLinks, coreRoutes } from './core.common';
 
 @NgModule({
   imports: [
@@ -23,6 +24,12 @@ import { coreContainers, coreRoutes } from './core.common';
     RootStoreModule,
     TranslateModule
   ],
-  declarations: [...coreContainers]
+  declarations: [...coreContainers],
+  providers: [
+    {
+      provide: NAV_LINKS,
+      useValue: coreNavLinks
+    }
+  ]
 })
 export class CoreModule {}

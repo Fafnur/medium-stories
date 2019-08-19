@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 
+import { LayoutFacade } from '../../+state/layout.facade';
 import { HamburgerComponent } from './hamburger.component';
 
 describe('HamburgerComponent', () => {
@@ -7,8 +9,17 @@ describe('HamburgerComponent', () => {
   let fixture: ComponentFixture<HamburgerComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [HamburgerComponent]
+    return TestBed.configureTestingModule({
+      declarations: [HamburgerComponent],
+      providers: [
+        {
+          provide: LayoutFacade,
+          useValue: {
+            openedSideMenu$: of(true),
+            toggleSideMenu: jest.fn()
+          }
+        }
+      ]
     }).compileComponents();
   }));
 

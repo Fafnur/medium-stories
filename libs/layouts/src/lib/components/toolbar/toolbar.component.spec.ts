@@ -1,9 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { MockDirective } from 'ng-mocks';
+import { MockComponents, MockDirective } from 'ng-mocks';
 
 import { MsMobileDirective } from '@medium-stories/responsive';
 
+import { HamburgerComponent } from '../hamburger/hamburger.component';
+import { LanguagesComponent } from '../languages/languages.component';
+import { SearchComponent } from '../search/search.component';
 import { ToolbarComponent } from './toolbar.component';
 
 describe('ToolbarComponent', () => {
@@ -13,7 +16,11 @@ describe('ToolbarComponent', () => {
   beforeEach(async(() => {
     return TestBed.configureTestingModule({
       imports: [TranslateModule.forRoot()],
-      declarations: [ToolbarComponent, MockDirective(MsMobileDirective)]
+      declarations: [
+        ToolbarComponent,
+        MockDirective(MsMobileDirective),
+        MockComponents(HamburgerComponent, LanguagesComponent, SearchComponent)
+      ]
     }).compileComponents();
   }));
 

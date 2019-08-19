@@ -5,6 +5,7 @@ import { MsMobileDirective } from '@medium-stories/responsive';
 
 import { LogoComponent } from '../logo/logo.component';
 import { NavMenuComponent } from '../nav-menu/nav-menu.component';
+import { NavSubmenuComponent } from '../nav-submenu/nav-submenu.component';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { HeaderComponent } from './header.component';
 
@@ -19,6 +20,7 @@ describe('HeaderComponent', () => {
         HeaderComponent,
         MockComponent(LogoComponent),
         MockComponent(NavMenuComponent),
+        MockComponent(NavSubmenuComponent),
         MockComponent(ToolbarComponent),
         MockDirective(MsMobileDirective)
       ]

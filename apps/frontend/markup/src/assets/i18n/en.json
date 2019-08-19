@@ -9,6 +9,29 @@
       "en": "En"
     }
   },
+  "menu": {
+    "models": {
+      "title": "Models",
+      "urus": "Urus",
+      "huracan": "Huracán",
+      "huracanEVO": "Huracán EVO",
+      "huracanEVOSpyder": "Huracán EVO Spyder",
+      "huracanRWD": "Huracán RWD",
+      "huracanRWDSpyder": "Huracán RWD Spyder",
+      "huracanPerformante": "Huracán Performante",
+      "huracanPerformanteSpyder": "Huracán Performante Spyder",
+      "aventador": "Aventador",
+      "aventadorS": "Aventador S",
+      "aventadorSRoadster": "Aventador S Roadster",
+      "aventadorSVJ": "Aventador SVJ",
+      "aventadorSVJRoadster": "Aventador SVJ Roadster"
+    },
+    "brand": "Brand",
+    "ownership": "Ownership",
+    "experience": "Experience",
+    "motorsport": "Motorsport",
+    "store": "Store"
+  },
   "layouts": {
     "languages": {
       "title": "Choose <strong>Your language</strong>"

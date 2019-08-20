@@ -21,7 +21,7 @@ import { NAV_LINKS } from '../../layouts.tokens';
       state(
         'closed',
         style({
-          top: '-100%'
+          top: '-33rem'
         })
       ),
       transition('* => open', [animate('0.5s')]),

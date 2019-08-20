@@ -65,27 +65,52 @@ export function layoutReducer(state: LayoutState = layoutInitialState, action: L
       break;
     }
     case LayoutActionTypes.SetHoveredNavItem: {
+      let menu: Partial<LayoutState> = {};
+      if (action.payload.level === 2) {
+        menu = {
+          hoveredNavSubSubItem: action.payload.id
+        };
+      } else if (action.payload.level === 1) {
+        menu = {
+          hoveredNavSubItem: action.payload.id,
+          hoveredNavSubSubItem: null
+        };
+      } else {
+        menu = {
+          hoveredNavItem: action.payload.id,
+          hoveredNavSubItem: null,
+          hoveredNavSubSubItem: null,
+          showNavSubMenu: action.payload.showNavSubMenu
+        };
+      }
       state = {
         ...state,
-        hoveredNavItem: action.payload.id,
-        hoveredNavSubItem: null,
-        hoveredNavSubSubItem: null,
-        showNavSubMenu: action.payload.showNavSubMenu
+        ...menu
       };
       break;
     }
-    case LayoutActionTypes.SetHoveredNavSubItem: {
+    case LayoutActionTypes.ToggleHoveredNavItem: {
+      let menu: Partial<LayoutState> = {};
+      if (action.payload.level === 2) {
+        menu = {
+          hoveredNavSubSubItem: state.hoveredNavSubSubItem !== action.payload.id ? action.payload.id : null
+        };
+      } else if (action.payload.level === 1) {
+        menu = {
+          hoveredNavSubItem: state.hoveredNavSubItem !== action.payload.id ? action.payload.id : null,
+          hoveredNavSubSubItem: null
+        };
+      } else {
+        menu = {
+          hoveredNavItem: state.hoveredNavItem !== action.payload.id ? action.payload.id : null,
+          hoveredNavSubItem: null,
+          hoveredNavSubSubItem: null,
+          showNavSubMenu: action.payload.showNavSubMenu
+        };
+      }
       state = {
         ...state,
-        hoveredNavSubItem: action.payload,
-        hoveredNavSubSubItem: null
-      };
-      break;
-    }
-    case LayoutActionTypes.SetHoveredNavSubSubItem: {
-      state = {
-        ...state,
-        hoveredNavSubSubItem: action.payload
+        ...menu
       };
       break;
     }

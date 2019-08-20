@@ -15,6 +15,6 @@ export class NavMenuComponent {
 
   onMouseenter(index: number): void {
     const showNavSubMenu = this.navLinks[index] && this.navLinks[index].children && this.navLinks[index].children.length > 0;
-    this.layoutFacade.setNavItem(index, showNavSubMenu);
+    this.layoutFacade.setNavItem({ id: index, showNavSubMenu });
   }
 }

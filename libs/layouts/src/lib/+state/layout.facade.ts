@@ -1,27 +1,12 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 
-import { fromLayoutActions } from './layout.actions';
+import { fromLayoutActions, HoveredNavItemPayload } from './layout.actions';
 import { LayoutPartialState } from './layout.reducer';
 import { layoutQuery } from './layout.selectors';
 
 @Injectable()
 export class LayoutFacade {
-  /**
-   * Observed hovered nav item
-   */
-  hoveredNavItem$ = this.store.pipe(select(layoutQuery.getHoveredNavItem));
-
-  /**
-   * Observed hovered nav sub item
-   */
-  hoveredNavSubItem$ = this.store.pipe(select(layoutQuery.getHoveredNavSubItem));
-
-  /**
-   * Observed hovered nav sub item
-   */
-  hoveredNavSubSubItem$ = this.store.pipe(select(layoutQuery.getHoveredNavSubSubItem));
-
   /**
    * Observed opened side menu
    */
@@ -31,6 +16,11 @@ export class LayoutFacade {
    * Observed opened side menu
    */
   showNavSubMenu$ = this.store.pipe(select(layoutQuery.getShowNavSubMenu));
+
+  /**
+   * Observed hovered nav item
+   */
+  hoveredNavItemByLevel$ = level => this.store.pipe(select(layoutQuery.getHoveredNavItemByLevel(), { level }));
 
   constructor(private store: Store<LayoutPartialState>) {}
 
@@ -56,30 +46,23 @@ export class LayoutFacade {
   }
 
   /**
-   * Toggle mobile menu
+   * Set hovered nav item
+   */
+  setNavItem(payload: HoveredNavItemPayload): void {
+    this.store.dispatch(new fromLayoutActions.SetHoveredNavItem(payload));
+  }
+
+  /**
+   * Toggle hovered nav item
+   */
+  toggleNavItem(payload: HoveredNavItemPayload): void {
+    this.store.dispatch(new fromLayoutActions.ToggleHoveredNavItem(payload));
+  }
+
+  /**
+   * Toggle side menu
    */
   toggleSideMenu(): void {
     this.store.dispatch(new fromLayoutActions.ToggleSideMenu());
-  }
-
-  /**
-   * Set hovered nav item
-   */
-  setNavItem(id: number, showNavSubMenu: boolean): void {
-    this.store.dispatch(new fromLayoutActions.SetHoveredNavItem({ id, showNavSubMenu }));
-  }
-
-  /**
-   * Set hovered sub nav item
-   */
-  setNavSubItem(payload: number): void {
-    this.store.dispatch(new fromLayoutActions.SetHoveredNavSubItem(payload));
-  }
-
-  /**
-   * Set hovered  sub sub nav item
-   */
-  setNavSubSubItem(payload: number): void {
-    this.store.dispatch(new fromLayoutActions.SetHoveredNavSubSubItem(payload));
   }
 }

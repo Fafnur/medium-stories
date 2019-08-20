@@ -6,8 +6,7 @@ export enum LayoutActionTypes {
   ToggleSideMenu = '[Layout] Toggle side menu',
 
   SetHoveredNavItem = '[Layout] Set hovered nav item',
-  SetHoveredNavSubItem = '[Layout] Set hovered nav sub item',
-  SetHoveredNavSubSubItem = '[Layout] Set hovered nav sub sub item',
+  ToggleHoveredNavItem = '[Layout] Toggle hovered nav item',
   HideNavSubMenu = '[Layout] Hide nav sub menu'
 }
 
@@ -24,9 +23,20 @@ export class ToggleSideMenu implements Action {
 }
 
 export interface HoveredNavItemPayload {
+  /**
+   * ID on nav menu item
+   */
   id: number;
 
-  showNavSubMenu: boolean;
+  /**
+   * Level  menu
+   */
+  level?: number;
+
+  /**
+   * Show sub nav  menu
+   */
+  showNavSubMenu?: boolean;
 }
 
 export class SetHoveredNavItem implements Action {
@@ -35,37 +45,23 @@ export class SetHoveredNavItem implements Action {
   constructor(public payload: HoveredNavItemPayload) {}
 }
 
-export class SetHoveredNavSubItem implements Action {
-  readonly type = LayoutActionTypes.SetHoveredNavSubItem;
+export class ToggleHoveredNavItem implements Action {
+  readonly type = LayoutActionTypes.ToggleHoveredNavItem;
 
-  constructor(public payload: number) {}
-}
-
-export class SetHoveredNavSubSubItem implements Action {
-  readonly type = LayoutActionTypes.SetHoveredNavSubSubItem;
-
-  constructor(public payload: number) {}
+  constructor(public payload: HoveredNavItemPayload) {}
 }
 
 export class HideNavSubMenu implements Action {
   readonly type = LayoutActionTypes.HideNavSubMenu;
 }
 
-export type LayoutAction =
-  | OpenSideMenu
-  | CloseSideMenu
-  | ToggleSideMenu
-  | SetHoveredNavItem
-  | SetHoveredNavSubItem
-  | SetHoveredNavSubSubItem
-  | HideNavSubMenu;
+export type LayoutAction = OpenSideMenu | CloseSideMenu | ToggleSideMenu | SetHoveredNavItem | ToggleHoveredNavItem | HideNavSubMenu;
 
 export const fromLayoutActions = {
   OpenSideMenu,
   CloseSideMenu,
   ToggleSideMenu,
   SetHoveredNavItem,
-  SetHoveredNavSubItem,
-  SetHoveredNavSubSubItem,
+  ToggleHoveredNavItem,
   HideNavSubMenu
 };

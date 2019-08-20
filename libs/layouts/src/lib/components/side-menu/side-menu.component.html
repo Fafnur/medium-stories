@@ -1,73 +1,53 @@
-<div class="sidemenu" [@openClose]="(layoutFacade.openedSideMenu$ | async) ? 'open' : 'closed'">
+<div class="sidemenu-wrapper" [@openClose]="(layoutFacade.openedSideMenu$ | async) ? 'open' : 'closed'">
   <div class="sidemenu-container">
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
-    side-menu works! <br />
+    <ng-container *ngTemplateOutlet="sideMenu; context: { links: navLinks, level: 0, overview: null }"></ng-container>
   </div>
 </div>
+
+<ng-template #sideMenu let-links="links" let-level="level" let-overview="overview">
+  <ul class="sidemenu" *ngIf="links && links.length">
+    <li class="sidemenu-item" *ngFor="let link of links; let index = index; trackBy: trackByFn">
+      <ng-container *ngIf="link.external">
+        <a
+          class="sidemenu-link"
+          [href]="link.route"
+          [class.submenu-link_active]="index === (layoutFacade.hoveredNavItemByLevel$(level + 1) | async)"
+        >
+          {{ link.label | translate }}
+        </a>
+      </ng-container>
+      <ng-container *ngIf="!link.external">
+        <ng-container *ngIf="!link.children">
+          <a
+            class="sidemenu-link"
+            [routerLink]="link.route"
+            [class.submenu-link_active]="index === (layoutFacade.hoveredNavItemByLevel$(level + 1) | async)"
+            (click)="layoutFacade.toggleNavItem({ id: index, level: level })"
+          >
+            {{ link.label | translate }}
+          </a>
+        </ng-container>
+        <ng-container *ngIf="link.children">
+          <button
+            typy="button"
+            class="sidemenu-link"
+            [class.submenu-link_active]="index === (layoutFacade.hoveredNavItemByLevel$(level + 1) | async)"
+            (click)="layoutFacade.toggleNavItem({ id: index, level: level + 1 })"
+          >
+            {{ link.label | translate }}
+            <ms-icon icon="angle-right"></ms-icon>
+          </button>
+          <ng-container *ngIf="index === (layoutFacade.hoveredNavItemByLevel$(level + 1) | async)">
+            <ng-container *ngTemplateOutlet="sideMenu; context: { links: link.children, level: level + 1, overview: link }"> </ng-container>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </li>
+    <li class="sidemenu-item" *ngIf="overview">
+      <a class="sidemenu-link sidemenu-link_overview" [routerLink]="overview.route">
+        {{ 'sidemenu.overview' | translate }}
+      </a>
+    </li>
+    <ng-content></ng-content>
+  </ul>
+</ng-template>

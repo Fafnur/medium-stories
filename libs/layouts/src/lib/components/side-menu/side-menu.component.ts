@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Optional } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
 import { LayoutFacade } from '../../+state/layout.facade';
+import { NavLink } from '../../interfaces/nav-link.interface';
+import { NAV_LINKS } from '../../layouts.tokens';
 
 @Component({
   selector: 'medium-stories-side-menu',
@@ -29,5 +31,9 @@ import { LayoutFacade } from '../../+state/layout.facade';
   ]
 })
 export class SideMenuComponent {
-  constructor(public layoutFacade: LayoutFacade) {}
+  constructor(public layoutFacade: LayoutFacade, @Optional() @Inject(NAV_LINKS) public navLinks: NavLink[]) {}
+
+  trackByFn(index: number, navLink: NavLink): string {
+    return navLink.label;
+  }
 }

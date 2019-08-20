@@ -9,6 +9,26 @@ export const getHoveredNavItem = createSelector(
   (state: LayoutState) => state.hoveredNavItem
 );
 
+export const getHoveredNavItemByLevel = () =>
+  createSelector(
+    getLayoutState,
+    (state: LayoutState, props: { level: number }) => {
+      let navItem = null;
+      switch (props.level) {
+        case 2:
+          navItem = state.hoveredNavSubSubItem;
+          break;
+        case 1:
+          navItem = state.hoveredNavSubItem;
+          break;
+        default:
+          navItem = state.hoveredNavItem;
+      }
+
+      return navItem;
+    }
+  );
+
 export const getHoveredNavSubItem = createSelector(
   getLayoutState,
   (state: LayoutState) => state.hoveredNavSubItem
@@ -31,6 +51,7 @@ export const getShowNavSubMenu = createSelector(
 
 export const layoutQuery = {
   getHoveredNavItem,
+  getHoveredNavItemByLevel,
   getHoveredNavSubItem,
   getHoveredNavSubSubItem,
   getOpenedSideMenu,

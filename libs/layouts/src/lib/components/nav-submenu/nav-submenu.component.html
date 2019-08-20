@@ -1,36 +1,70 @@
-<div class="submenus" *ngIf="layoutFacade.showNavSubMenu$ | async" (mouseleave)="onMouseleave($event)">
-  <div class="row" *msLet="let navItem of layoutFacade.hoveredNavItem$ | async">
+<div class="submenus" [@openClose]="(layoutFacade.showNavSubMenu$ | async) ? 'open' : 'closed'" (mouseleave)="onMouseleave($event)">
+  <ng-container
+    *ngTemplateOutlet="
+      subMenu;
+      context: {
+        navItem: layoutFacade.hoveredNavItem$ | async,
+        navSubItem: layoutFacade.hoveredNavSubItem$ | async,
+        navSubSubItem: layoutFacade.hoveredNavSubSubItem$ | async
+      }
+    "
+  ></ng-container>
+</div>
+
+<ng-template #subMenu let-navItem="navItem" let-navSubItem="navSubItem" let-navSubSubItem="navSubSubItem">
+  <div class="row">
     <div class="col-4">
       <ul class="submenu" *ngIf="navItem != null">
-        <li class="submenu-item" *ngFor="let subLink of navLinks[navItem].children; let index = index">
-          <ng-container *ngIf="subLink.external">
-            <a class="submenu-link" [href]="subLink.route">
-              {{ subLink.label | translate }}
-            </a>
-          </ng-container>
-          <ng-container *ngIf="!subLink.external">
-            <a class="submenu-link" [routerLink]="subLink.route" (mouseenter)="layoutFacade.setNavSubItem(index)">
-              {{ subLink.label | translate }}
-            </a>
-          </ng-container>
-        </li>
+        <ng-container *ngTemplateOutlet="subMenuFirstItems; context: { navItem: navItem, navSubItem: navSubItem }"></ng-container>
       </ul>
     </div>
-    <div class="col-4" *msLet="let navSubItem of layoutFacade.hoveredNavSubItem$ | async">
-      <ul class="submenu" *ngIf="navSubItem != null">
-        <li class="submenu-item" *ngFor="let subLink of navLinks[navItem].children[navSubItem].children">
-          <ng-container *ngIf="subLink.external">
-            <a class="submenu-link" [href]="subLink.route">
-              {{ subLink.label | translate }}
-            </a>
-          </ng-container>
-          <ng-container *ngIf="!subLink.external">
-            <a class="submenu-link" [routerLink]="subLink.route">
-              {{ subLink.label | translate }}
-            </a>
-          </ng-container>
-        </li>
+    <div class="col-4">
+      <ul class="submenu" *ngIf="navItem != null && navSubItem != null && navLinks[navItem].children[navSubItem].children">
+        <ng-container
+          *ngTemplateOutlet="subMenuSecondItems; context: { navItem: navItem, navSubItem: navSubItem, navSubSubItem: navSubSubItem }"
+        ></ng-container>
       </ul>
     </div>
   </div>
-</div>
+</ng-template>
+
+<ng-template #subMenuFirstItems let-navItem="navItem" let-navSubItem="navSubItem">
+  <li class="submenu-item" *ngFor="let subLink of navLinks[navItem].children; let index = index; trackBy: trackByFn">
+    <ng-container *ngIf="subLink.external">
+      <a class="submenu-link" [href]="subLink.route">
+        {{ subLink.label | translate }}
+      </a>
+    </ng-container>
+    <ng-container *ngIf="!subLink.external">
+      <a
+        class="submenu-link"
+        [routerLink]="subLink.route"
+        [class.submenu-link_active]="index === navSubItem"
+        (mouseenter)="layoutFacade.setNavSubItem(index)"
+      >
+        {{ subLink.label | translate }}
+        <ms-icon icon="angle-right" *ngIf="subLink.children && subLink.children.length"></ms-icon>
+      </a>
+    </ng-container>
+  </li>
+</ng-template>
+
+<ng-template #subMenuSecondItems let-navItem="navItem" let-navSubItem="navSubItem" let-navSubSubItem="navSubSubItem">
+  <li class="submenu-item" *ngFor="let subLink of navLinks[navItem].children[navSubItem].children; let index = index; trackBy: trackByFn">
+    <ng-container *ngIf="subLink.external">
+      <a class="submenu-link" [href]="subLink.route">
+        {{ subLink.label | translate }}
+      </a>
+    </ng-container>
+    <ng-container *ngIf="!subLink.external">
+      <a
+        class="submenu-link"
+        [routerLink]="subLink.route"
+        [class.submenu-link_active]="index === navSubSubItem"
+        (mouseenter)="layoutFacade.setNavSubSubItem(index)"
+      >
+        {{ subLink.label | translate }}
+      </a>
+    </ng-container>
+  </li>
+</ng-template>

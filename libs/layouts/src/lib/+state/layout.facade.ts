@@ -18,6 +18,11 @@ export class LayoutFacade {
   hoveredNavSubItem$ = this.store.pipe(select(layoutQuery.getHoveredNavSubItem));
 
   /**
+   * Observed hovered nav sub item
+   */
+  hoveredNavSubSubItem$ = this.store.pipe(select(layoutQuery.getHoveredNavSubSubItem));
+
+  /**
    * Observed opened side menu
    */
   openedSideMenu$ = this.store.pipe(select(layoutQuery.getOpenedSideMenu));
@@ -65,9 +70,16 @@ export class LayoutFacade {
   }
 
   /**
-   * Set hovered nav sub item
+   * Set hovered sub nav item
    */
   setNavSubItem(payload: number): void {
     this.store.dispatch(new fromLayoutActions.SetHoveredNavSubItem(payload));
+  }
+
+  /**
+   * Set hovered  sub sub nav item
+   */
+  setNavSubSubItem(payload: number): void {
+    this.store.dispatch(new fromLayoutActions.SetHoveredNavSubSubItem(payload));
   }
 }

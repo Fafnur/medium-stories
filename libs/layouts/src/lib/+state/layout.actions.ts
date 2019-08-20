@@ -7,6 +7,7 @@ export enum LayoutActionTypes {
 
   SetHoveredNavItem = '[Layout] Set hovered nav item',
   SetHoveredNavSubItem = '[Layout] Set hovered nav sub item',
+  SetHoveredNavSubSubItem = '[Layout] Set hovered nav sub sub item',
   HideNavSubMenu = '[Layout] Hide nav sub menu'
 }
 
@@ -40,11 +41,24 @@ export class SetHoveredNavSubItem implements Action {
   constructor(public payload: number) {}
 }
 
+export class SetHoveredNavSubSubItem implements Action {
+  readonly type = LayoutActionTypes.SetHoveredNavSubSubItem;
+
+  constructor(public payload: number) {}
+}
+
 export class HideNavSubMenu implements Action {
   readonly type = LayoutActionTypes.HideNavSubMenu;
 }
 
-export type LayoutAction = OpenSideMenu | CloseSideMenu | ToggleSideMenu | SetHoveredNavItem | SetHoveredNavSubItem | HideNavSubMenu;
+export type LayoutAction =
+  | OpenSideMenu
+  | CloseSideMenu
+  | ToggleSideMenu
+  | SetHoveredNavItem
+  | SetHoveredNavSubItem
+  | SetHoveredNavSubSubItem
+  | HideNavSubMenu;
 
 export const fromLayoutActions = {
   OpenSideMenu,
@@ -52,5 +66,6 @@ export const fromLayoutActions = {
   ToggleSideMenu,
   SetHoveredNavItem,
   SetHoveredNavSubItem,
+  SetHoveredNavSubSubItem,
   HideNavSubMenu
 };

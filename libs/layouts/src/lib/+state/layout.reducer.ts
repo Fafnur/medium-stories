@@ -14,6 +14,11 @@ export interface LayoutState {
   hoveredNavSubItem: number;
 
   /**
+   * Hovered sub sub nav menu item
+   */
+  hoveredNavSubSubItem: number;
+
+  /**
    * Is opened side menu
    */
   openedSideMenu: boolean;
@@ -31,6 +36,7 @@ export interface LayoutPartialState {
 export const layoutInitialState: LayoutState = {
   hoveredNavItem: null,
   hoveredNavSubItem: null,
+  hoveredNavSubSubItem: null,
   openedSideMenu: false,
   showNavSubMenu: false
 };
@@ -63,6 +69,7 @@ export function layoutReducer(state: LayoutState = layoutInitialState, action: L
         ...state,
         hoveredNavItem: action.payload.id,
         hoveredNavSubItem: null,
+        hoveredNavSubSubItem: null,
         showNavSubMenu: action.payload.showNavSubMenu
       };
       break;
@@ -70,7 +77,15 @@ export function layoutReducer(state: LayoutState = layoutInitialState, action: L
     case LayoutActionTypes.SetHoveredNavSubItem: {
       state = {
         ...state,
-        hoveredNavSubItem: action.payload
+        hoveredNavSubItem: action.payload,
+        hoveredNavSubSubItem: null
+      };
+      break;
+    }
+    case LayoutActionTypes.SetHoveredNavSubSubItem: {
+      state = {
+        ...state,
+        hoveredNavSubSubItem: action.payload
       };
       break;
     }
@@ -79,6 +94,7 @@ export function layoutReducer(state: LayoutState = layoutInitialState, action: L
         ...state,
         hoveredNavItem: null,
         hoveredNavSubItem: null,
+        hoveredNavSubSubItem: null,
         showNavSubMenu: false
       };
       break;

@@ -14,6 +14,11 @@ export const getHoveredNavSubItem = createSelector(
   (state: LayoutState) => state.hoveredNavSubItem
 );
 
+export const getHoveredNavSubSubItem = createSelector(
+  getLayoutState,
+  (state: LayoutState) => state.hoveredNavSubSubItem
+);
+
 export const getOpenedSideMenu = createSelector(
   getLayoutState,
   (state: LayoutState) => state.openedSideMenu
@@ -27,6 +32,7 @@ export const getShowNavSubMenu = createSelector(
 export const layoutQuery = {
   getHoveredNavItem,
   getHoveredNavSubItem,
+  getHoveredNavSubSubItem,
   getOpenedSideMenu,
   getShowNavSubMenu
 };

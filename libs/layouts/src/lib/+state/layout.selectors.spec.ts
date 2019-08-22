@@ -1,6 +1,6 @@
 import { createStore } from '@medium-stories/store/testing';
 
-import { hoveredNavItemStub, hoveredNavSubItemStub } from '../../testing';
+import { navMenuStub } from '../../testing';
 import { LAYOUT_FEATURE_KEY, layoutInitialState, LayoutPartialState } from './layout.reducer';
 import { layoutQuery } from './layout.selectors';
 
@@ -12,18 +12,19 @@ describe('LayoutSelectors', () => {
     store = createStore(key, layoutInitialState);
   });
 
-  it('getHoveredNavItem() should return hoveredNavItem', () => {
-    store = createStore(key, layoutInitialState, { hoveredNavItem: hoveredNavItemStub });
-    const results = layoutQuery.getHoveredNavItem(store);
+  it('getMenu() should return menu', () => {
+    store = createStore(key, layoutInitialState, { menu: navMenuStub });
+    const results = layoutQuery.getMenu(store);
 
-    expect(results).toBe(hoveredNavItemStub);
+    expect(results).toBe(navMenuStub);
   });
 
   it('getHoveredNavSubItem() should return hoveredNavSubItem', () => {
-    store = createStore(key, layoutInitialState, { hoveredNavSubItem: hoveredNavSubItemStub });
-    const results = layoutQuery.getHoveredNavSubItem(store);
+    const hoveredId = 2;
+    store = createStore(key, layoutInitialState, { menu: { hovered: [hoveredId] } as any });
+    const results = layoutQuery.getHoveredNavItemByLevel(store, { level: 0 });
 
-    expect(results).toBe(hoveredNavSubItemStub);
+    expect(results).toBe(hoveredId);
   });
 
   it('getOpenedSideMenu() should return openedSideMenu', () => {
@@ -33,9 +34,9 @@ describe('LayoutSelectors', () => {
     expect(results).toBeTruthy();
   });
 
-  it('getShowNavSubMenu() should return showNavSubMenu', () => {
-    store = createStore(key, layoutInitialState, { showNavSubMenu: true });
-    const results = layoutQuery.getShowNavSubMenu(store);
+  it('getShowedSubmenu() should return showNavSubMenu', () => {
+    store = createStore(key, layoutInitialState, { menu: { showedSubmenu: true } as any });
+    const results = layoutQuery.getShowedSubmenu(store);
 
     expect(results).toBeTruthy();
   });

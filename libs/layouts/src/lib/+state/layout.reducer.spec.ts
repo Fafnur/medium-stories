@@ -1,4 +1,4 @@
-import { hoveredNavItemPayloadStub, hoveredNavSubItemStub } from '../../testing';
+import { hoveredNavItemPayloadStub, navMenuEventActiveStub } from '../../testing';
 import { fromLayoutActions } from './layout.actions';
 import { layoutInitialState, layoutReducer, LayoutState } from './layout.reducer';
 
@@ -35,23 +35,13 @@ describe('LayoutReducer', () => {
   it('SetHoveredNavItem() should set hovered nav item', () => {
     const action = new fromLayoutActions.SetHoveredNavItem(hoveredNavItemPayloadStub);
     state = layoutReducer(state, action);
-    expect(state.hoveredNavItem).toBe(hoveredNavItemPayloadStub.id);
-    expect(state.hoveredNavSubItem).toBeNull();
-    expect(state.showNavSubMenu).toBe(hoveredNavItemPayloadStub.showNavSubMenu);
+    expect(state.menu.active).toEqual(navMenuEventActiveStub);
   });
 
-  it('SetHoveredNavSubItem() should set hovered nav stub item', () => {
-    const action = new fromLayoutActions.SetHoveredNavSubItem(hoveredNavSubItemStub);
-    state = layoutReducer(state, action);
-    expect(state.hoveredNavSubItem).toBe(hoveredNavSubItemStub);
-  });
-
-  it('SetHoveredNavSubItem() should set show nav sub menu false', () => {
+  it('HideNavSubMenu() should hide nav sub menu', () => {
     const action = new fromLayoutActions.HideNavSubMenu();
     state = layoutReducer(state, action);
 
-    expect(state.hoveredNavItem).toBeNull();
-    expect(state.hoveredNavSubItem).toBeNull();
-    expect(state.showNavSubMenu).toBeFalsy();
+    expect(state.menu).toEqual(layoutInitialState.menu);
   });
 });

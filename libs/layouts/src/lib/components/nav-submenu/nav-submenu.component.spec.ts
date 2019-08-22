@@ -1,9 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { MockDirective } from 'ng-mocks';
+import { MockComponent, MockDirective } from 'ng-mocks';
+import { of } from 'rxjs';
 
-import { MsLetDirective } from '@medium-stories/shared';
+import { MsIconComponent, MsLetDirective } from '@medium-stories/shared';
 
 import { LayoutFacade } from '../../+state/layout.facade';
 import { NAV_LINKS } from '../../layouts.tokens';
@@ -15,13 +17,14 @@ describe('NavSubmenuComponent', () => {
 
   beforeEach(async(() => {
     return TestBed.configureTestingModule({
-      imports: [RouterTestingModule, TranslateModule.forRoot()],
-      declarations: [NavSubmenuComponent, MockDirective(MsLetDirective)],
+      imports: [NoopAnimationsModule, RouterTestingModule, TranslateModule.forRoot()],
+      declarations: [NavSubmenuComponent, MockDirective(MsLetDirective), MockComponent(MsIconComponent)],
       providers: [
         {
           provide: LayoutFacade,
           useValue: {
-            setNavSubItem: jest.fn()
+            setNavSubItem: jest.fn(),
+            hoveredNavItemByLevel$: jest.fn(() => of())
           }
         },
         {

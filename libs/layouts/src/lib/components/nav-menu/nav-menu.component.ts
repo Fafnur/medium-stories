@@ -14,7 +14,7 @@ export class NavMenuComponent {
   constructor(public layoutFacade: LayoutFacade, @Optional() @Inject(NAV_LINKS) public navLinks: NavLink[]) {}
 
   onMouseenter(index: number): void {
-    const showNavSubMenu = this.navLinks[index] && this.navLinks[index].children && this.navLinks[index].children.length > 0;
-    this.layoutFacade.setNavItem({ id: index, showNavSubMenu });
+    const showedSubmenu = this.navLinks[index] && this.navLinks[index].children && this.navLinks[index].children.length > 0;
+    this.layoutFacade.setNavItem({ id: 'nav', index, showedSubmenu: !!showedSubmenu, level: 0 });
   }
 }

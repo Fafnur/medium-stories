@@ -1,53 +1,68 @@
-<div class="sidemenu-wrapper" [@openClose]="(layoutFacade.openedSideMenu$ | async) ? 'open' : 'closed'">
+<div class="sidebar" [@toggleSidebar]="(layoutFacade.openedSideMenu$ | async) ? 'open' : 'closed'">
   <div class="sidemenu-container">
-    <ng-container *ngTemplateOutlet="sideMenu; context: { links: navLinks, level: 0, overview: null }"></ng-container>
+    <ng-container
+      *ngTemplateOutlet="
+        sideMenu;
+        context: {
+          id: 'nav',
+          links: navLinks,
+          level: 0,
+          overview: null,
+          menu: layoutFacade.menu$ | async
+        }
+      "
+    ></ng-container>
   </div>
 </div>
 
-<ng-template #sideMenu let-links="links" let-level="level" let-overview="overview">
+<ng-template #sideMenu let-links="links" let-level="level" let-overview="overview" let-menu="menu" let-id="id">
   <ul class="sidemenu" *ngIf="links && links.length">
     <li class="sidemenu-item" *ngFor="let link of links; let index = index; trackBy: trackByFn">
       <ng-container *ngIf="link.external">
-        <a
-          class="sidemenu-link"
-          [href]="link.route"
-          [class.submenu-link_active]="index === (layoutFacade.hoveredNavItemByLevel$(level + 1) | async)"
-        >
+        <a class="sidemenu-link" [href]="link.route">
           {{ link.label | translate }}
         </a>
       </ng-container>
       <ng-container *ngIf="!link.external">
         <ng-container *ngIf="!link.children">
-          <a
-            class="sidemenu-link"
-            [routerLink]="link.route"
-            [class.submenu-link_active]="index === (layoutFacade.hoveredNavItemByLevel$(level + 1) | async)"
-            (click)="layoutFacade.toggleNavItem({ id: index, level: level })"
-          >
+          <a class="sidemenu-link" [routerLink]="link.route" (click)="layoutFacade.closeSideMenu()">
             {{ link.label | translate }}
           </a>
         </ng-container>
         <ng-container *ngIf="link.children">
-          <button
-            typy="button"
-            class="sidemenu-link"
-            [class.submenu-link_active]="index === (layoutFacade.hoveredNavItemByLevel$(level + 1) | async)"
-            (click)="layoutFacade.toggleNavItem({ id: index, level: level + 1 })"
-          >
-            {{ link.label | translate }}
-            <ms-icon icon="angle-right"></ms-icon>
-          </button>
-          <ng-container *ngIf="index === (layoutFacade.hoveredNavItemByLevel$(level + 1) | async)">
-            <ng-container *ngTemplateOutlet="sideMenu; context: { links: link.children, level: level + 1, overview: link }"> </ng-container>
+          <ng-container *msLet="let animate of getAnimationState(id, index, menu)">
+            <button
+              type="button"
+              class="sidemenu-link"
+              [class.sidemenu-link_active]="animate === 'expanded'"
+              (click)="layoutFacade.toggleNavItem({ id: id, index: index, level: level })"
+            >
+              {{ link.label | translate }}
+              <ms-icon icon="angle-down"></ms-icon>
+            </button>
+            <div class="sidemenu-wrapper" [@toggleSidemenu]="animate">
+              <ng-container
+                *ngTemplateOutlet="
+                  sideMenu;
+                  context: {
+                    id: id + '_' + index,
+                    links: link.children,
+                    level: level + 1,
+                    overview: link,
+                    menu: menu
+                  }
+                "
+              >
+              </ng-container>
+            </div>
           </ng-container>
         </ng-container>
       </ng-container>
     </li>
     <li class="sidemenu-item" *ngIf="overview">
       <a class="sidemenu-link sidemenu-link_overview" [routerLink]="overview.route">
-        {{ 'sidemenu.overview' | translate }}
+        {{ 'menu.overview' | translate }}
       </a>
     </li>
-    <ng-content></ng-content>
   </ul>
 </ng-template>

@@ -1,7 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
+import { MockComponent, MockDirective } from 'ng-mocks';
 import { of } from 'rxjs';
+
+import { MsIconComponent, MsLetDirective } from '@medium-stories/shared';
 
 import { LayoutFacade } from '../../+state/layout.facade';
 import { SideMenuComponent } from './side-menu.component';
@@ -12,8 +16,8 @@ describe('SideMenuComponent', () => {
 
   beforeEach(async(() => {
     return TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, TranslateModule.forRoot()],
-      declarations: [SideMenuComponent],
+      imports: [NoopAnimationsModule, RouterTestingModule, TranslateModule.forRoot()],
+      declarations: [SideMenuComponent, MockComponent(MsIconComponent), MockDirective(MsLetDirective)],
       providers: [
         {
           provide: LayoutFacade,

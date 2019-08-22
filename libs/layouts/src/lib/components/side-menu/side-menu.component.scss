@@ -1,6 +1,6 @@
 @import 'utils';
 
-.sidemenu-wrapper {
+.sidebar {
   position: fixed;
   left: 100%;
   top: 4rem;
@@ -14,8 +14,83 @@
   overflow-x: hidden;
   overflow-y: scroll;
   height: calc(100vh - 4rem);
+  padding: 0 1rem;
 
   &::-webkit-scrollbar {
     width: 0;
+  }
+}
+
+.sidemenu-wrapper {
+  overflow: hidden;
+}
+
+.sidemenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  transition: all 400ms ease;
+
+  & & {
+    margin-left: 2rem;
+  }
+}
+
+.sidemenu-item {
+}
+
+.sidemenu-link {
+  color: #fff;
+  display: flex;
+  padding: 1rem 0.25rem;
+  position: relative;
+
+  vertical-align: middle;
+  user-select: none;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  width: 100%;
+
+  &:focus {
+    box-shadow: none;
+    outline: none;
+  }
+
+  &:hover,
+  &_active {
+    color: $primary;
+    text-decoration: none;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+    left: 0;
+    background-color: #323232;
+  }
+
+  &:before {
+    width: 100%;
+  }
+
+  &:after {
+    background-color: $primary;
+    transition: all 400ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    width: 0;
+  }
+
+  ms-icon {
+    margin: 0 0 0 auto;
+    transition: all 400ms ease;
+  }
+  &_active ms-icon {
+    transform: rotate(-180deg);
+  }
+  &_active:after {
+    width: 100%;
   }
 }

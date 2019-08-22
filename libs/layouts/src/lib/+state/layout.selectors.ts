@@ -4,39 +4,14 @@ import { LAYOUT_FEATURE_KEY, LayoutState } from './layout.reducer';
 
 const getLayoutState = createFeatureSelector<LayoutState>(LAYOUT_FEATURE_KEY);
 
-export const getHoveredNavItem = createSelector(
+export const getMenu = createSelector(
   getLayoutState,
-  (state: LayoutState) => state.hoveredNavItem
+  (state: LayoutState) => state.menu
 );
 
-export const getHoveredNavItemByLevel = () =>
-  createSelector(
-    getLayoutState,
-    (state: LayoutState, props: { level: number }) => {
-      let navItem = null;
-      switch (props.level) {
-        case 2:
-          navItem = state.hoveredNavSubSubItem;
-          break;
-        case 1:
-          navItem = state.hoveredNavSubItem;
-          break;
-        default:
-          navItem = state.hoveredNavItem;
-      }
-
-      return navItem;
-    }
-  );
-
-export const getHoveredNavSubItem = createSelector(
+export const getHoveredNavItemByLevel = createSelector(
   getLayoutState,
-  (state: LayoutState) => state.hoveredNavSubItem
-);
-
-export const getHoveredNavSubSubItem = createSelector(
-  getLayoutState,
-  (state: LayoutState) => state.hoveredNavSubSubItem
+  (state: LayoutState, props: { level: number }) => state.menu.hovered[props.level]
 );
 
 export const getOpenedSideMenu = createSelector(
@@ -44,16 +19,14 @@ export const getOpenedSideMenu = createSelector(
   (state: LayoutState) => state.openedSideMenu
 );
 
-export const getShowNavSubMenu = createSelector(
+export const getShowedSubmenu = createSelector(
   getLayoutState,
-  (state: LayoutState) => state.showNavSubMenu
+  (state: LayoutState) => state.menu.showedSubmenu
 );
 
 export const layoutQuery = {
-  getHoveredNavItem,
+  getMenu,
   getHoveredNavItemByLevel,
-  getHoveredNavSubItem,
-  getHoveredNavSubSubItem,
   getOpenedSideMenu,
-  getShowNavSubMenu
+  getShowedSubmenu
 };

@@ -23,20 +23,22 @@ export class ToggleSideMenu implements Action {
 }
 
 export interface HoveredNavItemPayload {
+  id?: string;
+
   /**
-   * ID on nav menu item
+   * Index on nav menu item
    */
-  id: number;
+  index: number;
 
   /**
    * Level  menu
    */
-  level?: number;
+  level: number;
 
   /**
    * Show sub nav  menu
    */
-  showNavSubMenu?: boolean;
+  showedSubmenu?: boolean;
 }
 
 export class SetHoveredNavItem implements Action {

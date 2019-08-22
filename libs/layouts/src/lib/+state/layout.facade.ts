@@ -10,17 +10,22 @@ export class LayoutFacade {
   /**
    * Observed opened side menu
    */
-  openedSideMenu$ = this.store.pipe(select(layoutQuery.getOpenedSideMenu));
+  menu$ = this.store.pipe(select(layoutQuery.getMenu));
 
   /**
    * Observed opened side menu
    */
-  showNavSubMenu$ = this.store.pipe(select(layoutQuery.getShowNavSubMenu));
+  openedSideMenu$ = this.store.pipe(select(layoutQuery.getOpenedSideMenu));
+
+  /**
+   * Observed showed submenu
+   */
+  showedSubmenu$ = this.store.pipe(select(layoutQuery.getShowedSubmenu));
 
   /**
    * Observed hovered nav item
    */
-  hoveredNavItemByLevel$ = level => this.store.pipe(select(layoutQuery.getHoveredNavItemByLevel(), { level }));
+  hoveredNavItemByLevel$ = level => this.store.pipe(select(layoutQuery.getHoveredNavItemByLevel, { level }));
 
   constructor(private store: Store<LayoutPartialState>) {}
 

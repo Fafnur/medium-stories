@@ -1,32 +1,18 @@
+import { NavMenu } from '../interfaces/nav-menu.interface';
 import { LayoutAction, LayoutActionTypes } from './layout.actions';
 
 export const LAYOUT_FEATURE_KEY = 'layout';
 
 export interface LayoutState {
   /**
-   * Hovered nav menu item
+   * Nav menu
    */
-  hoveredNavItem: number;
-
-  /**
-   * Hovered sub nav menu item
-   */
-  hoveredNavSubItem: number;
-
-  /**
-   * Hovered sub sub nav menu item
-   */
-  hoveredNavSubSubItem: number;
+  menu: NavMenu;
 
   /**
    * Is opened side menu
    */
   openedSideMenu: boolean;
-
-  /**
-   * Is show nav submenu
-   */
-  showNavSubMenu: boolean;
 }
 
 export interface LayoutPartialState {
@@ -34,11 +20,14 @@ export interface LayoutPartialState {
 }
 
 export const layoutInitialState: LayoutState = {
-  hoveredNavItem: null,
-  hoveredNavSubItem: null,
-  hoveredNavSubSubItem: null,
-  openedSideMenu: false,
-  showNavSubMenu: false
+  menu: {
+    hovered: [null, null, null, null, null],
+    active: { id: 'nav', index: null, level: null },
+    previous: { id: 'nav', index: null, level: null, hovered: [null, null, null, null, null] },
+    showedSubmenu: false,
+    subLevels: 5
+  },
+  openedSideMenu: false
 };
 
 export function layoutReducer(state: LayoutState = layoutInitialState, action: LayoutAction): LayoutState {
@@ -53,7 +42,8 @@ export function layoutReducer(state: LayoutState = layoutInitialState, action: L
     case LayoutActionTypes.CloseSideMenu: {
       state = {
         ...state,
-        openedSideMenu: false
+        openedSideMenu: false,
+        menu: { ...layoutInitialState.menu }
       };
       break;
     }
@@ -65,62 +55,52 @@ export function layoutReducer(state: LayoutState = layoutInitialState, action: L
       break;
     }
     case LayoutActionTypes.SetHoveredNavItem: {
-      let menu: Partial<LayoutState> = {};
-      if (action.payload.level === 2) {
-        menu = {
-          hoveredNavSubSubItem: action.payload.id
-        };
-      } else if (action.payload.level === 1) {
-        menu = {
-          hoveredNavSubItem: action.payload.id,
-          hoveredNavSubSubItem: null
-        };
-      } else {
-        menu = {
-          hoveredNavItem: action.payload.id,
-          hoveredNavSubItem: null,
-          hoveredNavSubSubItem: null,
-          showNavSubMenu: action.payload.showNavSubMenu
-        };
+      const menu = { ...state.menu };
+      if (action.payload.level < menu.subLevels) {
+        menu.previous = { ...menu.active, hovered: [...menu.hovered] };
+        menu.active = { id: action.payload.id, index: action.payload.index, level: action.payload.level };
+        menu.hovered = [...menu.hovered];
+        menu.hovered[action.payload.level] = action.payload.index;
+        for (let key = action.payload.level + 1; key < menu.subLevels; key++) {
+          menu.hovered[key] = null;
+        }
       }
+      if (typeof action.payload.showedSubmenu === 'boolean') {
+        menu.showedSubmenu = !!action.payload.showedSubmenu;
+      }
+
       state = {
         ...state,
-        ...menu
+        menu
       };
       break;
     }
     case LayoutActionTypes.ToggleHoveredNavItem: {
-      let menu: Partial<LayoutState> = {};
-      if (action.payload.level === 2) {
-        menu = {
-          hoveredNavSubSubItem: state.hoveredNavSubSubItem !== action.payload.id ? action.payload.id : null
-        };
-      } else if (action.payload.level === 1) {
-        menu = {
-          hoveredNavSubItem: state.hoveredNavSubItem !== action.payload.id ? action.payload.id : null,
-          hoveredNavSubSubItem: null
-        };
-      } else {
-        menu = {
-          hoveredNavItem: state.hoveredNavItem !== action.payload.id ? action.payload.id : null,
-          hoveredNavSubItem: null,
-          hoveredNavSubSubItem: null,
-          showNavSubMenu: action.payload.showNavSubMenu
-        };
+      const menu = { ...state.menu };
+      menu.hovered = [...menu.hovered];
+      if (action.payload.level < menu.subLevels) {
+        menu.previous = { ...menu.active, hovered: [...menu.hovered] };
+        const isHovered = menu.hovered[action.payload.level] !== action.payload.index ? action.payload.index : null;
+        menu.active = { id: action.payload.id, index: action.payload.index, level: action.payload.level, isHovered: isHovered !== null };
+        menu.hovered[action.payload.level] = isHovered;
+        for (let key = action.payload.level + 1; key < state.menu.subLevels; key++) {
+          menu.hovered[key] = null;
+        }
       }
+      if (typeof action.payload.showedSubmenu === 'boolean') {
+        menu.showedSubmenu = action.payload.showedSubmenu;
+      }
+
       state = {
         ...state,
-        ...menu
+        menu
       };
       break;
     }
     case LayoutActionTypes.HideNavSubMenu: {
       state = {
         ...state,
-        hoveredNavItem: null,
-        hoveredNavSubItem: null,
-        hoveredNavSubSubItem: null,
-        showNavSubMenu: false
+        menu: { ...layoutInitialState.menu }
       };
       break;
     }

@@ -1,6 +1,9 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
+import { ResponsiveFacade } from '@medium-stories/responsive';
+import { TranslationFacade } from '@medium-stories/translation';
+
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -10,7 +13,21 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     return TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [AppComponent]
+      declarations: [AppComponent],
+      providers: [
+        {
+          provide: ResponsiveFacade,
+          useValue: {
+            init: jest.fn()
+          }
+        },
+        {
+          provide: TranslationFacade,
+          useValue: {
+            init: jest.fn()
+          }
+        }
+      ]
     }).compileComponents();
   }));
 

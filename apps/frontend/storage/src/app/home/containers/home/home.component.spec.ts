@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { CookieStorage, MemoryStorage } from '@medium-stories/storage';
+
 import { HomeComponent } from './home.component';
 
 describe('HomeComponent', () => {
@@ -8,7 +10,13 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     return TestBed.configureTestingModule({
-      declarations: [HomeComponent]
+      declarations: [HomeComponent],
+      providers: [
+        {
+          provide: CookieStorage,
+          useClass: MemoryStorage
+        }
+      ]
     }).compileComponents();
   }));
 

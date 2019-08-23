@@ -10,6 +10,10 @@ export const coreRoutes: Routes = [
   {
     path: '',
     loadChildren: () => import('../home/home.module').then(m => m.HomeModule)
+  },
+  {
+    path: 'events',
+    loadChildren: () => import('../events/events.module').then(m => m.EventsModule)
   }
 ];
 
@@ -115,6 +119,12 @@ export const coreNavLinks: NavLink[] = [
   {
     label: 'menu.brand.title',
     route: '/',
+    anchors: [
+      {
+        label: 'menu.brand.heritage',
+        link: 'heritage'
+      }
+    ],
     children: [
       {
         label: 'menu.brand.people',
@@ -173,6 +183,20 @@ export const coreNavLinks: NavLink[] = [
   {
     label: 'menu.ownership.title',
     route: '/',
+    anchors: [
+      {
+        label: 'menu.ownership.dealerLocator',
+        link: 'dealer-locator'
+      },
+      {
+        label: 'menu.ownership.preOwnedCar',
+        link: 'pre-owned-car'
+      },
+      {
+        label: 'menu.ownership.accessoriesAndServices',
+        link: 'accessories-and-services'
+      }
+    ],
     children: [
       {
         label: 'menu.ownership.locators',
@@ -240,40 +264,86 @@ export const coreNavLinks: NavLink[] = [
   },
   {
     label: 'menu.experience.title',
-    route: '/',
-    children: [
+    route: '/events',
+    anchors: [
       {
-        label: 'menu.experience.news',
-        route: '/'
+        label: 'menu.experience.museumHash',
+        link: 'museum'
       },
       {
-        label: 'menu.experience.events',
-        route: '/'
+        label: 'menu.experience.esperienza',
+        link: 'esperienza'
       },
       {
-        label: 'menu.experience.museum',
-        route: '/'
+        label: 'menu.experience.accademia',
+        link: 'accademia'
       },
       {
-        label: 'menu.experience.esperienzaPrograms',
-        route: '/'
-      },
-      {
-        label: 'menu.experience.lounge',
-        route: '/'
+        label: 'menu.experience.eventsHash',
+        link: 'events'
       },
       {
         label: 'menu.experience.mobileApp',
-        route: '/'
+        link: 'mobile-app'
+      }
+    ],
+    children: [
+      {
+        label: 'menu.experience.news',
+        route: '/events'
+      },
+      {
+        label: 'menu.experience.events',
+        route: '/events'
+      },
+      {
+        label: 'menu.experience.museum',
+        route: '/events'
+      },
+      {
+        label: 'menu.experience.esperienzaPrograms',
+        route: '/events'
+      },
+      {
+        label: 'menu.experience.lounge',
+        route: '/events'
+      },
+      {
+        label: 'menu.experience.mobileApp',
+        route: '/events'
       }
     ]
   },
   {
-    label: 'menu.motorsport',
-    route: '/'
+    label: 'menu.motorsport.title',
+    route: '/',
+    anchors: [
+      {
+        label: 'menu.motorsport.lamborghiniSuperTrofeo',
+        link: 'lamborghini-super-trofeo'
+      },
+      {
+        label: 'menu.motorsport.gt3',
+        link: 'gt3'
+      },
+      {
+        label: 'menu.experience.accademia',
+        link: 'accademia'
+      }
+    ]
   },
   {
-    label: 'menu.store',
-    route: '/'
+    label: 'menu.store.title',
+    route: '/',
+    anchors: [
+      {
+        label: 'menu.store.collection',
+        link: 'collection'
+      },
+      {
+        label: 'menu.experience.shopByCar',
+        link: 'shop-by-car'
+      }
+    ]
   }
 ];

@@ -4,7 +4,7 @@
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
   left: 0;
-  min-height: 4rem;
+  height: 4rem;
   position: fixed;
   top: 0;
   width: 100%;
@@ -22,12 +22,9 @@
     width: calc(100% - 15px);
   }
 
-  @include media-breakpoint-up(lg) {
+  @include media-breakpoint-up($mobile) {
     padding: 1rem 3rem;
-  }
-
-  @include media-breakpoint-up(xl) {
-    padding: 1rem 3rem;
+    height: 6rem;
   }
 }
 

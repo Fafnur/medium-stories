@@ -10,9 +10,9 @@ export interface LayoutState {
   menu: NavMenu;
 
   /**
-   * Is opened side menu
+   * Is opened side bar
    */
-  openedSideMenu: boolean;
+  openedSidebar: boolean;
 }
 
 export interface LayoutPartialState {
@@ -27,30 +27,30 @@ export const layoutInitialState: LayoutState = {
     showedSubmenu: false,
     subLevels: 5
   },
-  openedSideMenu: false
+  openedSidebar: false
 };
 
 export function layoutReducer(state: LayoutState = layoutInitialState, action: LayoutAction): LayoutState {
   switch (action.type) {
-    case LayoutActionTypes.OpenSideMenu: {
+    case LayoutActionTypes.OpenSidebar: {
       state = {
         ...state,
-        openedSideMenu: true
+        openedSidebar: true
       };
       break;
     }
-    case LayoutActionTypes.CloseSideMenu: {
+    case LayoutActionTypes.CloseSidebar: {
       state = {
         ...state,
-        openedSideMenu: false,
+        openedSidebar: false,
         menu: { ...layoutInitialState.menu }
       };
       break;
     }
-    case LayoutActionTypes.ToggleSideMenu: {
+    case LayoutActionTypes.ToggleSidebar: {
       state = {
         ...state,
-        openedSideMenu: !state.openedSideMenu
+        openedSidebar: !state.openedSidebar
       };
       break;
     }

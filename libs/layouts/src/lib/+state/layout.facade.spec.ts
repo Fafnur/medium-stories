@@ -53,11 +53,11 @@ describe('LayoutFacade', () => {
 
     it('toggleMenu() should toggle menu', async done => {
       try {
-        let openedSideMenu = await readFirst(facade.openedSideMenu$);
+        let openedSideMenu = await readFirst(facade.openedSidebar$);
         expect(openedSideMenu).toBeFalsy();
 
-        facade.toggleSideMenu();
-        openedSideMenu = await readFirst(facade.openedSideMenu$);
+        facade.toggleSidebar();
+        openedSideMenu = await readFirst(facade.openedSidebar$);
         expect(openedSideMenu).toBeTruthy();
 
         done();

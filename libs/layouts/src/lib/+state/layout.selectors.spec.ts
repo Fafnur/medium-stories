@@ -27,9 +27,9 @@ describe('LayoutSelectors', () => {
     expect(results).toBe(hoveredId);
   });
 
-  it('getOpenedSideMenu() should return openedSideMenu', () => {
-    store = createStore(key, layoutInitialState, { openedSideMenu: true });
-    const results = layoutQuery.getOpenedSideMenu(store);
+  it('getOpenedSidebar() should return openedSideMenu', () => {
+    store = createStore(key, layoutInitialState, { openedSidebar: true });
+    const results = layoutQuery.getOpenedSidebar(store);
 
     expect(results).toBeTruthy();
   });

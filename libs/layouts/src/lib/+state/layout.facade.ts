@@ -15,7 +15,7 @@ export class LayoutFacade {
   /**
    * Observed opened side menu
    */
-  openedSideMenu$ = this.store.pipe(select(layoutQuery.getOpenedSideMenu));
+  openedSidebar$ = this.store.pipe(select(layoutQuery.getOpenedSidebar));
 
   /**
    * Observed showed submenu
@@ -32,8 +32,8 @@ export class LayoutFacade {
   /**
    * Close mobile menu
    */
-  closeSideMenu(): void {
-    this.store.dispatch(new fromLayoutActions.CloseSideMenu());
+  closeSidebar(): void {
+    this.store.dispatch(new fromLayoutActions.CloseSidebar());
   }
 
   /**
@@ -46,8 +46,8 @@ export class LayoutFacade {
   /**
    * Close mobile menu
    */
-  openSideMenu(): void {
-    this.store.dispatch(new fromLayoutActions.OpenSideMenu());
+  openSidebar(): void {
+    this.store.dispatch(new fromLayoutActions.OpenSidebar());
   }
 
   /**
@@ -67,7 +67,7 @@ export class LayoutFacade {
   /**
    * Toggle side menu
    */
-  toggleSideMenu(): void {
-    this.store.dispatch(new fromLayoutActions.ToggleSideMenu());
+  toggleSidebar(): void {
+    this.store.dispatch(new fromLayoutActions.ToggleSidebar());
   }
 }

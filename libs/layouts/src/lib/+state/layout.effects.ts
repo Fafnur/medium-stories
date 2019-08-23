@@ -5,7 +5,7 @@ import { DataPersistence } from '@nrwl/angular';
 import { RESPONSIVE_FEATURE_KEY, ResponsiveActionTypes, ResponsiveState, SetWindowProps } from '@medium-stories/responsive';
 import { AbstractEffects } from '@medium-stories/store';
 
-import { CloseSideMenu } from './layout.actions';
+import { CloseSidebar } from './layout.actions';
 import { LAYOUT_FEATURE_KEY, LayoutPartialState, LayoutState } from './layout.reducer';
 
 @Injectable()
@@ -14,7 +14,7 @@ export class LayoutEffects extends AbstractEffects<LayoutState> {
     run: (action: SetWindowProps, store: LayoutPartialState) => {
       const responsiveState = this.getState<ResponsiveState>(store, RESPONSIVE_FEATURE_KEY);
       if (responsiveState.switched) {
-        return new CloseSideMenu();
+        return new CloseSidebar();
       }
     },
     onError: (action: SetWindowProps, error) => console.error(error.toString())

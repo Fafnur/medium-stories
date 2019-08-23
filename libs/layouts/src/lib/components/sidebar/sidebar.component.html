@@ -1,4 +1,4 @@
-<div class="sidebar" [@toggleSidebar]="(layoutFacade.openedSideMenu$ | async) ? 'open' : 'closed'">
+<div class="sidebar" [@toggleSidebar]="(layoutFacade.openedSidebar$ | async) ? 'open' : 'closed'">
   <div class="sidemenu-container">
     <ng-content></ng-content>
   </div>

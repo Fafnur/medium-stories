@@ -21,7 +21,7 @@
       </ng-container>
       <ng-container *ngIf="!link.external">
         <ng-container *ngIf="!link.children">
-          <a class="sidemenu-link" [routerLink]="link.route" (click)="layoutFacade.closeSideMenu()">
+          <a class="sidemenu-link" [routerLink]="link.route" (click)="layoutFacade.closeSidebar()">
             {{ link.label | translate }}
           </a>
         </ng-container>

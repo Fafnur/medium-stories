@@ -10,26 +10,26 @@ describe('LayoutReducer', () => {
   });
 
   it('OpenMobileMenu() should open mobile menu', () => {
-    const action = new fromLayoutActions.OpenSideMenu();
+    const action = new fromLayoutActions.OpenSidebar();
     state = layoutReducer(state, action);
 
-    expect(state.openedSideMenu).toBeTruthy();
+    expect(state.openedSidebar).toBeTruthy();
   });
 
   it('CloseMobileMenu() should close mobile menu', () => {
-    const action = new fromLayoutActions.CloseSideMenu();
+    const action = new fromLayoutActions.CloseSidebar();
     state = layoutReducer(state, action);
 
-    expect(state.openedSideMenu).toBeFalsy();
+    expect(state.openedSidebar).toBeFalsy();
   });
 
   it('ToggleMobileMenu() should toggle mobile menu', () => {
-    const action = new fromLayoutActions.ToggleSideMenu();
+    const action = new fromLayoutActions.ToggleSidebar();
     state = layoutReducer(state, action);
-    expect(state.openedSideMenu).toBeTruthy();
+    expect(state.openedSidebar).toBeTruthy();
 
     state = layoutReducer(state, action);
-    expect(state.openedSideMenu).toBeFalsy();
+    expect(state.openedSidebar).toBeFalsy();
   });
 
   it('SetHoveredNavItem() should set hovered nav item', () => {

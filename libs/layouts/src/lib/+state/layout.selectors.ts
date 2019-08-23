@@ -14,9 +14,9 @@ export const getHoveredNavItemByLevel = createSelector(
   (state: LayoutState, props: { level: number }) => state.menu.hovered[props.level]
 );
 
-export const getOpenedSideMenu = createSelector(
+export const getOpenedSidebar = createSelector(
   getLayoutState,
-  (state: LayoutState) => state.openedSideMenu
+  (state: LayoutState) => state.openedSidebar
 );
 
 export const getShowedSubmenu = createSelector(
@@ -27,6 +27,6 @@ export const getShowedSubmenu = createSelector(
 export const layoutQuery = {
   getMenu,
   getHoveredNavItemByLevel,
-  getOpenedSideMenu,
+  getOpenedSidebar,
   getShowedSubmenu
 };

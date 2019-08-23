@@ -1,12 +1,1 @@
 @import 'utils';
-
-:host {
-}
-
-.layout-content {
-  padding-top: 4rem;
-
-  @include media-breakpoint-up($mobile) {
-    padding-top: 6rem;
-  }
-}

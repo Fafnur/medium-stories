@@ -1,0 +1,10 @@
+@import 'utils';
+
+:host {
+  display: block;
+  padding-top: 4rem;
+
+  @include media-breakpoint-up($mobile) {
+    padding-top: 7rem;
+  }
+}

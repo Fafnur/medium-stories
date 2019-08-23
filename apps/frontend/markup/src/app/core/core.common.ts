@@ -20,7 +20,29 @@ export const coreRoutes: Routes = [
 export const coreNavLinks: NavLink[] = [
   {
     label: 'menu.models.title',
-    route: '/',
+    route: '/models',
+    anchors: [
+      {
+        label: 'menu.brand.urus',
+        link: 'urus'
+      },
+      {
+        label: 'menu.brand.huracan',
+        link: 'huracan'
+      },
+      {
+        label: 'menu.brand.aventador',
+        link: 'aventador'
+      },
+      {
+        label: 'menu.brand.fewOff',
+        link: 'few-off'
+      },
+      {
+        label: 'menu.brand.concept',
+        link: 'concept'
+      }
+    ],
     children: [
       {
         label: 'menu.models.urus',
@@ -118,7 +140,7 @@ export const coreNavLinks: NavLink[] = [
   },
   {
     label: 'menu.brand.title',
-    route: '/',
+    route: '/brand',
     anchors: [
       {
         label: 'menu.brand.heritage',
@@ -182,7 +204,7 @@ export const coreNavLinks: NavLink[] = [
   },
   {
     label: 'menu.ownership.title',
-    route: '/',
+    route: '/ownership',
     anchors: [
       {
         label: 'menu.ownership.dealerLocator',
@@ -316,7 +338,7 @@ export const coreNavLinks: NavLink[] = [
   },
   {
     label: 'menu.motorsport.title',
-    route: '/',
+    route: '/motorsport',
     anchors: [
       {
         label: 'menu.motorsport.lamborghiniSuperTrofeo',
@@ -334,7 +356,7 @@ export const coreNavLinks: NavLink[] = [
   },
   {
     label: 'menu.store.title',
-    route: '/',
+    route: '/store',
     anchors: [
       {
         label: 'menu.store.collection',

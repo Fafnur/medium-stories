@@ -1,6 +1,7 @@
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LanguagesComponent } from './components/languages/languages.component';
+import { NavAnchorsComponent } from './components/nav-anchors/nav-anchors.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { NavSubmenuComponent } from './components/nav-submenu/nav-submenu.component';
 import { SearchComponent } from './components/search/search.component';
@@ -18,6 +19,7 @@ export const layoutsComponents: any[] = [
   HeaderComponent,
   LanguagesComponent,
   LogoComponent,
+  NavAnchorsComponent,
   NavMenuComponent,
   NavSubmenuComponent,
   SearchComponent,

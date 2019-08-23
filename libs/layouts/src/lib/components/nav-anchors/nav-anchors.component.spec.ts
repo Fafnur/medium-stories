@@ -1,29 +1,26 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslatePipe } from '@ngx-translate/core';
-import { MockComponent, MockDirective, MockPipe } from 'ng-mocks';
-import { of } from 'rxjs';
+import { MockDirective, MockPipe } from 'ng-mocks';
 
 import { MsLetDirective } from '@medium-stories/shared';
 
 import { LayoutFacade } from '../../+state/layout.facade';
 import { NAV_LINKS } from '../../layouts.tokens';
-import { NavAnchorsComponent } from '../nav-anchors/nav-anchors.component';
-import { NavMenuComponent } from './nav-menu.component';
+import { NavAnchorsComponent } from './nav-anchors.component';
 
-describe('NavMenuComponent', () => {
-  let component: NavMenuComponent;
-  let fixture: ComponentFixture<NavMenuComponent>;
+describe('NavAnchorsComponent', () => {
+  let component: NavAnchorsComponent;
+  let fixture: ComponentFixture<NavAnchorsComponent>;
 
   beforeEach(async(() => {
-    return TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [NavMenuComponent, MockComponent(NavAnchorsComponent), MockDirective(MsLetDirective), MockPipe(TranslatePipe)],
+      declarations: [NavAnchorsComponent, MockDirective(MsLetDirective), MockPipe(TranslatePipe)],
       providers: [
         {
           provide: LayoutFacade,
           useValue: {
-            hoveredNavItemByLevel$: jest.fn(() => of()),
             setNavItem: jest.fn()
           }
         },
@@ -36,7 +33,7 @@ describe('NavMenuComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavMenuComponent);
+    fixture = TestBed.createComponent(NavAnchorsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

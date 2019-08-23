@@ -20,7 +20,7 @@ import { coreContainers, coreNavLinks, coreRoutes } from './core.common';
         sizes: RESPONSIVE_SIZE_DEFAULT
       }
     }),
-    RouterModule.forRoot(coreRoutes, { initialNavigation: 'enabled' }),
+    RouterModule.forRoot(coreRoutes, { initialNavigation: 'enabled', scrollPositionRestoration: 'enabled' }),
     RootStoreModule,
     TranslateModule
   ],

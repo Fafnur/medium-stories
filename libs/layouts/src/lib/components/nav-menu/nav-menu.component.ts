@@ -17,4 +17,10 @@ export class NavMenuComponent {
     const showedSubmenu = this.navLinks[index] && this.navLinks[index].children && this.navLinks[index].children.length > 0;
     this.layoutFacade.setNavItem({ id: 'nav', index, showedSubmenu: !!showedSubmenu, level: 0 });
   }
+
+  onMouseleave(index: number): void {
+    if (this.navLinks[index] && (!this.navLinks[index].children || !this.navLinks[index].children.length)) {
+      this.layoutFacade.hideSubMenu();
+    }
+  }
 }

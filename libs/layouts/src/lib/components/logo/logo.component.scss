@@ -1,5 +1,9 @@
 @import 'utils';
 
+:host {
+  display: block;
+  user-select: none;
+}
 .logo-image {
   max-height: 2.5rem;
 

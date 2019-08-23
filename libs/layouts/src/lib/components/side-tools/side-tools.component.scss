@@ -1,0 +1,22 @@
+@import 'utils';
+
+:host {
+  background-color: mat-color($mat-gray, 300);
+  bottom: 3.5rem;
+  display: flex;
+  flex-flow: row nowrap;
+  height: 3.5rem;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+medium-stories-side-search {
+  flex: 1;
+}
+
+medium-stories-side-languages {
+  display: block;
+  width: 140px;
+  margin: 0 0 0 auto;
+}

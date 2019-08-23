@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatIconModule, MatInputModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
+import { MatIconModule, MatInputModule, MatRippleModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { ResponsiveModule } from '@medium-stories/responsive';
@@ -14,10 +16,13 @@ import { LayoutsCommonModule } from './layouts-common.module';
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     LayoutsCommonModule,
     MatIconModule,
     MatInputModule,
+    MatRippleModule,
     NgbModalModule,
+    NgSelectModule,
     ResponsiveModule,
     RouterModule,
     SharedModule,

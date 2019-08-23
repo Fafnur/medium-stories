@@ -1,12 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MockComponent, MockDirective } from 'ng-mocks';
+import { MockComponents, MockDirective } from 'ng-mocks';
 
 import { MsMobileDirective } from '@medium-stories/responsive';
 import { SharedModule } from '@medium-stories/shared';
 
 import { HeaderComponent } from '../../components/header/header.component';
+import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { SideMenuComponent } from '../../components/side-menu/side-menu.component';
+import { SideToolsComponent } from '../../components/side-tools/side-tools.component';
 import { BaseLayoutComponent } from './base-layout.component';
 
 describe('BaseLayoutComponent', () => {
@@ -18,8 +20,7 @@ describe('BaseLayoutComponent', () => {
       imports: [RouterTestingModule, SharedModule],
       declarations: [
         BaseLayoutComponent,
-        MockComponent(HeaderComponent),
-        MockComponent(SideMenuComponent),
+        MockComponents(HeaderComponent, SidebarComponent, SideMenuComponent, SideToolsComponent),
         MockDirective(MsMobileDirective)
       ]
     }).compileComponents();

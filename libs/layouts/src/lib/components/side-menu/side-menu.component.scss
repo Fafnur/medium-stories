@@ -1,26 +1,5 @@
 @import 'utils';
 
-.sidebar {
-  position: fixed;
-  left: 100%;
-  top: 4rem;
-  width: 100%;
-  height: calc(100vh - 4rem);
-  background-color: #000;
-  color: #fff;
-}
-
-.sidemenu-container {
-  overflow-x: hidden;
-  overflow-y: scroll;
-  height: calc(100vh - 4rem);
-  padding: 0 1rem;
-
-  &::-webkit-scrollbar {
-    width: 0;
-  }
-}
-
 .sidemenu-wrapper {
   overflow: hidden;
 }

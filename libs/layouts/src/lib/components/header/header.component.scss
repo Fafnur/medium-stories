@@ -18,7 +18,7 @@
     margin-bottom: auto;
   }
 
-  .modal-open & {
+  :host-context(.modal-open) & {
     width: calc(100% - 15px);
   }
 

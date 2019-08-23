@@ -2,7 +2,7 @@
 @import './utils';
 
 // Import common theme
-@import 'styles/material/theme';
+@import 'material/theme';
 @import 'bootstrap/theme';
 
 // Import common styles
@@ -13,4 +13,4 @@
 @import 'styles/components/ms-modal';
 
 // Import external styles
-@import 'external';
+@import 'external/ng-select';

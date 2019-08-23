@@ -291,7 +291,7 @@
             "stylePreprocessorOptions": {
               "includePaths": ["apps/frontend/markup/src/styles"]
             },
-            "scripts": []
+            "scripts": ["node_modules/viewport-units-buggyfill/viewport-units-buggyfill.js"]
           },
           "configurations": {
             "production": {

@@ -23,4 +23,8 @@ import { CoreModule } from './core/core.module';
   ],
   bootstrap: [AppComponent]
 })
-export class AppBrowserModule {}
+export class AppBrowserModule {
+  constructor() {
+    window['viewportUnitsBuggyfill'].init();
+  }
+}

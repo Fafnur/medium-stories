@@ -1,19 +1,15 @@
-<div class="sidebar" [@toggleSidebar]="(layoutFacade.openedSideMenu$ | async) ? 'open' : 'closed'">
-  <div class="sidemenu-container">
-    <ng-container
-      *ngTemplateOutlet="
-        sideMenu;
-        context: {
-          id: 'nav',
-          links: navLinks,
-          level: 0,
-          overview: null,
-          menu: layoutFacade.menu$ | async
-        }
-      "
-    ></ng-container>
-  </div>
-</div>
+<ng-container
+  *ngTemplateOutlet="
+    sideMenu;
+    context: {
+      id: 'nav',
+      links: navLinks,
+      level: 0,
+      overview: null,
+      menu: layoutFacade.menu$ | async
+    }
+  "
+></ng-container>
 
 <ng-template #sideMenu let-links="links" let-level="level" let-overview="overview" let-menu="menu" let-id="id">
   <ul class="sidemenu" *ngIf="links && links.length">

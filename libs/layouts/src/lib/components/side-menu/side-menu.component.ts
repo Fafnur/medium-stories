@@ -12,23 +12,6 @@ import { NavMenu } from '../../interfaces/nav-menu.interface';
   styleUrls: ['./side-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
-    trigger('toggleSidebar', [
-      state(
-        'open',
-        style({
-          left: '0'
-        })
-      ),
-      state(
-        'closed',
-        style({
-          left: '100%'
-        })
-      ),
-      transition('* => open', [animate('0.5s')]),
-      transition('closed => open', [animate('0.5s')]),
-      transition('open => closed', [animate('0.35s')])
-    ]),
     trigger('toggleSidemenu', [
       state(
         'closed',
@@ -61,6 +44,12 @@ export class SideMenuComponent {
     return navLink.label;
   }
 
+  /**
+   * Return animation name by id and index
+   * @param id Parent id
+   * @param index Current index on menu links
+   * @param menu Nav menu state
+   */
   private getAnimationState(id: string, index: number, menu: NavMenu): string {
     let animation = null;
     if (menu.active.index === null) {

@@ -1,0 +1,34 @@
+@import 'utils';
+
+.header {
+  display: flex;
+  flex-flow: row wrap;
+
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  content: 'viewport-units-buggyfill;';
+  left: 0;
+  height: 4rem;
+  padding: 0 1rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  & > * {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  :host-context(.modal-open) & {
+    width: calc(100% - 15px);
+  }
+
+  @include media-breakpoint-up($mobile) {
+    height: 7rem;
+    padding: 1rem 3rem;
+  }
+}
+
+.header-nav {
+  flex: 1;
+}

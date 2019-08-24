@@ -32,7 +32,7 @@ export interface ResponsiveProperties {
   mobile?: boolean;
 
   /**
-   * Is mobile
+   * Current responsive type
    */
   responsiveType?: string;
 

@@ -1,0 +1,9 @@
+@import 'utils';
+
+:host {
+  margin-right: -1rem;
+
+  @include media-breakpoint-up($mobile) {
+    margin-right: 0;
+  }
+}

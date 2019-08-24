@@ -42,7 +42,7 @@ export class WindowPropsInitError implements Action {
 export class SetWindowProps implements Action {
   readonly type = ResponsiveActionTypes.SetWindowProps;
 
-  constructor(public payload: object) {}
+  constructor(public payload: Partial<ResponsiveProperties>) {}
 }
 
 export type ResponsiveAction =

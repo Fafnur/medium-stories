@@ -7,6 +7,8 @@ export enum AdaptiveMode {
   Max = 'max',
   Between = 'between',
 
+  Mobile = 'mobile',
+
   // Next
   LeftBetween = 'left_between',
   RightBetween = 'right_between',

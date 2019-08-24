@@ -1,16 +1,22 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Inject, Pipe, PipeTransform } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { ResponsiveFacade } from '../+state/responsive.facade';
 import { AdaptiveMode } from '../interfaces/adaptive.interface';
+import { ResponsiveMode } from '../interfaces/responsive.interface';
 import { ResponsiveService } from '../interfaces/responsive-service.interface';
+import { RESPONSIVE_MODE } from '../responsive.tokens';
 
 @Pipe({
   name: 'adaptive'
 })
 export class AdaptivePipe implements PipeTransform {
-  constructor(private responsiveService: ResponsiveService, private responsiveFacade: ResponsiveFacade) {}
+  constructor(
+    private responsiveService: ResponsiveService,
+    private responsiveFacade: ResponsiveFacade,
+    @Inject(RESPONSIVE_MODE) protected responsiveMode: ResponsiveMode
+  ) {}
 
   /**
    * Example use 'sm,md|hd,xh' | adaptive:'between' | async
@@ -32,6 +38,9 @@ export class AdaptivePipe implements PipeTransform {
       map<string, boolean>(type => {
         let result = false;
         switch (mode) {
+          case AdaptiveMode.Mobile:
+            result = type === this.responsiveMode.mobile;
+            break;
           case AdaptiveMode.Min:
             result = this.responsiveService.checkMin(type, expressions);
             break;

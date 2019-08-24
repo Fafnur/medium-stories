@@ -1,0 +1,36 @@
+@import 'utils';
+
+.btn-language {
+  color: #fff;
+  padding: 1rem;
+
+  &:focus {
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+.btn-select-language {
+  text-transform: uppercase;
+
+  &:hover {
+    color: $primary;
+  }
+
+  &:focus {
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+.current-language {
+  background-color: #515053;
+  text-transform: uppercase;
+  font-size: 1rem;
+  padding: 0.3rem;
+}
+
+.modal-body {
+  width: 70%;
+  margin: auto;
+}

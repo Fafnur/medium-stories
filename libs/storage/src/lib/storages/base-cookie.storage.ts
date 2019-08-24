@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie';
+import { CookieOptions, CookieService } from 'ngx-cookie';
 
 import { CookieStorage } from '../interfaces/cookie-storage.interface';
 
@@ -34,7 +34,7 @@ export class BaseCookieStorage implements CookieStorage {
     this.cookieService.remove(key);
   }
 
-  setItem(key: string, data: string, options?: object): void {
+  setItem(key: string, data: string, options: Partial<CookieOptions> = { path: '/' }): void {
     this.cookieService.put(key, data, options);
   }
 }

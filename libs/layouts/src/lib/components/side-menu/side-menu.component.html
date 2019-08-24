@@ -1,0 +1,64 @@
+<ng-container
+  *ngTemplateOutlet="
+    sideMenu;
+    context: {
+      id: 'nav',
+      links: navLinks,
+      level: 0,
+      overview: null,
+      menu: layoutFacade.menu$ | async
+    }
+  "
+></ng-container>
+
+<ng-template #sideMenu let-links="links" let-level="level" let-overview="overview" let-menu="menu" let-id="id">
+  <ul class="sidemenu" *ngIf="links && links.length">
+    <li class="sidemenu-item" *ngFor="let link of links; let index = index; trackBy: trackByFn">
+      <ng-container *ngIf="link.external">
+        <a class="sidemenu-link" [href]="link.route">
+          {{ link.label | translate }}
+        </a>
+      </ng-container>
+      <ng-container *ngIf="!link.external">
+        <ng-container *ngIf="!link.children">
+          <a class="sidemenu-link" [routerLink]="link.route" (click)="layoutFacade.closeSidebar()">
+            {{ link.label | translate }}
+          </a>
+        </ng-container>
+        <ng-container *ngIf="link.children">
+          <ng-container *msLet="let animate of getAnimationState(id, index, menu)">
+            <button
+              type="button"
+              class="sidemenu-link"
+              [class.sidemenu-link_active]="animate === 'expanded'"
+              (click)="layoutFacade.toggleNavItem({ id: id, index: index, level: level })"
+            >
+              {{ link.label | translate }}
+              <ms-icon icon="angle-down"></ms-icon>
+            </button>
+            <div class="sidemenu-wrapper" [@toggleSidemenu]="animate">
+              <ng-container
+                *ngTemplateOutlet="
+                  sideMenu;
+                  context: {
+                    id: id + '_' + index,
+                    links: link.children,
+                    level: level + 1,
+                    overview: link,
+                    menu: menu
+                  }
+                "
+              >
+              </ng-container>
+            </div>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </li>
+    <li class="sidemenu-item" *ngIf="hasOverview(overview)">
+      <a class="sidemenu-link sidemenu-link_overview" [routerLink]="overview.route" (click)="layoutFacade.closeSidebar()">
+        {{ 'menu.overview' | translate }}
+      </a>
+    </li>
+  </ul>
+</ng-template>

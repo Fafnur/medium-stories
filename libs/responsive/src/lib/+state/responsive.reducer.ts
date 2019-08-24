@@ -27,11 +27,6 @@ export interface ResponsiveState {
   initiating: boolean;
 
   /**
-   * Current Window inner width
-   */
-  width: number;
-
-  /**
    * Is mobile width
    * Notice: Now if width < 768 then true. May need to be changed later.
    */
@@ -41,6 +36,16 @@ export interface ResponsiveState {
    * Current responsive type
    */
   responsiveType: string;
+
+  /**
+   * Mobile/desktop switched
+   */
+  switched: boolean;
+
+  /**
+   * Current Window inner width
+   */
+  width: number;
 }
 
 export const responsiveInitialState: ResponsiveState = {
@@ -48,9 +53,10 @@ export const responsiveInitialState: ResponsiveState = {
   initError: null,
   initialized: false,
   initiating: false,
-  width: 0,
   mobile: true,
-  responsiveType: null
+  responsiveType: null,
+  switched: false,
+  width: 0
 };
 
 export interface ResponsivePartialState {
@@ -85,7 +91,8 @@ export function responsiveReducer(state: ResponsiveState = responsiveInitialStat
     case ResponsiveActionTypes.SetWindowProps:
       state = {
         ...state,
-        ...action.payload
+        ...action.payload,
+        switched: state.mobile !== action.payload.mobile
       };
       break;
   }

@@ -1,0 +1,16 @@
+<ng-select
+  class="ng-select-lite"
+  [items]="translationFacade.languages$ | async"
+  [searchable]="false"
+  [ngModel]="translationFacade.currentLanguage$ | async"
+  [clearable]="false"
+>
+  <ng-template ng-label-tmp let-lang="item">
+    {{ lang }}
+  </ng-template>
+  <ng-template ng-option-tmp let-lang="item">
+    <button type="button" class="btn" (click)="translationFacade.setLanguage(lang)">
+      {{ lang | languageLabel | translate }}
+    </button>
+  </ng-template>
+</ng-select>

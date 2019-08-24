@@ -1,0 +1,64 @@
+@import 'utils';
+
+.submenus {
+  background-color: #202020;
+  background-color: rgba(32, 32, 32, 0.95);
+  display: block;
+  padding: 7rem 9rem 0 9rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 33rem;
+}
+
+.submenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  transition: all 400ms ease;
+}
+
+.submenu-item {
+}
+
+.submenu-link {
+  color: #fff;
+  display: flex;
+  padding: 1rem 0.25rem;
+  position: relative;
+
+  &:hover,
+  &_active {
+    color: $primary;
+    text-decoration: none;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+    left: 0;
+    background-color: #323232;
+  }
+
+  &:before {
+    width: 100%;
+  }
+
+  &:after {
+    background-color: $primary;
+    transition: all 400ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    width: 0;
+  }
+
+  ms-icon {
+    margin: 0 0 0 auto;
+  }
+
+  &_active:after {
+    width: 100%;
+  }
+}

@@ -1,0 +1,66 @@
+// Override bootstrap variables
+
+$grid-breakpoints: (
+  xs: 0,
+  nm: 320px,
+  mkm: 400px,
+  mm: 480px,
+  sm: 550px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  hg: 1400px,
+  zh: 1600px
+);
+
+$container-max-widths: (
+  // sm: 540px,
+    md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  hg: 1340px
+);
+
+$mobile: lg;
+
+// Custom variables
+
+$default-bg: #300a24;
+$default-color: #fff;
+
+// Colors
+$primary: #ddb321;
+$secondary: #fff;
+
+$mat-lamborghini: (
+  50: #fff8e1,
+  100: #ffecb3,
+  200: #ffe082,
+  300: #ffd54f,
+  400: #f0be22,
+  500: #ddae21,
+  600: #eda600,
+  700: #dc8800,
+  800: #d77500,
+  900: #c75900,
+  A100: #ffe57f,
+  A200: #ffd740,
+  A400: #ffc400,
+  A700: #ffab00,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $dark-primary-text,
+    700: $dark-primary-text,
+    800: $dark-primary-text,
+    900: $dark-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text
+  )
+);

@@ -1,0 +1,21 @@
+@import 'utils';
+
+.btn-search {
+  color: #fff;
+  padding: 1rem;
+
+  &:focus {
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+ms-icon {
+  color: #fff;
+}
+
+.search-form {
+  mat-form-field {
+    width: 100%;
+  }
+}

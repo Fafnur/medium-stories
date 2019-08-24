@@ -1,0 +1,41 @@
+@import 'utils';
+
+:host {
+  display: block;
+  padding: 0 0 0 2rem;
+  position: relative;
+}
+
+.nav-link {
+  color: #fff;
+  padding: 0.4rem 0.5rem;
+  position: relative;
+  text-transform: uppercase;
+
+  &:hover {
+    color: $primary;
+  }
+
+  @include media-breakpoint-up(xl) {
+    padding: 0.4rem 1rem;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+    background-color: #ddb321;
+    opacity: 0;
+    left: 50%;
+    width: 0;
+    transition: all 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  }
+
+  &_active:after {
+    left: 5%;
+    opacity: 1;
+    width: 90%;
+  }
+}

@@ -1,0 +1,9 @@
+<ng-container *ngIf="activeLink && activeLink.anchors">
+  <ul class="nav-anchors">
+    <li class="nav-anchor-item" *ngFor="let anchor of activeLink.anchors">
+      <a class="nav-anchor-link" [routerLink]="activeLink.route" [fragment]="anchor.link">
+        {{ anchor.label | translate }}
+      </a>
+    </li>
+  </ul>
+</ng-container>

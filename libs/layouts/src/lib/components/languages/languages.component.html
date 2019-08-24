@@ -1,0 +1,23 @@
+<button class="btn btn-language" (click)="open(languageModal)">
+  <span class="current-language">
+    {{ translationFacade.currentLanguage$ | async }}
+  </span>
+</button>
+
+<ng-template #languageModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" [innerHTML]="'layouts.languages.title' | translate"></h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-6" *ngFor="let lang of translationFacade.languages$ | async">
+        <button type="button" class="btn btn-block btn-select-language" (click)="translationFacade.setLanguage(lang); modal.close()">
+          {{ lang | languageLabel | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>

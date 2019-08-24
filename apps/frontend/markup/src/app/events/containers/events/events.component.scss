@@ -2,9 +2,11 @@
 
 :host {
   display: block;
-  padding-top: 4rem;
+  height: 110vh;
+}
 
-  @include media-breakpoint-up($mobile) {
-    padding-top: 7rem;
-  }
+.events-page {
+  background: url(/assets/images/events/main.webp) no-repeat 50% 50%;
+  background-size: cover;
+  height: 100vh;
 }

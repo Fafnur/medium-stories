@@ -12,6 +12,10 @@ import { TranslationFacade } from '@medium-stories/translation';
 export class LanguagesComponent {
   constructor(public translationFacade: TranslationFacade, private modalService: NgbModal) {}
 
+  /**
+   * Open popup
+   * @param content Template for popup
+   */
   open(content: TemplateRef<any>): void {
     this.modalService.open(content, { ariaLabelledBy: 'modal-language', centered: true, size: 'lg', windowClass: 'ms-modal-promo' });
   }

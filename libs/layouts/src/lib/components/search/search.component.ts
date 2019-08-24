@@ -10,6 +10,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class SearchComponent {
   constructor(private modalService: NgbModal) {}
 
+  /**
+   * Open popup
+   * @param content Template for popup
+   */
   open(content: TemplateRef<any>): void {
     this.modalService.open(content, { ariaLabelledBy: 'modal-search', centered: true, windowClass: 'ms-modal' });
   }

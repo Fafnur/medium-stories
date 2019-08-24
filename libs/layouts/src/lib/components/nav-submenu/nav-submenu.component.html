@@ -15,17 +15,7 @@
       </ul>
     </div>
     <div class="col-4" *msLet="let navSubItemId of layoutFacade.hoveredNavItemByLevel$(1) | async">
-      <ul
-        class="submenu"
-        *ngIf="
-          navItemId !== null &&
-          navSubItemId !== null &&
-          navLinks[navItemId] &&
-          navLinks[navItemId].children &&
-          navLinks[navItemId].children[navSubItemId] &&
-          navLinks[navItemId].children[navSubItemId].children
-        "
-      >
+      <ul class="submenu" *ngIf="hasSubmenu(navItemId, navSubItemId)">
         <ng-container
           *ngTemplateOutlet="
             subMenuItems;

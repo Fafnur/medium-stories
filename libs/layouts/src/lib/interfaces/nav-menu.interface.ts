@@ -1,5 +1,5 @@
 /**
- * Nav menu
+ * Nav menu state
  */
 export interface NavMenu {
   /**

@@ -1,17 +1,18 @@
 @import 'utils';
 
 .header {
+  display: flex;
+  flex-flow: row wrap;
+
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
+  content: 'viewport-units-buggyfill;';
   left: 0;
   height: 4rem;
+  padding: 0 1rem;
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 0 1rem;
-
-  display: flex;
-  flex-flow: row wrap;
 
   & > * {
     margin-top: auto;
@@ -23,8 +24,8 @@
   }
 
   @include media-breakpoint-up($mobile) {
-    padding: 1rem 3rem;
     height: 7rem;
+    padding: 1rem 3rem;
   }
 }
 

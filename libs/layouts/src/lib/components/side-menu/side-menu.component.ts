@@ -5,6 +5,7 @@ import { LayoutFacade } from '../../+state/layout.facade';
 import { NavLink } from '../../interfaces/nav-link.interface';
 import { NAV_LINKS } from '../../layouts.tokens';
 import { NavMenu } from '../../interfaces/nav-menu.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'medium-stories-side-menu',
@@ -38,7 +39,15 @@ import { NavMenu } from '../../interfaces/nav-menu.interface';
   ]
 })
 export class SideMenuComponent {
-  constructor(public layoutFacade: LayoutFacade, @Optional() @Inject(NAV_LINKS) public navLinks: NavLink[]) {}
+  constructor(public layoutFacade: LayoutFacade, @Optional() @Inject(NAV_LINKS) public navLinks: NavLink[], private router: Router) {}
+
+  /**
+   * Check overview
+   * @param overview NavLink
+   */
+  hasOverview(overview: NavLink): boolean {
+    return overview && overview.route !== this.router.routerState.snapshot.url;
+  }
 
   trackByFn(index: number, navLink: NavLink): string {
     return navLink.label;

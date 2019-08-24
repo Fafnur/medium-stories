@@ -55,8 +55,8 @@
         </ng-container>
       </ng-container>
     </li>
-    <li class="sidemenu-item" *ngIf="overview">
-      <a class="sidemenu-link sidemenu-link_overview" [routerLink]="overview.route">
+    <li class="sidemenu-item" *ngIf="hasOverview(overview)">
+      <a class="sidemenu-link sidemenu-link_overview" [routerLink]="overview.route" (click)="layoutFacade.closeSidebar()">
         {{ 'menu.overview' | translate }}
       </a>
     </li>

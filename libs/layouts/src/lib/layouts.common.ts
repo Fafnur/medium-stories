@@ -1,3 +1,9 @@
+import { FooterComponent } from './components/footer/footer.component';
+import { FooterBottomComponent } from './components/footer-bottom/footer-bottom.component';
+import { FooterCopyrightComponent } from './components/footer-copyright/footer-copyright.component';
+import { FooterMenuComponent } from './components/footer-menu/footer-menu.component';
+import { FooterNavComponent } from './components/footer-nav/footer-nav.component';
+import { FooterSocialComponent } from './components/footer-social/footer-social.component';
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LanguagesComponent } from './components/languages/languages.component';
@@ -15,6 +21,12 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { BaseLayoutComponent } from './containers/base-layout/base-layout.component';
 
 export const layoutsComponents: any[] = [
+  FooterComponent,
+  FooterBottomComponent,
+  FooterCopyrightComponent,
+  FooterMenuComponent,
+  FooterNavComponent,
+  FooterSocialComponent,
   HamburgerComponent,
   HeaderComponent,
   LanguagesComponent,

@@ -11,24 +11,19 @@ body {
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
-}
-
-a,
-button {
-  transition: all 0.25s ease;
-}
-
-// Custom reset styles. Will be removed
-html,
-body {
   min-width: 100%;
-  margin: 0;
-  padding: 0;
+  min-height: 100%;
 }
 
 html {
   height: 100%;
 }
-body {
-  min-height: 100%;
+
+body.window-small {
+  height: 100%;
+}
+
+a,
+button {
+  transition: all 0.25s ease;
 }

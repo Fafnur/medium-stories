@@ -1,4 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 import { ResponsiveState } from '../+state/responsive.reducer';
@@ -9,10 +9,14 @@ import { RESPONSIVE_MODE } from '../responsive.tokens';
 
 @Injectable()
 export class BaseResponsiveService implements ResponsiveService {
+  private timer;
+
   constructor(
     protected responsiveStorage: ResponsiveStorage,
     @Inject(RESPONSIVE_MODE) protected responsiveMode: ResponsiveMode,
-    @Inject(PLATFORM_ID) protected platformId: any
+    @Inject(DOCUMENT) private document: Document,
+    /* tslint:disable-next-line:ban-types */
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   checkBetween(type: string, expressions: string[]): boolean {
@@ -121,5 +125,21 @@ export class BaseResponsiveService implements ResponsiveService {
 
   isMobile(width: number): boolean {
     return width < this.responsiveMode.sizes[this.responsiveMode.mobile];
+  }
+
+  updateBodyClasses(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      if (this.timer) {
+        clearTimeout(this.timer);
+      }
+      setTimeout(() => {
+        this.timer = null;
+        if (this.document.body.scrollHeight <= window.innerHeight) {
+          this.document.body.classList.add('window-small');
+        } else {
+          this.document.body.classList.remove('window-small');
+        }
+      }, 0);
+    }
   }
 }

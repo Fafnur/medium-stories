@@ -4,11 +4,11 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { NxModule } from '@nrwl/angular';
 
-import { NAV_LINKS } from '@medium-stories/layouts';
+import { FOOTER_GROUPS_LINKS, FOOTER_NAV_LINKS, NAV_LINKS } from '@medium-stories/layouts';
 import { RESPONSIVE_SIZE_DEFAULT, ResponsiveModule } from '@medium-stories/responsive';
 import { RootStoreModule } from '@medium-stories/store';
 
-import { coreContainers, coreNavLinks, coreRoutes } from './core.common';
+import { coreContainers, coreFooterGroupsLinks, coreFooterNavLinks, coreNavLinks, coreRoutes } from './core.common';
 
 @NgModule({
   imports: [
@@ -29,6 +29,14 @@ import { coreContainers, coreNavLinks, coreRoutes } from './core.common';
     {
       provide: NAV_LINKS,
       useValue: coreNavLinks
+    },
+    {
+      provide: FOOTER_NAV_LINKS,
+      useValue: coreFooterNavLinks
+    },
+    {
+      provide: FOOTER_GROUPS_LINKS,
+      useValue: coreFooterGroupsLinks
     }
   ]
 })

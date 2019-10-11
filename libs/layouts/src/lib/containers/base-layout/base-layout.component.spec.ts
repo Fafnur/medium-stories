@@ -5,6 +5,7 @@ import { MockComponents, MockDirective } from 'ng-mocks';
 import { MsMobileDirective } from '@medium-stories/responsive';
 import { SharedModule } from '@medium-stories/shared';
 
+import { FooterComponent } from '../../components/footer/footer.component';
 import { HeaderComponent } from '../../components/header/header.component';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { SideMenuComponent } from '../../components/side-menu/side-menu.component';
@@ -20,7 +21,7 @@ describe('BaseLayoutComponent', () => {
       imports: [RouterTestingModule, SharedModule],
       declarations: [
         BaseLayoutComponent,
-        MockComponents(HeaderComponent, SidebarComponent, SideMenuComponent, SideToolsComponent),
+        MockComponents(FooterComponent, HeaderComponent, SidebarComponent, SideMenuComponent, SideToolsComponent),
         MockDirective(MsMobileDirective)
       ]
     }).compileComponents();

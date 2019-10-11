@@ -1,30 +1,32 @@
-<nav class="nav" *ngIf="navLinks">
-  <ng-container *msLet="let active of layoutFacade.hoveredNavItemByLevel$(0) | async">
-    <ng-container *ngFor="let navLink of navLinks; let index = index">
-      <ng-container *ngIf="navLink.route">
-        <ng-container *ngIf="navLink.external">
-          <a class="nav-link" [class.nav-link_active]="index === active" [href]="navLink.route" (mouseleave)="onMouseleave(index)">{{
-            navLink.label | translate
-          }}</a>
+<div class="container">
+  <nav class="nav" *ngIf="navLinks">
+    <ng-container *msLet="let active of layoutFacade.hoveredNavItemByLevel$(0) | async">
+      <ng-container *ngFor="let navLink of navLinks; let index = index">
+        <ng-container *ngIf="navLink.route">
+          <ng-container *ngIf="navLink.external">
+            <a class="nav-link" [class.nav-link_active]="index === active" [href]="navLink.route" (mouseleave)="onMouseleave(index)">{{
+              navLink.label | translate
+            }}</a>
+          </ng-container>
+          <ng-container *ngIf="!navLink.external">
+            <a
+              class="nav-link"
+              [class.nav-link_active]="index === active"
+              [routerLink]="navLink.route"
+              (mouseenter)="onMouseenter(index)"
+              (mouseleave)="onMouseleave(index)"
+            >
+              {{ navLink.label | translate }}
+            </a>
+          </ng-container>
         </ng-container>
-        <ng-container *ngIf="!navLink.external">
-          <a
-            class="nav-link"
-            [class.nav-link_active]="index === active"
-            [routerLink]="navLink.route"
-            (mouseenter)="onMouseenter(index)"
-            (mouseleave)="onMouseleave(index)"
-          >
+        <ng-container *ngIf="!navLink.route">
+          <span class="nav-link" [class.nav-link_active]="index === active" (mouseleave)="onMouseleave(index)">
             {{ navLink.label | translate }}
-          </a>
+          </span>
         </ng-container>
-      </ng-container>
-      <ng-container *ngIf="!navLink.route">
-        <span class="nav-link" [class.nav-link_active]="index === active" (mouseleave)="onMouseleave(index)">
-          {{ navLink.label | translate }}
-        </span>
       </ng-container>
     </ng-container>
-  </ng-container>
-</nav>
-<medium-stories-nav-anchors></medium-stories-nav-anchors>
+  </nav>
+  <medium-stories-nav-anchors></medium-stories-nav-anchors>
+</div>

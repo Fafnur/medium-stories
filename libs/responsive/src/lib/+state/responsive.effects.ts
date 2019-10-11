@@ -2,6 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { EventManager } from '@angular/platform-browser';
 import { Effect, Actions } from '@ngrx/effects';
+import { ROUTER_NAVIGATED, RouterNavigatedAction } from '@ngrx/router-store';
 import { DataPersistence } from '@nrwl/angular';
 
 import { Debounce } from '@medium-stories/common';
@@ -31,12 +32,22 @@ export class ResponsiveEffects extends AbstractEffects<ResponsiveState> {
   @Effect() initiating$ = this.dataPersistence.fetch(ResponsiveActionTypes.InitiatingWindowProps, {
     run: (action: InitiatingWindowProps, store: ResponsivePartialState) => {
       if (isPlatformBrowser(this.platformId)) {
+        this.responsiveService.updateBodyClasses();
         this.eventManager.addGlobalEventListener('window', 'resize', event => this.windowResizeHandler(event));
       }
 
       return new WindowPropsInitialized(this.responsiveService.getResponsiveProperties());
     },
     onError: (action: InitiatingWindowProps, error) => new WindowPropsInitError(error.toString())
+  });
+
+  @Effect() navigated$ = this.dataPersistence.fetch(ROUTER_NAVIGATED, {
+    run: (action: RouterNavigatedAction, store: ResponsivePartialState) => {
+      if (isPlatformBrowser(this.platformId)) {
+        this.responsiveService.updateBodyClasses();
+      }
+    },
+    onError: (action: RouterNavigatedAction, error) => console.error(error.toString())
   });
 
   constructor(
@@ -52,6 +63,7 @@ export class ResponsiveEffects extends AbstractEffects<ResponsiveState> {
 
   @Debounce(100)
   windowResizeHandler(event: any): void {
+    this.responsiveService.updateBodyClasses();
     const window = event.target as Window;
     const props = this.responsiveService.getChangesByProperties({
       height: window.innerHeight,

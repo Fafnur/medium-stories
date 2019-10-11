@@ -93,7 +93,28 @@
       "collection": "Коллекция",
       "shopByCar": "Товары любимой марки авто"
     },
-    "overview": "Обзор"
+    "overview": "Обзор",
+    "company": {
+      "title": "Информация"
+    },
+    "careers": {
+      "title": "Карьера"
+    },
+    "contacts": {
+      "title": "Обратная связь"
+    },
+    "media": {
+      "title": "Пресс центр"
+    },
+    "privacyLegal": {
+      "title": "Правовое уведомление"
+    },
+    "siteMap": {
+      "title": "Карта сайта"
+    },
+    "newsletter": {
+      "title": "Рассылка"
+    }
   },
   "layouts": {
     "languages": {
@@ -106,5 +127,11 @@
   },
   "events": {
     "title": "Страница событий"
+  },
+  "footer": {
+    "copyright": "Авторское право © 2017 Automobili Lamborghini S.p.A. полностью принадлежит Группе Audi. Все права защищены. Идентификационный номер\n  плательщика НДС: IT 00591801204",
+    "social": {
+      "join": "Присоединяйтесь к нам"
+    }
   }
 }

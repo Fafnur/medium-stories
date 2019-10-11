@@ -29,7 +29,8 @@ export class MsMobileDirective implements OnInit, OnDestroy {
     private viewContainer: ViewContainerRef,
     private responsiveFacade: ResponsiveFacade,
     private responsiveStorage: ResponsiveStorage,
-    @Inject(PLATFORM_ID) private platformId: any
+    /* tslint:disable-next-line:ban-types */
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit(): void {

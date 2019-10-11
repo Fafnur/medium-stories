@@ -1,0 +1,19 @@
+@import 'utils';
+
+:host {
+  background-color: rgba(0, 0, 0, 0.7);
+  bottom: 0;
+  color: white;
+  left: 0;
+  padding: 0.7rem 1rem;
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+}
+
+.footer-emission {
+  margin: 0;
+  font-size: 0.75rem;
+  text-align: center;
+  line-height: 1.1;
+}

@@ -1,0 +1,19 @@
+<div class="nav" *ngIf="navLinks">
+  <ng-container *ngFor="let navLink of navLinks; let index = index">
+    <ng-container *ngIf="navLink.route">
+      <ng-container *ngIf="navLink.external">
+        <a class="nav-link" [href]="navLink.route">{{ navLink.label | translate }}</a>
+      </ng-container>
+      <ng-container *ngIf="!navLink.external">
+        <a class="nav-link" [routerLink]="navLink.route">
+          {{ navLink.label | translate }}
+        </a>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="!navLink.route">
+      <span class="nav-link">
+        {{ navLink.label | translate }}
+      </span>
+    </ng-container>
+  </ng-container>
+</div>

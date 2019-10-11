@@ -1,0 +1,55 @@
+@import 'utils';
+
+:host {
+  display: block;
+  margin: 0 0 1rem 0;
+
+  @include media-breakpoint-up(sm) {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    justify-content: center;
+    margin: 1rem 0 0.5rem;
+  }
+  @include media-breakpoint-up(md) {
+    margin: 1.5rem 0 0.5rem;
+  }
+
+  @include media-breakpoint-up(xl) {
+    margin: 2rem 0 0.5rem;
+  }
+}
+
+.footer-social-join {
+  color: white;
+  text-transform: uppercase;
+  font-size: 1rem;
+  padding: 0 0.4rem;
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.25rem;
+  }
+}
+
+.footer-social-links {
+  display: flex;
+  flex-flow: row wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.footer-social-link {
+  font-size: 1.5rem;
+  ms-icon {
+    color: white;
+    display: inline-block;
+    padding: 0 0.75rem;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:hover ms-icon {
+    color: mat-color($mat-gray, 600);
+  }
+}

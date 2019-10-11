@@ -1,0 +1,10 @@
+<div class="footer-social-join">
+  {{ 'footer.social.join' | translate }}
+</div>
+<ul class="footer-social-links">
+  <li *ngFor="let socialLink of socialLinks">
+    <a class="footer-social-link" [href]="socialLink.link" target="_blank">
+      <ms-icon [icon]="['fab', socialLink.icon]"></ms-icon>
+    </a>
+  </li>
+</ul>

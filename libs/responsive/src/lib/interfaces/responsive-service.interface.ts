@@ -54,4 +54,9 @@ export abstract class ResponsiveService {
    * @param width window width
    */
   abstract isMobile(width: number): boolean;
+
+  /**
+   * Update body classes
+   */
+  abstract updateBodyClasses(): void;
 }

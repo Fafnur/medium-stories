@@ -14,7 +14,8 @@ export class BaseTranslationService implements TranslationService {
   constructor(
     private translateService: TranslateService,
     private translationStorage: TranslationStorage,
-    @Inject(PLATFORM_ID) private platformId: any,
+    /* tslint:disable-next-line:ban-types */
+    @Inject(PLATFORM_ID) private platformId: Object,
     @Inject(TRANSLATION_CONFIG) private translationConfig: TranslationConfig
   ) {}
 

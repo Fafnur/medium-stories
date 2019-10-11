@@ -25,3 +25,13 @@ html {
 @import '~bootstrap/scss/close';
 @import '~bootstrap/scss/modal';
 @import '~bootstrap/scss/nav';
+
+.container-responsive {
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  @include media-breakpoint-up($mobile) {
+    margin: 0 auto;
+    max-width: map-get($container-max-widths, zh);
+  }
+}

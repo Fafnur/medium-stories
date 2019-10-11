@@ -1,1 +1,25 @@
-<p>footer-menu works!</p>
+<div class="row">
+  <div class="col-sm-6 col-md-3" *ngFor="let navLink of navLinks">
+    <ng-container *ngTemplateOutlet="footerMenuLink; context: { navLink: navLink, level: 1 }"></ng-container>
+  </div>
+</div>
+
+<ng-template #footerMenuLink let-navLink="navLink" let-level="level">
+  <div class="footer-menu" *ngIf="navLink" [class.footer-menu_first]="level === 1">
+    <ng-container *ngIf="navLink.external">
+      <a [href]="navLink.route" class="footer-menu-link">
+        {{ navLink.label | translate }}
+      </a>
+    </ng-container>
+    <ng-container *ngIf="!navLink.external">
+      <a [routerLink]="navLink.route" class="footer-menu-link">
+        {{ navLink.label | translate }}
+      </a>
+    </ng-container>
+    <ng-container *ngIf="navLink.children && level < maxLevel">
+      <ng-container *ngFor="let link of navLink.children">
+        <ng-container *ngTemplateOutlet="footerMenuLink; context: { navLink: link, level: level + 1 }"></ng-container>
+      </ng-container>
+    </ng-container>
+  </div>
+</ng-template>

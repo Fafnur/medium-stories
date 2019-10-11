@@ -1,0 +1,15 @@
+@import 'utils';
+
+.footer-copyright {
+  color: mat-color($mat-gray, 200);
+  font-size: 0.65rem;
+  font-weight: 300;
+  text-align: center;
+
+  @include media-breakpoint-up(sm) {
+    font-size: 0.85rem;
+  }
+  @include media-breakpoint-up($mobile) {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,11 @@
+@import 'utils';
+
+:host {
+  background: url(/assets/images/layouts/footer-bg.webp) no-repeat 50% 50%;
+  background-size: cover;
+  padding-bottom: 3rem;
+
+  @include media-breakpoint-up($mobile) {
+    padding-bottom: 4rem;
+  }
+}

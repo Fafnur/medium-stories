@@ -1,7 +1,6 @@
 import { FooterComponent } from './components/footer/footer.component';
 import { FooterBottomComponent } from './components/footer-bottom/footer-bottom.component';
 import { FooterCopyrightComponent } from './components/footer-copyright/footer-copyright.component';
-import { FooterLinksComponent } from './components/footer-links/footer-links.component';
 import { FooterMenuComponent } from './components/footer-menu/footer-menu.component';
 import { FooterNavComponent } from './components/footer-nav/footer-nav.component';
 import { FooterSocialComponent } from './components/footer-social/footer-social.component';
@@ -25,7 +24,6 @@ export const layoutsComponents: any[] = [
   FooterComponent,
   FooterBottomComponent,
   FooterCopyrightComponent,
-  FooterLinksComponent,
   FooterMenuComponent,
   FooterNavComponent,
   FooterSocialComponent,

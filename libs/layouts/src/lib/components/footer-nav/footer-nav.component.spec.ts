@@ -1,4 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslatePipe } from '@ngx-translate/core';
+import { MockPipes } from 'ng-mocks';
 
 import { FooterNavComponent } from './footer-nav.component';
 
@@ -7,8 +10,9 @@ describe('FooterNavComponent', () => {
   let fixture: ComponentFixture<FooterNavComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [FooterNavComponent]
+    return TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
+      declarations: [FooterNavComponent, MockPipes(TranslatePipe)]
     }).compileComponents();
   }));
 

@@ -93,7 +93,28 @@
       "collection": "Collection",
       "shopByCar": "Shop by Car"
     },
-    "overview": "Overview"
+    "overview": "Overview",
+    "company": {
+      "title": "Company"
+    },
+    "careers": {
+      "title": "Careers"
+    },
+    "contacts": {
+      "title": "Contacts Us"
+    },
+    "media": {
+      "title": "Media center"
+    },
+    "privacyLegal": {
+      "title": "Privacy & Legal"
+    },
+    "siteMap": {
+      "title": "Sitemap"
+    },
+    "newsletter": {
+      "title": "newsletter"
+    }
   },
   "layouts": {
     "languages": {
@@ -106,5 +127,11 @@
   },
   "events": {
     "title": "Events page"
+  },
+  "footer": {
+    "copyright": "Copyright © 2017 Automobili Lamborghini S.p.A. a sole shareholder company part of Audi Group. All rights reserved. VAT  no. IT 00591801204",
+    "social": {
+      "join": "Follow Us"
+    }
   }
 }

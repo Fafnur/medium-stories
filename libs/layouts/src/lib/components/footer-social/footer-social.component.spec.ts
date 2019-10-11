@@ -1,5 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslatePipe } from '@ngx-translate/core';
+import { MockComponents, MockPipes } from 'ng-mocks';
 
+import { MsIconComponent } from '@medium-stories/shared';
 import { FooterSocialComponent } from './footer-social.component';
 
 describe('FooterSocialComponent', () => {
@@ -8,7 +11,7 @@ describe('FooterSocialComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [FooterSocialComponent]
+      declarations: [FooterSocialComponent, MockComponents(MsIconComponent), MockPipes(TranslatePipe)]
     }).compileComponents();
   }));
 

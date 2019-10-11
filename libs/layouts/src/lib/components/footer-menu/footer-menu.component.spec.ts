@@ -1,4 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslatePipe } from '@ngx-translate/core';
+import { MockPipes } from 'ng-mocks';
 
 import { FooterMenuComponent } from './footer-menu.component';
 
@@ -8,7 +11,8 @@ describe('FooterMenuComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [FooterMenuComponent]
+      imports: [RouterTestingModule],
+      declarations: [FooterMenuComponent, MockPipes(TranslatePipe)]
     }).compileComponents();
   }));
 

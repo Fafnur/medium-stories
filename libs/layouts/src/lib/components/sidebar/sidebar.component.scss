@@ -1,5 +1,10 @@
 @import 'utils';
 
+:host {
+  position: relative;
+  z-index: 100;
+}
+
 .sidebar {
   background-color: #000;
   color: #fff;

@@ -133,5 +133,19 @@
     "social": {
       "join": "Присоединяйтесь к нам"
     }
+  },
+  "home": {
+    "slide1": {
+      "title": "Sián FKP 37",
+      "description": "Ahead of its time"
+    },
+    "slide2": {
+      "title": "Urus",
+      "description": "#sincewemadeitpossible"
+    },
+    "slide3": {
+      "title": "Huracán Evo",
+      "description": "Every day amplified"
+    }
   }
 }

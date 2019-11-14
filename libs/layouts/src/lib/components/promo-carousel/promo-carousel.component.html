@@ -1,18 +1,35 @@
 <ng-container *ngIf="options">
-  <div class="promo-carousel" *msRun="watch$ | async">
+  <div class="carousel-slider" *msRun="watch$ | async" [ngStyle]="{ height: (responsiveFacade.height$ | async) + 'px' }">
     <ng-container *ngFor="let slide of options.slides; let index = index">
       <ng-container *ngTemplateOutlet="carouselSlide; context: { slide: slide, index: index }"></ng-container>
     </ng-container>
+    <div class="carousel-indicators" *ngIf="options.indicators">
+      <button
+        type="button"
+        class="btn carousel-indicator"
+        (click)="changeSlide$.next(index)"
+        *ngFor="let slide of options.slides; let index = index"
+        [class.carousel-indicator_active]="options.active === index"
+      ></button>
+    </div>
+    <div class="carousel-scroll" *ngIf="options.scrollAnchor">
+      <button type="button" class="btn btn-carousel-scroll" (click)="onScroll()">
+        <ms-icon icon="angle-down"></ms-icon>
+      </button>
+    </div>
   </div>
 </ng-container>
 
 <ng-template #carouselSlide let-slide="slide" let-index="index">
-  <div class="carousel-slide" [class.carousel-slide_active]="options.active === index" [class.carousel-slide_hide]="options.hide === index">
-    <div class="carousel-slide-image">
-      <img [src]="slide.src" alt="{{ slide.title }}" />
-    </div>
-    <div class="carousel-slide-title">
-      {{ slide.title }}
+  <div class="carousel-slide" [class.carousel-slide_hide]="options.hide === index" [class.carousel-slide_active]="options.active === index">
+    <div class="carousel-slide-image" [ngStyle]="{ backgroundImage: 'url(' + slide.src + ')' }"></div>
+    <div class="carousel-slide-content">
+      <div class="carousel-slide-title">
+        {{ slide.title | translate }}
+      </div>
+      <div class="carousel-slide-description">
+        {{ slide.description | translate }}
+      </div>
     </div>
   </div>
 </ng-template>

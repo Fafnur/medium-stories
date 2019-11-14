@@ -1,15 +1,17 @@
 import { isPlatformBrowser } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Inject, Input, PLATFORM_ID } from '@angular/core';
-import { interval, Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { interval, Observable, Subject } from 'rxjs';
+import { startWith, switchMap, tap } from 'rxjs/operators';
 
 import { PromoCarouselOptions } from '../../interfaces/promo-carousel.interface';
+import { ResponsiveFacade } from '@medium-stories/responsive';
 
 const OPTIONS_DEFAULT: PromoCarouselOptions = {
   slides: [],
   active: 0,
   hide: null,
-  interval: 4000
+  interval: 6000,
+  indicators: true
 };
 
 @Component({
@@ -29,27 +31,51 @@ export class PromoCarouselComponent {
    */
   watch$!: Observable<number>;
 
+  /**
+   * Change slide
+   */
+  changeSlide$ = new Subject<number>();
+
   @Input() set config(options: Partial<PromoCarouselOptions>) {
     this.options = { ...OPTIONS_DEFAULT, ...options };
     if (isPlatformBrowser(this.platformId)) {
-      this.watch$ = interval(this.options.interval).pipe(
-        tap(() => {
-          if (!window.document.hidden) {
-            if (this.options.active + 1 === this.options.slides.length) {
-              this.options.hide = this.options.slides.length - 1;
-              this.options.active = 0;
-            } else {
-              this.options.hide = this.options.active;
-              this.options.active++;
-            }
+      this.watch$ = this.changeSlide$.pipe(
+        startWith(-1),
+        switchMap(index => {
+          if (index >= 0) {
+            this.options.hide = this.options.active;
+            this.options.active = index;
           }
+          return interval(this.options.interval).pipe(
+            tap(() => {
+              if (!window.document.hidden) {
+                if (this.options.active + 1 === this.options.slides.length) {
+                  this.options.hide = this.options.slides.length - 1;
+                  this.options.active = 0;
+                } else {
+                  this.options.hide = this.options.active;
+                  this.options.active++;
+                }
+              }
+            })
+          );
         })
       );
     }
   }
 
   constructor(
+    public responsiveFacade: ResponsiveFacade,
     /* tslint:disable-next-line:ban-types */
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
+
+  onScroll(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const anchor = window.document.getElementById(this.options.scrollAnchor);
+      if (anchor) {
+        anchor.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }
 }

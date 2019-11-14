@@ -1,9 +1,9 @@
 /**
  * Promo carousel slide
  */
-import { Dictionary } from '@medium-stories/common';
-
 export interface PromoCarouselSlide {
+  [key: string]: any;
+
   /**
    * Path to image
    */
@@ -28,7 +28,9 @@ export interface PromoCarouselSlide {
 /**
  * Promo carousel options
  */
-export interface PromoCarouselOptions extends Dictionary<any> {
+export interface PromoCarouselOptions {
+  [key: string]: any;
+
   /**
    * Promo carousel slides
    */
@@ -48,4 +50,14 @@ export interface PromoCarouselOptions extends Dictionary<any> {
    * Change interval
    */
   interval: number;
+
+  /**
+   * Show indicators
+   */
+  indicators: boolean;
+
+  /**
+   * Scroll anchor
+   */
+  scrollAnchor?: string;
 }

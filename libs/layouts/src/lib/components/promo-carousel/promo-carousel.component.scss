@@ -48,12 +48,30 @@
   margin: 0 auto;
   left: 0;
   right: 0;
+}
 
-  ms-icon {
-    color: $primary;
-    font-size: 3rem;
-    line-height: 1;
+@keyframes carousel-scroll-icon {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
   }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+.carousel-scroll-icon {
+  color: $primary;
+  line-height: 1;
+  width: 80px;
+  fill: white;
+  animation: carousel-scroll-icon 2s infinite;
 }
 
 .btn-carousel-scroll {

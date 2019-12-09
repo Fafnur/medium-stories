@@ -147,5 +147,10 @@
       "title": "Huracán Evo",
       "description": "Every day amplified"
     }
+  },
+  "promo": {
+    "actions": {
+      "discoverMore": "Подробнее"
+    }
   }
 }

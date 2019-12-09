@@ -12,7 +12,6 @@ import { SharedModule } from '@medium-stories/shared';
 
 import { layoutsComponents, layoutsContainers } from './layouts.common';
 import { LayoutsCommonModule } from './layouts-common.module';
-import { PromoCarouselComponent } from './components/promo-carousel/promo-carousel.component';
 
 @NgModule({
   imports: [
@@ -30,6 +29,6 @@ import { PromoCarouselComponent } from './components/promo-carousel/promo-carous
     TranslateModule
   ],
   declarations: [...layoutsComponents, ...layoutsContainers],
-  exports: [...layoutsContainers, PromoCarouselComponent]
+  exports: [...layoutsComponents, ...layoutsContainers]
 })
 export class LayoutsModule {}

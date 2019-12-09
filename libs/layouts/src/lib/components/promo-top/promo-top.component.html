@@ -1,0 +1,14 @@
+<ng-container *ngIf="options">
+  <a class="promo-top" [ngStyle]="{ backgroundImage: 'url(' + options.background + ')' }" [routerLink]="options.route">
+    <div class="container-promo">
+      <h3 class="promo-top-title" *ngIf="options.title">
+        {{ options.title | translate }}
+      </h3>
+      <div class="promo-top-actions">
+        <button class="btn btn-lite promo-top-link" type="button">
+          {{ 'promo.actions.discoverMore' | translate }}
+        </button>
+      </div>
+    </div>
+  </a>
+</ng-container>

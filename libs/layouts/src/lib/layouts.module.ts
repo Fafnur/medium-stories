@@ -29,6 +29,6 @@ import { LayoutsCommonModule } from './layouts-common.module';
     TranslateModule
   ],
   declarations: [...layoutsComponents, ...layoutsContainers],
-  exports: [...layoutsContainers]
+  exports: [...layoutsComponents, ...layoutsContainers]
 })
 export class LayoutsModule {}

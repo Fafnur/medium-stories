@@ -1,1 +1,8 @@
 @import '../utils';
+
+.btn-lite {
+  @include button-variant-custom(white, white, $primary, $primary, $primary, $primary);
+
+  border-radius: 0;
+  text-transform: uppercase;
+}

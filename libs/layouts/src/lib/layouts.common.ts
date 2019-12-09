@@ -10,6 +10,8 @@ import { LanguagesComponent } from './components/languages/languages.component';
 import { NavAnchorsComponent } from './components/nav-anchors/nav-anchors.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { NavSubmenuComponent } from './components/nav-submenu/nav-submenu.component';
+import { PromoCarouselComponent } from './components/promo-carousel/promo-carousel.component';
+import { PromoTopComponent } from './components/promo-top/promo-top.component';
 import { SearchComponent } from './components/search/search.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SideLanguagesComponent } from './components/side-languages/side-languages.component';
@@ -34,6 +36,8 @@ export const layoutsComponents: any[] = [
   NavAnchorsComponent,
   NavMenuComponent,
   NavSubmenuComponent,
+  PromoCarouselComponent,
+  PromoTopComponent,
   SearchComponent,
   SidebarComponent,
   SideLanguagesComponent,

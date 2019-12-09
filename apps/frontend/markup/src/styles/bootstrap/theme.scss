@@ -35,3 +35,21 @@ html {
     max-width: map-get($container-max-widths, zh);
   }
 }
+
+.container-promo {
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  @include media-breakpoint-up(md) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  @include media-breakpoint-up(xl) {
+    padding-left: 4.5rem;
+    padding-right: 4.5rem;
+  }
+  @include media-breakpoint-up(zh) {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}

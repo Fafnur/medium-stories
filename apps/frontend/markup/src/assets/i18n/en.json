@@ -133,5 +133,10 @@
     "social": {
       "join": "Follow Us"
     }
+  },
+  "promo": {
+    "actions": {
+      "discoverMore": "Discover more"
+    }
   }
 }

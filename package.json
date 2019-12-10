@@ -51,7 +51,10 @@
     "serve:ssr:shared": "node dist/apps/frontend/shared/server.js",
     "serve:markup": "ng serve frontend-markup",
     "build:ssr:markup": "ng build frontend-markup --prod && ng run frontend-markup:server:production && webpack --config apps/frontend/markup/webpack.ssr.config.js --progress --colors",
-    "serve:ssr:markup": "node dist/apps/frontend/markup/server.js"
+    "serve:ssr:markup": "node dist/apps/frontend/markup/server.js",
+    "serve:backend:api": "ng serve backend-api",
+    "backend:api:entities": "node_modules/.bin/tsc --project apps/backend/api/tsconfig.entities.json",
+    "backend:api:migrations": "node_modules/.bin/tsc --project apps/backend/api/tsconfig.migrations.json && ./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run"
   },
   "private": true,
   "dependencies": {
@@ -107,6 +110,7 @@
     "zone.js": "^0.9.1"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "^8.4.1",
     "@angular-devkit/build-angular": "^0.803.20",
     "@angular/cli": "^8.3.20",
     "@angular/compiler-cli": "^8.2.14",

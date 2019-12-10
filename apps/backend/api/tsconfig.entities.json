@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../../dist",
+    "types": ["node"],
+    "target": "es5",
+    "module": "commonjs"
+  },
+  "exclude": ["src/**/*.spec.ts"],
+  "include": ["src/app/**/*entity.ts"]
+}

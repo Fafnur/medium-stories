@@ -3,8 +3,9 @@ import { ChangeDetectionStrategy, Component, Inject, Input, PLATFORM_ID } from '
 import { interval, Observable, Subject } from 'rxjs';
 import { startWith, switchMap, tap } from 'rxjs/operators';
 
-import { PromoCarouselOptions } from '../../interfaces/promo-carousel.interface';
 import { ResponsiveFacade } from '@medium-stories/responsive';
+
+import { PromoCarouselOptions } from '../../interfaces/promo-carousel.interface';
 
 const OPTIONS_DEFAULT: PromoCarouselOptions = {
   slides: [],

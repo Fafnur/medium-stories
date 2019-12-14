@@ -41,6 +41,9 @@
     "frontend-translation-state": {
       "tags": []
     },
+    "entities": {
+      "tags": []
+    },
     "common": {
       "tags": []
     },
@@ -60,6 +63,9 @@
       "tags": []
     },
     "translation": {
+      "tags": []
+    },
+    "backend-api": {
       "tags": []
     }
   }

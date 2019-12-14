@@ -1,5 +1,17 @@
 <ng-container *ngIf="options">
-  <div class="carousel-slider" *msRun="watch$ | async" [ngStyle]="{ height: (responsiveFacade.height$ | async) + 'px' }">
+  <ng-container
+    *ngTemplateOutlet="
+      carouselSlider;
+      context: {
+        watch: watch$ | async,
+        height: (responsiveFacade.height$ | async) + 'px'
+      }
+    "
+  ></ng-container>
+</ng-container>
+
+<ng-template #carouselSlider let-height="height">
+  <div class="carousel-slider" [ngStyle]="{ height: height }">
     <ng-container *ngFor="let slide of options.slides; let index = index">
       <ng-container *ngTemplateOutlet="carouselSlide; context: { slide: slide, index: index }"></ng-container>
     </ng-container>
@@ -14,11 +26,11 @@
     </div>
     <div class="carousel-scroll" *ngIf="options.scrollAnchor">
       <button type="button" class="btn btn-carousel-scroll" (click)="onScroll()">
-        <img class="carousel-scroll-icon" src="assets/images/icons/down-arrow.svg" alt="" />
+        <img class="carousel-scroll-icon" [src]="'assets/images/icons/down-arrow.svg'" alt="" />
       </button>
     </div>
   </div>
-</ng-container>
+</ng-template>
 
 <ng-template #carouselSlide let-slide="slide" let-index="index">
   <div class="carousel-slide" [class.carousel-slide_hide]="options.hide === index" [class.carousel-slide_active]="options.active === index">

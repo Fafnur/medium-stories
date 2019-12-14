@@ -5,18 +5,17 @@ import { MigrationInterface, QueryRunner } from 'typeorm';
  * username: admin
  * password: 123456
  */
-export class BaseUsers1552019794258 implements MigrationInterface {
+export class Users1576124847819 implements MigrationInterface {
   async up(queryRunner: QueryRunner): Promise<any> {
-    /* tslint:disable */
     await queryRunner.query(`
-      INSERT INTO users (username, email, password) VALUES ('admin', 'example@mail.ru', '$2b$10$s9yj75DUFg0IURV8YTfw3eKdeGhIusdR6vz4WtzcqWCNRHwbuPksa')
+      INSERT INTO users (username, email, phone, password)
+      VALUES ('admin', 'example@example.com', '9231002233', '$2b$10$A4x21zZO7IKU59ScZNozee7ndO1MXcDXkaZ8h3oTI65D7qRPDatTO');
       `);
-    /* tslint:enable */
   }
 
   async down(queryRunner: QueryRunner): Promise<any> {
     await queryRunner.query(`
-      DROP TABLE users;
+      DELETE FROM users WHERE username = 'admin';
     `);
   }
 }

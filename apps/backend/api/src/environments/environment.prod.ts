@@ -1,3 +1,7 @@
 export const environment = {
-  production: true
+  production: true,
+  jwt: {
+    secret: 'MyJWTSecret',
+    expiresIn: 15000000
+  }
 };

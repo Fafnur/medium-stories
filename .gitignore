@@ -40,3 +40,4 @@ Thumbs.db
 
 # Custom
 /ormconfig.json
+/graphql.ts

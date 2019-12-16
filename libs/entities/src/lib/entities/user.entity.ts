@@ -3,6 +3,11 @@
  */
 export interface User {
   /**
+   * Created at
+   */
+  created: number;
+
+  /**
    * Email
    */
   email?: string;
@@ -26,6 +31,11 @@ export interface User {
    * Username
    */
   username: string;
+
+  /**
+   * Updated at
+   */
+  updated: number;
 }
 
 /**

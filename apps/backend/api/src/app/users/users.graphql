@@ -2,6 +2,9 @@ type Query {
   user(id: Int): User
 }
 
+scalar Date
+
 type User {
   username: String
+  created: Date
 }

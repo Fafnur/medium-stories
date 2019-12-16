@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate, CreateDateColumn } from 'typeorm';
 
 import { User } from '@medium-stories/entities';
 
@@ -20,4 +20,15 @@ export class UserEntity implements User {
 
   @Column({ length: 50 })
   username: string;
+
+  @CreateDateColumn()
+  created: Date;
+
+  @Column({ nullable: true })
+  updated: Date;
+
+  @BeforeUpdate()
+  updateDateUpdate() {
+    this.updated = new Date();
+  }
 }

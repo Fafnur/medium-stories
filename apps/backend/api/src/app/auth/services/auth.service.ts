@@ -22,9 +22,9 @@ export class AuthService {
     const isValid = user ? await this.passwordService.compareHash(pass, user.password) : false;
 
     if (isValid) {
-      const { password, ...result } = user;
+      delete user.password;
 
-      return result;
+      return user;
     }
 
     return null;

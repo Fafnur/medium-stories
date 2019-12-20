@@ -1,0 +1,25 @@
+type Query {
+  medias: [Media]
+  media(id: Int!): Media
+  uploads: [File]
+}
+
+type Media {
+  created: Int
+  description: JSON
+  id: Int
+  owner: User
+  published: Boolean
+  src: String
+  title: JSON
+}
+
+type File {
+  filename: String!
+  mimetype: String!
+  encoding: String!
+}
+
+type Mutation {
+  singleUpload(file: Upload!): File!
+}

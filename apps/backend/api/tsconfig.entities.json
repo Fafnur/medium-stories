@@ -6,6 +6,6 @@
     "target": "es5",
     "module": "commonjs"
   },
-  "exclude": ["src/**/*.spec.ts"],
+  "exclude": ["src/**/*.spec.ts", "../../../libs/entities/**/*.ts"],
   "include": ["src/app/**/*entity.ts"]
 }

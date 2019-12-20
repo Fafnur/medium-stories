@@ -1,3 +1,6 @@
+import { Locale } from '../types/locale.type';
+import { User } from './user.entity';
+
 /**
  * Media interface
  */
@@ -8,17 +11,27 @@ export interface Media {
   created: number;
 
   /**
-   * Title
-   */
-  title: string;
-
-  /**
    * Description
    */
-  description: number;
+  description?: Locale;
+
+  /**
+   * Owner
+   */
+  owner: User;
+
+  /**
+   * Post is published
+   */
+  published: boolean;
 
   /**
    * Password
    */
   src: string;
+
+  /**
+   * Title
+   */
+  title?: Locale;
 }

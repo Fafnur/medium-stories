@@ -1,4 +1,6 @@
+import { Locale } from '../types/locale.type';
 import { User } from './user.entity';
+import { Media } from './media.entity';
 
 /**
  * Event interface
@@ -7,7 +9,7 @@ export interface Event {
   /**
    * Event body
    */
-  body: string;
+  body: Locale;
 
   /**
    * Created at
@@ -15,9 +17,19 @@ export interface Event {
   created: number;
 
   /**
+   * End date
+   */
+  end: number;
+
+  /**
    * ID
    */
   id: number;
+
+  /**
+   * Main post image
+   */
+  image: Media;
 
   /**
    * Owner
@@ -27,12 +39,22 @@ export interface Event {
   /**
    * Event is published
    */
+  place?: Locale;
+
+  /**
+   * Event is published
+   */
   published: boolean;
+
+  /**
+   * Start date
+   */
+  start: number;
 
   /**
    * Event title
    */
-  title: string;
+  title: Locale;
 
   /**
    * Updated at

@@ -1,3 +1,4 @@
+import { Locale } from '../types/locale.type';
 import { Media } from './media.entity';
 import { User } from './user.entity';
 
@@ -8,7 +9,7 @@ export interface Post {
   /**
    * Post body
    */
-  body: string;
+  body: Locale;
 
   /**
    * Created at
@@ -19,6 +20,11 @@ export interface Post {
    * ID
    */
   id: number;
+
+  /**
+   * Main post image
+   */
+  image: Media;
 
   /**
    * Password
@@ -38,7 +44,7 @@ export interface Post {
   /**
    * Post title
    */
-  title: string;
+  title: Locale;
 
   /**
    * Updated at

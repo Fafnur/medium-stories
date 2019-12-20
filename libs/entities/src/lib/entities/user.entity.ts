@@ -1,3 +1,6 @@
+import { Event } from './event.entity';
+import { Media } from './media.entity';
+
 /**
  * User interface
  */
@@ -36,6 +39,18 @@ export interface User {
    * Updated at
    */
   updated: number;
+}
+
+export interface UserRelations {
+  /**
+   * Events
+   */
+  events: Event[];
+
+  /**
+   * Medias
+   */
+  medias: Media[];
 }
 
 /**

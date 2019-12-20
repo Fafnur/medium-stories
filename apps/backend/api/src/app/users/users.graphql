@@ -4,4 +4,5 @@ type Query {
 
 type User {
   username: String
+  created: Date
 }

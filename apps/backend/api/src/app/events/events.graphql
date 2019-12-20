@@ -1,0 +1,15 @@
+type Query {
+  events: [Event]
+  event(id: Int!): Event
+}
+
+type Event {
+  body: JSON
+  created: Int
+  id: Int
+  owner: User
+  place: JSON
+  published: Boolean
+  title: JSON
+  updated: Int
+}

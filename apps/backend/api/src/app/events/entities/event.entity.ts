@@ -13,7 +13,7 @@ export class EventEntity implements Event {
   body: Locale;
 
   @CreateDateColumn()
-  created: number;
+  created: string;
 
   @Column({ type: 'timestamp' })
   end: number;
@@ -44,11 +44,11 @@ export class EventEntity implements Event {
   published: boolean;
 
   @Column({ type: 'timestamp' })
-  start: number;
+  start: string;
 
   @Column('simple-json')
   title: Locale;
 
   @UpdateDateColumn({ nullable: true })
-  updated: number;
+  updated: string;
 }

@@ -37,8 +37,8 @@ export class UserEntity implements User {
   username: string;
 
   @CreateDateColumn()
-  created: number;
+  created: string;
 
   @UpdateDateColumn({ nullable: true })
-  updated: number;
+  updated: string;
 }

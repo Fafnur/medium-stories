@@ -8,7 +8,7 @@ export interface User {
   /**
    * Created at
    */
-  created: number;
+  created: string;
 
   /**
    * Email
@@ -38,9 +38,12 @@ export interface User {
   /**
    * Updated at
    */
-  updated: number;
+  updated: string;
 }
 
+/**
+ * User relations
+ */
 export interface UserRelations {
   /**
    * Events

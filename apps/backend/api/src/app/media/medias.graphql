@@ -5,13 +5,14 @@ type Query {
 }
 
 type Media {
-  created: Int
+  created: Date
   description: JSON
   id: Int
   owner: User
   published: Boolean
   src: String
   title: JSON
+  updated: Date
 }
 
 type File {

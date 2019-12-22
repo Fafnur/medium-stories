@@ -14,7 +14,7 @@ export interface Post {
   /**
    * Created at
    */
-  created: number;
+  created: string;
 
   /**
    * ID
@@ -37,9 +37,14 @@ export interface Post {
   owner: User;
 
   /**
+   * Post published at
+   */
+  published?: string;
+
+  /**
    * Post is published
    */
-  published: boolean;
+  isPublished: boolean;
 
   /**
    * Post title
@@ -49,5 +54,5 @@ export interface Post {
   /**
    * Updated at
    */
-  updated: number;
+  updated: string;
 }

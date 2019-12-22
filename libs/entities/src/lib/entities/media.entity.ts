@@ -8,7 +8,7 @@ export interface Media {
   /**
    * Created at
    */
-  created: number;
+  created: string;
 
   /**
    * Description

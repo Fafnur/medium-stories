@@ -5,11 +5,14 @@ type Query {
 
 type Event {
   body: JSON
-  created: Int
+  created: Date
+  end: Date
   id: Int
+  image: Media
   owner: User
   place: JSON
   published: Boolean
+  start: Date
   title: JSON
-  updated: Int
+  updated: Date
 }

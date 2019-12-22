@@ -10,7 +10,7 @@ import { UserEntity } from '../../users/entities/user.entity';
 })
 export class MediaEntity implements Media {
   @CreateDateColumn()
-  created: number;
+  created: string;
 
   @Column('simple-json', { nullable: true })
   description: Locale;
@@ -43,5 +43,5 @@ export class MediaEntity implements Media {
   title: Locale;
 
   @UpdateDateColumn({ nullable: true })
-  updated: number;
+  updated: string;
 }

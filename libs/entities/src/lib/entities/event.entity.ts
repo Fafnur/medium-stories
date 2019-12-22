@@ -14,7 +14,7 @@ export interface Event {
   /**
    * Created at
    */
-  created: number;
+  created: string;
 
   /**
    * End date
@@ -49,7 +49,7 @@ export interface Event {
   /**
    * Start date
    */
-  start: number;
+  start: string;
 
   /**
    * Event title
@@ -59,5 +59,5 @@ export interface Event {
   /**
    * Updated at
    */
-  updated: number;
+  updated: string;
 }

@@ -1,13 +1,13 @@
 import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
+import { join } from 'path';
 
 import { AppModule } from './app/app.module';
-import { join } from 'path';
 
 /**
  * This is not a production server yet!
  * This is only a minimal backend to get started.
- **/
+ */
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
   const globalPrefix = 'api';

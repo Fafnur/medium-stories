@@ -2,7 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
+import { EntityServiceOptions, extendOptions } from '@medium-stories/entities';
+
 import { EventEntity } from '../entities/event.entity';
+
+export const eventServiceOptions: EntityServiceOptions = {
+  relations: ['image']
+};
 
 @Injectable()
 export class EventService {
@@ -11,11 +17,13 @@ export class EventService {
     private readonly userRepository: Repository<EventEntity>
   ) {}
 
-  async find(): Promise<EventEntity[]> {
-    return await this.userRepository.find();
+  async find(options?: EntityServiceOptions): Promise<EventEntity[]> {
+    const payload = extendOptions(eventServiceOptions, options);
+    return await this.userRepository.find(payload);
   }
 
-  async findOne(id: number): Promise<EventEntity> {
-    return await this.userRepository.findOne(id);
+  async findOne(id: number, options?: EntityServiceOptions): Promise<EventEntity> {
+    const payload = extendOptions(eventServiceOptions, options);
+    return await this.userRepository.findOne(id, payload);
   }
 }

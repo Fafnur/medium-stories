@@ -57,7 +57,10 @@
     "backend:api:migration:creare": "node_modules/.bin/ts-node node_modules/.bin/typeorm migration:create -n",
     "backend:api:migrations:run": "node_modules/.bin/tsc --project apps/backend/api/tsconfig.migrations.json && node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run",
     "backend:api:entities": "./node_modules/.bin/tsc --project apps/backend/api/tsconfig.entities.json",
-    "serve:backend:api": "ng serve backend-api"
+    "serve:backend:api": "ng serve backend-api",
+    "build:ssr:graphql": "ng build frontend-graphql --prod && ng run frontend-graphql:server:production && webpack --config apps/frontend/graphql/webpack.ssr.config.js --progress --colors",
+    "serve:ssr:graphql": "node dist/apps/frontend/graphql/server.js",
+    "serve:graphql": "ng serve frontend-graphql"
   },
   "private": true,
   "dependencies": {

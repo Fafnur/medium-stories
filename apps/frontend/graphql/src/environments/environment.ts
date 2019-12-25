@@ -7,6 +7,9 @@ export const environment = {
   translation: {
     languages: ['ru', 'en'],
     language: 'ru'
+  },
+  graphql: {
+    uri: ''
   }
 };
 

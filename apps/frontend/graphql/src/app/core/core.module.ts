@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
+import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 import { NxModule } from '@nrwl/angular';
 
 import { FOOTER_GROUPS_LINKS, FOOTER_NAV_LINKS, NAV_LINKS } from '@medium-stories/layouts';
@@ -10,9 +12,17 @@ import { RootStoreModule } from '@medium-stories/store';
 
 import { coreContainers, coreFooterGroupsLinks, coreFooterNavLinks, coreNavLinks, coreRoutes } from './core.common';
 
+import { environment } from '../../environments/environment';
+
+export function createApollo(httpLink: HttpLink) {
+  return {
+    link: httpLink.create({ uri: environment.graphql.uri }),
+    cache: new InMemoryCache()
+  };
+}
+
 @NgModule({
   imports: [
-    CommonModule,
     NxModule.forRoot(),
     ResponsiveModule.forRoot({
       mode: {
@@ -37,7 +47,13 @@ import { coreContainers, coreFooterGroupsLinks, coreFooterNavLinks, coreNavLinks
     {
       provide: FOOTER_GROUPS_LINKS,
       useValue: coreFooterGroupsLinks
+    },
+    {
+      provide: APOLLO_OPTIONS,
+      useFactory: createApollo,
+      deps: [HttpLink]
     }
-  ]
+  ],
+  exports: [ApolloModule, HttpLinkModule]
 })
 export class CoreModule {}

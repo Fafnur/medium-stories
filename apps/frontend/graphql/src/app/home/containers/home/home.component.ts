@@ -42,15 +42,10 @@ export class HomeComponent {
   /**
    * Carousel home config
    */
-  carouselHomeConfig: Partial<PromoCarouselOptions>;
+  carouselHomeConfig = carouselHomeConfig;
 
   /**
    * Promo top options
    */
-  promoTopOptions: PromoTopOptions;
-
-  constructor() {
-    this.carouselHomeConfig = carouselHomeConfig;
-    this.promoTopOptions = promoTopOptions;
-  }
+  promoTopOptions = promoTopOptions;
 }

@@ -1,9 +1,13 @@
-<div class="home-page">
-  <medium-stories-promo-carousel [config]="carouselHomeConfig"></medium-stories-promo-carousel>
-  <medium-stories-promo-top id="promo" [options]="promoTopOptions"></medium-stories-promo-top>
-  <div class="container">
-    <div id="main">
-      Main content, demo for scroll example
+<ng-container *ngTemplateOutlet="home; context: {}"></ng-container>
+
+<ng-template #home>
+  <div class="home-page">
+    <medium-stories-promo-carousel [config]="carouselHomeConfig"></medium-stories-promo-carousel>
+    <medium-stories-promo-top id="promo" [options]="promoTopOptions"></medium-stories-promo-top>
+    <div class="container">
+      <div id="main">
+        Main content, demo for scroll example
+      </div>
     </div>
   </div>
-</div>
+</ng-template>

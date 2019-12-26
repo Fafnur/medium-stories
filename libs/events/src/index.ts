@@ -1,1 +1,1 @@
-export * from './lib/events.module';
+export * from './lib/events-core/events-core.module';

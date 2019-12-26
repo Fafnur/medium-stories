@@ -8,6 +8,9 @@
     "nx.json": "*"
   },
   "projects": {
+    "backend-api": {
+      "tags": []
+    },
     "frontend-base": {
       "tags": []
     },
@@ -44,10 +47,13 @@
     "frontend-translation-state": {
       "tags": []
     },
+    "common": {
+      "tags": []
+    },
     "entities": {
       "tags": []
     },
-    "common": {
+    "events": {
       "tags": []
     },
     "layouts": {
@@ -66,9 +72,6 @@
       "tags": []
     },
     "translation": {
-      "tags": []
-    },
-    "backend-api": {
       "tags": []
     }
   }

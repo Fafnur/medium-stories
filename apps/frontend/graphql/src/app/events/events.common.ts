@@ -1,20 +1,12 @@
 import { Routes } from '@angular/router';
 
+import { eventsRoutes as baseEventRoutes } from '@medium-stories/events';
 import { BaseLayoutComponent } from '@medium-stories/layouts';
-
-import { EventsComponent } from './containers/events/events.component';
-
-export const eventsContainers: any[] = [EventsComponent];
 
 export const eventsRoutes: Routes = [
   {
     path: '',
     component: BaseLayoutComponent,
-    children: [
-      {
-        path: '',
-        component: EventsComponent
-      }
-    ]
+    children: baseEventRoutes
   }
 ];

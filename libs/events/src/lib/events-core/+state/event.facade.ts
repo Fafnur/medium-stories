@@ -53,6 +53,6 @@ export class EventFacade {
    * @param payload Events payload
    */
   loadEvents(payload: Partial<EventsPayload> = {}): void {
-    this.store.dispatch(new fromEventActions.LoadEvent(payload));
+    this.store.dispatch(new fromEventActions.LoadEvents(payload));
   }
 }

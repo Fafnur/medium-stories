@@ -3,14 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { EventsModule as BaseEventsModule, EventsCoreModule } from '@medium-stories/events';
 import { LayoutsModule } from '@medium-stories/layouts';
-import { ResponsiveModule } from '@medium-stories/responsive';
-import { SharedModule } from '@medium-stories/shared';
 
-import { eventsContainers, eventsRoutes } from './events.common';
+import { eventsRoutes } from './events.common';
 
 @NgModule({
-  imports: [CommonModule, LayoutsModule, ResponsiveModule, RouterModule.forChild(eventsRoutes), SharedModule, TranslateModule],
-  declarations: [...eventsContainers]
+  imports: [EventsCoreModule.forRoot(), BaseEventsModule, LayoutsModule, RouterModule.forChild(eventsRoutes)]
 })
 export class EventsModule {}

@@ -1,0 +1,8 @@
+@import 'utils';
+
+:host {
+}
+
+.events-page {
+  @include layout-padding-top();
+}

@@ -9,6 +9,9 @@ const eventsRequest: ApolloRequest = {
       events {
         id
         title
+        place
+        start
+        end
         created
         image {
           id

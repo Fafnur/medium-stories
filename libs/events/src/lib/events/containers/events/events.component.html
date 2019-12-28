@@ -1,0 +1,25 @@
+<ng-container *ngTemplateOutlet="eventsTpl; context: { events: eventFacade.events$ | async }"></ng-container>
+
+<ng-template #eventsTpl let-events="events">
+  <div class="events-page">
+    <div class="container">
+      <ng-container *ngIf="events">
+        <ng-container *ngFor="let event of events">
+          <ng-container *ngTemplateOutlet="eventTpl; context: { event: event }"></ng-container>
+        </ng-container>
+      </ng-container>
+      <ng-container *ngIf="!events">
+        {{ 'events.notLoaded' | translate }}
+      </ng-container>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #eventTpl let-event="event">
+  <h3>
+    {{ event.title | localize }}
+  </h3>
+  <div *ngIf="event.place">
+    {{ event.place | localize }}
+  </div>
+</ng-template>

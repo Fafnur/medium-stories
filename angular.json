@@ -1394,7 +1394,6 @@
       "root": "libs/entities",
       "sourceRoot": "libs/entities/src",
       "projectType": "library",
-      "schematics": {},
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -1409,6 +1408,12 @@
             "jestConfig": "libs/entities/jest.config.js",
             "tsConfig": "libs/entities/tsconfig.spec.json"
           }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss",
+          "changeDetection": "OnPush"
         }
       }
     },
@@ -1436,7 +1441,8 @@
       },
       "schematics": {
         "@nrwl/angular:component": {
-          "styleext": "scss"
+          "styleext": "scss",
+          "changeDetection": "OnPush"
         }
       }
     },

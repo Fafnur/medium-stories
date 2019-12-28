@@ -1,22 +1,41 @@
+import { ApolloError } from 'apollo-client';
+
+import { Event } from '@medium-stories/entities';
+
 import { EventAction, EventActionTypes } from './event.actions';
 
 export const EVENT_FEATURE_KEY = 'event';
 
-/**
- * Interface for the 'Event' data used in
- *  - EventState, and the reducer function
- *
- *  Note: replace if already defined in another module
- */
-
-/* tslint:disable:no-empty-interface */
-export interface Entity {}
-
 export interface EventState {
-  list: Entity[]; // list of Event; analogous to a sql normalized table
-  selectedId?: string | number; // which Event record has been selected
-  loaded: boolean; // has the Event list been loaded
-  error?: any; // last none error (if any)
+  /**
+   * Event
+   */
+  event: Event;
+
+  /**
+   * Event load error
+   */
+  eventLoadError?: ApolloError;
+
+  /**
+   * Event loading
+   */
+  eventLoading: boolean;
+
+  /**
+   * Events
+   */
+  events: Event[];
+
+  /**
+   * Events load error
+   */
+  eventsLoadError?: ApolloError;
+
+  /**
+   * Events loading
+   */
+  eventsLoading: boolean;
 }
 
 export interface EventPartialState {
@@ -24,20 +43,66 @@ export interface EventPartialState {
 }
 
 export const eventInitialState: EventState = {
-  list: [],
-  loaded: false
+  event: null,
+  eventLoadError: null,
+  eventLoading: false,
+  events: null,
+  eventsLoadError: null,
+  eventsLoading: false
 };
 
 export function eventReducer(state: EventState = eventInitialState, action: EventAction): EventState {
   switch (action.type) {
+    case EventActionTypes.LoadingEvent: {
+      state = {
+        ...state,
+        eventLoadError: null,
+        eventLoading: true
+      };
+      break;
+    }
     case EventActionTypes.EventLoaded: {
       state = {
         ...state,
-        list: action.payload,
-        loaded: true
+        event: action.payload,
+        eventLoading: false
+      };
+      break;
+    }
+    case EventActionTypes.EventLoadError: {
+      state = {
+        ...state,
+        eventLoadError: action.payload,
+        eventLoading: false
+      };
+      break;
+    }
+
+    case EventActionTypes.LoadingEvents: {
+      state = {
+        ...state,
+        eventsLoadError: null,
+        eventsLoading: true
+      };
+      break;
+    }
+    case EventActionTypes.EventsLoaded: {
+      state = {
+        ...state,
+        events: action.payload,
+        eventsLoading: false
+      };
+      break;
+    }
+    case EventActionTypes.EventsLoadError: {
+      state = {
+        ...state,
+        eventsLoadError: action.payload,
+        eventsLoading: false
       };
       break;
     }
   }
+
   return state;
 }

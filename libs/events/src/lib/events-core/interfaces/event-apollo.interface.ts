@@ -1,4 +1,5 @@
 import { ApolloResponse } from '@medium-stories/common';
+import { Event } from '@medium-stories/entities';
 
 /**
  * Event apollo
@@ -7,10 +8,10 @@ export abstract class EventApollo {
   /**
    * Observed events
    */
-  abstract events$: ApolloResponse<Event[]>;
+  abstract loadEvent(id: number, queryParams?: object): ApolloResponse<Event>;
 
   /**
    * Observed events
    */
-  abstract event$: (id: number) => ApolloResponse<Event>;
+  abstract loadEvents(queryParams?: object): ApolloResponse<Event[]>;
 }

@@ -27,8 +27,8 @@ describe('EventEffects', () => {
 
   describe('loadEvent$', () => {
     it('should work', () => {
-      actions = hot('-a-|', { a: new LoadEvent() });
-      expect(effects.loadEvent$).toBeObservable(hot('-a-|', { a: new EventLoaded([]) }));
+      actions = hot('-a-|', { a: new LoadEvent({}) });
+      expect(effects.loadEvent$).toBeObservable(hot('-a-|', { a: new EventLoaded({} as any) }));
     });
   });
 });

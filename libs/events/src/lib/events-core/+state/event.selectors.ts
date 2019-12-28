@@ -4,18 +4,23 @@ import { EVENT_FEATURE_KEY, EventState } from './event.reducer';
 
 const getEventState = createFeatureSelector<EventState>(EVENT_FEATURE_KEY);
 
-const getLoaded = createSelector(getEventState, (state: EventState) => state.loaded);
+const getEvent = createSelector(getEventState, state => state.event);
 
-const getError = createSelector(getEventState, (state: EventState) => state.error);
+const getEventLoadError = createSelector(getEventState, state => state.eventLoadError);
 
-const getAllEvent = createSelector(getEventState, getLoaded, (state: EventState, isLoaded) => {
-  return isLoaded ? state.list : [];
-});
+const getEventLoading = createSelector(getEventState, state => state.eventLoading);
 
-const getSelectedId = createSelector(getEventState, (state: EventState) => state.selectedId);
+const getEvents = createSelector(getEventState, state => state.events);
+
+const getEventsLoadError = createSelector(getEventState, state => state.eventsLoadError);
+
+const getEventsLoading = createSelector(getEventState, state => state.eventsLoading);
 
 export const eventQuery = {
-  getLoaded,
-  getError,
-  getAllEvent
+  getEvent,
+  getEventLoadError,
+  getEventLoading,
+  getEvents,
+  getEventsLoadError,
+  getEventsLoading
 };

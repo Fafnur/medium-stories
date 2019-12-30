@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { ApolloError, ApolloQueryResult } from 'apollo-client';
+import { ApolloError } from 'apollo-client';
 import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
@@ -15,16 +15,20 @@ export class BaseEventApollo implements EventApollo {
   constructor(private apollo: Apollo) {}
 
   loadEvent(id: number, queryParams: object = {}): ApolloResponse<Event> {
-    return this.apollo.query({ query: eventRequests.eventRequest.query, variables: { id } }).pipe(
-      map<ApolloQueryResult<{ event: Event }>, Event>(result => extractApolloResponse(result, eventRequests.eventRequest.keys)),
-      catchError((error: ApolloError) => throwError(error))
-    );
+    return this.apollo
+      .query<{ event: Event }>({ query: eventRequests.eventRequest.query, variables: { id } })
+      .pipe(
+        map(result => extractApolloResponse(result, eventRequests.eventRequest.keys)),
+        catchError((error: ApolloError) => throwError(error))
+      );
   }
 
   loadEvents(queryParams: object = {}): ApolloResponse<Event[]> {
-    return this.apollo.query({ query: eventRequests.eventsRequest.query }).pipe(
-      map<ApolloQueryResult<{ events: Event[] }>, Event[]>(result => extractApolloResponse(result, eventRequests.eventsRequest.keys)),
-      catchError((error: ApolloError) => throwError(error))
-    );
+    return this.apollo
+      .query<{ events: Event[] }>({ query: eventRequests.eventsRequest.query })
+      .pipe(
+        map(result => extractApolloResponse(result, eventRequests.eventsRequest.keys)),
+        catchError((error: ApolloError) => throwError(error))
+      );
   }
 }

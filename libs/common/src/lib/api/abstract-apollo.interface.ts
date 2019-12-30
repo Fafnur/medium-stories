@@ -25,32 +25,6 @@ export interface ApolloRequest {
 export type ApolloResponse<T = any, R extends ApolloError = ApolloError> = Observable<T | R>;
 
 /**
- * Create watch query
- * @param apollo Apollo
- * @param payload Apollo request
- * @param variables Variables for apollo query
- */
-export function createWatchQuery<T = any>(apollo: Apollo, payload: ApolloRequest, variables?: { [key: string]: any }): ApolloResponse<T> {
-  return apollo.watchQuery({ query: payload.query, variables }).valueChanges.pipe(
-    map<ApolloQueryResult<any>, T>(result => extractApolloResponse<T>(result, payload.keys)),
-    catchError((error: ApolloError) => throwError(error))
-  );
-}
-
-/**
- * Create watch query
- * @param apollo Apollo
- * @param payload Apollo request
- * @param variables Variables for apollo query
- */
-export function createQuery<T = any>(apollo: Apollo, payload: ApolloRequest, variables?: { [key: string]: any }): Observable<T> {
-  return apollo.query({ query: payload.query, variables }).pipe(
-    map<ApolloQueryResult<any>, T>(result => extractApolloResponse<T>(result, payload.keys)),
-    catchError((error: ApolloError) => throwError(error))
-  );
-}
-
-/**
  * Extract data from apollo query result
  * @param result Apollo query result
  * @param entitiesKeys Simple key or array keys for extract

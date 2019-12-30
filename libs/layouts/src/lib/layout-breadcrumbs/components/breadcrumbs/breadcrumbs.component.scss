@@ -1,0 +1,46 @@
+@import 'utils';
+
+:host {
+  display: flex;
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-flow: row wrap;
+  flex-basis: min-content;
+  border-bottom: 1px solid mat-color($mat-gray, 400);
+}
+
+.breadcrumb {
+  display: flex;
+
+  &:after {
+    content: '/';
+    padding: 0 0.5rem;
+    margin: auto;
+  }
+
+  &:last-child:after {
+    display: none;
+  }
+}
+
+.breadcrumb-item {
+  color: black;
+  display: block;
+  padding: 0.4rem;
+  font-weight: 700;
+  user-select: none;
+}
+
+.breadcrumb-link {
+  color: black;
+  display: block;
+  padding: 0.4rem;
+  user-select: none;
+
+  &:hover {
+    color: $primary;
+    text-decoration: none;
+  }
+}

@@ -1,4 +1,4 @@
-import { HoveredNavItemPayload } from '../../lib/+state/layout.actions';
+import { HoveredNavItemPayload } from '../../lib/layout-core/+state/layout.actions';
 
 export const hoveredNavItemPayloadStub: HoveredNavItemPayload = {
   id: 'nav_0',

@@ -1,0 +1,18 @@
+<ng-container *ngTemplateOutlet="breadcrumbsTpl; context: { breadcrumbs: breadcrumbs$ | async }"></ng-container>
+
+<ng-template #breadcrumbsTpl let-breadcrumbs="breadcrumbs">
+  <div class="breadcrumbs" *ngIf="breadcrumbs">
+    <div class="breadcrumb" *ngFor="let breadcrumb of breadcrumbs; let last = last">
+      <ng-container *ngIf="!last">
+        <a class="breadcrumb-link class.breadcrumb-link_active" [routerLink]="breadcrumb.url">
+          {{ breadcrumb.label | translate }}
+        </a>
+      </ng-container>
+      <ng-container *ngIf="last">
+        <span class="breadcrumb-item">
+          {{ breadcrumb.label | translate }}
+        </span>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>

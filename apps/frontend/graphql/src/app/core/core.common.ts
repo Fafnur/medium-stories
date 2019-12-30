@@ -13,7 +13,10 @@ export const coreRoutes: Routes = [
   },
   {
     path: 'events',
-    loadChildren: () => import('../events/events.module').then(m => m.EventsModule)
+    loadChildren: () => import('../events/events.module').then(m => m.EventsModule),
+    data: {
+      breadcrumb: 'breadcrumbs.events'
+    }
   }
 ];
 

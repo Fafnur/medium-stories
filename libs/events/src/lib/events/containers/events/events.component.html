@@ -3,6 +3,7 @@
 <ng-template #eventsTpl let-events="events">
   <div class="events-page">
     <div class="container">
+      <ms-breadcrumbs></ms-breadcrumbs>
       <ng-container *ngIf="events">
         <ng-container *ngFor="let event of events">
           <ng-container *ngTemplateOutlet="eventTpl; context: { event: event }"></ng-container>

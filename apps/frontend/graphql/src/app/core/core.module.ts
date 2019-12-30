@@ -6,7 +6,7 @@ import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { NxModule } from '@nrwl/angular';
 
-import { FOOTER_GROUPS_LINKS, FOOTER_NAV_LINKS, NAV_LINKS } from '@medium-stories/layouts';
+import { FOOTER_GROUPS_LINKS, FOOTER_NAV_LINKS, LayoutsCoreModule, NAV_LINKS } from '@medium-stories/layouts';
 import { RESPONSIVE_SIZE_DEFAULT, ResponsiveModule } from '@medium-stories/responsive';
 import { RootStoreModule } from '@medium-stories/store';
 
@@ -24,6 +24,7 @@ export function createApollo(httpLink: HttpLink) {
 @NgModule({
   imports: [
     NxModule.forRoot(),
+    LayoutsCoreModule,
     ResponsiveModule.forRoot({
       mode: {
         mobile: 'lg',

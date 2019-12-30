@@ -9,6 +9,12 @@
       "en": "En"
     }
   },
+  "breadcrumbs": {
+    "labels": {
+      "home": "Home",
+      "events": "Events"
+    }
+  },
   "menu": {
     "models": {
       "title": "Models",

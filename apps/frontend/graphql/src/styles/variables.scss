@@ -11,7 +11,8 @@ $grid-breakpoints: (
   lg: 992px,
   xl: 1200px,
   hg: 1400px,
-  zh: 1600px
+  zh: 1600px,
+  wz: 1900px
 );
 
 $container-max-widths: (
@@ -20,7 +21,8 @@ $container-max-widths: (
   lg: 960px,
   xl: 1140px,
   hg: 1340px,
-  zh: 1540px
+  zh: 1540px,
+  //wz: 1840px
 );
 
 $mobile: lg;

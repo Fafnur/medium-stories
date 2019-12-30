@@ -9,6 +9,10 @@
       "en": "En"
     }
   },
+  "breadcrumbs": {
+    "home": "Главная",
+    "events": "Мероприятия"
+  },
   "menu": {
     "models": {
       "title": "Модели",

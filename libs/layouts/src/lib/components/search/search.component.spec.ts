@@ -4,7 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { MockComponent } from 'ng-mocks';
 
-import { MsIconComponent } from '@medium-stories/shared';
+import { IconComponent } from '@medium-stories/shared';
 
 import { SearchComponent } from './search.component';
 
@@ -15,7 +15,7 @@ describe('SearchComponent', () => {
   beforeEach(async(() => {
     return TestBed.configureTestingModule({
       imports: [MatInputModule, MatIconModule, TranslateModule.forRoot()],
-      declarations: [SearchComponent, MockComponent(MsIconComponent)],
+      declarations: [SearchComponent, MockComponent(IconComponent)],
       providers: [
         {
           provide: NgbModal,

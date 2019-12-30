@@ -5,7 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MockComponent, MockDirective } from 'ng-mocks';
 import { of } from 'rxjs';
 
-import { MsIconComponent, MsLetDirective } from '@medium-stories/shared';
+import { IconComponent, MsLetDirective } from '@medium-stories/shared';
 
 import { LayoutFacade } from '../../+state/layout.facade';
 import { NAV_LINKS } from '../../layouts.tokens';
@@ -18,7 +18,7 @@ describe('NavSubmenuComponent', () => {
   beforeEach(async(() => {
     return TestBed.configureTestingModule({
       imports: [NoopAnimationsModule, RouterTestingModule, TranslateModule.forRoot()],
-      declarations: [NavSubmenuComponent, MockDirective(MsLetDirective), MockComponent(MsIconComponent)],
+      declarations: [NavSubmenuComponent, MockDirective(MsLetDirective), MockComponent(IconComponent)],
       providers: [
         {
           provide: LayoutFacade,

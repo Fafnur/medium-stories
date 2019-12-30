@@ -6,6 +6,6 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
   template: '<fa-icon [icon]="icon"></fa-icon>',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MsIconComponent {
+export class IconComponent {
   @Input() icon: IconProp;
 }

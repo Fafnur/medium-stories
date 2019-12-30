@@ -5,7 +5,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { MockComponent, MockPipe } from 'ng-mocks';
 import { of } from 'rxjs';
 
-import { MsIconComponent } from '@medium-stories/shared';
+import { IconComponent } from '@medium-stories/shared';
 
 import { LayoutFacade } from '../../+state/layout.facade';
 import { SidebarComponent } from './sidebar.component';
@@ -17,7 +17,7 @@ describe('SidebarComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [NoopAnimationsModule, RouterTestingModule],
-      declarations: [SidebarComponent, MockComponent(MsIconComponent), MockPipe(TranslatePipe)],
+      declarations: [SidebarComponent, MockComponent(IconComponent), MockPipe(TranslatePipe)],
       providers: [
         {
           provide: LayoutFacade,

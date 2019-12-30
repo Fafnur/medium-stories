@@ -5,7 +5,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { MockComponent, MockDirective, MockPipe } from 'ng-mocks';
 import { of } from 'rxjs';
 
-import { MsIconComponent, MsLetDirective } from '@medium-stories/shared';
+import { IconComponent, MsLetDirective } from '@medium-stories/shared';
 
 import { LayoutFacade } from '../../+state/layout.facade';
 import { NAV_LINKS } from '../../layouts.tokens';
@@ -18,7 +18,7 @@ describe('SideMenuComponent', () => {
   beforeEach(async(() => {
     return TestBed.configureTestingModule({
       imports: [NoopAnimationsModule, RouterTestingModule],
-      declarations: [SideMenuComponent, MockComponent(MsIconComponent), MockDirective(MsLetDirective), MockPipe(TranslatePipe)],
+      declarations: [SideMenuComponent, MockComponent(IconComponent), MockDirective(MsLetDirective), MockPipe(TranslatePipe)],
       providers: [
         {
           provide: LayoutFacade,

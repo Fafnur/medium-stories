@@ -4,6 +4,12 @@ import { EVENT_FEATURE_KEY, EventState } from './event.reducer';
 
 const getEventState = createFeatureSelector<EventState>(EVENT_FEATURE_KEY);
 
+const getEventLast = createSelector(getEventState, state => state.eventLast);
+
+const getEventLastLoadError = createSelector(getEventState, state => state.eventLastLoadError);
+
+const getEventLastLoading = createSelector(getEventState, state => state.eventLastLoading);
+
 const getEvent = createSelector(getEventState, state => state.event);
 
 const getEventLoadError = createSelector(getEventState, state => state.eventLoadError);
@@ -17,6 +23,9 @@ const getEventsLoadError = createSelector(getEventState, state => state.eventsLo
 const getEventsLoading = createSelector(getEventState, state => state.eventsLoading);
 
 export const eventQuery = {
+  getEventLast,
+  getEventLastLoadError,
+  getEventLastLoading,
   getEvent,
   getEventLoadError,
   getEventLoading,

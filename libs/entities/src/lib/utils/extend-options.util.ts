@@ -17,10 +17,16 @@ export function extendOptions<T = object>(defaultOptions: Partial<T>, options?: 
       subObjects[field] = { ...(defaultOptions[field] || {}), ...(options[field] || {}) };
     }
   });
-
-  return {
+  const result = {
     ...defaultOptions,
     ...options,
     ...subObjects
   };
+  for (const option of Object.keys(result)) {
+    if (result[option] == null) {
+      delete result[option];
+    }
+  }
+
+  return result;
 }

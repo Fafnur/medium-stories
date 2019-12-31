@@ -17,15 +17,37 @@ import {
   EventsLoadCanceled,
   EventsLoaded,
   EventsLoadError,
+  LastEventLoadCanceled,
+  LastEventLoaded,
+  LastEventLoadError,
   LoadEvent,
   LoadEvents,
   LoadingEvent,
-  LoadingEvents
+  LoadingEvents,
+  LoadingLastEvent,
+  LoadLastEvent
 } from './event.actions';
 import { EventApollo } from '../interfaces/event-apollo.interface';
 
 @Injectable()
 export class EventEffects extends AbstractEffects<EventState> {
+  @Effect() loadLastEvent$ = this.dataPersistence.fetch(EventActionTypes.LoadLastEvent, {
+    run: (action: LoadLastEvent, store: EventPartialState) => {
+      return isPlatformBrowser(this.platformId) && (!this.getState(store).eventLastLoading || action.payload)
+        ? new LoadingLastEvent()
+        : new LastEventLoadCanceled();
+    },
+    onError: (action: LoadLastEvent, error: any) => console.error(error.toString())
+  });
+
+  @Effect() loadingLastEvent$ = this.dataPersistence.fetch(EventActionTypes.LoadingLastEvent, {
+    id: () => 'loadLast',
+    run: (action: LoadingLastEvent, store: EventPartialState) => {
+      return this.eventApollo.loadLastEvent().pipe(map<Event, LastEventLoaded>(event => new LastEventLoaded(event)));
+    },
+    onError: (action: LoadingLastEvent, error: ApolloError) => new LastEventLoadError(error)
+  });
+
   @Effect() loadEvent$ = this.dataPersistence.fetch(EventActionTypes.LoadEvent, {
     run: (action: LoadEvent, store: EventPartialState) => {
       return isPlatformBrowser(this.platformId) && (!this.getState(store).eventLoading || action.payload.force)

@@ -18,14 +18,14 @@ export interface EventPayload {
  */
 export interface EventsPayload {
   /**
-   * After id
+   * Order
    */
-  after: number;
+  order: string;
 
   /**
-   * Slice
+   * Limit
    */
-  first: number;
+  limit: number;
 
   /**
    * Offset
@@ -36,4 +36,9 @@ export interface EventsPayload {
    * Is force
    */
   force: boolean;
+
+  /**
+   * Exclude last
+   */
+  excludeLast?: boolean;
 }

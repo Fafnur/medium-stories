@@ -16,7 +16,13 @@ export enum EventActionTypes {
   EventLoadCanceled = '[Event] Event load canceled',
   LoadingEvent = '[Event] Loading event',
   EventLoaded = '[Event] Event loaded',
-  EventLoadError = '[Event] Event load error'
+  EventLoadError = '[Event] Event load error',
+
+  LoadLastEvent = '[Event] Load last event',
+  LastEventLoadCanceled = '[Event] Last event load canceled',
+  LoadingLastEvent = '[Event] Loading last event',
+  LastEventLoaded = '[Event] Last event loaded',
+  LastEventLoadError = '[Event] Last event load error'
 }
 
 export class LoadEvents implements Action {
@@ -75,6 +81,32 @@ export class EventLoadError implements Action {
   constructor(public payload: ApolloError) {}
 }
 
+export class LoadLastEvent implements Action {
+  readonly type = EventActionTypes.LoadLastEvent;
+
+  constructor(public payload?: boolean) {}
+}
+
+export class LastEventLoadCanceled implements Action {
+  readonly type = EventActionTypes.LastEventLoadCanceled;
+}
+
+export class LoadingLastEvent implements Action {
+  readonly type = EventActionTypes.LoadingLastEvent;
+}
+
+export class LastEventLoaded implements Action {
+  readonly type = EventActionTypes.LastEventLoaded;
+
+  constructor(public payload: Event) {}
+}
+
+export class LastEventLoadError implements Action {
+  readonly type = EventActionTypes.LastEventLoadError;
+
+  constructor(public payload: ApolloError) {}
+}
+
 export type EventAction =
   | LoadEvents
   | EventsLoadCanceled
@@ -85,7 +117,12 @@ export type EventAction =
   | EventLoadCanceled
   | LoadingEvent
   | EventLoaded
-  | EventLoadError;
+  | EventLoadError
+  | LoadLastEvent
+  | LastEventLoadCanceled
+  | LoadingLastEvent
+  | LastEventLoaded
+  | LastEventLoadError;
 
 export const fromEventActions = {
   LoadEvents,
@@ -98,5 +135,11 @@ export const fromEventActions = {
   EventLoadCanceled,
   LoadingEvent,
   EventLoaded,
-  EventLoadError
+  EventLoadError,
+
+  LoadLastEvent,
+  LastEventLoadCanceled,
+  LoadingLastEvent,
+  LastEventLoaded,
+  LastEventLoadError
 };

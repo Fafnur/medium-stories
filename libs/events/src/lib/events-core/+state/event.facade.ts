@@ -9,6 +9,21 @@ import { eventQuery } from './event.selectors';
 @Injectable()
 export class EventFacade {
   /**
+   * Observed last event
+   */
+  eventLast$ = this.store.pipe(select(eventQuery.getEventLast));
+
+  /**
+   * Observed last event load error
+   */
+  eventLastLoadError$ = this.store.pipe(select(eventQuery.getEventLastLoadError));
+
+  /**
+   * Observed last event loading
+   */
+  eventLastLoading$ = this.store.pipe(select(eventQuery.getEventLastLoading));
+
+  /**
    * Observed event
    */
   event$ = this.store.pipe(select(eventQuery.getEvent));
@@ -46,6 +61,13 @@ export class EventFacade {
    */
   loadEvent(payload: Partial<EventPayload> & { id: number }): void {
     this.store.dispatch(new fromEventActions.LoadEvent(payload));
+  }
+  /**
+   * Load last event
+   * @param payload Force
+   */
+  loadLastEvent(payload?: boolean): void {
+    this.store.dispatch(new fromEventActions.LoadLastEvent(payload));
   }
 
   /**

@@ -10,6 +10,7 @@ import { EventFacade } from '../../../events-core/+state/event.facade';
 })
 export class EventsComponent {
   constructor(public eventFacade: EventFacade) {
-    this.eventFacade.loadEvents();
+    this.eventFacade.loadEvents({ excludeLast: true });
+    this.eventFacade.loadLastEvent();
   }
 }

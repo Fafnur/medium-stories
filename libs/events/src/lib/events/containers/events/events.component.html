@@ -14,9 +14,6 @@
           <ng-container *ngTemplateOutlet="eventTpl; context: { event: event }"></ng-container>
         </ng-container>
       </ng-container>
-      <ng-container *ngIf="!events">
-        {{ 'events.notLoaded' | translate }}
-      </ng-container>
     </div>
   </div>
 </ng-template>

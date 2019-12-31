@@ -6,12 +6,17 @@ import { Event } from '@medium-stories/entities';
  */
 export abstract class EventApollo {
   /**
-   * Observed events
+   * Return event by id
    */
   abstract loadEvent(id: number, queryParams?: object): ApolloResponse<Event>;
 
   /**
-   * Observed events
+   * Return last event
+   */
+  abstract loadLastEvent(queryParams?: object): ApolloResponse<Event>;
+
+  /**
+   * Return events with options
    */
   abstract loadEvents(queryParams?: object): ApolloResponse<Event[]>;
 }

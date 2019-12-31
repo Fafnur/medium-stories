@@ -8,6 +8,21 @@ export const EVENT_FEATURE_KEY = 'event';
 
 export interface EventState {
   /**
+   * Last event
+   */
+  eventLast: Event;
+
+  /**
+   * Last event load error
+   */
+  eventLastLoadError?: ApolloError;
+
+  /**
+   * Last event loading
+   */
+  eventLastLoading: boolean;
+
+  /**
    * Event
    */
   event: Event;
@@ -43,6 +58,9 @@ export interface EventPartialState {
 }
 
 export const eventInitialState: EventState = {
+  eventLast: null,
+  eventLastLoadError: null,
+  eventLastLoading: false,
   event: null,
   eventLoadError: null,
   eventLoading: false,
@@ -99,6 +117,31 @@ export function eventReducer(state: EventState = eventInitialState, action: Even
         ...state,
         eventsLoadError: action.payload,
         eventsLoading: false
+      };
+      break;
+    }
+
+    case EventActionTypes.LoadingLastEvent: {
+      state = {
+        ...state,
+        eventLastLoadError: null,
+        eventLastLoading: true
+      };
+      break;
+    }
+    case EventActionTypes.LastEventLoaded: {
+      state = {
+        ...state,
+        eventLast: action.payload,
+        eventLastLoading: false
+      };
+      break;
+    }
+    case EventActionTypes.LastEventLoadError: {
+      state = {
+        ...state,
+        eventLastLoadError: action.payload,
+        eventLastLoading: false
       };
       break;
     }

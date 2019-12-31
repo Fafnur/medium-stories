@@ -7,8 +7,9 @@ import { catchError, map } from 'rxjs/operators';
 import { ApolloResponse, extractApolloResponse } from '@medium-stories/common';
 import { Event } from '@medium-stories/entities';
 
-import { eventRequests } from '../graphql/event.queries';
+import { EventsPayload } from '../../events-core/interfaces/event.interface';
 import { EventApollo } from '../interfaces/event-apollo.interface';
+import { eventRequests } from '../graphql/event.queries';
 
 @Injectable()
 export class BaseEventApollo implements EventApollo {
@@ -23,9 +24,24 @@ export class BaseEventApollo implements EventApollo {
       );
   }
 
-  loadEvents(queryParams: object = {}): ApolloResponse<Event[]> {
+  loadLastEvent(queryParams?: object): ApolloResponse<Event> {
     return this.apollo
-      .query<{ events: Event[] }>({ query: eventRequests.eventsRequest.query })
+      .query<{ events: Event }>({
+        query: eventRequests.eventsRequest.query,
+        variables: { limit: 1, order: JSON.stringify({ id: 'DESC' }) }
+      })
+      .pipe(
+        map(result => (result.data.events ? result.data.events[0] : null)),
+        catchError((error: ApolloError) => throwError(error))
+      );
+  }
+
+  loadEvents(queryParams: Partial<EventsPayload> = {}): ApolloResponse<Event[]> {
+    return this.apollo
+      .query<{ events: Event[] }>({
+        query: eventRequests.eventsRequest.query,
+        variables: { limit: queryParams.limit, offset: queryParams.offset, order: queryParams.order, excludeLast: queryParams.excludeLast }
+      })
       .pipe(
         map(result => extractApolloResponse(result, eventRequests.eventsRequest.keys)),
         catchError((error: ApolloError) => throwError(error))

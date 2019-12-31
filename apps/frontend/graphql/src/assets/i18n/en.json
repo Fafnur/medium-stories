@@ -10,10 +10,8 @@
     }
   },
   "breadcrumbs": {
-    "labels": {
-      "home": "Home",
-      "events": "Events"
-    }
+    "home": "Home",
+    "events": "Events"
   },
   "menu": {
     "models": {
@@ -131,9 +129,6 @@
       "placeholder": "Search on Medium Stories"
     }
   },
-  "events": {
-    "title": "Events page"
-  },
   "footer": {
     "copyright": "Copyright © 2017 Automobili Lamborghini S.p.A. a sole shareholder company part of Audi Group. All rights reserved. VAT  no. IT 00591801204",
     "social": {
@@ -144,5 +139,24 @@
     "actions": {
       "discoverMore": "Discover more"
     }
+  },
+  "home": {
+    "slide1": {
+      "title": "Sián FKP 37",
+      "description": "Ahead of its time"
+    },
+    "slide2": {
+      "title": "Urus",
+      "description": "#sincewemadeitpossible"
+    },
+    "slide3": {
+      "title": "Huracán Evo",
+      "description": "Every day amplified"
+    }
+  },
+  "events": {
+    "title": "Events",
+    "slogan": "Lamborghini World",
+    "description": "Keep updated about upcoming events Automobili Lamborghini. For North America events visit <a href=\"//allaccess.com\">allaccess.com</a>"
   }
 }

@@ -4,6 +4,11 @@
   <div class="events-page">
     <div class="container">
       <ms-breadcrumbs></ms-breadcrumbs>
+      <h1 class="events-title">{{ 'events.title' | translate }}</h1>
+      <h3 class="events-subtitle">
+        <span class="events-slogan">{{ 'events.slogan' | translate }}</span>
+      </h3>
+      <div class="events-description" [innerHTML]="'events.description' | translate"></div>
       <ng-container *ngIf="events">
         <ng-container *ngFor="let event of events">
           <ng-container *ngTemplateOutlet="eventTpl; context: { event: event }"></ng-container>

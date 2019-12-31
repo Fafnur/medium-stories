@@ -129,13 +129,15 @@
       "placeholder": "Поиск на Medium Stories"
     }
   },
-  "events": {
-    "title": "Страница событий"
-  },
   "footer": {
     "copyright": "Авторское право © 2017 Automobili Lamborghini S.p.A. полностью принадлежит Группе Audi. Все права защищены. Идентификационный номер\n  плательщика НДС: IT 00591801204",
     "social": {
       "join": "Присоединяйтесь к нам"
+    }
+  },
+  "promo": {
+    "actions": {
+      "discoverMore": "Подробнее"
     }
   },
   "home": {
@@ -152,9 +154,9 @@
       "description": "Every day amplified"
     }
   },
-  "promo": {
-    "actions": {
-      "discoverMore": "Подробнее"
-    }
+  "events": {
+    "title": "Мероприятия",
+    "slogan": "Мир Lamborghini",
+    "description": "Узнайте о мероприятиях Automobili Lamborghini."
   }
 }

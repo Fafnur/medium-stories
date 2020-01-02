@@ -13,6 +13,7 @@ import { RootStoreModule } from '@medium-stories/store';
 import { coreContainers, coreFooterGroupsLinks, coreFooterNavLinks, coreNavLinks, coreRoutes } from './core.common';
 
 import { environment } from '../../environments/environment';
+import { API_SOURCES, APP_DIST } from '@medium-stories/common';
 
 export function createApollo(httpLink: HttpLink) {
   return {
@@ -53,6 +54,14 @@ export function createApollo(httpLink: HttpLink) {
       provide: APOLLO_OPTIONS,
       useFactory: createApollo,
       deps: [HttpLink]
+    },
+    {
+      provide: APP_DIST,
+      useValue: 'frontend/graphql'
+    },
+    {
+      provide: API_SOURCES, // need to set path's for sources
+      useValue: environment.api.sources
     }
   ],
   exports: [ApolloModule, HttpLinkModule]

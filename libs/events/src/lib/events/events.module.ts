@@ -4,13 +4,14 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { LayoutBreadcrumbsModule } from '@medium-stories/layouts';
+import { ResponsiveModule } from '@medium-stories/responsive';
 import { SharedModule } from '@medium-stories/shared';
 
-import { eventsContainers } from './events.common';
+import { eventsComponents, eventsContainers } from './events.common';
 
 @NgModule({
-  imports: [CommonModule, LayoutBreadcrumbsModule, RouterModule, SharedModule, TranslateModule],
-  declarations: [...eventsContainers],
-  exports: [...eventsContainers]
+  imports: [CommonModule, LayoutBreadcrumbsModule, RouterModule, ResponsiveModule, SharedModule, TranslateModule],
+  declarations: [...eventsComponents, ...eventsContainers],
+  exports: [...eventsComponents, ...eventsContainers]
 })
 export class EventsModule {}

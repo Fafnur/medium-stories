@@ -157,6 +157,9 @@
   "events": {
     "title": "Мероприятия",
     "slogan": "Мир Lamborghini",
-    "description": "Узнайте о мероприятиях Automobili Lamborghini."
+    "description": "Узнайте о мероприятиях Automobili Lamborghini.",
+    "actions": {
+      "readMore": "Узнать подробнее"
+    }
   }
 }

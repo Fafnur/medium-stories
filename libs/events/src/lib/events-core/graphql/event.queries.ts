@@ -9,12 +9,14 @@ const eventsRequest: ApolloRequest = {
       events(limit: $limit, offset: $offset, order: $order, excludeLast: $excludeLast) {
         id
         title
+        body
         place
         start
         end
         created
         image {
           id
+          src
         }
       }
     }
@@ -31,6 +33,7 @@ const eventRequest: ApolloRequest = {
         created
         image {
           id
+          src
         }
       }
     }

@@ -9,6 +9,10 @@
         <span class="events-slogan">{{ 'events.slogan' | translate }}</span>
       </h3>
       <div class="events-description" [innerHTML]="'events.description' | translate"></div>
+      <div class="events-last">
+        <medium-stories-event-last></medium-stories-event-last>
+      </div>
+
       <ng-container *ngIf="events">
         <ng-container *ngFor="let event of events">
           <ng-container *ngTemplateOutlet="eventTpl; context: { event: event }"></ng-container>
@@ -22,7 +26,7 @@
   <h3>
     {{ event.title | localize }}
   </h3>
-  <div *ngIf="event.place">
+  <div class="event-place" *ngIf="event.place">
     {{ event.place | localize }}
   </div>
 </ng-template>

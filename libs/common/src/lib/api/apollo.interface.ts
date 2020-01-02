@@ -1,8 +1,6 @@
-import { Apollo } from 'apollo-angular';
 import { ApolloError, ApolloQueryResult } from 'apollo-client';
 import { DocumentNode } from 'graphql';
-import { catchError, map } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 
 /**
  * Apollo request

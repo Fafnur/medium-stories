@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { Event } from '@medium-stories/entities';
 
@@ -8,10 +8,6 @@ import { Event } from '@medium-stories/entities';
   styleUrls: ['./event-box.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EventBoxComponent implements OnInit {
+export class EventBoxComponent {
   @Input() event: Event;
-
-  constructor() {}
-
-  ngOnInit() {}
 }

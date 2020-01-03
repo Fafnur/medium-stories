@@ -4,6 +4,10 @@ export interface MsRunContext {
   $implicit: any;
 }
 
+/**
+ * @deprecated
+ * Don't use it. Use native functionality - *ngTemplateOutlet.
+ */
 @Directive({
   selector: '[msRun]'
 })

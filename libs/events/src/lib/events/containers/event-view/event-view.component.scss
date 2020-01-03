@@ -1,0 +1,104 @@
+@import 'utils';
+
+:host {
+}
+
+.event-view-page {
+}
+
+.event-view-poster {
+  position: relative;
+}
+
+.event-view-image {
+  max-width: 100%;
+  width: 100%;
+}
+
+.event-view-date {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  line-height: 1;
+  background-color: $primary;
+  color: white;
+  padding: 1rem;
+  font-size: 2rem;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 3rem;
+  }
+}
+
+.event-view-container {
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.event-view-back {
+  margin: 1rem 0;
+}
+
+.event-view-link {
+  text-decoration: none;
+  text-transform: uppercase;
+
+  .event-view-readmore & {
+    background-color: $primary;
+    color: white;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .event-view-back & {
+    font-size: 1rem;
+    font-weight: 500;
+    color: mat-color($mat-gray, 500);
+  }
+}
+
+.event-view-title {
+  color: black;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 2rem;
+  }
+}
+
+.event-view-place {
+  color: black;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.event-view-body {
+  font-size: 1rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.event-view-readmore {
+  margin-bottom: 1rem;
+
+  @include media-breakpoint-up(lg) {
+    margin-bottom: 2rem;
+  }
+}

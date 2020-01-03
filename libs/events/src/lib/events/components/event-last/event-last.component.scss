@@ -1,0 +1,118 @@
+@import 'utils';
+
+.event-last {
+  display: block;
+  margin-bottom: 2rem;
+
+  @include media-breakpoint-up(md) {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin-bottom: 3rem;
+  }
+}
+
+.event-last-side {
+  display: block;
+  position: relative;
+  user-select: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  @include media-breakpoint-up(md) {
+    width: 50%;
+  }
+
+  @include media-breakpoint-up(lg) {
+    min-height: 300px;
+  }
+}
+
+.event-last-image {
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.event-last-date {
+  color: $primary;
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 2rem;
+  position: relative;
+  text-transform: uppercase;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 1.5rem;
+  }
+}
+
+.event-last-content {
+  background-color: #efefea;
+  padding: 1rem;
+  display: flex;
+  flex-flow: column nowrap;
+
+  @include media-breakpoint-up(md) {
+    width: 50%;
+    padding: 2rem 3rem 1.5rem 3rem;
+  }
+}
+
+.event-last-place {
+  color: $primary;
+  font-weight: 300;
+  font-size: 0.85rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.event-last-title {
+  color: black;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.event-last-body {
+  flex-grow: 2;
+  font-size: 1rem;
+  font-weight: 300;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 1.25rem;
+  }
+}
+
+.event-last-link {
+  color: $primary;
+  font-weight: 400;
+  font-size: 1rem;
+  text-decoration: underline;
+  text-transform: uppercase;
+}

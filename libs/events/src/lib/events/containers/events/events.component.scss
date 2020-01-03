@@ -1,0 +1,61 @@
+@import 'utils';
+
+:host {
+}
+
+.events-page {
+  @include layout-padding-top();
+}
+
+.events-title {
+  color: black;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1rem 0 0 0;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: pre;
+
+  @include media-breakpoint-up(sm) {
+    font-size: 2.5rem;
+  }
+
+  @include media-breakpoint-up(lg) {
+    font-size: 2.75rem;
+    margin: 2rem 0 0 0;
+  }
+}
+
+.events-subtitle {
+  display: block;
+  text-align: center;
+}
+
+.events-slogan {
+  background-color: $primary;
+  color: white;
+  display: inline-block;
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 3rem;
+  padding: 0.65rem;
+  text-transform: uppercase;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 2rem;
+    margin-bottom: 5rem;
+  }
+}
+
+.events-description {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+  }
+}

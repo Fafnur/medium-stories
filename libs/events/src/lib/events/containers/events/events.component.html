@@ -1,0 +1,25 @@
+<ng-container *ngTemplateOutlet="eventsTpl; context: { events: eventFacade.events$ | async }"></ng-container>
+
+<ng-template #eventsTpl let-events="events">
+  <div class="events-page">
+    <div class="container">
+      <ms-breadcrumbs></ms-breadcrumbs>
+      <h1 class="events-title">{{ 'events.title' | translate }}</h1>
+      <h3 class="events-subtitle">
+        <span class="events-slogan">{{ 'events.slogan' | translate }}</span>
+      </h3>
+      <div class="events-description" [innerHTML]="'events.description' | translate"></div>
+      <div class="events-last">
+        <medium-stories-event-last></medium-stories-event-last>
+      </div>
+
+      <ng-container *ngIf="events">
+        <div class="row">
+          <div class="col-sm-6 col-lg-4" *ngFor="let event of events">
+            <medium-stories-event-box [event]="event"></medium-stories-event-box>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>

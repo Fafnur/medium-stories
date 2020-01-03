@@ -1,6 +1,57 @@
 {
   "version": 1,
   "projects": {
+    "backend-api": {
+      "root": "apps/backend/api",
+      "sourceRoot": "apps/backend/api/src",
+      "projectType": "application",
+      "prefix": "backend-api",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/backend/api",
+            "main": "apps/backend/api/src/main.ts",
+            "tsConfig": "apps/backend/api/tsconfig.app.json",
+            "assets": ["apps/backend/api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/backend/api/src/environments/environment.ts",
+                  "with": "apps/backend/api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "backend-api:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/backend/api/tsconfig.app.json", "apps/backend/api/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/backend/api/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/backend/api/jest.config.js",
+            "tsConfig": "apps/backend/api/tsconfig.spec.json"
+          }
+        }
+      }
+    },
     "frontend-base": {
       "projectType": "application",
       "schematics": {
@@ -245,6 +296,132 @@
                 {
                   "replace": "apps/frontend/common-styles/src/environments/environment.ts",
                   "with": "apps/frontend/common-styles/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": {
+                "scripts": false,
+                "styles": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "frontend-graphql": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush"
+        }
+      },
+      "root": "apps/frontend/graphql",
+      "sourceRoot": "apps/frontend/graphql/src",
+      "prefix": "medium-stories",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/frontend/graphql/browser",
+            "index": "apps/frontend/graphql/src/index.html",
+            "main": "apps/frontend/graphql/src/main.browser.ts",
+            "polyfills": "apps/frontend/graphql/src/polyfills.ts",
+            "tsConfig": "apps/frontend/graphql/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/frontend/graphql/src/favicon.ico",
+              "apps/frontend/graphql/src/assets",
+              {
+                "glob": "**/*",
+                "input": "libs/layouts/src/assets",
+                "output": "./assets"
+              }
+            ],
+            "styles": ["apps/frontend/graphql/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/frontend/graphql/src/styles"]
+            },
+            "scripts": ["node_modules/viewport-units-buggyfill/viewport-units-buggyfill.js"]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/graphql/src/environments/environment.ts",
+                  "with": "apps/frontend/graphql/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "frontend-graphql:build",
+            "proxyConfig": "apps/frontend/graphql/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-graphql:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "frontend-graphql:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/frontend/graphql/tsconfig.app.json", "apps/frontend/graphql/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/frontend/graphql/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/frontend/graphql/jest.config.js",
+            "tsConfig": "apps/frontend/graphql/tsconfig.spec.json",
+            "setupFile": "apps/frontend/graphql/src/test-setup.ts"
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "bundleDependencies": "none",
+            "outputPath": "dist/apps/frontend/graphql/server",
+            "main": "apps/frontend/graphql/src/main.server.ts",
+            "tsConfig": "apps/frontend/graphql/tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/frontend/graphql/src/styles"]
+            }
+          },
+          "configurations": {
+            "production": {
+              "bundleDependencies": "all",
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/graphql/src/environments/environment.ts",
+                  "with": "apps/frontend/graphql/src/environments/environment.prod.ts"
                 }
               ],
               "sourceMap": false,
@@ -1213,6 +1390,62 @@
         }
       }
     },
+    "entities": {
+      "root": "libs/entities",
+      "sourceRoot": "libs/entities/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/entities/tsconfig.lib.json", "libs/entities/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/entities/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/entities/jest.config.js",
+            "tsConfig": "libs/entities/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss",
+          "changeDetection": "OnPush"
+        }
+      }
+    },
+    "events": {
+      "projectType": "library",
+      "root": "libs/events",
+      "sourceRoot": "libs/events/src",
+      "prefix": "medium-stories",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/events/tsconfig.lib.json", "libs/events/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/events/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/events/jest.config.js",
+            "tsConfig": "libs/events/tsconfig.spec.json",
+            "setupFile": "libs/events/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss",
+          "changeDetection": "OnPush"
+        }
+      }
+    },
     "layouts": {
       "projectType": "library",
       "root": "libs/layouts",
@@ -1384,79 +1617,6 @@
         "@nrwl/angular:component": {
           "styleext": "scss",
           "changeDetection": "OnPush"
-        }
-      }
-    },
-    "backend-api": {
-      "root": "apps/backend/api",
-      "sourceRoot": "apps/backend/api/src",
-      "projectType": "application",
-      "prefix": "backend-api",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@nrwl/node:build",
-          "options": {
-            "outputPath": "dist/apps/backend/api",
-            "main": "apps/backend/api/src/main.ts",
-            "tsConfig": "apps/backend/api/tsconfig.app.json",
-            "assets": ["apps/backend/api/src/assets"]
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/backend/api/src/environments/environment.ts",
-                  "with": "apps/backend/api/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "backend-api:build"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["apps/backend/api/tsconfig.app.json", "apps/backend/api/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!apps/backend/api/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/backend/api/jest.config.js",
-            "tsConfig": "apps/backend/api/tsconfig.spec.json"
-          }
-        }
-      }
-    },
-    "entities": {
-      "root": "libs/entities",
-      "sourceRoot": "libs/entities/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["libs/entities/tsconfig.lib.json", "libs/entities/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/entities/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/entities/jest.config.js",
-            "tsConfig": "libs/entities/tsconfig.spec.json"
-          }
         }
       }
     }

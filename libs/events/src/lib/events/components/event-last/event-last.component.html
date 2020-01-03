@@ -1,0 +1,27 @@
+<ng-container *ngTemplateOutlet="eventLastTpl; context: { eventLast: eventFacade.eventLast$ | async }"></ng-container>
+
+<ng-template #eventLastTpl let-event="eventLast">
+  <div class="event-last" *ngIf="event">
+    <a class="event-last-side" *ngIf="event.image" [routerLink]="['/events', event.id, 'view']">
+      <div class="event-last-image" [ngStyle]="{ backgroundImage: 'url(' + (event.image.src | path) + ')' }"></div>
+      <div class="event-last-date">
+        {{ event.start | localizedDate: 'dd' }} - {{ event.end | localizedDate: 'dd' }} {{ event.end | localizedDate: 'LLL' }}
+      </div>
+    </a>
+    <div class="event-last-content">
+      <div class="event-last-place" *ngIf="event.place">
+        {{ event.place | localize }}
+      </div>
+      <div class="event-last-title">
+        {{ event.title | localize }}
+      </div>
+      <div class="event-last-body" *ngIf="'md' | adaptive: 'min' | async">
+        {{ event.body | localize | slice: 0:200 }}
+        <ng-container *ngIf="(event.body | localize).length > 200">...</ng-container>
+      </div>
+      <div class="event-last-readmore">
+        <a class="event-last-link" [routerLink]="['/events', event.id, 'view']">{{ 'events.actions.readMore' | translate }}</a>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,4 +1,4 @@
-import { NavMenu, NavMenuEvent } from '../../lib/interfaces/nav-menu.interface';
+import { NavMenu, NavMenuEvent } from '../../lib/layout/interfaces/nav-menu.interface';
 
 export const navMenuEventPreviousEmptyStub: NavMenuEvent = {
   id: 'nav',

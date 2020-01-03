@@ -1,6 +1,7 @@
 type Query {
-  events: [Event]
+  events(offset: Int, limit: Int, order: String, excludeFirst: Boolean, excludeLast: Boolean): [Event]
   event(id: Int!): Event
+  eventLast: Event
 }
 
 type Event {

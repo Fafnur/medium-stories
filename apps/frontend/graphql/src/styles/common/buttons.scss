@@ -1,0 +1,5 @@
+@import 'utils';
+
+.btn-lite {
+  @include button-variant($primary, $primary);
+}

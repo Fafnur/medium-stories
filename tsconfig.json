@@ -11,13 +11,16 @@
     "target": "es2015",
     "module": "esnext",
     "typeRoots": ["node_modules/@types"],
-    "lib": ["es2019", "dom"],
+    "lib": ["esnext", "dom", "esnext.asynciterable"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "@medium-stories/common": ["libs/common/src/index.ts"],
       "@medium-stories/common/testing": ["libs/common/src/testing/index.ts"],
+      "@medium-stories/entities": ["libs/entities/src/index.ts"],
+      "@medium-stories/events": ["libs/events/src/index.ts"],
+      "@medium-stories/events/testing": ["libs/events/src/testing/index.ts"],
       "@medium-stories/layouts": ["libs/layouts/src/index.ts"],
       "@medium-stories/layouts/testing": ["libs/layouts/src/testing/index.ts"],
       "@medium-stories/responsive": ["libs/responsive/src/index.ts"],
@@ -29,8 +32,7 @@
       "@medium-stories/store": ["libs/store/src/index.ts"],
       "@medium-stories/store/testing": ["libs/store/src/testing/index.ts"],
       "@medium-stories/translation": ["libs/translation/src/index.ts"],
-      "@medium-stories/translation/testing": ["libs/translation/src/testing/index.ts"],
-      "@medium-stories/entities": ["libs/entities/src/index.ts"]
+      "@medium-stories/translation/testing": ["libs/translation/src/testing/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

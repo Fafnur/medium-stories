@@ -1,4 +1,4 @@
-import { LanguageLabelPipe } from './language-label.pipe';
+import { LanguageLabelPipe } from './localize.pipe';
 
 describe('LanguageLabelPipe', () => {
   it('create an instance', () => {

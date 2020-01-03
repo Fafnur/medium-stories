@@ -1,3 +1,6 @@
+import { registerLocaleData } from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
+import localeEn from '@angular/common/locales/en';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -6,14 +9,16 @@ import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { NxModule } from '@nrwl/angular';
 
+import { API_SOURCES, APP_DIST } from '@medium-stories/common';
 import { FOOTER_GROUPS_LINKS, FOOTER_NAV_LINKS, LayoutsCoreModule, NAV_LINKS } from '@medium-stories/layouts';
 import { RESPONSIVE_SIZE_DEFAULT, ResponsiveModule } from '@medium-stories/responsive';
 import { RootStoreModule } from '@medium-stories/store';
 
+import { environment } from '../../environments/environment';
 import { coreContainers, coreFooterGroupsLinks, coreFooterNavLinks, coreNavLinks, coreRoutes } from './core.common';
 
-import { environment } from '../../environments/environment';
-import { API_SOURCES, APP_DIST } from '@medium-stories/common';
+registerLocaleData(localeRu);
+registerLocaleData(localeEn);
 
 export function createApollo(httpLink: HttpLink) {
   return {

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faAngleDown, faAngleRight, faAngleUp, faBars, faCog, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faAngleRight, faAngleUp, faBars, faChevronLeft, faCog, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faVk, faTwitter, faYoutube, faInstagram, faPinterestP, faTelegramPlane } from '@fortawesome/free-brands-svg-icons';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -19,6 +19,7 @@ export class SharedModule {
      */
     this.library.addIcons(
       faBars,
+      faChevronLeft,
       faCog,
       faSearch,
       faAngleRight,

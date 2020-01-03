@@ -9,7 +9,6 @@ const eventsRequest: ApolloRequest = {
       events(limit: $limit, offset: $offset, order: $order, excludeLast: $excludeLast) {
         id
         title
-        body
         place
         start
         end
@@ -40,7 +39,29 @@ const eventRequest: ApolloRequest = {
   `
 };
 
+const eventLastRequest: ApolloRequest = {
+  keys: ['eventLast'],
+  query: gql`
+    query {
+      eventLast {
+        id
+        title
+        body
+        place
+        start
+        end
+        created
+        image {
+          id
+          src
+        }
+      }
+    }
+  `
+};
+
 export const eventRequests = {
   eventsRequest,
-  eventRequest
+  eventRequest,
+  eventLastRequest
 };

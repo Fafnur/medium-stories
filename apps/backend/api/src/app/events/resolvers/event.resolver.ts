@@ -21,7 +21,14 @@ export class EventResolver {
   }
 
   @Query('event')
-  async getMedia(@Args('id') id: number): Promise<Event> {
+  async getEvent(@Args('id') id: number): Promise<Event> {
     return this.eventService.findOne(id);
+  }
+
+  @Query('eventLast')
+  async getEventLAst(): Promise<Event> {
+    const result = await this.eventService.find({ take: 1, skip: 0, order: JSON.parse('{"id":"DESC"}') });
+
+    return result && result.length ? result[0] : null;
   }
 }

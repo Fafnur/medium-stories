@@ -41,7 +41,7 @@ export class EventEffects extends AbstractEffects<EventState> {
   });
 
   @Effect() loadingLastEvent$ = this.dataPersistence.fetch(EventActionTypes.LoadingLastEvent, {
-    id: () => 'loadLast',
+    id: () => 'loadEventLast',
     run: (action: LoadingLastEvent, store: EventPartialState) => {
       return this.eventApollo.loadLastEvent().pipe(map<Event, LastEventLoaded>(event => new LastEventLoaded(event)));
     },

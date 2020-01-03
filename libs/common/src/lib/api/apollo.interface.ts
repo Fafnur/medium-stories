@@ -9,7 +9,7 @@ export interface ApolloRequest {
   /**
    * Request entities
    */
-  keys: string[];
+  keys?: string[];
 
   /**
    * Request query

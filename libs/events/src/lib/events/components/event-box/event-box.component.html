@@ -7,6 +7,9 @@
         [ngStyle]="{ backgroundImage: 'url(' + (event.image.src | path) + ')' }"
       >
       </a>
+      <div class="event-box-date">
+        {{ event.start | localizedDate: 'dd' }} - {{ event.end | localizedDate: 'dd' }} {{ event.end | localizedDate: 'LLL' }}
+      </div>
     </div>
     <div class="event-box-titles">
       <div class="event-box-place" *ngIf="event.place">

@@ -1,0 +1,85 @@
+@import 'utils';
+
+.event-box {
+  position: relative;
+  margin-bottom: 1rem;
+
+  @include media-breakpoint-up(lg) {
+    margin-bottom: 2rem;
+  }
+}
+
+.event-box-poster {
+  height: 120px;
+  margin-bottom: 1rem;
+
+  @include media-breakpoint-up(lg) {
+    height: 180px;
+  }
+}
+
+.event-box-image {
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.event-box-date {
+  left: 1rem;
+  position: absolute;
+  top: 1rem;
+}
+
+.event-box-place {
+  color: black;
+  font-weight: 300;
+  font-size: 0.75rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.event-box-titles {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.event-box-title {
+  flex-grow: 1;
+  margin: auto 0;
+
+  color: black;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 0.85;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 1rem;
+
+    &_v1 {
+      margin-top: 1.75rem;
+    }
+  }
+}
+
+.event-box-readmore {
+  text-align: right;
+}
+
+.event-box-link {
+  color: $primary;
+  font-weight: 400;
+  font-size: 1rem;
+  text-decoration: underline;
+  text-transform: uppercase;
+}

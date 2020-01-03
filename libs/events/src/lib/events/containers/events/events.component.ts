@@ -10,6 +10,6 @@ import { EventFacade } from '../../../events-core/+state/event.facade';
 })
 export class EventsComponent {
   constructor(public eventFacade: EventFacade) {
-    this.eventFacade.loadEvents({ excludeLast: true, order: JSON.stringify({ id: 'DESC' }) });
+    this.eventFacade.loadEvents({ excludeFirst: true, order: JSON.stringify({ id: 'DESC' }) });
   }
 }

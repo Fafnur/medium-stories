@@ -37,7 +37,7 @@ export class BaseEventApollo implements EventApollo {
     return this.apollo
       .query<{ events: Event[] }>({
         query: eventRequests.eventsRequest.query,
-        variables: { limit: queryParams.limit, offset: queryParams.offset, order: queryParams.order, excludeLast: queryParams.excludeLast }
+        variables: queryParams
       })
       .pipe(
         map(result => extractApolloResponse(result, eventRequests.eventsRequest.keys)),

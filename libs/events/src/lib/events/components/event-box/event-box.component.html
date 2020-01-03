@@ -1,1 +1,23 @@
-<p>event-box works!</p>
+<ng-container *ngIf="event">
+  <div class="event-box">
+    <div class="event-box-poster" *ngIf="event.image">
+      <a
+        class="event-box-image"
+        [routerLink]="['/events', event.id, 'view']"
+        [ngStyle]="{ backgroundImage: 'url(' + (event.image.src | path) + ')' }"
+      >
+      </a>
+    </div>
+    <div class="event-box-titles">
+      <div class="event-box-place" *ngIf="event.place">
+        {{ event.place | localize }}
+      </div>
+      <div class="event-box-title" [class.event-box-title_v1]="!event.place">
+        {{ event.title | localize }}
+      </div>
+    </div>
+    <div class="event-box-readmore">
+      <a class="event-box-link" [routerLink]="['/events', event.id, 'view']">{{ 'events.actions.readMore' | translate }}</a>
+    </div>
+  </div>
+</ng-container>

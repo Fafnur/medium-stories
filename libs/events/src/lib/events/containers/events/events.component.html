@@ -14,19 +14,12 @@
       </div>
 
       <ng-container *ngIf="events">
-        <ng-container *ngFor="let event of events">
-          <ng-container *ngTemplateOutlet="eventTpl; context: { event: event }"></ng-container>
-        </ng-container>
+        <div class="row">
+          <div class="col-sm-6 col-lg-4" *ngFor="let event of events">
+            <medium-stories-event-box [event]="event"></medium-stories-event-box>
+          </div>
+        </div>
       </ng-container>
     </div>
-  </div>
-</ng-template>
-
-<ng-template #eventTpl let-event="event">
-  <h3>
-    {{ event.title | localize }}
-  </h3>
-  <div class="event-place" *ngIf="event.place">
-    {{ event.place | localize }}
   </div>
 </ng-template>

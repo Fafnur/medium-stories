@@ -38,6 +38,11 @@ export interface EventsPayload {
   force: boolean;
 
   /**
+   * Exclude first
+   */
+  excludeFirst?: boolean;
+
+  /**
    * Exclude last
    */
   excludeLast?: boolean;

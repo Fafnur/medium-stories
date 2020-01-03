@@ -13,11 +13,15 @@ export class EventResolver {
     @Args('offset') offset?: number,
     @Args('limit') limit?: number,
     @Args('order') order?: string,
+    @Args('excludeFirst') excludeFirst?: boolean,
     @Args('excludeLast') excludeLast?: boolean
   ): Promise<Event[]> {
     const result = await this.eventService.find({ take: limit, skip: offset, order: order ? JSON.parse(order) : null });
 
-    return excludeLast ? result.slice(0, result.length - 1) : result;
+    let finishResult = excludeFirst ? result.slice(1, result.length) : result;
+    finishResult = excludeLast ? finishResult.slice(0, result.length - 1) : finishResult;
+
+    return finishResult;
   }
 
   @Query('event')

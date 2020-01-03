@@ -5,8 +5,8 @@ import { ApolloRequest } from '@medium-stories/common';
 const eventsRequest: ApolloRequest = {
   keys: ['events'],
   query: gql`
-    query($limit: Int, $offset: Int, $order: String, $excludeLast: Boolean) {
-      events(limit: $limit, offset: $offset, order: $order, excludeLast: $excludeLast) {
+    query($limit: Int, $offset: Int, $order: String, $excludeFirst: Boolean, $excludeLast: Boolean) {
+      events(limit: $limit, offset: $offset, order: $order, excludeFirst: $excludeFirst, excludeLast: $excludeLast) {
         id
         title
         place

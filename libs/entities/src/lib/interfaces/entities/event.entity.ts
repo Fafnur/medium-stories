@@ -1,6 +1,6 @@
 import { Locale } from '../types/locale.type';
-import { User } from './user.entity';
 import { Media } from './media.entity';
+import { User } from './user.entity';
 
 /**
  * Event interface

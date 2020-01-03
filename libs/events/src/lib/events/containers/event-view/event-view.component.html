@@ -1,1 +1,34 @@
-<p>event-view works!</p>
+<ng-container *ngTemplateOutlet="eventViewTpl; context: { event: eventFacade.event$ | async }"></ng-container>
+
+<ng-template #eventViewTpl let-event="event">
+  <div class="event-view-page" *ngIf="event">
+    <div class="event-view-poster">
+      <img class="event-view-image" [src]="event.image.src | path" [alt]="event.title | localize" />
+      <div class="event-view-date">
+        {{ event.start | localizedDate: 'dd' }} - {{ event.end | localizedDate: 'dd' }} {{ event.end | localizedDate: 'LLL' }} |
+        {{ event.end | date: 'yyyy' }}
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <ms-breadcrumbs [active]="event.title | localize"></ms-breadcrumbs>
+    <div class="event-view-container">
+      <div class="event-view-back">
+        <a class="event-view-link" routerLink="/events">
+          <ms-icon icon="chevron-left"></ms-icon>
+          {{ 'events.actions.back' | translate }}
+        </a>
+      </div>
+      <div class="event-view-title">
+        {{ event.title | localize }}
+      </div>
+      <div class="event-view-place" *ngIf="event.place">
+        {{ event.place | localize }}
+      </div>
+      <div class="event-view-body" [innerHTML]="event.body | localize"></div>
+      <div class="event-view-readmore">
+        <a class="event-view-link" [routerLink]="['/events', event.id, 'view']">{{ 'events.actions.readMore' | translate }}</a>
+      </div>
+    </div>
+  </div>
+</ng-template>

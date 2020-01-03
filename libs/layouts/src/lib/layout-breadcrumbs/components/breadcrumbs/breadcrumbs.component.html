@@ -3,16 +3,23 @@
 <ng-template #breadcrumbsTpl let-breadcrumbs="breadcrumbs">
   <div class="breadcrumbs" *ngIf="breadcrumbs">
     <div class="breadcrumb" *ngFor="let breadcrumb of breadcrumbs; let last = last">
-      <ng-container *ngIf="!last">
+      <ng-container *ngIf="!last || (last && active)">
         <a class="breadcrumb-link class.breadcrumb-link_active" [routerLink]="breadcrumb.url">
           {{ breadcrumb.label | translate }}
         </a>
       </ng-container>
-      <ng-container *ngIf="last">
+      <ng-container *ngIf="last && !active">
         <span class="breadcrumb-item">
           {{ breadcrumb.label | translate }}
         </span>
       </ng-container>
     </div>
+    <ng-container *ngIf="active">
+      <div class="breadcrumb">
+        <span class="breadcrumb-item">
+          {{ active | translate }}
+        </span>
+      </div>
+    </ng-container>
   </div>
 </ng-template>

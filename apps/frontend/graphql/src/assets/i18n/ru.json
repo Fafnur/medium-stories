@@ -159,7 +159,8 @@
     "slogan": "Мир Lamborghini",
     "description": "Узнайте о мероприятиях Automobili Lamborghini.",
     "actions": {
-      "readMore": "Узнать подробнее"
+      "readMore": "Узнать подробнее",
+      "back": "Вернуться"
     }
   }
 }

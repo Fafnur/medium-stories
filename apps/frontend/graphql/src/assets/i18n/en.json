@@ -159,7 +159,8 @@
     "slogan": "Lamborghini World",
     "description": "Keep updated about upcoming events Automobili Lamborghini. For North America events visit <a href=\"//allaccess.com\">allaccess.com</a>",
     "actions": {
-      "readMore": "Discover more"
+      "readMore": "Discover more",
+      "back": "Back"
     }
   }
 }

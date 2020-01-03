@@ -4,7 +4,9 @@
   <div class="event-last" *ngIf="event">
     <a class="event-last-side" *ngIf="event.image" [routerLink]="['/events', event.id, 'view']">
       <div class="event-last-image" [ngStyle]="{ backgroundImage: 'url(' + (event.image.src | path) + ')' }"></div>
-      <div class="event-last-date">{{ event.start | date: 'dd' }} - {{ event.end | date: 'dd' }} {{ event.end | date: 'LLL' }}</div>
+      <div class="event-last-date">
+        {{ event.start | localizedDate: 'dd' }} - {{ event.end | localizedDate: 'dd' }} {{ event.end | localizedDate: 'LLL' }}
+      </div>
     </a>
     <div class="event-last-content">
       <div class="event-last-place" *ngIf="event.place">

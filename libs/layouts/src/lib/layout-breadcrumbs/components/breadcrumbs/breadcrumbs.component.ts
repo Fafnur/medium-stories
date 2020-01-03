@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { filter } from 'rxjs/operators';
 
 import { LayoutFacade } from '../../../layout-core/+state/layout.facade';
-import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'ms-breadcrumbs',
@@ -10,6 +10,8 @@ import { filter } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BreadcrumbsComponent {
+  @Input() active: string;
+
   /**
    * Observed breadcrumbs
    */

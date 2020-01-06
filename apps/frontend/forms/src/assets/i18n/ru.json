@@ -1,0 +1,166 @@
+{
+  "languages": {
+    "full": {
+      "ru": "Русский",
+      "en": "English"
+    },
+    "short": {
+      "ru": "Ру",
+      "en": "En"
+    }
+  },
+  "breadcrumbs": {
+    "home": "Главная",
+    "events": "Мероприятия"
+  },
+  "menu": {
+    "models": {
+      "title": "Модели",
+      "urus": "Urus",
+      "huracan": "Huracán",
+      "huracanEVO": "Huracán EVO",
+      "huracanEVOSpyder": "Huracán EVO Spyder",
+      "huracanRWD": "Huracán RWD",
+      "huracanRWDSpyder": "Huracán RWD Spyder",
+      "huracanPerformante": "Huracán Performante",
+      "huracanPerformanteSpyder": "Huracán Performante Spyder",
+      "aventador": "Aventador",
+      "aventadorS": "Aventador S",
+      "aventadorSRoadster": "Aventador S Roadster",
+      "aventadorSVJ": "Aventador SVJ",
+      "aventadorSVJRoadster": "Aventador SVJ Roadster",
+      "fewOff": "Few Off",
+      "centenarioRoadster": "Centenario Roadster",
+      "centenario": "Centenario",
+      "concept": "Концепты",
+      "terzoMillennio": "Terzo Millennio",
+      "asterion": "Asterion",
+      "estoque": "Estoque",
+      "adPersonam": "Ad Personam"
+    },
+    "brand": {
+      "title": "О Lamborghini",
+      "people": "Люди",
+      "ferruccioLamborghini": "Ferruccio Lamborghini",
+      "marcelloGandini": "Marcello Gandini",
+      "giampaoloDallara": "Giampaolo Dallara",
+      "paoloStanzani": "Paolo Stanzani",
+      "history": "История",
+      "masterpieces": "Шедевры",
+      "design": "Дизайн",
+      "innovationExcellence": "Инновация и Превосходство",
+      "forgedComposites": "Forged Composites®",
+      "carbonFiber": "Carbon Fiber",
+      "sinceWeMadeItPossible": "Когда невозможное стало возможным",
+      "heritage": "Наследие"
+    },
+    "ownership": {
+      "title": "Услуги и сервис",
+      "locators": "Дилерская сеть",
+      "dealerLocator": "Дилерский центр",
+      "serviceLocator": "Сервисный центр",
+      "collisionCenter": "Центр проверки и ремонта силовой структуры кузова",
+      "preOwned": "Автомобили с пробегом",
+      "selezione": "Selezione",
+      "accessoriOriginali": "Аксессуары «Accessori Originali»",
+      "spareParts": "Сервис Lamborghini",
+      "services": "Услуги",
+      "assistance": "Техническая поддержка",
+      "warranty": "Гарантия",
+      "careProgram": "Программа заботы",
+      "poloStorico": "Студия «Polo Storico»",
+      "financialServices": "Финансовые услуги",
+      "preOwnedCar": "Подержанный автомобиль",
+      "accessoriesAndServices": "Аксессуары и услуги"
+    },
+    "experience": {
+      "title": "События",
+      "news": "Новости",
+      "events": "Мероприятия",
+      "museum": "Музей Lamborghini",
+      "esperienzaPrograms": "Программы Esperienza",
+      "lounge": "Салон",
+      "mobileApp": "Мобильное приложение",
+      "museumHash": "Музей",
+      "esperienza": "Esperienza",
+      "accademia": "Accademia",
+      "eventsHash": "Мероприятия Lamborghini"
+    },
+    "motorsport": {
+      "title": "Автоспорт",
+      "lamborghiniSuperTrofeo": "Lamborghini super trofeo",
+      "gt3": "GT3",
+      "accademia": "Школа водительского мастерства ACCADEMIA"
+    },
+    "store": {
+      "title": "Магазин",
+      "collection": "Коллекция",
+      "shopByCar": "Товары любимой марки авто"
+    },
+    "overview": "Обзор",
+    "company": {
+      "title": "Информация"
+    },
+    "careers": {
+      "title": "Карьера"
+    },
+    "contacts": {
+      "title": "Обратная связь"
+    },
+    "media": {
+      "title": "Пресс центр"
+    },
+    "privacyLegal": {
+      "title": "Правовое уведомление"
+    },
+    "siteMap": {
+      "title": "Карта сайта"
+    },
+    "newsletter": {
+      "title": "Рассылка"
+    }
+  },
+  "layouts": {
+    "languages": {
+      "title": "Выберите <strong>свой язык</strong>"
+    },
+    "search": {
+      "title": "Поиск",
+      "placeholder": "Поиск на Medium Stories"
+    }
+  },
+  "footer": {
+    "copyright": "Авторское право © 2017 Automobili Lamborghini S.p.A. полностью принадлежит Группе Audi. Все права защищены. Идентификационный номер\n  плательщика НДС: IT 00591801204",
+    "social": {
+      "join": "Присоединяйтесь к нам"
+    }
+  },
+  "promo": {
+    "actions": {
+      "discoverMore": "Подробнее"
+    }
+  },
+  "home": {
+    "slide1": {
+      "title": "Sián FKP 37",
+      "description": "Ahead of its time"
+    },
+    "slide2": {
+      "title": "Urus",
+      "description": "#sincewemadeitpossible"
+    },
+    "slide3": {
+      "title": "Huracán Evo",
+      "description": "Every day amplified"
+    }
+  },
+  "events": {
+    "title": "Мероприятия",
+    "slogan": "Мир Lamborghini",
+    "description": "Узнайте о мероприятиях Automobili Lamborghini.",
+    "actions": {
+      "readMore": "Узнать подробнее",
+      "back": "Вернуться"
+    }
+  }
+}

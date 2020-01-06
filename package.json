@@ -60,7 +60,10 @@
     "serve:backend:api": "ng serve backend-api",
     "build:ssr:graphql": "ng build frontend-graphql --prod && ng run frontend-graphql:server:production && webpack --config apps/frontend/graphql/webpack.ssr.config.js --progress --colors",
     "serve:ssr:graphql": "node dist/apps/frontend/graphql/server.js",
-    "serve:graphql": "ng serve frontend-graphql"
+    "serve:graphql": "ng serve frontend-graphql",
+    "build:ssr:forms": "ng build frontend-forms --prod && ng run frontend-forms:server:production && webpack --config apps/frontend/forms/webpack.ssr.config.js --progress --colors",
+    "serve:ssr:forms": "node dist/apps/frontend/forms/server.js",
+    "serve:forms": "ng serve frontend-forms"
   },
   "private": true,
   "dependencies": {

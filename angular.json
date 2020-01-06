@@ -308,6 +308,132 @@
         }
       }
     },
+    "frontend-forms": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush"
+        }
+      },
+      "root": "apps/frontend/forms",
+      "sourceRoot": "apps/frontend/forms/src",
+      "prefix": "medium-stories",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/frontend/forms/browser",
+            "index": "apps/frontend/forms/src/index.html",
+            "main": "apps/frontend/forms/src/main.browser.ts",
+            "polyfills": "apps/frontend/forms/src/polyfills.ts",
+            "tsConfig": "apps/frontend/forms/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/frontend/forms/src/favicon.ico",
+              "apps/frontend/forms/src/assets",
+              {
+                "glob": "**/*",
+                "input": "libs/layouts/src/assets",
+                "output": "./assets"
+              }
+            ],
+            "styles": ["apps/frontend/forms/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/frontend/forms/src/styles"]
+            },
+            "scripts": ["node_modules/viewport-units-buggyfill/viewport-units-buggyfill.js"]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/forms/src/environments/environment.ts",
+                  "with": "apps/frontend/forms/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "frontend-forms:build",
+            "proxyConfig": "apps/frontend/forms/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-forms:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "frontend-forms:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/frontend/forms/tsconfig.app.json", "apps/frontend/forms/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/frontend/forms/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/frontend/forms/jest.config.js",
+            "tsConfig": "apps/frontend/forms/tsconfig.spec.json",
+            "setupFile": "apps/frontend/forms/src/test-setup.ts"
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "bundleDependencies": "none",
+            "outputPath": "dist/apps/frontend/forms/server",
+            "main": "apps/frontend/forms/src/main.server.ts",
+            "tsConfig": "apps/frontend/forms/tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/frontend/forms/src/styles"]
+            }
+          },
+          "configurations": {
+            "production": {
+              "bundleDependencies": "all",
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/forms/src/environments/environment.ts",
+                  "with": "apps/frontend/forms/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": {
+                "scripts": false,
+                "styles": true
+              }
+            }
+          }
+        }
+      }
+    },
     "frontend-graphql": {
       "projectType": "application",
       "schematics": {

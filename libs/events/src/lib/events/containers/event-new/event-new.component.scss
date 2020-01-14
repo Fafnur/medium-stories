@@ -1,0 +1,8 @@
+@import 'utils';
+
+:host {
+}
+
+.event-new-page {
+  @include layout-padding-top();
+}

@@ -1,0 +1,9 @@
+<textarea
+  [id]="id"
+  [name]="name"
+  [formControl]="formControl"
+  [rows]="field.attrs.rows || 3"
+  class="form-control {{ classes }}"
+  [class.is-invalid]="formControl.errors"
+  [placeholder]="field.attrs.placeholder | translate"
+></textarea>

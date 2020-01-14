@@ -1,0 +1,68 @@
+@import 'utils';
+
+.radio-group {
+  margin: 0 -10px;
+}
+
+.radio-beauty {
+  cursor: pointer;
+  margin-bottom: 0;
+  padding: 7px 15px 0 15px;
+  position: relative;
+  font-weight: normal;
+  vertical-align: middle;
+
+  span {
+    display: inline-block;
+    input {
+      margin: 0 6px 0 0;
+      position: relative;
+      z-index: 0;
+    }
+
+    &:before,
+    &:after {
+      left: 0;
+      top: 0;
+      content: '';
+      position: absolute;
+      display: block;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    &:before {
+      left: 10px;
+      top: 5px;
+      width: 22px;
+      height: 22px;
+      background-color: #fff;
+      border: 1px solid mat-color($mat-gray, 400);
+    }
+
+    & input:focus:before {
+      position: absolute;
+      top: -4px;
+      left: -5px;
+      content: '';
+      display: block;
+      border-radius: 50%;
+      width: 22px;
+      outline: none;
+      height: 22px;
+      line-height: 1;
+      box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+    }
+  }
+
+  &_active span:before {
+    border-color: $primary;
+    border-width: 2px;
+  }
+  &_active span:after {
+    left: 11px;
+    top: 6px;
+    width: 20px;
+    height: 20px;
+    border: 5px solid $primary;
+  }
+}

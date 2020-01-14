@@ -129,6 +129,8 @@
     "pg": "^7.17.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.3",
+    "text-mask-addons": "^3.8.0",
+    "text-mask-core": "^5.1.2",
     "typeorm": "^0.2.22",
     "viewport-units-buggyfill": "^0.6.2",
     "web-animations-js": "^2.3.2",

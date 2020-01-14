@@ -1,4 +1,4 @@
-import { ComponentRef, Type } from '@angular/core';
+import { ComponentRef, OnInit, Type } from '@angular/core';
 import { AbstractControl, AbstractControlOptions, FormGroup, ValidatorFn } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -77,6 +77,16 @@ export interface FormFieldAttributes {
   id: string;
 
   /**
+   * Classes
+   */
+  classes?: string;
+
+  /**
+   * Wrapper classes
+   */
+  wrapperClasses?: string;
+
+  /**
    * Field name
    */
   name: string;
@@ -115,7 +125,7 @@ export interface FormFieldAttributes {
 /**
  * Form field
  */
-export interface FormField<T extends object = any> {
+export interface FormField<T = any> {
   /**
    * Unique key field
    */
@@ -137,19 +147,9 @@ export interface FormField<T extends object = any> {
   label?: string;
 
   /**
-   * Classes
-   */
-  classes?: string;
-
-  /**
    * Is inline
    */
   inline?: string;
-
-  /**
-   * Wrapper classes
-   */
-  wrapperClasses?: string;
 
   /**
    * Wrapper component
@@ -188,6 +188,9 @@ export interface FormField<T extends object = any> {
   hide?: (payload: Partial<FormFieldHidePayload>) => boolean;
 }
 
+/**
+ * FormFieldHidePayload
+ */
 export interface FormFieldHidePayload {
   field: FormField;
   formControl: AbstractControl;
@@ -222,11 +225,6 @@ export interface FormGroupField {
   label?: string;
 
   /**
-   * Wrapper classes
-   */
-  wrapperClasses?: string;
-
-  /**
    * Wrapper component
    */
   wrapper?: string | FormFieldWrapperType | Type<any>;
@@ -238,7 +236,10 @@ export interface FormGroupField {
   hide?: (payload: Partial<FormFieldHidePayload>) => boolean;
 }
 
-export interface FormFieldWithOptions extends FormField {
+/**
+ * Form field with options
+ */
+export interface FormFieldWithOptions<T extends object = any> extends FormField<T> {
   /**
    * Options
    */
@@ -276,25 +277,37 @@ export class MaskOptions {
   removeMaskChars?: boolean;
 }
 
-export interface FormFieldInputMask extends FormField {
+/**
+ * Form field input mask
+ */
+export interface FormFieldInputMask<T = any> extends FormField<T> {
   /**
    * Options map label
    */
   maskOptions: MaskOptions;
 }
 
-export interface FormFieldInputRange extends FormField {
+/**
+ * Form field input range
+ */
+export interface FormFieldInputRange<T = any> extends FormField<T> {
   /**
    * Options for range
    */
   rangeOptions: RangeOptions;
 }
 
+/**
+ * Range mode
+ */
 export enum RangeMode {
   Fixed = 'fixed',
   Percent = 'percent'
 }
 
+/**
+ * Range options
+ */
 export interface RangeOptions {
   [key: string]: any;
 
@@ -337,6 +350,9 @@ export interface RangeOptions {
   normalize?(value: number | string, config?: RangeOptions, width?: number): number;
 }
 
+/**
+ * Form field option
+ */
 export interface FormFieldOption {
   [key: string]: any;
 
@@ -349,13 +365,6 @@ export interface FormFieldOption {
    * Option value
    */
   value?: string | number | null;
-}
-
-export interface FormFieldInputRange extends FormField {
-  /**
-   * Options map label
-   */
-  rangeOptions: RangeOptions;
 }
 
 /**
@@ -387,6 +396,26 @@ export abstract class FieldComponent<T extends FormField = FormField, D = any> {
    */
   form!: FormGroup;
 
+  get attrs(): Partial<FormFieldAttributes> {
+    return this.field.attrs || {};
+  }
+
+  get classes(): string {
+    return this.attrs.classes;
+  }
+
+  get wrapperClasses(): string {
+    return this.attrs.wrapperClasses;
+  }
+
+  get id(): string {
+    return this.attrs.id ? this.attrs.id : this.field.key;
+  }
+
+  get name(): string {
+    return this.attrs.name ? this.attrs.name : this.field.key;
+  }
+
   /**
    * On blur event
    */
@@ -399,22 +428,6 @@ export abstract class FieldComponent<T extends FormField = FormField, D = any> {
         this.formControl.markAllAsTouched();
       }
     }
-  }
-
-  get classes(): string {
-    return this.field.classes || '';
-  }
-
-  get wrapperClasses(): string {
-    return this.field.wrapperClasses || '';
-  }
-
-  get id(): string {
-    return this.field.attrs && this.field.attrs.id ? this.field.attrs.id : this.field.key;
-  }
-
-  get name(): string {
-    return this.field.attrs && this.field.attrs.name ? this.field.attrs.name : this.field.key;
   }
 }
 
@@ -436,7 +449,8 @@ export abstract class WrapperComponent<T extends FormField = FormField> extends 
 /**
  * Abstract field component
  */
-export abstract class FieldWithOptionsComponent<T extends FormFieldWithOptions = FormFieldWithOptions> extends FieldComponent<T> {
+export abstract class FieldWithOptionsComponent<T extends FormFieldWithOptions = FormFieldWithOptions> extends FieldComponent<T>
+  implements OnInit {
   /**
    * Watching options
    */
@@ -481,4 +495,12 @@ export abstract class FieldWithOptionsComponent<T extends FormFieldWithOptions =
   protected checkIsArray(): boolean {
     return this.options.length && typeof this.options[0] !== 'object';
   }
+}
+
+/**
+ * Form choice
+ */
+export interface Choice<T = any> {
+  label: string;
+  value: T;
 }

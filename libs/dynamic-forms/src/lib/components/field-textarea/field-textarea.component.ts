@@ -1,0 +1,11 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+import { FieldComponent } from '../../interfaces/form.interface';
+
+@Component({
+  selector: 'ms-field-textarea',
+  templateUrl: './field-textarea.component.html',
+  styleUrls: ['./field-textarea.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class FieldTextareaComponent extends FieldComponent {}

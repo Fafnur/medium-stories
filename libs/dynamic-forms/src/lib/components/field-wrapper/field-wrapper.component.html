@@ -1,0 +1,26 @@
+<div class="form-group {{ wrapperClasses }}">
+  <div class="row" [ngClass]="{ 'has-error': formControl.invalid && formControl.touched }">
+    <label class="col-sm-4 col-md-3 control-label" [attr.for]="field.attrs.id" *ngIf="field.label">
+      {{ field.label | translate }}
+    </label>
+    <div class="col-sm-8 col-md-9">
+      <ng-template msFormHost></ng-template>
+      <ng-container *ngIf="grouped">
+        <ng-container *ngFor="let inlineField of formControl.controls | keyvalue">
+          <ng-container *ngIf="inlineField.value.errors && formControl.touched">
+            <ng-container *ngFor="let error of inlineField.value.errors | keyvalue">
+              {{ 'forms.errors.' + error.key | translate }}
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+      <ng-container *ngIf="!grouped">
+        <ng-container *ngIf="formControl.errors && formControl.touched">
+          <ng-container *ngFor="let error of formControl.errors | keyvalue">
+            {{ 'forms.errors.' + error.key | translate }}
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</div>

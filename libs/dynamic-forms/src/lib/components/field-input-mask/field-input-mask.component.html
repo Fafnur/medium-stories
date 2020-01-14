@@ -1,0 +1,11 @@
+<input
+  [id]="id"
+  [name]="name"
+  [msInputMask]="field.maskOptions"
+  [type]="field.attrs.type || 'text'"
+  [formControl]="formControl"
+  class="form-control {{ classes }}"
+  [class.is-invalid]="formControl.errors"
+  [placeholder]="field.attrs.placeholder ? (field.attrs.placeholder | translate) : ''"
+  [autocomplete]="field.attrs.autocomplete"
+/>

@@ -1,0 +1,89 @@
+@import 'utils';
+
+.date-lite {
+  @include clearfix();
+
+  .form-control option[value='0: null'][disabled],
+  .form-control option[value='null'][disabled] {
+    display: none;
+  }
+
+  .form-control {
+    color: mat-color($mat-gray, 400);
+    padding: 8px;
+    option {
+      color: $default-color;
+    }
+    &.ng-valid {
+      color: $default-color;
+    }
+  }
+
+  @include media-breakpoint-up(sm) {
+    display: inline-block;
+
+    &_full {
+      display: block;
+      margin: 0;
+    }
+
+    .form-control {
+      padding: 8px 10px;
+    }
+  }
+}
+
+.date-lite-days {
+  float: left;
+  width: 28%;
+
+  @include media-breakpoint-up(sm) {
+    float: none;
+    display: inline-block;
+    width: 80px;
+
+    .date-lite_full & {
+      float: left;
+      width: 28%;
+    }
+  }
+}
+
+.date-lite-months {
+  display: block;
+  float: left;
+  width: 40%;
+  margin: 0 2%;
+
+  @include media-breakpoint-up(sm) {
+    float: none;
+    display: inline-block;
+    width: 116px;
+    margin: 0 10px;
+
+    .date-lite_full & {
+      display: block;
+      float: left;
+      width: 40%;
+      margin: 0 2%;
+    }
+  }
+}
+
+.date-lite-years {
+  display: block;
+  float: left;
+  width: 28%;
+
+  @include media-breakpoint-up(sm) {
+    float: none;
+    display: inline-block;
+    width: 80px;
+
+    .date-lite_full & {
+      display: block;
+      float: left;
+      width: 28%;
+    }
+  }
+}

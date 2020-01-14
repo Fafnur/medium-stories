@@ -1,0 +1,69 @@
+<ng-container *ngTemplateOutlet="date; context: { valueChanges: valueChanges$ | async }"></ng-container>
+
+<ng-template #date>
+  <div [formGroup]="dateForm" class="date-lite {{ classes }}" [id]="field.attrs.id" [class.date-lite_full]="field.attrs.full">
+    <ng-container *ngTemplateOutlet="daysTemplate; context: { days: days, control: dateForm.get('day') }"></ng-container>
+    <ng-container *ngTemplateOutlet="monthsTemplate; context: { months: months, control: dateForm.get('month') }"></ng-container>
+    <ng-container *ngTemplateOutlet="yearsTemplate; context: { years: years, control: dateForm.get('year') }"></ng-container>
+    <ng-content></ng-content>
+  </div>
+</ng-template>
+
+<ng-template #daysTemplate let-days="days" let-control="control" let-mobile="mobile">
+  <div class="date-lite-days" [ngClass]="{ 'has-error': control.touched && control.errors }">
+    <select
+      [id]="id + 'Day'"
+      class="form-control"
+      [formControl]="control"
+      (change)="onChanged()"
+      (blur)="onControlBlur(control, days[0])"
+      [name]="name + '[day]'"
+      required
+    >
+      <option class="date-lite-option-label" [value]="null" disabled selected>
+        {{ 'forms.fields.day' | translate }}
+      </option>
+      <option class="date-lite-option" [value]="day" *ngFor="let day of days">
+        {{ day }}
+      </option>
+    </select>
+  </div>
+</ng-template>
+
+<ng-template #monthsTemplate let-months="months" let-control="control" let-mobile="mobile">
+  <div class="date-lite-months" [ngClass]="{ 'has-error': control.touched && control.errors }">
+    <select
+      [id]="id + 'Month'"
+      class="form-control"
+      [formControl]="control"
+      (change)="onChanged()"
+      (blur)="onControlBlur(control, months[0].value)"
+      [name]="name + '[month]'"
+      required
+    >
+      <option class="date-lite-option-label" [value]="null" disabled selected>
+        {{ 'forms.fields.month' | translate }}
+      </option>
+      <option class="date-lite-option" [value]="month.value" *ngFor="let month of months">{{ month.label | translate }}</option>
+    </select>
+  </div>
+</ng-template>
+
+<ng-template #yearsTemplate let-years="years" let-control="control" let-mobile="mobile">
+  <div class="date-lite-years" [ngClass]="{ 'has-error': control.touched && control.errors }">
+    <select
+      [id]="id + 'Year'"
+      class="form-control"
+      [formControl]="control"
+      (change)="onChanged()"
+      (blur)="onControlBlur(control, years[0])"
+      [name]="name + '[year]'"
+      required
+    >
+      <option class="date-lite-option-label" [value]="null" disabled selected>
+        {{ 'forms.fields.year' | translate }}
+      </option>
+      <option class="date-lite-option" [value]="year" *ngFor="let year of years">{{ year }}</option>
+    </select>
+  </div>
+</ng-template>

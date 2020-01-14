@@ -1516,6 +1516,35 @@
         }
       }
     },
+    "dynamic-forms": {
+      "projectType": "library",
+      "root": "libs/dynamic-forms",
+      "sourceRoot": "libs/dynamic-forms/src",
+      "prefix": "medium-stories",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/dynamic-forms/tsconfig.lib.json", "libs/dynamic-forms/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/dynamic-forms/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/dynamic-forms/jest.config.js",
+            "tsConfig": "libs/dynamic-forms/tsconfig.spec.json",
+            "setupFile": "libs/dynamic-forms/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss",
+          "changeDetection": "OnPush"
+        }
+      }
+    },
     "entities": {
       "root": "libs/entities",
       "sourceRoot": "libs/entities/src",

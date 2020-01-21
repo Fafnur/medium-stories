@@ -17,6 +17,11 @@ export class FieldRadioComponent extends FieldWithOptionsComponent implements On
    */
   touchedChanged$!: Observable<boolean>;
 
+  /**
+   * Watching
+   */
+  valueChanges$!: Observable<boolean>;
+
   constructor(private changeDetectorRef: ChangeDetectorRef) {
     super();
   }
@@ -24,5 +29,6 @@ export class FieldRadioComponent extends FieldWithOptionsComponent implements On
   ngOnInit(): void {
     super.ngOnInit();
     this.touchedChanged$ = extractTouchedChanges(this.formControl).pipe(tap(() => this.changeDetectorRef.markForCheck()));
+    this.valueChanges$ = this.formControl.valueChanges.pipe(tap(() => this.changeDetectorRef.markForCheck()));
   }
 }

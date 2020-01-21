@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { filter, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 import { extractTouchedChanges } from '../../utils/form-changes.util';
 import { FieldWithOptionsComponent } from '../../interfaces/form.interface';
@@ -29,10 +29,7 @@ export class FieldSelectComponent extends FieldWithOptionsComponent implements O
   ngOnInit(): void {
     super.ngOnInit();
     this.touchedChanged$ = extractTouchedChanges(this.formControl).pipe(tap(() => this.changeDetectorRef.markForCheck()));
-    this.valueChanges$ = this.formControl.valueChanges.pipe(
-      filter(value => !!value),
-      tap(() => this.changeDetectorRef.markForCheck())
-    );
+    this.valueChanges$ = this.formControl.valueChanges.pipe(tap(() => this.changeDetectorRef.markForCheck()));
   }
 
   /**

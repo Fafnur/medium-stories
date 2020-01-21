@@ -1,4 +1,9 @@
-<ng-container *ngTemplateOutlet="radio; context: { options: options$ | async, touchedChanged: touchedChanged$ | async }"></ng-container>
+<ng-container
+  *ngTemplateOutlet="
+    radio;
+    context: { options: options$ | async, valueChanges: valueChanges$ | async, touchedChanged: touchedChanged$ | async }
+  "
+></ng-container>
 
 <ng-template #radio>
   <div class="radio-group {{ classes }}" *ngIf="options">

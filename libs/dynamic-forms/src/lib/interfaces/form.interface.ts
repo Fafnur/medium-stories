@@ -147,11 +147,6 @@ export interface FormField<T = any> {
   label?: string;
 
   /**
-   * Is inline
-   */
-  inline?: string;
-
-  /**
    * Wrapper component
    */
   wrapper?: string | FormFieldWrapperType | Type<any>;

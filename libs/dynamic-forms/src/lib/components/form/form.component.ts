@@ -14,9 +14,19 @@ import { FormConfig, FormGroupField } from '../../interfaces/form.interface';
 })
 export class FormComponent implements OnInit, OnDestroy {
   /**
-   * Subscription on form changes
+   * Form changed
    */
-  private subscription = new Subscription();
+  @Output() changed = new EventEmitter<object>();
+
+  /**
+   * Form created
+   */
+  @Output() created = new EventEmitter<object>();
+
+  /**
+   * Form
+   */
+  @Input() form: FormGroup;
 
   /**
    * Form config
@@ -29,6 +39,11 @@ export class FormComponent implements OnInit, OnDestroy {
   @ViewChild(FormHostDirective, { static: true }) formHost: FormHostDirective;
 
   /**
+   * Subscription on form changes
+   */
+  private subscription = new Subscription();
+
+  /**
    * Form config
    */
   @Input() set config(formConfig: FormConfig) {
@@ -37,21 +52,6 @@ export class FormComponent implements OnInit, OnDestroy {
       this.formConstructor.updateControls(this.formConfig, this.form, this.formHost.viewContainerRef);
     }
   }
-
-  /**
-   * Form
-   */
-  @Input() form: FormGroup;
-
-  /**
-   * Form changed
-   */
-  @Output() changed = new EventEmitter<object>();
-
-  /**
-   * Form created
-   */
-  @Output() created = new EventEmitter<object>();
 
   constructor(private formConstructor: FormConstructor) {}
 

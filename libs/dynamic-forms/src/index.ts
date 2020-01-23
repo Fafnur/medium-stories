@@ -2,6 +2,7 @@ export * from './lib/components/field-checkbox/field-checkbox.component';
 export * from './lib/components/field-date/field-date.component';
 export * from './lib/components/field-select/field-select.component';
 export * from './lib/components/field-typehead/field-typehead.component';
+export * from './lib/components/field-wrapper/field-wrapper.component';
 export * from './lib/components/form/form.component';
 export * from './lib/directives/form-host.directive';
 export * from './lib/directives/input-mask.directive';

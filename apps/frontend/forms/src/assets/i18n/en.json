@@ -161,6 +161,27 @@
     "actions": {
       "readMore": "Discover more",
       "back": "Back"
+    },
+    "fields": {
+      "title": "Event title",
+      "body": "Event description",
+      "place": "Place",
+      "published": "Published",
+      "owner": "Owner"
+    },
+    "new": {
+      "title": "Create a new event",
+      "actions": {
+        "submit": "Create"
+      },
+      "validators": {
+        "title": {
+          "minlength": "Min length 5 symbols"
+        },
+        "body": {
+          "minlength": "Min length 50 symbols"
+        }
+      }
     }
   }
 }

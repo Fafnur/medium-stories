@@ -1,5 +1,12 @@
 <div class="event-new-page">
   <div class="container">
-    <ms-form [form]="form" [config]="formConfig" (changed)="onChanged($event)"></ms-form>
+    <h3 class="event-new-title">{{ 'events.new.title' | translate }}</h3>
+    <ms-form class="event-new-form" [form]="form" [config]="formConfig" (changed)="onChanged($event)">
+      <div class="event-new-actions">
+        <button class="btn btn-primary" (click)="onSubmit()">
+          {{ 'events.new.actions.submit' | translate }}
+        </button>
+      </div>
+    </ms-form>
   </div>
 </div>

@@ -22,13 +22,18 @@ export class EventNewComponent {
    */
   formConfig = eventFormConfig;
 
-  constructor() {}
-
   /**
    * On changed form
    * @param data Form value
    */
   onChanged<T extends object = Partial<Event>>(data: T): void {
-    // console.log(data);
+    console.log(data);
+  }
+
+  /**
+   * On submit
+   */
+  onSubmit(): void {
+    this.form.markAllAsTouched();
   }
 }

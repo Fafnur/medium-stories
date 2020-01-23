@@ -1,0 +1,30 @@
+<div class="form-group {{ wrapperClasses }}">
+  <div class="row" [ngClass]="{ 'has-error': invalid, 'is-valid': valid }">
+    <label class="col-sm-4 col-md-3 control-label" [attr.for]="field.attrs.id" *ngIf="field.label">
+      {{ field.label | translate }}
+    </label>
+    <div class="col-sm-8 col-md-9">
+      <ng-template msFormHost></ng-template>
+      <ng-container *ngIf="grouped">
+        <ng-container *ngFor="let inlineControl of formControl.controls | keyvalue">
+          <ng-container *ngIf="inlineControl.value.errors && inlineControl.value.touched">
+            <div class="form-error" *ngIf="getError(inlineControl.value.errors) as error">
+              <span class="form-error-text">
+                {{ getErrorLabel(error | camelCase) | translate }}
+              </span>
+            </div>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+      <ng-container *ngIf="!grouped">
+        <ng-container *ngIf="formControl.errors && formControl.touched">
+          <div class="form-error" *ngIf="getError(formControl.errors) as error">
+            <span class="form-error-text">
+              {{ getErrorLabel(error | camelCase) | translate }}
+            </span>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</div>

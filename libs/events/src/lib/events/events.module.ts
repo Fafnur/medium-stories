@@ -8,11 +8,12 @@ import { LayoutBreadcrumbsModule } from '@medium-stories/layouts';
 import { ResponsiveModule } from '@medium-stories/responsive';
 import { SharedModule } from '@medium-stories/shared';
 
-import { eventsComponents, eventsContainers } from './events.common';
+import { eventsComponents, eventsContainers, eventsEntryComponents } from './events.common';
 
 @NgModule({
   imports: [CommonModule, DynamicFormsModule, LayoutBreadcrumbsModule, RouterModule, ResponsiveModule, SharedModule, TranslateModule],
-  declarations: [...eventsComponents, ...eventsContainers],
-  exports: [...eventsComponents, ...eventsContainers]
+  declarations: [...eventsComponents, ...eventsContainers, ...eventsEntryComponents],
+  entryComponents: eventsEntryComponents,
+  exports: [...eventsComponents, ...eventsContainers, ...eventsEntryComponents]
 })
 export class EventsModule {}

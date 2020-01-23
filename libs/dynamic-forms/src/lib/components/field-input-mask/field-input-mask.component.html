@@ -5,7 +5,7 @@
   [type]="field.attrs.type || 'text'"
   [formControl]="formControl"
   class="form-control {{ classes }}"
-  [class.is-invalid]="formControl.errors"
+  [class.is-invalid]="invalid"
   [placeholder]="field.attrs.placeholder ? (field.attrs.placeholder | translate) : ''"
   [autocomplete]="field.attrs.autocomplete"
 />

@@ -1,0 +1,35 @@
+@import 'utils';
+
+.form-control {
+  color: mat-color($mat-gray, 400);
+
+  option {
+    color: mat-color($mat-gray, 600);
+  }
+  &.ng-valid {
+    color: mat-color($mat-gray, 600);
+  }
+
+  &.ng-invalid {
+    color: mat-color($mat-gray, 400);
+  }
+
+  &.ng-invalid option {
+    color: mat-color($mat-gray, 600);
+  }
+
+  &_inline {
+    width: inherit;
+    display: inline-block;
+  }
+  &_w50 {
+    padding: 0 8px;
+    width: 60px;
+    display: inline-block;
+  }
+}
+
+.form-control option[value='0: null'][disabled],
+.form-control option[value='null'][disabled] {
+  display: none;
+}

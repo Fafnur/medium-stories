@@ -48,7 +48,7 @@ export class FormComponent implements OnInit, OnDestroy {
    */
   @Input() set config(formConfig: FormConfig) {
     this.formConfig = formConfig;
-    if (this.form) {
+    if (this.form && Object.keys(this.form.controls).length) {
       this.formConstructor.updateControls(this.formConfig, this.form, this.formHost.viewContainerRef);
     }
   }

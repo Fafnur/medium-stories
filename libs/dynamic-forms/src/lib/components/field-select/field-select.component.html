@@ -6,7 +6,14 @@
 ></ng-container>
 
 <ng-template #select>
-  <select [id]="id" [name]="name" class="form-control {{ classes }}" [formControl]="formControl" (blur)="onBlur()">
+  <select
+    [id]="id"
+    [name]="name"
+    class="form-control {{ classes }}"
+    [class.is-invalid]="invalid"
+    [formControl]="formControl"
+    (blur)="onBlur()"
+  >
     <option class="date-lite-option-label" [value]="null" disabled selected *ngIf="field.attrs.placeholder">
       {{ field.attrs.placeholder | translate }}
     </option>

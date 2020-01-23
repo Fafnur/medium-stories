@@ -1,4 +1,5 @@
 @import 'utils';
+@import 'styles/components/forms/select-beauty';
 
 :host {
   &.form-control-seporate {
@@ -9,28 +10,4 @@
       padding: 0 2px;
     }
   }
-}
-.form-control {
-  &.ng-invalid {
-    color: mat-color($mat-gray, 400);
-  }
-
-  &.ng-invalid option {
-    color: $default-color;
-  }
-
-  &_inline {
-    width: inherit;
-    display: inline-block;
-  }
-  &_w50 {
-    padding: 0 8px;
-    width: 60px;
-    display: inline-block;
-  }
-}
-
-.form-control option[value='0: null'][disabled],
-.form-control option[value='null'][disabled] {
-  display: none;
 }

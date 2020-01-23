@@ -37,4 +37,16 @@ export class FieldWrapperComponent extends WrapperComponent implements OnDestroy
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
+
+  getError(errors: { [key: string]: any }): string | null {
+    const keys = Object.keys(errors);
+
+    return keys.length ? keys.find(key => key !== 'required') : null;
+  }
+
+  getErrorLabel(error: string): string | null {
+    const prefix = error && !isNaN(parseInt(error, 10)) ? '' : `${this.field.key}.`;
+
+    return error ? `forms.validators.${prefix}${error}` : null;
+  }
 }

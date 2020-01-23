@@ -4,7 +4,6 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { MockPipes } from 'ng-mocks';
 
 import { mockFieldComponentProps } from '../../../testing';
-import { FieldOptionsPipe } from '../../pipes/field-options.pipe';
 import { FieldCheckboxComponent } from './field-checkbox.component';
 
 describe('FieldCheckboxComponent', () => {
@@ -14,7 +13,7 @@ describe('FieldCheckboxComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ReactiveFormsModule],
-      declarations: [FieldCheckboxComponent, MockPipes(FieldOptionsPipe, TranslatePipe)]
+      declarations: [FieldCheckboxComponent, MockPipes(TranslatePipe)]
     }).compileComponents();
   }));
 

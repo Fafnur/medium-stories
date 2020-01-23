@@ -13,9 +13,13 @@
       [class.radio-beauty_active]="formControl.value == option.value"
       [for]="id + '_' + i"
     >
-      <span>
-        <input type="radio" [id]="id + '_' + i" [name]="name" [formControl]="formControl" [value]="option.value" />
+      <span *ngIf="!isArray">
+        <input type="radio" [id]="id + '_' + i" [name]="name" [formControl]="formControl" [value]="option[mapValue]" />
         {{ option[mapLabel] | translate }}
+      </span>
+      <span *ngIf="isArray">
+        <input type="radio" [id]="id + '_' + i" [name]="name" [formControl]="formControl" [value]="option" />
+        {{ option | translate }}
       </span>
     </label>
   </div>

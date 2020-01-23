@@ -411,6 +411,19 @@ export abstract class FieldComponent<T extends FormField = FormField, D = any> {
     return this.attrs.name ? this.attrs.name : this.field.key;
   }
 
+  get invalid(): boolean {
+    return this.formControl ? this.formControl.invalid && this.formControl.touched && this.formControl.errors != null : false;
+  }
+
+  get valid(): boolean {
+    return this.formControl
+      ? this.formControl.valid &&
+          this.formControl.value != null &&
+          !this.formControl.errors &&
+          (typeof this.formControl.value !== 'string' || this.formControl.value.length > 0)
+      : false;
+  }
+
   /**
    * On blur event
    */
@@ -490,12 +503,4 @@ export abstract class FieldWithOptionsComponent<T extends FormFieldWithOptions =
   protected checkIsArray(): boolean {
     return this.options.length && typeof this.options[0] !== 'object';
   }
-}
-
-/**
- * Form choice
- */
-export interface Choice<T = any> {
-  label: string;
-  value: T;
 }

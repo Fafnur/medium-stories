@@ -1,0 +1,21 @@
+@import 'utils';
+
+:host {
+}
+
+.event-new-page {
+  @include layout-padding-top();
+}
+
+.event-new-title {
+  margin: 2rem 0 1rem 0;
+}
+
+.event-new-form {
+  display: block;
+  margin: 1rem 0;
+}
+
+.event-new-actions {
+  text-align: right;
+}

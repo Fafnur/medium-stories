@@ -1,0 +1,26 @@
+<ng-container
+  *ngTemplateOutlet="
+    radio;
+    context: { options: options$ | async, valueChanges: valueChanges$ | async, touchedChanged: touchedChanged$ | async }
+  "
+></ng-container>
+
+<ng-template #radio>
+  <div class="radio-group {{ classes }}" *ngIf="options">
+    <label
+      class="radio-beauty"
+      *ngFor="let option of options; let i = index"
+      [class.radio-beauty_active]="formControl.value == option.value"
+      [for]="id + '_' + i"
+    >
+      <span *ngIf="!isArray">
+        <input type="radio" [id]="id + '_' + i" [name]="name" [formControl]="formControl" [value]="option[mapValue]" />
+        {{ option[mapLabel] | translate }}
+      </span>
+      <span *ngIf="isArray">
+        <input type="radio" [id]="id + '_' + i" [name]="name" [formControl]="formControl" [value]="option" />
+        {{ option | translate }}
+      </span>
+    </label>
+  </div>
+</ng-template>

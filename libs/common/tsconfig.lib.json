@@ -5,7 +5,6 @@
     "target": "es2015",
     "declaration": true,
     "inlineSources": true,
-    "types": [],
     "lib": ["dom", "esnext"]
   },
   "angularCompilerOptions": {

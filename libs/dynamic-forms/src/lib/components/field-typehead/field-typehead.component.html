@@ -1,0 +1,17 @@
+<ng-container *ngTemplateOutlet="typehead; context: { watch: options$ | async }"></ng-container>
+
+<ng-template #typehead>
+  <input
+    [id]="id"
+    [name]="name"
+    [type]="field.attrs.type || 'text'"
+    [formControl]="formControl"
+    class="form-control {{ classes }}"
+    [class.is-invalid]="invalid"
+    [placeholder]="field.attrs.placeholder ? (field.attrs.placeholder | translate) : ''"
+    [autocomplete]="field.attrs.autocomplete"
+    [ngbTypeahead]="search"
+    [resultFormatter]="formatter"
+    [inputFormatter]="formatter"
+  />
+</ng-template>

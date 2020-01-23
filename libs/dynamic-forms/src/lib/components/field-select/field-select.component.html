@@ -1,0 +1,33 @@
+<ng-container
+  *ngTemplateOutlet="
+    select;
+    context: { options: options$ | async, valueChanges: valueChanges$ | async, touchedChanged: touchedChanged$ | async }
+  "
+></ng-container>
+
+<ng-template #select>
+  <select
+    [id]="id"
+    [name]="name"
+    class="form-control {{ classes }}"
+    [class.is-invalid]="invalid"
+    [formControl]="formControl"
+    (blur)="onBlur()"
+  >
+    <option class="date-lite-option-label" [value]="null" disabled selected *ngIf="field.attrs.placeholder">
+      {{ field.attrs.placeholder | translate }}
+    </option>
+    <ng-container *ngIf="options">
+      <ng-container *ngIf="!isArray">
+        <option class="date-lite-option" [value]="option[mapValue]" *ngFor="let option of options">
+          {{ option[mapLabel] | translate }}
+        </option>
+      </ng-container>
+      <ng-container *ngIf="isArray">
+        <option class="date-lite-option" [value]="option" *ngFor="let option of options">
+          {{ option }}
+        </option>
+      </ng-container>
+    </ng-container>
+  </select>
+</ng-template>

@@ -18,6 +18,8 @@
     "paths": {
       "@medium-stories/common": ["libs/common/src/index.ts"],
       "@medium-stories/common/testing": ["libs/common/src/testing/index.ts"],
+      "@medium-stories/dynamic-forms": ["libs/dynamic-forms/src/index.ts"],
+      "@medium-stories/dynamic-forms/testing": ["libs/dynamic-forms/src/testing/index.ts"],
       "@medium-stories/entities": ["libs/entities/src/index.ts"],
       "@medium-stories/events": ["libs/events/src/index.ts"],
       "@medium-stories/events/testing": ["libs/events/src/testing/index.ts"],

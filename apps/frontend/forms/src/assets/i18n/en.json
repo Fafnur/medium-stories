@@ -1,0 +1,187 @@
+{
+  "languages": {
+    "full": {
+      "ru": "Русский",
+      "en": "English"
+    },
+    "short": {
+      "ru": "Ру",
+      "en": "En"
+    }
+  },
+  "breadcrumbs": {
+    "home": "Home",
+    "events": "Events"
+  },
+  "menu": {
+    "models": {
+      "title": "Models",
+      "urus": "Urus",
+      "huracan": "Huracán",
+      "huracanEVO": "Huracán EVO",
+      "huracanEVOSpyder": "Huracán EVO Spyder",
+      "huracanRWD": "Huracán RWD",
+      "huracanRWDSpyder": "Huracán RWD Spyder",
+      "huracanPerformante": "Huracán Performante",
+      "huracanPerformanteSpyder": "Huracán Performante Spyder",
+      "aventador": "Aventador",
+      "aventadorS": "Aventador S",
+      "aventadorSRoadster": "Aventador S Roadster",
+      "aventadorSVJ": "Aventador SVJ",
+      "aventadorSVJRoadster": "Aventador SVJ Roadster",
+      "fewOff": "Few Off",
+      "centenarioRoadster": "Centenario Roadster",
+      "centenario": "Centenario",
+      "concept": "Concept",
+      "terzoMillennio": "Terzo Millennio",
+      "asterion": "Asterion",
+      "estoque": "Estoque",
+      "adPersonam": "Ad Personam"
+    },
+    "brand": {
+      "title": "Brand",
+      "people": "People",
+      "ferruccioLamborghini": "Ferruccio Lamborghini",
+      "marcelloGandini": "Marcello Gandini",
+      "giampaoloDallara": "Giampaolo Dallara",
+      "paoloStanzani": "Paolo Stanzani",
+      "history": "History",
+      "masterpieces": "Masterpieces",
+      "design": "Design",
+      "innovationExcellence": "Innovation & Excellence",
+      "forgedComposites": "Forged Composites®",
+      "carbonFiber": "Carbon Fiber",
+      "sinceWeMadeItPossible": "Since We Made It Possible",
+      "heritage": "Heritage"
+    },
+    "ownership": {
+      "title": "Ownership",
+      "locators": "Locators",
+      "dealerLocator": "Dealer locator",
+      "serviceLocator": "Service locator",
+      "collisionCenter": "Collision Center",
+      "preOwned": "Pre-Owned",
+      "selezione": "Selezione",
+      "accessoriOriginali": "Accessori Originali",
+      "spareParts": "Spare parts",
+      "services": "Services",
+      "assistance": "Assistance",
+      "warranty": "Warranty",
+      "careProgram": "Care Program",
+      "poloStorico": "Polo Storico",
+      "financialServices": "Financial Services",
+      "preOwnedCar": "Pre-Owned Car",
+      "accessoriesAndServices": "Accessories and services"
+    },
+    "experience": {
+      "title": "Experience",
+      "news": "News",
+      "events": "Events",
+      "museum": "Museum",
+      "esperienzaPrograms": "Esperienza Programs",
+      "lounge": "Lounge",
+      "mobileApp": "Mobile App",
+      "museumHash": "Museum",
+      "esperienza": "Esperienza",
+      "accademia": "Accademia",
+      "eventsHash": "Events Lamborghini"
+    },
+    "motorsport": {
+      "title": "Motorsport",
+      "lamborghiniSuperTrofeo": "Lamborghini super trofeo",
+      "gt3": "GT3",
+      "accademia": "ACCADEMIA"
+    },
+    "store": {
+      "title": "Store",
+      "collection": "Collection",
+      "shopByCar": "Shop by Car"
+    },
+    "overview": "Overview",
+    "company": {
+      "title": "Company"
+    },
+    "careers": {
+      "title": "Careers"
+    },
+    "contacts": {
+      "title": "Contacts Us"
+    },
+    "media": {
+      "title": "Media center"
+    },
+    "privacyLegal": {
+      "title": "Privacy & Legal"
+    },
+    "siteMap": {
+      "title": "Sitemap"
+    },
+    "newsletter": {
+      "title": "newsletter"
+    }
+  },
+  "layouts": {
+    "languages": {
+      "title": "Choose <strong>Your language</strong>"
+    },
+    "search": {
+      "title": "Search",
+      "placeholder": "Search on Medium Stories"
+    }
+  },
+  "footer": {
+    "copyright": "Copyright © 2017 Automobili Lamborghini S.p.A. a sole shareholder company part of Audi Group. All rights reserved. VAT  no. IT 00591801204",
+    "social": {
+      "join": "Follow Us"
+    }
+  },
+  "promo": {
+    "actions": {
+      "discoverMore": "Discover more"
+    }
+  },
+  "home": {
+    "slide1": {
+      "title": "Sián FKP 37",
+      "description": "Ahead of its time"
+    },
+    "slide2": {
+      "title": "Urus",
+      "description": "#sincewemadeitpossible"
+    },
+    "slide3": {
+      "title": "Huracán Evo",
+      "description": "Every day amplified"
+    }
+  },
+  "events": {
+    "title": "Events",
+    "slogan": "Lamborghini World",
+    "description": "Keep updated about upcoming events Automobili Lamborghini. For North America events visit <a href=\"//allaccess.com\">allaccess.com</a>",
+    "actions": {
+      "readMore": "Discover more",
+      "back": "Back"
+    },
+    "fields": {
+      "title": "Event title",
+      "body": "Event description",
+      "place": "Place",
+      "published": "Published",
+      "owner": "Owner"
+    },
+    "new": {
+      "title": "Create a new event",
+      "actions": {
+        "submit": "Create"
+      },
+      "validators": {
+        "title": {
+          "minlength": "Min length 5 symbols"
+        },
+        "body": {
+          "minlength": "Min length 50 symbols"
+        }
+      }
+    }
+  }
+}

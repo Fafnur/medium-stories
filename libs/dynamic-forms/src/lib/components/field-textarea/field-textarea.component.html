@@ -1,0 +1,15 @@
+<ng-container
+  *ngTemplateOutlet="textareaTpl; context: { valueChanges: valueChanges$ | async, touchedChanged: touchedChanged$ | async }"
+></ng-container>
+
+<ng-template #textareaTpl>
+  <textarea
+    [id]="id"
+    [name]="name"
+    [formControl]="formControl"
+    [rows]="field.attrs.rows || 3"
+    class="form-control {{ classes }}"
+    [class.is-invalid]="invalid"
+    [placeholder]="field.attrs.placeholder | translate"
+  ></textarea>
+</ng-template>

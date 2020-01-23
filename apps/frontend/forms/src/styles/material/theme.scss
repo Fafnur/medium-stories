@@ -1,0 +1,11 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$app-primary: mat-palette($mat-lamborghini, 500);
+$app-accent: mat-palette($mat-gray);
+$app-warn: mat-palette($mat-deep-orange);
+
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+
+@include angular-material-theme($app-theme);

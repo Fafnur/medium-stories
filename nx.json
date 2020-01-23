@@ -20,6 +20,9 @@
     "frontend-common-styles": {
       "tags": []
     },
+    "frontend-forms": {
+      "tags": []
+    },
     "frontend-graphql": {
       "tags": []
     },
@@ -48,6 +51,9 @@
       "tags": []
     },
     "common": {
+      "tags": []
+    },
+    "dynamic-forms": {
       "tags": []
     },
     "entities": {

@@ -1,0 +1,56 @@
+@import 'utils';
+
+html {
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~bootstrap/scss/mixins/grid-framework';
+@import '~bootstrap/scss/mixins/grid';
+
+@import '~bootstrap/scss/grid';
+@import '~bootstrap/scss/utilities/display';
+@import '~bootstrap/scss/utilities/flex';
+@import '~bootstrap/scss/utilities/spacing';
+
+// Bootstrap components
+@import '~bootstrap/scss/buttons';
+@import '~bootstrap/scss/close';
+@import '~bootstrap/scss/modal';
+@import '~bootstrap/scss/nav';
+@import '~bootstrap/scss/forms';
+
+.container-responsive {
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  @include media-breakpoint-up($mobile) {
+    margin: 0 auto;
+    max-width: map-get($container-max-widths, zh);
+  }
+}
+
+.container-promo {
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  @include media-breakpoint-up(md) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  @include media-breakpoint-up(xl) {
+    padding-left: 4.5rem;
+    padding-right: 4.5rem;
+  }
+  @include media-breakpoint-up(zh) {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}

@@ -1,15 +1,21 @@
-<div class="range-beauty">
-  <div class="range-beauty-width" [ngStyle]="rangeWidth"></div>
-  <input
-    type="range"
-    [id]="id"
-    [name]="name"
-    [msInputRange]="field.rangeOptions"
-    [formControl]="formControl"
-    [class.is-invalid]="invalid"
-    [min]="field.rangeOptions.min"
-    [max]="field.rangeOptions.max"
-    [step]="field.rangeOptions.step"
-    [value]="field.rangeOptions.defaultValue"
-  />
-</div>
+<ng-container
+  *ngTemplateOutlet="inputRangeTpl; context: { valueChanges: valueChanges$ | async, touchedChanged: touchedChanged$ | async }"
+></ng-container>
+
+<ng-template #inputRangeTpl>
+  <div class="range-beauty">
+    <div class="range-beauty-width" [ngStyle]="rangeWidth"></div>
+    <input
+      type="range"
+      [id]="id"
+      [name]="name"
+      [msInputRange]="field.rangeOptions"
+      [formControl]="formControl"
+      [class.is-invalid]="invalid"
+      [min]="field.rangeOptions.min"
+      [max]="field.rangeOptions.max"
+      [step]="field.rangeOptions.step"
+      [value]="field.rangeOptions.defaultValue"
+    />
+  </div>
+</ng-template>

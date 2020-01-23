@@ -1,11 +1,17 @@
-<input
-  [id]="id"
-  [name]="name"
-  [type]="field.attrs.type || 'text'"
-  [formControl]="formControl"
-  class="form-control {{ classes }}"
-  [class.is-invalid]="invalid"
-  [placeholder]="field.attrs.placeholder ? (field.attrs.placeholder | translate) : ''"
-  [autocomplete]="field.attrs.autocomplete"
-  (blur)="onBlur()"
-/>
+<ng-container
+  *ngTemplateOutlet="inputTpl; context: { valueChanges: valueChanges$ | async, touchedChanged: touchedChanged$ | async }"
+></ng-container>
+
+<ng-template #inputTpl>
+  <input
+    [id]="id"
+    [name]="name"
+    [type]="field.attrs.type || 'text'"
+    [formControl]="formControl"
+    class="form-control {{ classes }}"
+    [class.is-invalid]="invalid"
+    [placeholder]="field.attrs.placeholder ? (field.attrs.placeholder | translate) : ''"
+    [autocomplete]="field.attrs.autocomplete"
+    (blur)="onBlur()"
+  />
+</ng-template>

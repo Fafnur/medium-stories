@@ -1,5 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
+import { extractTouchedChanges } from '../../utils/form-changes.util';
 import { FieldComponent, FormFieldInputRange } from '../../interfaces/form.interface';
 
 @Component({
@@ -8,7 +11,26 @@ import { FieldComponent, FormFieldInputRange } from '../../interfaces/form.inter
   styleUrls: ['./field-input-range.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FieldInputRangeComponent extends FieldComponent<FormFieldInputRange> {
+export class FieldInputRangeComponent extends FieldComponent<FormFieldInputRange> implements OnInit {
+  /**
+   * Detect touched changed
+   */
+  touchedChanged$!: Observable<boolean>;
+
+  /**
+   * Value changes
+   */
+  valueChanges$!: Observable<boolean>;
+
+  constructor(protected changeDetectorRef: ChangeDetectorRef) {
+    super();
+  }
+
+  ngOnInit(): void {
+    this.touchedChanged$ = extractTouchedChanges(this.formControl).pipe(tap(() => this.changeDetectorRef.markForCheck()));
+    this.valueChanges$ = this.formControl.valueChanges.pipe(tap(() => this.changeDetectorRef.markForCheck()));
+  }
+
   /**
    * Return range width for css
    */

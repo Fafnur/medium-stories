@@ -126,6 +126,7 @@
     "graphql-tag-pluck": "^0.8.7",
     "graphql-tools": "^4.0.6",
     "graphql-type-json": "^0.3.1",
+    "hammerjs": "^2.0.8",
     "ngx-cookie": "^4.1.2",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",

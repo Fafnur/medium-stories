@@ -18,7 +18,6 @@ import { CoreModule } from './core/core.module';
     ServerTranslationModule.forRoot({
       config: environment.translation
     }),
-    ModuleMapLoaderModule,
     ServerTransferStateModule
   ],
   bootstrap: [AppComponent]

@@ -3,6 +3,8 @@ import 'zone.js/dist/zone-node';
 import { APP_BASE_HREF } from '@angular/common';
 import '@angular/localize/init';
 import { ngExpressEngine } from '@nguniversal/express-engine';
+import { REQUEST, RESPONSE } from '@nguniversal/express-engine/tokens';
+// import * as cookieParser from 'cookie-parser';
 import * as express from 'express';
 import { existsSync } from 'fs';
 import { join } from 'path';
@@ -38,7 +40,14 @@ export function app() {
 
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
-    res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+    res.render(indexHtml, {
+      req,
+      providers: [
+        { provide: APP_BASE_HREF, useValue: req.baseUrl },
+        { provide: REQUEST, useValue: req },
+        { provide: RESPONSE, useValue: res }
+      ]
+    });
   });
 
   return server;

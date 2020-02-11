@@ -3,7 +3,7 @@ version: '3.1'
 services:
   postgres:
     image: postgres:latest
-    restart: on-failure
+    restart: 'no'
     environment:
       - POSTGRES_DB=medium
       - POSTGRES_PASSWORD=123456

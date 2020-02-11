@@ -8,7 +8,7 @@ import { CoreModule } from './core/core.module';
 import { AppComponent } from './core/containers/app/app.component';
 
 @NgModule({
-  imports: [AppModule, CoreModule, ServerStorageModule.forRoot(), ServerModule, ModuleMapLoaderModule, ServerTransferStateModule],
+  imports: [AppModule, CoreModule, ServerStorageModule.forRoot(), ServerModule, ServerTransferStateModule],
   bootstrap: [AppComponent]
 })
 export class AppServerModule {}

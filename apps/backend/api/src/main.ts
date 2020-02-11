@@ -12,7 +12,7 @@ async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
-  const port = process.env.port || 3333;
+  const port = +process.env.port || 3333;
 
   app.useStaticAssets({
     root: join(__dirname, './assets/uploads'),

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { ServerModule, ServerTransferStateModule } from '@angular/platform-server';
-import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader';
 
 import { ServerStorageModule } from '@medium-stories/storage';
 import { ServerTranslationModule } from '@medium-stories/translation';
@@ -19,7 +18,6 @@ import { CoreModule } from './core/core.module';
     ServerTranslationModule.forRoot({
       config: environment.translation
     }),
-    ModuleMapLoaderModule,
     ServerTransferStateModule
   ],
   bootstrap: [AppComponent]

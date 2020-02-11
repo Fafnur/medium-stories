@@ -72,7 +72,7 @@
             "main": "apps/frontend/base/src/main.browser.ts",
             "polyfills": "apps/frontend/base/src/polyfills.ts",
             "tsConfig": "apps/frontend/base/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/frontend/base/src/favicon.ico", "apps/frontend/base/src/assets"],
             "styles": ["apps/frontend/base/src/styles.scss"],
             "scripts": []
@@ -90,7 +90,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -99,6 +98,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -139,14 +142,13 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "bundleDependencies": "none",
             "outputPath": "dist/apps/frontend/base/server",
-            "main": "apps/frontend/base/src/main.server.ts",
+            "main": "apps/frontend/base/server.ts",
             "tsConfig": "apps/frontend/base/tsconfig.server.json"
           },
           "configurations": {
             "production": {
-              "bundleDependencies": "all",
+              "bundleDependencies": true,
               "fileReplacements": [
                 {
                   "replace": "apps/frontend/base/src/environments/environment.ts",
@@ -154,11 +156,32 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "frontend-base:build",
+            "serverTarget": "frontend-base:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-base:build:production",
+              "serverTarget": "frontend-base:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "frontend-base:build:production",
+            "serverTarget": "frontend-base:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
@@ -211,7 +234,7 @@
             "main": "apps/frontend/common-styles/src/main.browser.ts",
             "polyfills": "apps/frontend/common-styles/src/polyfills.ts",
             "tsConfig": "apps/frontend/common-styles/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/frontend/common-styles/src/favicon.ico", "apps/frontend/common-styles/src/assets"],
             "styles": ["apps/frontend/common-styles/src/styles.scss"],
             "stylePreprocessorOptions": {
@@ -232,7 +255,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -241,6 +263,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -281,9 +307,8 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "bundleDependencies": "none",
             "outputPath": "dist/apps/frontend/common-styles/server",
-            "main": "apps/frontend/common-styles/src/main.server.ts",
+            "main": "apps/frontend/common-styles/server.ts",
             "tsConfig": "apps/frontend/common-styles/tsconfig.server.json",
             "stylePreprocessorOptions": {
               "includePaths": ["apps/frontend/common-styles/src/styles"]
@@ -291,7 +316,7 @@
           },
           "configurations": {
             "production": {
-              "bundleDependencies": "all",
+              "bundleDependencies": true,
               "fileReplacements": [
                 {
                   "replace": "apps/frontend/common-styles/src/environments/environment.ts",
@@ -299,11 +324,32 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "frontend-common-styles:build",
+            "serverTarget": "frontend-common-styles:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-common-styles:build:production",
+              "serverTarget": "frontend-common-styles:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "frontend-common-styles:build:production",
+            "serverTarget": "frontend-common-styles:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
@@ -328,7 +374,7 @@
             "main": "apps/frontend/forms/src/main.browser.ts",
             "polyfills": "apps/frontend/forms/src/polyfills.ts",
             "tsConfig": "apps/frontend/forms/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "apps/frontend/forms/src/favicon.ico",
               "apps/frontend/forms/src/assets",
@@ -357,7 +403,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -366,6 +411,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -407,9 +456,8 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "bundleDependencies": "none",
             "outputPath": "dist/apps/frontend/forms/server",
-            "main": "apps/frontend/forms/src/main.server.ts",
+            "main": "apps/frontend/forms/server.ts",
             "tsConfig": "apps/frontend/forms/tsconfig.server.json",
             "stylePreprocessorOptions": {
               "includePaths": ["apps/frontend/forms/src/styles"]
@@ -417,7 +465,7 @@
           },
           "configurations": {
             "production": {
-              "bundleDependencies": "all",
+              "bundleDependencies": true,
               "fileReplacements": [
                 {
                   "replace": "apps/frontend/forms/src/environments/environment.ts",
@@ -425,11 +473,32 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "frontend-forms:build",
+            "serverTarget": "frontend-forms:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-forms:build:production",
+              "serverTarget": "frontend-forms:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "frontend-forms:build:production",
+            "serverTarget": "frontend-forms:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
@@ -454,7 +523,7 @@
             "main": "apps/frontend/graphql/src/main.browser.ts",
             "polyfills": "apps/frontend/graphql/src/polyfills.ts",
             "tsConfig": "apps/frontend/graphql/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "apps/frontend/graphql/src/favicon.ico",
               "apps/frontend/graphql/src/assets",
@@ -483,7 +552,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -492,6 +560,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -533,9 +605,8 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "bundleDependencies": "none",
             "outputPath": "dist/apps/frontend/graphql/server",
-            "main": "apps/frontend/graphql/src/main.server.ts",
+            "main": "apps/frontend/graphql/server.ts",
             "tsConfig": "apps/frontend/graphql/tsconfig.server.json",
             "stylePreprocessorOptions": {
               "includePaths": ["apps/frontend/graphql/src/styles"]
@@ -543,7 +614,7 @@
           },
           "configurations": {
             "production": {
-              "bundleDependencies": "all",
+              "bundleDependencies": true,
               "fileReplacements": [
                 {
                   "replace": "apps/frontend/graphql/src/environments/environment.ts",
@@ -551,11 +622,32 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "frontend-graphql:build",
+            "serverTarget": "frontend-graphql:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-graphql:build:production",
+              "serverTarget": "frontend-graphql:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "frontend-graphql:build:production",
+            "serverTarget": "frontend-graphql:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
@@ -580,7 +672,7 @@
             "main": "apps/frontend/markup/src/main.browser.ts",
             "polyfills": "apps/frontend/markup/src/polyfills.ts",
             "tsConfig": "apps/frontend/markup/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "apps/frontend/markup/src/favicon.ico",
               "apps/frontend/markup/src/assets",
@@ -609,7 +701,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -618,6 +709,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -659,9 +754,8 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "bundleDependencies": "none",
             "outputPath": "dist/apps/frontend/markup/server",
-            "main": "apps/frontend/markup/src/main.server.ts",
+            "main": "apps/frontend/markup/server.ts",
             "tsConfig": "apps/frontend/markup/tsconfig.server.json",
             "stylePreprocessorOptions": {
               "includePaths": ["apps/frontend/markup/src/styles"]
@@ -669,7 +763,7 @@
           },
           "configurations": {
             "production": {
-              "bundleDependencies": "all",
+              "bundleDependencies": true,
               "fileReplacements": [
                 {
                   "replace": "apps/frontend/markup/src/environments/environment.ts",
@@ -677,11 +771,32 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "frontend-markup:build",
+            "serverTarget": "frontend-markup:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-markup:build:production",
+              "serverTarget": "frontend-markup:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "frontend-markup:build:production",
+            "serverTarget": "frontend-markup:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
@@ -706,7 +821,7 @@
             "main": "apps/frontend/responsive/src/main.browser.ts",
             "polyfills": "apps/frontend/responsive/src/polyfills.ts",
             "tsConfig": "apps/frontend/responsive/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/frontend/responsive/src/favicon.ico", "apps/frontend/responsive/src/assets"],
             "styles": ["apps/frontend/responsive/src/styles.scss"],
             "stylePreprocessorOptions": {
@@ -727,7 +842,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -736,6 +850,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -776,9 +894,8 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "bundleDependencies": "none",
             "outputPath": "dist/apps/frontend/responsive/server",
-            "main": "apps/frontend/responsive/src/main.server.ts",
+            "main": "apps/frontend/responsive/server.ts",
             "tsConfig": "apps/frontend/responsive/tsconfig.server.json",
             "stylePreprocessorOptions": {
               "includePaths": ["apps/frontend/responsive/src/styles"]
@@ -786,7 +903,7 @@
           },
           "configurations": {
             "production": {
-              "bundleDependencies": "all",
+              "bundleDependencies": true,
               "fileReplacements": [
                 {
                   "replace": "apps/frontend/responsive/src/environments/environment.ts",
@@ -794,11 +911,32 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "frontend-responsive:build",
+            "serverTarget": "frontend-responsive:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-responsive:build:production",
+              "serverTarget": "frontend-responsive:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "frontend-responsive:build:production",
+            "serverTarget": "frontend-responsive:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
@@ -823,7 +961,7 @@
             "main": "apps/frontend/shared/src/main.browser.ts",
             "polyfills": "apps/frontend/shared/src/polyfills.ts",
             "tsConfig": "apps/frontend/shared/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/frontend/shared/src/favicon.ico", "apps/frontend/shared/src/assets"],
             "styles": ["apps/frontend/shared/src/styles.scss"],
             "stylePreprocessorOptions": {
@@ -844,7 +982,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -853,6 +990,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -893,9 +1034,8 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "bundleDependencies": "none",
             "outputPath": "dist/apps/frontend/shared/server",
-            "main": "apps/frontend/shared/src/main.server.ts",
+            "main": "apps/frontend/shared/server.ts",
             "tsConfig": "apps/frontend/shared/tsconfig.server.json",
             "stylePreprocessorOptions": {
               "includePaths": ["apps/frontend/shared/src/styles"]
@@ -903,7 +1043,7 @@
           },
           "configurations": {
             "production": {
-              "bundleDependencies": "all",
+              "bundleDependencies": true,
               "fileReplacements": [
                 {
                   "replace": "apps/frontend/shared/src/environments/environment.ts",
@@ -911,11 +1051,32 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "frontend-shared:build",
+            "serverTarget": "frontend-shared:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-shared:build:production",
+              "serverTarget": "frontend-shared:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "frontend-shared:build:production",
+            "serverTarget": "frontend-shared:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
@@ -940,7 +1101,7 @@
             "main": "apps/frontend/storage/src/main.browser.ts",
             "polyfills": "apps/frontend/storage/src/polyfills.ts",
             "tsConfig": "apps/frontend/storage/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/frontend/storage/src/favicon.ico", "apps/frontend/storage/src/assets"],
             "styles": ["apps/frontend/storage/src/styles.scss"],
             "scripts": []
@@ -958,7 +1119,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -967,6 +1127,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -1007,14 +1171,13 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "bundleDependencies": "none",
             "outputPath": "dist/apps/frontend/storage/server",
-            "main": "apps/frontend/storage/src/main.server.ts",
+            "main": "apps/frontend/storage/server.ts",
             "tsConfig": "apps/frontend/storage/tsconfig.server.json"
           },
           "configurations": {
             "production": {
-              "bundleDependencies": "all",
+              "bundleDependencies": true,
               "fileReplacements": [
                 {
                   "replace": "apps/frontend/storage/src/environments/environment.ts",
@@ -1022,11 +1185,32 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "frontend-storage:build",
+            "serverTarget": "frontend-storage:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-storage:build:production",
+              "serverTarget": "frontend-storage:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "frontend-storage:build:production",
+            "serverTarget": "frontend-storage:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
@@ -1051,7 +1235,7 @@
             "main": "apps/frontend/store/src/main.browser.ts",
             "polyfills": "apps/frontend/store/src/polyfills.ts",
             "tsConfig": "apps/frontend/store/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/frontend/store/src/favicon.ico", "apps/frontend/store/src/assets"],
             "styles": ["apps/frontend/store/src/styles.scss"],
             "scripts": []
@@ -1069,7 +1253,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -1078,6 +1261,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -1118,14 +1305,13 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "bundleDependencies": "none",
             "outputPath": "dist/apps/frontend/store/server",
-            "main": "apps/frontend/store/src/main.server.ts",
+            "main": "apps/frontend/store/server.ts",
             "tsConfig": "apps/frontend/store/tsconfig.server.json"
           },
           "configurations": {
             "production": {
-              "bundleDependencies": "all",
+              "bundleDependencies": true,
               "fileReplacements": [
                 {
                   "replace": "apps/frontend/store/src/environments/environment.ts",
@@ -1133,11 +1319,32 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "frontend-store:build",
+            "serverTarget": "frontend-store:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-store:build:production",
+              "serverTarget": "frontend-store:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "frontend-store:build:production",
+            "serverTarget": "frontend-store:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
@@ -1162,7 +1369,7 @@
             "main": "apps/frontend/theming/src/main.browser.ts",
             "polyfills": "apps/frontend/theming/src/polyfills.ts",
             "tsConfig": "apps/frontend/theming/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/frontend/theming/src/favicon.ico", "apps/frontend/theming/src/assets"],
             "styles": ["apps/frontend/theming/src/styles.scss"],
             "stylePreprocessorOptions": {
@@ -1183,7 +1390,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -1192,6 +1398,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -1232,9 +1442,8 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "bundleDependencies": "none",
             "outputPath": "dist/apps/frontend/theming/server",
-            "main": "apps/frontend/theming/src/main.server.ts",
+            "main": "apps/frontend/theming/server.ts",
             "tsConfig": "apps/frontend/theming/tsconfig.server.json",
             "stylePreprocessorOptions": {
               "includePaths": ["apps/frontend/theming/src/styles"]
@@ -1242,7 +1451,7 @@
           },
           "configurations": {
             "production": {
-              "bundleDependencies": "all",
+              "bundleDependencies": true,
               "fileReplacements": [
                 {
                   "replace": "apps/frontend/theming/src/environments/environment.ts",
@@ -1250,11 +1459,32 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "frontend-theming:build",
+            "serverTarget": "frontend-theming:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-theming:build:production",
+              "serverTarget": "frontend-theming:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "frontend-theming:build:production",
+            "serverTarget": "frontend-theming:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
@@ -1279,7 +1509,7 @@
             "main": "apps/frontend/translation/src/main.browser.ts",
             "polyfills": "apps/frontend/translation/src/polyfills.ts",
             "tsConfig": "apps/frontend/translation/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/frontend/translation/src/favicon.ico", "apps/frontend/translation/src/assets"],
             "styles": ["apps/frontend/translation/src/styles.scss"],
             "scripts": []
@@ -1297,7 +1527,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -1306,6 +1535,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -1346,14 +1579,13 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "bundleDependencies": "none",
             "outputPath": "dist/apps/frontend/translation/server",
-            "main": "apps/frontend/translation/src/main.server.ts",
+            "main": "apps/frontend/translation/server.ts",
             "tsConfig": "apps/frontend/translation/tsconfig.server.json"
           },
           "configurations": {
             "production": {
-              "bundleDependencies": "all",
+              "bundleDependencies": true,
               "fileReplacements": [
                 {
                   "replace": "apps/frontend/translation/src/environments/environment.ts",
@@ -1361,11 +1593,32 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "frontend-translation:build",
+            "serverTarget": "frontend-translation:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-translation:build:production",
+              "serverTarget": "frontend-translation:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "frontend-translation:build:production",
+            "serverTarget": "frontend-translation:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
@@ -1390,7 +1643,7 @@
             "main": "apps/frontend/translation-state/src/main.browser.ts",
             "polyfills": "apps/frontend/translation-state/src/polyfills.ts",
             "tsConfig": "apps/frontend/translation-state/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/frontend/translation-state/src/favicon.ico", "apps/frontend/translation-state/src/assets"],
             "styles": ["apps/frontend/translation-state/src/styles.scss"],
             "stylePreprocessorOptions": {
@@ -1411,7 +1664,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -1420,6 +1672,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -1460,9 +1716,8 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "bundleDependencies": "none",
             "outputPath": "dist/apps/frontend/translation-state/server",
-            "main": "apps/frontend/translation-state/src/main.server.ts",
+            "main": "apps/frontend/translation-state/server.ts",
             "tsConfig": "apps/frontend/translation-state/tsconfig.server.json",
             "stylePreprocessorOptions": {
               "includePaths": ["apps/frontend/translation-state/src/styles"]
@@ -1470,7 +1725,7 @@
           },
           "configurations": {
             "production": {
-              "bundleDependencies": "all",
+              "bundleDependencies": true,
               "fileReplacements": [
                 {
                   "replace": "apps/frontend/translation-state/src/environments/environment.ts",
@@ -1478,11 +1733,32 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "frontend-translation-state:build",
+            "serverTarget": "frontend-translation-state:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-translation-state:build:production",
+              "serverTarget": "frontend-translation-state:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "frontend-translation-state:build:production",
+            "serverTarget": "frontend-translation-state:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }

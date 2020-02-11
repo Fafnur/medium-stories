@@ -31,7 +31,7 @@ export function serverTranslateFactory(transferState: TransferState, appDist: st
   ]
 })
 export class ServerTranslationModule {
-  static forRoot(options: Partial<TranslationOptions> = {}): ModuleWithProviders {
+  static forRoot(options: Partial<TranslationOptions> = {}): ModuleWithProviders<ServerTranslationModule> {
     return {
       ngModule: ServerTranslationModule,
       providers: [

@@ -15,7 +15,7 @@ import { BaseResponsiveStorage } from './services/base-responsive-storage.servic
   exports: [...responsivePipes, ...responsiveDirectives]
 })
 export class ResponsiveModule {
-  static forRoot(options: Partial<ResponsiveOptions> = {}): ModuleWithProviders {
+  static forRoot(options: Partial<ResponsiveOptions> = {}): ModuleWithProviders<ResponsiveModule> {
     return {
       ngModule: ResponsiveModule,
       providers: [

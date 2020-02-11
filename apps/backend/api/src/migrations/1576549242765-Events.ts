@@ -3,12 +3,12 @@ import { MigrationInterface, QueryRunner } from 'typeorm';
 export class Events1576514027582 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<any> {
     const users = await queryRunner.query(`SELECT id FROM users where username = 'admin'`);
-    const userId = users[0].id;
+    const userId = users[0] ? users[0].id : 1;
     const images: any[] = await queryRunner.query(`SELECT * FROM medias where src LIKE 'image-%'`);
-    const imagesIds = images.map(image => image.id);
+    const imagesIds = images && images.length ? images.map(image => image.id) : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     await queryRunner.query(`
         INSERT INTO events (body, start, "end", published, title, place, "ownerId", "imageId")
-        VALUES 
+        VALUES
         ('{"en":"Competition in the fifth round of the season of Lamborghini Super Trofeo North America will take place at the most famous Californian raceway.", "ru": "Соревнования в пятом туре сезона Lamborghini Super Trofeo North America пройдут на самой известной калифорнийской гоночной трассе."}',
         '2019-07-13 00:00:00.000000', '2019-07-14 00:00:00.000000',
          true, '{"en":"SUPER TROFEO NORTH AMERICA 2019", "ru":"SUPER TROFEO NORTH AMERICA 2019"}',

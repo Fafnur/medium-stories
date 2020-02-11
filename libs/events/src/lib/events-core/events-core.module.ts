@@ -13,7 +13,7 @@ import { BaseEventApollo } from './services/base-event-apollo.service';
   imports: [StoreModule.forFeature(EVENT_FEATURE_KEY, eventReducer), EffectsModule.forFeature([EventEffects])]
 })
 export class EventsCoreModule {
-  static forRoot(options: Partial<EventsCoreOptions> = {}): ModuleWithProviders {
+  static forRoot(options: Partial<EventsCoreOptions> = {}): ModuleWithProviders<EventsCoreModule> {
     return {
       ngModule: EventsCoreModule,
       providers: [

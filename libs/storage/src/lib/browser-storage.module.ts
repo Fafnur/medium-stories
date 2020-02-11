@@ -14,7 +14,7 @@ import { BrowserSessionStorage } from './storages/browser-session.storage';
   imports: [CookieModule.forRoot()]
 })
 export class BrowserStorageModule {
-  static forRoot(options: Partial<StorageOptions> = {}): ModuleWithProviders {
+  static forRoot(options: Partial<StorageOptions> = {}): ModuleWithProviders<BrowserStorageModule> {
     return {
       ngModule: BrowserStorageModule,
       providers: [

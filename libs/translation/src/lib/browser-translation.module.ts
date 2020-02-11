@@ -30,7 +30,7 @@ export function browserTranslateFactory(transferState: TransferState, httpClient
   ]
 })
 export class BrowserTranslationModule {
-  static forRoot(options: Partial<TranslationOptions> = {}): ModuleWithProviders {
+  static forRoot(options: Partial<TranslationOptions> = {}): ModuleWithProviders<BrowserTranslationModule> {
     return {
       ngModule: BrowserTranslationModule,
       providers: [

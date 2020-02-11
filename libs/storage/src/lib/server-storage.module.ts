@@ -14,7 +14,7 @@ import { MemoryStorage } from './storages/memory.storage';
   imports: [CookieModule.forRoot()]
 })
 export class ServerStorageModule {
-  static forRoot(options: Partial<StorageOptions> = {}): ModuleWithProviders {
+  static forRoot(options: Partial<StorageOptions> = {}): ModuleWithProviders<ServerStorageModule> {
     return {
       ngModule: ServerStorageModule,
       providers: [

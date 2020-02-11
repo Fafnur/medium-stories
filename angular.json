@@ -72,7 +72,7 @@
             "main": "apps/frontend/base/src/main.browser.ts",
             "polyfills": "apps/frontend/base/src/polyfills.ts",
             "tsConfig": "apps/frontend/base/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/frontend/base/src/favicon.ico", "apps/frontend/base/src/assets"],
             "styles": ["apps/frontend/base/src/styles.scss"],
             "scripts": []
@@ -90,7 +90,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -99,6 +98,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -154,10 +157,7 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
           }
         }
@@ -211,7 +211,7 @@
             "main": "apps/frontend/common-styles/src/main.browser.ts",
             "polyfills": "apps/frontend/common-styles/src/polyfills.ts",
             "tsConfig": "apps/frontend/common-styles/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/frontend/common-styles/src/favicon.ico", "apps/frontend/common-styles/src/assets"],
             "styles": ["apps/frontend/common-styles/src/styles.scss"],
             "stylePreprocessorOptions": {
@@ -232,7 +232,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -241,6 +240,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -299,10 +302,7 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
           }
         }
@@ -328,7 +328,7 @@
             "main": "apps/frontend/forms/src/main.browser.ts",
             "polyfills": "apps/frontend/forms/src/polyfills.ts",
             "tsConfig": "apps/frontend/forms/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "apps/frontend/forms/src/favicon.ico",
               "apps/frontend/forms/src/assets",
@@ -357,7 +357,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -366,6 +365,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -425,10 +428,7 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
           }
         }
@@ -454,7 +454,7 @@
             "main": "apps/frontend/graphql/src/main.browser.ts",
             "polyfills": "apps/frontend/graphql/src/polyfills.ts",
             "tsConfig": "apps/frontend/graphql/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "apps/frontend/graphql/src/favicon.ico",
               "apps/frontend/graphql/src/assets",
@@ -483,7 +483,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -492,6 +491,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -551,10 +554,7 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
           }
         }
@@ -580,7 +580,7 @@
             "main": "apps/frontend/markup/src/main.browser.ts",
             "polyfills": "apps/frontend/markup/src/polyfills.ts",
             "tsConfig": "apps/frontend/markup/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "apps/frontend/markup/src/favicon.ico",
               "apps/frontend/markup/src/assets",
@@ -609,7 +609,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -618,6 +617,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -677,10 +680,7 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
           }
         }
@@ -706,7 +706,7 @@
             "main": "apps/frontend/responsive/src/main.browser.ts",
             "polyfills": "apps/frontend/responsive/src/polyfills.ts",
             "tsConfig": "apps/frontend/responsive/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/frontend/responsive/src/favicon.ico", "apps/frontend/responsive/src/assets"],
             "styles": ["apps/frontend/responsive/src/styles.scss"],
             "stylePreprocessorOptions": {
@@ -727,7 +727,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -736,6 +735,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -794,10 +797,7 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
           }
         }
@@ -823,7 +823,7 @@
             "main": "apps/frontend/shared/src/main.browser.ts",
             "polyfills": "apps/frontend/shared/src/polyfills.ts",
             "tsConfig": "apps/frontend/shared/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/frontend/shared/src/favicon.ico", "apps/frontend/shared/src/assets"],
             "styles": ["apps/frontend/shared/src/styles.scss"],
             "stylePreprocessorOptions": {
@@ -844,7 +844,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -853,6 +852,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -911,10 +914,7 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
           }
         }
@@ -940,7 +940,7 @@
             "main": "apps/frontend/storage/src/main.browser.ts",
             "polyfills": "apps/frontend/storage/src/polyfills.ts",
             "tsConfig": "apps/frontend/storage/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/frontend/storage/src/favicon.ico", "apps/frontend/storage/src/assets"],
             "styles": ["apps/frontend/storage/src/styles.scss"],
             "scripts": []
@@ -958,7 +958,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -967,6 +966,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -1022,10 +1025,7 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
           }
         }
@@ -1051,7 +1051,7 @@
             "main": "apps/frontend/store/src/main.browser.ts",
             "polyfills": "apps/frontend/store/src/polyfills.ts",
             "tsConfig": "apps/frontend/store/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/frontend/store/src/favicon.ico", "apps/frontend/store/src/assets"],
             "styles": ["apps/frontend/store/src/styles.scss"],
             "scripts": []
@@ -1069,7 +1069,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -1078,6 +1077,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -1133,10 +1136,7 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
           }
         }
@@ -1162,7 +1162,7 @@
             "main": "apps/frontend/theming/src/main.browser.ts",
             "polyfills": "apps/frontend/theming/src/polyfills.ts",
             "tsConfig": "apps/frontend/theming/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/frontend/theming/src/favicon.ico", "apps/frontend/theming/src/assets"],
             "styles": ["apps/frontend/theming/src/styles.scss"],
             "stylePreprocessorOptions": {
@@ -1183,7 +1183,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -1192,6 +1191,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -1250,10 +1253,7 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
           }
         }
@@ -1279,7 +1279,7 @@
             "main": "apps/frontend/translation/src/main.browser.ts",
             "polyfills": "apps/frontend/translation/src/polyfills.ts",
             "tsConfig": "apps/frontend/translation/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/frontend/translation/src/favicon.ico", "apps/frontend/translation/src/assets"],
             "styles": ["apps/frontend/translation/src/styles.scss"],
             "scripts": []
@@ -1297,7 +1297,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -1306,6 +1305,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -1361,10 +1364,7 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
           }
         }
@@ -1390,7 +1390,7 @@
             "main": "apps/frontend/translation-state/src/main.browser.ts",
             "polyfills": "apps/frontend/translation-state/src/polyfills.ts",
             "tsConfig": "apps/frontend/translation-state/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/frontend/translation-state/src/favicon.ico", "apps/frontend/translation-state/src/assets"],
             "styles": ["apps/frontend/translation-state/src/styles.scss"],
             "stylePreprocessorOptions": {
@@ -1411,7 +1411,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -1420,6 +1419,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -1478,10 +1481,7 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
           }
         }

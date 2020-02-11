@@ -104,7 +104,7 @@
     "@ngrx/store": "^9.0.0-beta.0",
     "@nguniversal/common": "^9.0.0",
     "@nguniversal/express-engine": "^9.0.0",
-    "@ngx-translate/core": "^11.0.1",
+    "@ngx-translate/core": "^12.0.0",
     "@ngx-translate/http-loader": "^4.0.0",
     "@nrwl/angular": "^9.0.0-rc.2",
     "apollo-angular": "^1.8.0",

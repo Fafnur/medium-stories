@@ -1573,10 +1573,10 @@
   dependencies:
     "@nguniversal/common" "9.0.0"
 
-"@ngx-translate/core@^11.0.1":
-  version "11.0.1"
-  resolved "https://registry.yarnpkg.com/@ngx-translate/core/-/core-11.0.1.tgz#cecefad41f06368f5859dac48fec8fcc4485615f"
-  integrity sha512-nBCa1ZD9fAUY/3eskP3Lql2fNg8OMrYIej1/5GRsfcutx9tG/5fZLCv9m6UCw1aS+u4uK/vXjv1ctG/FdMvaWg==
+"@ngx-translate/core@^12.0.0":
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/@ngx-translate/core/-/core-12.0.0.tgz#d177b03ea84d37fb2d7d352246867ba533d93225"
+  integrity sha512-hxuaLEqxlZ3IWBupyAoRXAhMZHCmaCg58XpY5+vevJmDhMEFJUEKdQyWVOKcf3+6PkoIFcuKJCeHa5C3Hb65gA==
   dependencies:
     tslib "^1.9.0"
 

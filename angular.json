@@ -144,7 +144,7 @@
           "options": {
             "bundleDependencies": "none",
             "outputPath": "dist/apps/frontend/base/server",
-`            "main": "apps/frontend/base/server.ts",
+            "main": "apps/frontend/base/server.ts",
             "tsConfig": "apps/frontend/base/tsconfig.server.json"
           },
           "configurations": {

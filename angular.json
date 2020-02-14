@@ -1763,6 +1763,143 @@
         }
       }
     },
+    "frontend-universal": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/frontend/universal",
+      "sourceRoot": "apps/frontend/universal/src",
+      "prefix": "medium-stories",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/frontend/universal/browser",
+            "index": "apps/frontend/universal/src/index.html",
+            "main": "apps/frontend/universal/src/main.browser.ts",
+            "polyfills": "apps/frontend/universal/src/polyfills.ts",
+            "tsConfig": "apps/frontend/universal/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/frontend/universal/src/favicon.ico", "apps/frontend/universal/src/assets"],
+            "styles": ["apps/frontend/universal/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/universal/src/environments/environment.ts",
+                  "with": "apps/frontend/universal/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "frontend-universal:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-universal:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "frontend-universal:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/frontend/universal/tsconfig.app.json", "apps/frontend/universal/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/frontend/universal/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/frontend/universal/jest.config.js",
+            "tsConfig": "apps/frontend/universal/tsconfig.spec.json",
+            "setupFile": "apps/frontend/universal/src/test-setup.ts"
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/apps/frontend/universal/server",
+            "main": "apps/frontend/universal/server.ts",
+            "tsConfig": "apps/frontend/universal/tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/frontend/universal/src/styles"]
+            }
+          },
+          "configurations": {
+            "production": {
+              "bundleDependencies": true,
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/universal/src/environments/environment.ts",
+                  "with": "apps/frontend/universal/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "frontend-universal:build",
+            "serverTarget": "frontend-universal:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-universal:build:production",
+              "serverTarget": "frontend-universal:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "frontend-universal:build:production",
+            "serverTarget": "frontend-universal:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
+          }
+        }
+      }
+    },
     "common": {
       "projectType": "library",
       "root": "libs/common",

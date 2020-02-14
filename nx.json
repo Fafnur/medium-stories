@@ -79,6 +79,13 @@
     },
     "translation": {
       "tags": []
+    },
+    "frontend-universal": {
+      "tags": []
+    },
+    "frontend/universal-e2e": {
+      "tags": [],
+      "implicitDependencies": ["frontend-universal"]
     }
   }
 }

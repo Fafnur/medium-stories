@@ -64,7 +64,9 @@
     "serve:ssr": "node dist/apps/frontend/translation-state/server/main.js",
     "build:ssr": "ng build --prod && ng run frontend-translation-state:server:production",
     "prerender": "ng run frontend-translation-state:prerender",
-    "post:install": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+    "post:install": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
+    "build:ssr:universal": "ng build frontend-universal --prod && ng run frontend-universal:server:production",
+    "serve:ssr:universal": "node dist/apps/frontend/universal/server/main.js"
   },
   "private": true,
   "dependencies": {

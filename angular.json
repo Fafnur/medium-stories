@@ -1787,7 +1787,7 @@
       },
       "schematics": {
         "@nrwl/angular:component": {
-          "styleext": "scss",
+          "style": "scss",
           "changeDetection": "OnPush"
         }
       }
@@ -1816,7 +1816,7 @@
       },
       "schematics": {
         "@nrwl/angular:component": {
-          "styleext": "scss",
+          "style": "scss",
           "changeDetection": "OnPush"
         }
       }
@@ -1843,7 +1843,7 @@
       },
       "schematics": {
         "@nrwl/angular:component": {
-          "styleext": "scss",
+          "style": "scss",
           "changeDetection": "OnPush"
         }
       }
@@ -1872,7 +1872,7 @@
       },
       "schematics": {
         "@nrwl/angular:component": {
-          "styleext": "scss",
+          "style": "scss",
           "changeDetection": "OnPush"
         }
       }
@@ -1901,7 +1901,7 @@
       },
       "schematics": {
         "@nrwl/angular:component": {
-          "styleext": "scss",
+          "style": "scss",
           "changeDetection": "OnPush"
         }
       }
@@ -1930,7 +1930,7 @@
       },
       "schematics": {
         "@nrwl/angular:component": {
-          "styleext": "scss",
+          "style": "scss",
           "changeDetection": "OnPush"
         }
       }
@@ -1959,7 +1959,7 @@
       },
       "schematics": {
         "@nrwl/angular:component": {
-          "styleext": "scss",
+          "style": "scss",
           "changeDetection": "OnPush"
         }
       }
@@ -1988,7 +1988,7 @@
       },
       "schematics": {
         "@nrwl/angular:component": {
-          "styleext": "scss",
+          "style": "scss",
           "changeDetection": "OnPush"
         }
       }
@@ -2017,7 +2017,7 @@
       },
       "schematics": {
         "@nrwl/angular:component": {
-          "styleext": "scss",
+          "style": "scss",
           "changeDetection": "OnPush"
         }
       }
@@ -2046,7 +2046,7 @@
       },
       "schematics": {
         "@nrwl/angular:component": {
-          "styleext": "scss",
+          "style": "scss",
           "changeDetection": "OnPush"
         }
       }

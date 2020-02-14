@@ -1777,9 +1777,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/frontend/universal",
+            "outputPath": "dist/apps/frontend/universal/browser",
             "index": "apps/frontend/universal/src/index.html",
-            "main": "apps/frontend/universal/src/main.ts",
+            "main": "apps/frontend/universal/src/main.browser.ts",
             "polyfills": "apps/frontend/universal/src/polyfills.ts",
             "tsConfig": "apps/frontend/universal/tsconfig.app.json",
             "aot": true,
@@ -1848,6 +1848,54 @@
             "jestConfig": "apps/frontend/universal/jest.config.js",
             "tsConfig": "apps/frontend/universal/tsconfig.spec.json",
             "setupFile": "apps/frontend/universal/src/test-setup.ts"
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/apps/frontend/universal/server",
+            "main": "apps/frontend/universal/server.ts",
+            "tsConfig": "apps/frontend/universal/tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/frontend/universal/src/styles"]
+            }
+          },
+          "configurations": {
+            "production": {
+              "bundleDependencies": true,
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/universal/src/environments/environment.ts",
+                  "with": "apps/frontend/universal/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "frontend-universal:build",
+            "serverTarget": "frontend-universal:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-universal:build:production",
+              "serverTarget": "frontend-universal:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "frontend-universal:build:production",
+            "serverTarget": "frontend-universal:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }

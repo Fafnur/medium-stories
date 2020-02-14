@@ -1,13 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, RouterModule.forRoot([], { initialNavigation: 'enabled' })],
-  providers: [],
+  imports: [BrowserModule.withServerTransition({ appId: 'medium-stories' }), RouterModule.forRoot([], { initialNavigation: 'enabled' })],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -43,8 +43,8 @@ describe('LayoutFacade', () => {
 
       TestBed.configureTestingModule({ imports: [RootModule] });
 
-      store = TestBed.get(Store);
-      facade = TestBed.get(LayoutFacade);
+      store = TestBed.inject(Store);
+      facade = TestBed.inject(LayoutFacade);
     });
 
     it('should create', () => {

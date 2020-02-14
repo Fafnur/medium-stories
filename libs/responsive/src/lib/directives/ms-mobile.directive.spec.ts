@@ -51,7 +51,7 @@ describe('MsMobileDirective', () => {
   }));
 
   beforeEach(() => {
-    facade = TestBed.get(ResponsiveFacade);
+    facade = TestBed.inject(ResponsiveFacade);
     scheduler = getTestScheduler();
     fixture = TestBed.createComponent(TestMsComponent);
     component = fixture.componentInstance;

@@ -54,8 +54,8 @@ describe('ResponsiveFacade', () => {
 
       TestBed.configureTestingModule({ imports: [RootModule] });
 
-      store = TestBed.get(Store);
-      facade = TestBed.get(ResponsiveFacade);
+      store = TestBed.inject(Store);
+      facade = TestBed.inject(ResponsiveFacade);
     });
 
     it('init() should initialized language on app', async done => {

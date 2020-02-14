@@ -38,7 +38,7 @@ describe('ResponsiveService', () => {
   }));
 
   beforeEach(() => {
-    service = TestBed.get(ResponsiveService);
+    service = TestBed.inject(ResponsiveService);
   });
 
   it('should be created', () => {

@@ -48,8 +48,8 @@ describe('TranslationEffects', () => {
       ]
     });
 
-    store = TestBed.get(Store);
-    effects = TestBed.get(TranslationEffects);
+    store = TestBed.inject(Store);
+    effects = TestBed.inject(TranslationEffects);
     scheduler = getTestScheduler();
     const duration = scheduler.createTime('-|');
     effects.setRetryStrategyOptions({
@@ -57,7 +57,7 @@ describe('TranslationEffects', () => {
       scalingDuration: duration,
       scheduler
     });
-    service = TestBed.get(TranslationService);
+    service = TestBed.inject(TranslationService);
   });
 
   describe('init$', () => {

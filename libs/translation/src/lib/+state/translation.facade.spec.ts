@@ -56,8 +56,8 @@ describe('TranslationFacade', () => {
 
       TestBed.configureTestingModule({ imports: [RootModule] });
 
-      store = TestBed.get(Store);
-      facade = TestBed.get(TranslationFacade);
+      store = TestBed.inject(Store);
+      facade = TestBed.inject(TranslationFacade);
     });
 
     it('init() should initialized language on app', async done => {

@@ -25,7 +25,7 @@ describe('BaseResponsiveStorage', () => {
   }));
 
   beforeEach(() => {
-    storage = TestBed.get(ResponsiveStorage);
+    storage = TestBed.inject(ResponsiveStorage);
   });
 
   it('should create', () => {

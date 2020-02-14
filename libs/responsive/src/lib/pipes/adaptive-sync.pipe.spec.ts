@@ -43,8 +43,8 @@ describe('AdaptiveSyncPipe', () => {
   }));
 
   beforeEach(() => {
-    pipe = TestBed.get(AdaptiveSyncPipe);
-    storage = TestBed.get(ResponsiveStorage);
+    pipe = TestBed.inject(AdaptiveSyncPipe);
+    storage = TestBed.inject(ResponsiveStorage);
   });
 
   it('should create', () => {

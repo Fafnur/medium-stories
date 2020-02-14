@@ -24,7 +24,7 @@ describe('BaseTranslationStorage', () => {
   }));
 
   beforeEach(() => {
-    storage = TestBed.get(TranslationStorage);
+    storage = TestBed.inject(TranslationStorage);
   });
 
   it('should create', () => {

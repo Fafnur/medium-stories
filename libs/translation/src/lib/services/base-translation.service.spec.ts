@@ -39,7 +39,7 @@ describe('BaseTranslationService', () => {
   }));
 
   beforeEach(() => {
-    service = TestBed.get(TranslationService);
+    service = TestBed.inject(TranslationService);
   });
 
   it('should create', () => {

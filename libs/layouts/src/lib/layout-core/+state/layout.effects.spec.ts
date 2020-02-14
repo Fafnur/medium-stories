@@ -32,8 +32,8 @@ describe('LayoutEffects', () => {
       providers: [LayoutEffects, DataPersistence, provideMockActions(() => actions$)]
     });
 
-    effects = TestBed.get(LayoutEffects);
-    store = TestBed.get(Store);
+    effects = TestBed.inject(LayoutEffects);
+    store = TestBed.inject(Store);
     scheduler = getTestScheduler();
     const duration = scheduler.createTime('-|');
     effects.setRetryStrategyOptions({

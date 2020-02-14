@@ -22,7 +22,7 @@ describe('EventEffects', () => {
       providers: [EventEffects, DataPersistence, provideMockActions(() => actions)]
     });
 
-    effects = TestBed.get(EventEffects);
+    effects = TestBed.inject(EventEffects);
   });
 
   describe('loadEvent$', () => {

@@ -46,8 +46,8 @@ describe('ResponsiveEffects', () => {
       ]
     });
 
-    store = TestBed.get(Store);
-    effects = TestBed.get(ResponsiveEffects);
+    store = TestBed.inject(Store);
+    effects = TestBed.inject(ResponsiveEffects);
     scheduler = getTestScheduler();
     const duration = scheduler.createTime('-|');
     effects.setRetryStrategyOptions({
@@ -55,7 +55,7 @@ describe('ResponsiveEffects', () => {
       scalingDuration: duration,
       scheduler
     });
-    service = TestBed.get(ResponsiveService);
+    service = TestBed.inject(ResponsiveService);
   });
 
   describe('init$', () => {

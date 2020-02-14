@@ -49,8 +49,8 @@ describe('AdaptivePipe', () => {
   }));
 
   beforeEach(() => {
-    pipe = TestBed.get(AdaptivePipe);
-    facade = TestBed.get(ResponsiveFacade);
+    pipe = TestBed.inject(AdaptivePipe);
+    facade = TestBed.inject(ResponsiveFacade);
     scheduler = getTestScheduler();
   });
 

@@ -18,7 +18,7 @@ describe('BaseFormConstructor', () => {
   }));
 
   beforeEach(() => {
-    service = TestBed.get(FormConstructor);
+    service = TestBed.inject(FormConstructor);
   });
 
   it('should create', () => {

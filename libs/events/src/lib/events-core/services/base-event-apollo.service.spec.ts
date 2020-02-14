@@ -21,7 +21,7 @@ describe('BaseEventApollo', () => {
   }));
 
   beforeEach(() => {
-    service = TestBed.get(EventApollo);
+    service = TestBed.inject(EventApollo);
   });
 
   it('should be created', () => {

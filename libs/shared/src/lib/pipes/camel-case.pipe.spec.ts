@@ -26,8 +26,8 @@ describe('CamelCasePipe', () => {
   }));
 
   beforeEach(() => {
-    pipe = TestBed.get(CamelCasePipe);
-    translateService = TestBed.get(TranslateService);
+    pipe = TestBed.inject(CamelCasePipe);
+    translateService = TestBed.inject(TranslateService);
   });
 
   it('should create', () => {

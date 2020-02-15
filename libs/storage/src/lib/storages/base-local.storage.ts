@@ -1,28 +1,26 @@
-import { Inject, Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
-import { CookieStorage } from '../interfaces/cookie-storage.interface';
 import { LocalStorage } from '../interfaces/local-storage.interface';
-import { COOKIE_IN_INCOGNITO } from '../storage.tokens';
+import { MemoryStorage } from '../interfaces/memory-storage.interface';
 import { storageAvailable } from '../utils/storage.util';
-import { MemoryStorage } from './memory.storage';
 
-/**
- * Browser local storage
- */
 @Injectable()
-export class BrowserLocalStorage implements LocalStorage {
+export class BaseLocalStorage implements LocalStorage {
   /**
    * Storage
    */
   private readonly storage: Storage;
 
-  constructor(@Inject(COOKIE_IN_INCOGNITO) private cookieInIncognito: boolean, private cookieStorage: CookieStorage) {
-    if (storageAvailable('localStorage')) {
+  constructor(
+    private memoryStorage: MemoryStorage,
+    /* tslint:disable-next-line:ban-types */
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+    if (isPlatformBrowser(this.platformId) && storageAvailable('localStorage')) {
       this.storage = window.localStorage;
-    } else if (this.cookieInIncognito) {
-      this.storage = this.cookieStorage;
     } else {
-      this.storage = new MemoryStorage();
+      this.storage = this.memoryStorage;
     }
   }
 

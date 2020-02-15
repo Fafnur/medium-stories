@@ -1,15 +1,15 @@
 import { async, TestBed } from '@angular/core/testing';
 
-import { ServerStorageModule } from './server-storage.module';
+import { StorageModule } from './storage.module';
 
-describe('ServerStorageModule', () => {
+describe('StorageModule', () => {
   beforeEach(async(() => {
     return TestBed.configureTestingModule({
-      imports: [ServerStorageModule]
+      imports: [StorageModule]
     }).compileComponents();
   }));
 
   it('should create', () => {
-    expect(ServerStorageModule).toBeTruthy();
+    expect(StorageModule).toBeTruthy();
   });
 });

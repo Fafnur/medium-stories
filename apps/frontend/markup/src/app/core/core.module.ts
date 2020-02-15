@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { NxModule } from '@nrwl/angular';
 
 import { FOOTER_GROUPS_LINKS, FOOTER_NAV_LINKS, NAV_LINKS } from '@medium-stories/layouts';
 import { RESPONSIVE_SIZE_DEFAULT, ResponsiveModule } from '@medium-stories/responsive';
+import { StorageModule } from '@medium-stories/storage';
 import { RootStoreModule } from '@medium-stories/store';
 
 import { coreContainers, coreFooterGroupsLinks, coreFooterNavLinks, coreNavLinks, coreRoutes } from './core.common';
@@ -14,6 +15,7 @@ import { coreContainers, coreFooterGroupsLinks, coreFooterNavLinks, coreNavLinks
   imports: [
     CommonModule,
     NxModule.forRoot(),
+    StorageModule.forRoot(),
     ResponsiveModule.forRoot({
       mode: {
         mobile: 'lg',

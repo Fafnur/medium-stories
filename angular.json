@@ -1510,7 +1510,15 @@
             "polyfills": "apps/frontend/translation/src/polyfills.ts",
             "tsConfig": "apps/frontend/translation/tsconfig.app.json",
             "aot": true,
-            "assets": ["apps/frontend/translation/src/favicon.ico", "apps/frontend/translation/src/assets"],
+            "assets": [
+              "apps/frontend/translation/src/favicon.ico",
+              "apps/frontend/translation/src/assets",
+              {
+                "glob": "**/*",
+                "input": "libs/layouts/src/assets",
+                "output": "./assets"
+              }
+            ],
             "styles": ["apps/frontend/translation/src/styles.scss"],
             "scripts": []
           },
@@ -1644,7 +1652,15 @@
             "polyfills": "apps/frontend/translation-state/src/polyfills.ts",
             "tsConfig": "apps/frontend/translation-state/tsconfig.app.json",
             "aot": true,
-            "assets": ["apps/frontend/translation-state/src/favicon.ico", "apps/frontend/translation-state/src/assets"],
+            "assets": [
+              "apps/frontend/translation-state/src/favicon.ico",
+              "apps/frontend/translation-state/src/assets",
+              {
+                "glob": "**/*",
+                "input": "libs/layouts/src/assets",
+                "output": "./assets"
+              }
+            ],
             "styles": ["apps/frontend/translation-state/src/styles.scss"],
             "stylePreprocessorOptions": {
               "includePaths": ["apps/frontend/translation-state/src/styles"]

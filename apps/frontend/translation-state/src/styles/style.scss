@@ -1,5 +1,16 @@
 // Import app utils
 @import './utils';
 
+// Import common theme
+@import 'material/theme';
+@import 'bootstrap/theme';
+
 // Import common styles
 @import 'styles/style';
+@import 'common/theme';
+
+// Import common components
+@import 'styles/components/ms-modal';
+
+// Import external styles
+@import 'external/ng-select';

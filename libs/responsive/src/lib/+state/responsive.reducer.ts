@@ -1,4 +1,4 @@
-import { ResponsiveActionTypes, ResponsiveAction } from './responsive.actions';
+import { ResponsiveAction, ResponsiveActionTypes } from './responsive.actions';
 
 export const RESPONSIVE_FEATURE_KEY = 'responsive';
 

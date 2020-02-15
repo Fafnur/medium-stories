@@ -2,8 +2,8 @@ import { Dictionary } from '@medium-stories/common';
 
 import { MsMobileDirective } from './directives/ms-mobile.directive';
 import { ResponsiveMode } from './interfaces/responsive.interface';
-import { AdaptivePipe } from './pipes/adaptive.pipe';
 import { AdaptiveSyncPipe } from './pipes/adaptive-sync.pipe';
+import { AdaptivePipe } from './pipes/adaptive.pipe';
 
 export const RESPONSIVE_SIZE_DEFAULT: Dictionary<number> = {
   xs: 0,

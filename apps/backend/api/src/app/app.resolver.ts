@@ -1,6 +1,6 @@
 import { GraphQLScalarType } from 'graphql';
-import { Kind } from 'graphql/language';
 import GraphQLJSON from 'graphql-type-json';
+import { Kind } from 'graphql/language';
 
 export const resolverMap = {
   Date: new GraphQLScalarType({

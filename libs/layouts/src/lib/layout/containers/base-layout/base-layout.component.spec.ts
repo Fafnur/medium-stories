@@ -7,9 +7,9 @@ import { SharedModule } from '@medium-stories/shared';
 
 import { FooterComponent } from '../../components/footer/footer.component';
 import { HeaderComponent } from '../../components/header/header.component';
-import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { SideMenuComponent } from '../../components/side-menu/side-menu.component';
 import { SideToolsComponent } from '../../components/side-tools/side-tools.component';
+import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { BaseLayoutComponent } from './base-layout.component';
 
 describe('BaseLayoutComponent', () => {

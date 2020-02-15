@@ -1,9 +1,9 @@
 import { Inject, Pipe, PipeTransform } from '@angular/core';
 
 import { AdaptiveMode } from '../interfaces/adaptive.interface';
-import { ResponsiveMode } from '../interfaces/responsive.interface';
 import { ResponsiveService } from '../interfaces/responsive-service.interface';
 import { ResponsiveStorage } from '../interfaces/responsive-storage.interface';
+import { ResponsiveMode } from '../interfaces/responsive.interface';
 import { RESPONSIVE_MODE } from '../responsive.tokens';
 
 @Pipe({

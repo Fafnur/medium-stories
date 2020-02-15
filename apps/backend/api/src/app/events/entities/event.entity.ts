@@ -2,8 +2,8 @@ import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGenerate
 
 import { Event, Locale, Media, User } from '@medium-stories/entities';
 
-import { UserEntity } from '../../users/entities/user.entity';
 import { MediaEntity } from '../../media/entities/media.entity';
+import { UserEntity } from '../../users/entities/user.entity';
 
 @Entity({
   name: 'events'

@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { EffectsModule } from '@ngrx/effects';
-import { Store, StoreModule } from '@ngrx/store';
 import { provideMockActions } from '@ngrx/effects/testing';
+import { Store, StoreModule } from '@ngrx/store';
 import { DataPersistence, NxModule } from '@nrwl/angular';
 import { cold, getTestScheduler, hot } from '@nrwl/angular/testing';
 import { Observable } from 'rxjs';

@@ -4,6 +4,7 @@ import { cold, getTestScheduler, hot } from '@nrwl/angular/testing';
 import { of } from 'rxjs';
 import { TestScheduler } from 'rxjs/testing';
 
+import { ResponsiveStorage } from '@medium-stories/responsive';
 import { ResponsiveFacade } from '../+state/responsive.facade';
 import { AdaptiveMode } from '../interfaces/adaptive.interface';
 import { ResponsiveService } from '../interfaces/responsive-service.interface';
@@ -11,7 +12,6 @@ import { RESPONSIVE_MODE_DEFAULT } from '../responsive.common';
 import { RESPONSIVE_MODE } from '../responsive.tokens';
 import { BaseResponsiveService } from '../services/base-responsive.service';
 import { AdaptivePipe } from './adaptive.pipe';
-import { ResponsiveStorage } from '@medium-stories/responsive';
 
 describe('AdaptivePipe', () => {
   let pipe: AdaptivePipe;

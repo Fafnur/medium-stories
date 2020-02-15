@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Optional, Inject } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { ChangeDetectionStrategy, Component, Inject, Optional } from '@angular/core';
 
 import { LayoutFacade } from '../../../layout-core/+state/layout.facade';
 import { NavLink } from '../../interfaces/nav-link.interface';

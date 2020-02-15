@@ -4,8 +4,8 @@ import { map } from 'rxjs/operators';
 
 import { ResponsiveFacade } from '../+state/responsive.facade';
 import { AdaptiveMode } from '../interfaces/adaptive.interface';
-import { ResponsiveMode } from '../interfaces/responsive.interface';
 import { ResponsiveService } from '../interfaces/responsive-service.interface';
+import { ResponsiveMode } from '../interfaces/responsive.interface';
 import { RESPONSIVE_MODE } from '../responsive.tokens';
 
 @Pipe({

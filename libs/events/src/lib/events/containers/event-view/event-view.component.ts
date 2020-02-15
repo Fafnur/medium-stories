@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
-import { EventFacade } from '../../../events-core/+state/event.facade';
 import { ActivatedRoute } from '@angular/router';
+import { EventFacade } from '../../../events-core/+state/event.facade';
 
 @Component({
   selector: 'medium-stories-event-view',

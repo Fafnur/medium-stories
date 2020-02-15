@@ -7,11 +7,11 @@ import { TranslationOptions } from './interfaces/translation-options.interface';
 import { TranslationService } from './interfaces/translation-service.interface';
 import { TranslationStorage } from './interfaces/translation-storage.interface';
 import { BrowserTranslateLoader } from './loaders/browser-translate.loader';
-import { BaseTranslationService } from './services/base-translation.service';
 import { BaseTranslationStorage } from './services/base-translation-storage.service';
+import { BaseTranslationService } from './services/base-translation.service';
+import { TranslationCommonModule } from './translation-common.module';
 import { TRANSLATION_CONFIG_DEFAULT, TRANSLATION_PREFIX_DEFAULT, TRANSLATION_SUFFIX_DEFAULT } from './translation.common';
 import { TRANSLATION_CONFIG, TRANSLATION_PREFIX, TRANSLATION_SUFFIX } from './translation.tokens';
-import { TranslationCommonModule } from './translation-common.module';
 
 export function browserTranslateFactory(transferState: TransferState, httpClient: HttpClient, prefix: string, suffix: string) {
   return new BrowserTranslateLoader(transferState, httpClient, prefix, suffix);

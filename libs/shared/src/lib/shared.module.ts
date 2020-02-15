@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faFacebookF, faInstagram, faPinterestP, faTelegramPlane, faTwitter, faVk, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faAngleDown, faAngleRight, faAngleUp, faBars, faChevronLeft, faCog, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { faFacebookF, faVk, faTwitter, faYoutube, faInstagram, faPinterestP, faTelegramPlane } from '@fortawesome/free-brands-svg-icons';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { sharedComponents, sharedDirectives, sharedPipes } from './shared.common';

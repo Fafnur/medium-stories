@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { EventsModule as BaseEventsModule, EventsCoreModule } from '@medium-stories/events';
+import { EventsCoreModule, EventsModule as BaseEventsModule } from '@medium-stories/events';
 import { LayoutsModule } from '@medium-stories/layouts';
 
 import { eventsRoutes } from './events.common';

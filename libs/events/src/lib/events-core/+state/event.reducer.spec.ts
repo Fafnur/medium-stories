@@ -1,5 +1,5 @@
 import { EventLoaded } from './event.actions';
-import { EventState, Entity, eventInitialState, eventReducer } from './event.reducer';
+import { Entity, eventInitialState, eventReducer, EventState } from './event.reducer';
 
 describe('Event Reducer', () => {
   const getEventId = it => it['id'];

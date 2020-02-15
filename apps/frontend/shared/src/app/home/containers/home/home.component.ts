@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { TranslationFacade } from '@medium-stories/translation';
 import { timer } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { TranslationFacade } from '@medium-stories/translation';
 
 @Component({
   selector: 'medium-stories-home',

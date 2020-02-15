@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, PRIMARY_OUTLET } from '@angular/router';
 import { Actions, Effect } from '@ngrx/effects';
-import { DataPersistence } from '@nrwl/angular';
 import { ROUTER_NAVIGATED } from '@ngrx/router-store';
+import { DataPersistence } from '@nrwl/angular';
 
 import { RESPONSIVE_FEATURE_KEY, ResponsiveActionTypes, ResponsiveState, SetWindowProps } from '@medium-stories/responsive';
 import { AbstractEffects, RootState } from '@medium-stories/store';

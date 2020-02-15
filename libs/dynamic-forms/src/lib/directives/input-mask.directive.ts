@@ -1,5 +1,5 @@
 import { Directive, ElementRef, forwardRef, HostListener, Inject, Input, OnInit, Optional, Renderer2 } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, COMPOSITION_BUFFER_MODE } from '@angular/forms';
+import { COMPOSITION_BUFFER_MODE, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ɵgetDOM as getDOM } from '@angular/platform-browser';
 import { conformToMask, createTextMaskInputElement } from 'text-mask-core/dist/textMaskCore';
 

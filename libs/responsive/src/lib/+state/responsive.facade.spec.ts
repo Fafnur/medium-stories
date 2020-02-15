@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 import { NxModule } from '@nrwl/angular';
 import { readFirst } from '@nrwl/angular/testing';
 
@@ -9,7 +9,7 @@ import { responsivePropertiesStub } from '../../testing';
 import { ResponsiveService } from '../interfaces/responsive-service.interface';
 import { ResponsiveEffects } from './responsive.effects';
 import { ResponsiveFacade } from './responsive.facade';
-import { responsiveInitialState, RESPONSIVE_FEATURE_KEY, ResponsivePartialState, responsiveReducer } from './responsive.reducer';
+import { RESPONSIVE_FEATURE_KEY, responsiveInitialState, ResponsivePartialState, responsiveReducer } from './responsive.reducer';
 
 describe('ResponsiveFacade', () => {
   let facade: ResponsiveFacade;

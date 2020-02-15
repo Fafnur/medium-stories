@@ -24,7 +24,7 @@ export function storageAvailable(type: string): boolean {
         // Firefox
         e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
       // acknowledge QuotaExceededError only if there's something already stored
-      (storage && storage.length !== 0)
+      storage && storage.length !== 0
     );
   }
 }

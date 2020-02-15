@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 
-import { ResponsiveProperties } from '../interfaces/responsive.interface';
 import { ResponsiveService } from '../interfaces/responsive-service.interface';
+import { ResponsiveProperties } from '../interfaces/responsive.interface';
 import { fromResponsiveActions } from './responsive.actions';
 import { ResponsivePartialState } from './responsive.reducer';
 import { responsiveQuery } from './responsive.selectors';

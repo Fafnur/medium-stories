@@ -1,8 +1,8 @@
 import { Type } from '@angular/core';
 
-import { ResponsiveMode } from './responsive.interface';
 import { ResponsiveService } from './responsive-service.interface';
 import { ResponsiveStorage } from './responsive-storage.interface';
+import { ResponsiveMode } from './responsive.interface';
 
 /**
  * Responsive module options

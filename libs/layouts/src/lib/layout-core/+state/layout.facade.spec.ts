@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 import { NxModule } from '@nrwl/angular';
 import { readFirst } from '@nrwl/angular/testing';
 
 import { LayoutEffects } from './layout.effects';
 import { LayoutFacade } from './layout.facade';
-import { layoutReducer, LayoutPartialState, LAYOUT_FEATURE_KEY, layoutInitialState } from './layout.reducer';
+import { LAYOUT_FEATURE_KEY, layoutInitialState, LayoutPartialState, layoutReducer } from './layout.reducer';
 
 describe('LayoutFacade', () => {
   let facade: LayoutFacade;

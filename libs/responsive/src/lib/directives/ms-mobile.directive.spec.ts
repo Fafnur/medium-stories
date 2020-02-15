@@ -4,10 +4,10 @@ import { cold, getTestScheduler, hot, readFirst } from '@nrwl/angular/testing';
 import { of } from 'rxjs';
 import { TestScheduler } from 'rxjs/testing';
 
+import { RESPONSIVE_MODE, RESPONSIVE_MODE_DEFAULT } from '@medium-stories/responsive';
 import { ResponsiveFacade } from '../+state/responsive.facade';
 import { ResponsiveStorage } from '../interfaces/responsive-storage.interface';
 import { MsMobileDirective } from './ms-mobile.directive';
-import { RESPONSIVE_MODE, RESPONSIVE_MODE_DEFAULT } from '@medium-stories/responsive';
 
 @Component({
   template: `

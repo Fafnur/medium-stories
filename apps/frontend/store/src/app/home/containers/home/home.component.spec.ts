@@ -2,8 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslatePipe } from '@ngx-translate/core';
 import { MockPipe } from 'ng-mocks';
 
-import { TranslationService } from '@medium-stories/translation';
 import { CookieStorage, MemoryStorage } from '@medium-stories/storage';
+import { TranslationService } from '@medium-stories/translation';
 
 import { HomeComponent } from './home.component';
 

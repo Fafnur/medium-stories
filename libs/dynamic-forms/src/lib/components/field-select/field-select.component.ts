@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import { extractTouchedChanges } from '../../utils/form-changes.util';
 import { FieldWithOptionsComponent } from '../../interfaces/form.interface';
+import { extractTouchedChanges } from '../../utils/form-changes.util';
 
 @Component({
   selector: 'ms-field-select',

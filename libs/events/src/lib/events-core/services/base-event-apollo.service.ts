@@ -8,8 +8,8 @@ import { ApolloResponse, extractApolloResponse } from '@medium-stories/common';
 import { Event } from '@medium-stories/entities';
 
 import { EventsPayload } from '../../events-core/interfaces/event.interface';
-import { EventApollo } from '../interfaces/event-apollo.interface';
 import { eventRequests } from '../graphql/event.queries';
+import { EventApollo } from '../interfaces/event-apollo.interface';
 
 @Injectable()
 export class BaseEventApollo implements EventApollo {

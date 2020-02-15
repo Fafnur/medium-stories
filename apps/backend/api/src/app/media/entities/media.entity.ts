@@ -1,6 +1,6 @@
 import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
-import { Media, Locale, User, Event } from '@medium-stories/entities';
+import { Event, Locale, Media, User } from '@medium-stories/entities';
 
 import { EventEntity } from '../../events/entities/event.entity';
 import { UserEntity } from '../../users/entities/user.entity';

@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 import { Event } from '@medium-stories/entities';
 import { AbstractEffects } from '@medium-stories/store';
 
-import { EVENT_FEATURE_KEY, EventPartialState, EventState } from './event.reducer';
+import { EventApollo } from '../interfaces/event-apollo.interface';
 import {
   EventActionTypes,
   EventLoadCanceled,
@@ -27,7 +27,7 @@ import {
   LoadingLastEvent,
   LoadLastEvent
 } from './event.actions';
-import { EventApollo } from '../interfaces/event-apollo.interface';
+import { EVENT_FEATURE_KEY, EventPartialState, EventState } from './event.reducer';
 
 @Injectable()
 export class EventEffects extends AbstractEffects<EventState> {

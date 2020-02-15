@@ -3,16 +3,16 @@ import { TestBed } from '@angular/core/testing';
 import { readFirst } from '@nrwl/angular/testing';
 
 import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 
 import { NxModule } from '@nrwl/angular';
 
 import { EventEffects } from './event.effects';
 import { EventFacade } from './event.facade';
 
+import { EventLoaded, LoadEvent } from './event.actions';
+import { eventInitialState, eventReducer, EventState } from './event.reducer';
 import { eventQuery } from './event.selectors';
-import { LoadEvent, EventLoaded } from './event.actions';
-import { EventState, eventInitialState, eventReducer } from './event.reducer';
 
 interface TestSchema {
   event: EventState;
@@ -22,8 +22,7 @@ describe('EventFacade', () => {
   let facade: EventFacade;
   let store: Store<TestSchema>;
 
-  beforeEach(() => {
-  });
+  beforeEach(() => {});
 
   describe('used in NgModule', () => {
     beforeEach(() => {

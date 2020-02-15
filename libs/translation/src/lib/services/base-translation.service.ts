@@ -3,8 +3,8 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 
-import { TranslationService } from '../interfaces/translation-service.interface';
 import { TranslationConfig } from '../interfaces/translation-config.interface';
+import { TranslationService } from '../interfaces/translation-service.interface';
 import { TranslationStorage } from '../interfaces/translation-storage.interface';
 import { TRANSLATION_LANG_DEFAULT } from '../translation.common';
 import { TRANSLATION_CONFIG } from '../translation.tokens';

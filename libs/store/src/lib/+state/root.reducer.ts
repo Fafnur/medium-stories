@@ -1,5 +1,5 @@
-import { ActionReducerMap } from '@ngrx/store';
 import { routerReducer, RouterReducerState } from '@ngrx/router-store';
+import { ActionReducerMap } from '@ngrx/store';
 
 import { RouterUrlState } from '../interfaces/router-url-state.interface';
 

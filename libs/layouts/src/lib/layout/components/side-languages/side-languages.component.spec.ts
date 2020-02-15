@@ -7,8 +7,8 @@ import { of } from 'rxjs';
 import { LanguageLabelPipe } from '@medium-stories/shared';
 import { TranslationFacade } from '@medium-stories/translation';
 
-import { SideLanguagesComponent } from './side-languages.component';
 import { TranslatePipe } from '@ngx-translate/core';
+import { SideLanguagesComponent } from './side-languages.component';
 
 describe('SideLanguagesComponent', () => {
   let component: SideLanguagesComponent;

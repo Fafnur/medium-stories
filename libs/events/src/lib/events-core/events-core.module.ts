@@ -1,12 +1,12 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 
 import { EventEffects } from './+state/event.effects';
 import { EventFacade } from './+state/event.facade';
 import { EVENT_FEATURE_KEY, eventReducer } from './+state/event.reducer';
-import { EventsCoreOptions } from './interfaces/events-core-options.interface';
 import { EventApollo } from './interfaces/event-apollo.interface';
+import { EventsCoreOptions } from './interfaces/events-core-options.interface';
 import { BaseEventApollo } from './services/base-event-apollo.service';
 
 @NgModule({

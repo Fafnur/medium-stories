@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,8 +12,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ResponsiveModule } from '@medium-stories/responsive';
 import { SharedModule } from '@medium-stories/shared';
 
-import { layoutsComponents, layoutsContainers } from './layouts.common';
 import { LayoutsCoreModule } from '../layout-core/layouts-core.module';
+import { layoutsComponents, layoutsContainers } from './layouts.common';
 
 @NgModule({
   imports: [

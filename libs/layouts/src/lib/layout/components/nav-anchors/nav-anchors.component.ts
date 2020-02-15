@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Optional, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit, Optional } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { LayoutFacade } from '../../../layout-core/+state/layout.facade';

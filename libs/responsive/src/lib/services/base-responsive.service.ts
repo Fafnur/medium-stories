@@ -2,9 +2,9 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 import { ResponsiveState } from '../+state/responsive.reducer';
-import { ResponsiveMode, ResponsiveProperties } from '../interfaces/responsive.interface';
 import { ResponsiveService } from '../interfaces/responsive-service.interface';
 import { ResponsiveStorage } from '../interfaces/responsive-storage.interface';
+import { ResponsiveMode, ResponsiveProperties } from '../interfaces/responsive.interface';
 import { RESPONSIVE_MODE } from '../responsive.tokens';
 
 @Injectable()

@@ -1,19 +1,13 @@
-import { Dictionary } from '@medium-stories/common';
+import { Injectable } from '@angular/core';
 
-import { AbstractStorage } from '../interfaces/abstract-storage.interface';
+import { MemoryStorage } from '../interfaces/memory-storage.interface';
 
-/**
- * Memory Storage
- *
- * @description
- * It simple storage for emulate Web Storage API
- * @see https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API
- */
-export class MemoryStorage implements AbstractStorage {
+@Injectable()
+export class BaseMemoryStorage implements MemoryStorage {
   /**
    * Storage data
    */
-  protected data: Dictionary<string> = {};
+  private data: { [key: string]: string } = {};
 
   get length(): number {
     return Object.keys(this.data).length;

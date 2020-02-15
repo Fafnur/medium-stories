@@ -15,7 +15,8 @@
       "tags": []
     },
     "frontend/base-e2e": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": ["frontend-base"]
     },
     "frontend-common-styles": {
       "tags": []
@@ -82,10 +83,6 @@
     },
     "frontend-universal": {
       "tags": []
-    },
-    "frontend/universal-e2e": {
-      "tags": [],
-      "implicitDependencies": ["frontend-universal"]
     }
   }
 }

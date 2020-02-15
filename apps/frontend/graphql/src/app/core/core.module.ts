@@ -3,6 +3,7 @@ import localeRu from '@angular/common/locales/ru';
 import localeEn from '@angular/common/locales/en';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { StorageModule } from '@medium-stories/storage';
 import { TranslateModule } from '@ngx-translate/core';
 import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
 import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
@@ -31,6 +32,7 @@ export function createApollo(httpLink: HttpLink) {
   imports: [
     NxModule.forRoot(),
     LayoutsCoreModule,
+    StorageModule.forRoot(),
     ResponsiveModule.forRoot({
       mode: {
         mobile: 'lg',

@@ -1,0 +1,6 @@
+@import 'utils';
+
+:host {
+  display: block;
+  @include layout-padding-top();
+}

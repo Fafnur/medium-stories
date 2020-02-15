@@ -1,28 +1,28 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
-import { CookieStorage } from '../interfaces/cookie-storage.interface';
+import { MemoryStorage } from '../interfaces/memory-storage.interface';
 import { SessionStorage } from '../interfaces/session-storage.interface';
-import { COOKIE_IN_INCOGNITO } from '../storage.tokens';
 import { storageAvailable } from '../utils/storage.util';
-import { MemoryStorage } from './memory.storage';
 
 /**
  * Browser session storage
  */
 @Injectable()
-export class BrowserSessionStorage implements SessionStorage {
+export class BaseSessionStorage implements SessionStorage {
   /**
    * Storage
    */
   private readonly storage: Storage;
 
-  constructor(@Inject(COOKIE_IN_INCOGNITO) private cookieInIncognito: boolean, private cookieStorage: CookieStorage) {
+  constructor(
+    private memoryStorage: MemoryStorage,
+    /* tslint:disable-next-line:ban-types */
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
     if (storageAvailable('sessionStorage')) {
       this.storage = window.sessionStorage;
-    } else if (this.cookieInIncognito) {
-      this.storage = this.cookieStorage;
     } else {
-      this.storage = new MemoryStorage();
+      this.storage = this.memoryStorage;
     }
   }
 

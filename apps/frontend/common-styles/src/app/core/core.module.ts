@@ -6,7 +6,9 @@ import { NxModule } from '@nrwl/angular';
 
 import { StorageModule } from '@medium-stories/storage';
 import { RootStoreModule } from '@medium-stories/store';
+import { TranslationModule } from '@medium-stories/translation';
 
+import { environment } from '../../environments/environment';
 import { coreContainers, coreRoutes } from './core.common';
 
 @NgModule({
@@ -14,6 +16,9 @@ import { coreContainers, coreRoutes } from './core.common';
     CommonModule,
     StorageModule.forRoot(),
     NxModule.forRoot(),
+    TranslationModule.forRoot({
+      config: environment.translation
+    }),
     RouterModule.forRoot(coreRoutes, { initialNavigation: 'enabled' }),
     RootStoreModule,
     TranslateModule

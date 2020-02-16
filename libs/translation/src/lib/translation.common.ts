@@ -1,4 +1,4 @@
-import { TranslationConfig } from './interfaces/translation-config.interface';
+import { TranslationConfig } from './interfaces/translation-service.interface';
 
 export const TRANSLATION_LANG_DEFAULT = 'en';
 

@@ -1,6 +1,30 @@
+import { InjectionToken } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { TranslationConfig } from '@medium-stories/translation';
+/**
+ * Translation config
+ */
+export interface TranslationConfig<T = string> {
+  /**
+   * Selected language
+   */
+  currentLanguage?: T;
+
+  /**
+   * Default language
+   */
+  language: T;
+
+  /**
+   * Available language
+   */
+  languages: T[];
+}
+
+/**
+ * Translation config token
+ */
+export const TRANSLATION_CONFIG = new InjectionToken<TranslationConfig>('TranslationConfig');
 
 /**
  * Translation service interface

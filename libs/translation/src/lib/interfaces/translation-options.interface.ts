@@ -1,7 +1,6 @@
 import { Type } from '@angular/core';
 
-import { TranslationConfig } from './translation-config.interface';
-import { TranslationService } from './translation-service.interface';
+import { TranslationConfig, TranslationService } from './translation-service.interface';
 import { TranslationStorage } from './translation-storage.interface';
 
 /**

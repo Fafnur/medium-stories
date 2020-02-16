@@ -3,7 +3,6 @@ import localeEn from '@angular/common/locales/en';
 import localeRu from '@angular/common/locales/ru';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { StorageModule } from '@medium-stories/storage';
 import { TranslateModule } from '@ngx-translate/core';
 import { NxModule } from '@nrwl/angular';
 import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
@@ -13,7 +12,9 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { API_SOURCES, APP_DIST } from '@medium-stories/common';
 import { FOOTER_GROUPS_LINKS, FOOTER_NAV_LINKS, LayoutsCoreModule, NAV_LINKS } from '@medium-stories/layouts';
 import { RESPONSIVE_SIZE_DEFAULT, ResponsiveModule } from '@medium-stories/responsive';
+import { StorageModule } from '@medium-stories/storage';
 import { RootStoreModule } from '@medium-stories/store';
+import { TranslationModule } from '@medium-stories/translation';
 
 import { environment } from '../../environments/environment';
 import { coreContainers, coreFooterGroupsLinks, coreFooterNavLinks, coreNavLinks, coreRoutes } from './core.common';
@@ -33,6 +34,9 @@ export function createApollo(httpLink: HttpLink) {
     NxModule.forRoot(),
     LayoutsCoreModule,
     StorageModule.forRoot(),
+    TranslationModule.forRoot({
+      config: environment.translation
+    }),
     ResponsiveModule.forRoot({
       mode: {
         mobile: 'lg',

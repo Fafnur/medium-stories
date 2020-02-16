@@ -39,6 +39,7 @@ export function app() {
 
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
+    req.cookies = req.headers.cookie;
     res.render(indexHtml, {
       req,
       providers: [

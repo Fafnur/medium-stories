@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { TranslateModule } from '@ngx-translate/core';
@@ -13,6 +13,10 @@ import { TRANSLATION_PREFIX, TRANSLATION_SUFFIX } from './interfaces/translation
 import { BaseTranslationStorage } from './services/base-translation-storage.service';
 import { BaseTranslationService } from './services/base-translation.service';
 import { TRANSLATION_CONFIG_DEFAULT, TRANSLATION_PREFIX_DEFAULT, TRANSLATION_SUFFIX_DEFAULT } from './translation.common';
+
+export function translationLoader(translationFacade: TranslationFacade) {
+  return () => translationFacade.init();
+}
 
 @NgModule({
   imports: [
@@ -46,6 +50,12 @@ export class TranslationModule {
         {
           provide: TranslationStorage,
           useClass: options.storage || BaseTranslationStorage
+        },
+        {
+          provide: APP_INITIALIZER,
+          useFactory: translationLoader,
+          deps: [TranslationFacade],
+          multi: true
         }
       ]
     };

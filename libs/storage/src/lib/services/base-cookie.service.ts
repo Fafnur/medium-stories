@@ -1,5 +1,7 @@
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Inject, Injectable, Optional, PLATFORM_ID } from '@angular/core';
+import { REQUEST, RESPONSE } from '@nguniversal/express-engine/tokens';
+import { Request, Response } from 'express';
 
 import { CookieService, CookieServiceSetOptions } from '../interfaces/cookie-service.interface';
 
@@ -10,47 +12,44 @@ export class BaseCookieService implements CookieService {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     /* tslint:disable-next-line:ban-types */
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(REQUEST) @Optional() private request: Request,
+    @Inject(RESPONSE) @Optional() private response: Response
   ) {
     this.documentIsAccessible = isPlatformBrowser(this.platformId);
   }
 
+  getCookieString(): string {
+    return this.documentIsAccessible ? this.document.cookie : this.request.headers.cookie;
+  }
+
   check(name: string): boolean {
-    if (!this.documentIsAccessible) {
-      return false;
-    }
     name = encodeURIComponent(name);
     const regExp: RegExp = this.getCookieRegExp(name);
 
-    return regExp.test(this.document.cookie);
+    return regExp.test(this.getCookieString());
   }
 
   get(name: string): string {
-    if (this.documentIsAccessible && this.check(name)) {
+    if (this.check(name)) {
       name = encodeURIComponent(name);
 
       const regExp: RegExp = this.getCookieRegExp(name);
-      const result: RegExpExecArray = regExp.exec(this.document.cookie);
+      const result: RegExpExecArray = regExp.exec(this.getCookieString());
 
       return decodeURIComponent(result[1]);
-    } else {
-      return null;
     }
+
+    return null;
   }
 
-  getAll(): {} {
-    if (!this.documentIsAccessible) {
-      return {};
-    }
+  getAll(): { [key: string]: string } {
+    const cookies: { [key: string]: string } = {};
 
-    const cookies: {} = {};
-    const document: any = this.document;
-
-    if (document.cookie && document.cookie !== '') {
-      const split: Array<string> = document.cookie.split(';');
-      /* tslint:disable-next-line:prefer-for-of */
-      for (let i = 0; i < split.length; i += 1) {
-        const currentCookie: Array<string> = split[i].split('=');
+    if (this.getCookieString() && this.getCookieString() !== '') {
+      const splits = this.getCookieString().split(';');
+      for (const split of splits) {
+        const currentCookie = split.split('=');
 
         currentCookie[0] = currentCookie[0].replace(/^ /, '');
         cookies[decodeURIComponent(currentCookie[0])] = decodeURIComponent(currentCookie[1]);
@@ -60,21 +59,11 @@ export class BaseCookieService implements CookieService {
     return cookies;
   }
 
-  put(name: string, value: string, options: Partial<CookieServiceSetOptions> = { sameSite: 'None', secure: true }): void {
-    if (!this.documentIsAccessible) {
-      return;
-    }
-
-    let cookieString: string = encodeURIComponent(name) + '=' + encodeURIComponent(value) + ';';
+  put(name: string, value: string, options: Partial<CookieServiceSetOptions> = { sameSite: 'none', secure: true }): void {
+    let cookieString = encodeURIComponent(name) + '=' + encodeURIComponent(value) + ';';
 
     if (options.expires) {
-      if (typeof options.expires === 'number') {
-        const dateExpires: Date = new Date(new Date().getTime() + options.expires * 1000 * 60 * 60 * 24);
-
-        cookieString += 'expires=' + dateExpires.toUTCString() + ';';
-      } else {
-        cookieString += 'expires=' + options.expires.toUTCString() + ';';
-      }
+      cookieString += 'expires=' + options.expires.toUTCString() + ';';
     }
 
     if (options.path) {
@@ -93,27 +82,31 @@ export class BaseCookieService implements CookieService {
       cookieString += 'sameSite=' + options.sameSite + ';';
     }
 
-    this.document.cookie = cookieString;
+    if (this.documentIsAccessible) {
+      this.document.cookie = cookieString;
+    } else {
+      this.response.cookie(name, value, options);
+    }
   }
 
   remove(name: string, path?: string, domain?: string): void {
-    if (!this.documentIsAccessible) {
-      return;
+    if (this.documentIsAccessible) {
+      this.put(name, '', { path, domain, expires: new Date('Thu, 01 Jan 1970 00:00:01 GMT') });
+    } else {
+      this.response.clearCookie(name, { path, domain });
     }
-
-    this.put(name, '', { path, domain, expires: new Date('Thu, 01 Jan 1970 00:00:01 GMT') });
   }
 
   removeAll(path?: string, domain?: string): void {
-    if (!this.documentIsAccessible) {
-      return;
-    }
+    const cookies = this.getAll();
 
-    const cookies: any = this.getAll();
-
-    for (const cookieName in cookies) {
-      if (cookies.hasOwnProperty(cookieName)) {
+    if (this.documentIsAccessible) {
+      for (const cookieName of Object.keys(cookies)) {
         this.remove(cookieName, path, domain);
+      }
+    } else {
+      for (const cookieName of Object.keys(cookies)) {
+        this.response.clearCookie(cookieName, { path, domain });
       }
     }
   }

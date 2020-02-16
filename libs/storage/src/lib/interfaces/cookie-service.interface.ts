@@ -6,7 +6,7 @@ export interface CookieServiceSetOptions {
   /**
    * expires
    */
-  expires: number | Date;
+  expires: Date;
 
   /**
    * Path
@@ -26,7 +26,7 @@ export interface CookieServiceSetOptions {
   /**
    * Same site
    */
-  sameSite: 'Lax' | 'None' | 'Strict';
+  sameSite: 'lax' | 'none' | 'strict';
 }
 
 /**

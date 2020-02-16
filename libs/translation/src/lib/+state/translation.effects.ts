@@ -35,9 +35,7 @@ export class TranslationEffects extends AbstractEffects<TranslationState> {
   @Effect() initiating$ = this.dataPersistence.fetch(TranslationActionTypes.InitiatingTranslation, {
     run: (action: InitiatingTranslation, store: TranslationPartialState) => {
       const config = this.translationService.getConfig();
-      return this.translationService
-        .init(this.translationService.getConfig())
-        .pipe(map<any, TranslationInitialized>(data => new TranslationInitialized(config)));
+      return this.translationService.init(config).pipe(map<any, TranslationInitialized>(data => new TranslationInitialized(config)));
     },
     onError: (action: InitiatingTranslation, error) => new TranslationInitError(error.toString())
   });

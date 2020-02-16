@@ -1,6 +1,5 @@
+import { TranslationConfig } from '@medium-stories/translation';
 import { Action } from '@ngrx/store';
-
-import { TranslationConfig } from '../interfaces/translation-config.interface';
 
 export enum TranslationActionTypes {
   InitTranslation = '[Translation] Init translation',

@@ -49,7 +49,7 @@ export abstract class TranslationService<T = string> {
    * Init
    * @param config Translation config
    */
-  abstract init(config: TranslationConfig): Observable<any>;
+  abstract init(config?: TranslationConfig): Observable<any>;
 
   /**
    * Set selected language by code

@@ -31,7 +31,7 @@
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
     "build:ssr:storage": "ng build frontend-storage --prod && ng run frontend-storage:server:production",
     "serve:ssr:storage": "node dist/apps/frontend/storage/server/main.js",
-    "serve:translation": "ng run frontend-translation:serve-ssr",
+    "serve:ssr:translation:dev": "ng run frontend-translation:serve-ssr",
     "build:ssr:translation": "ng build frontend-translation --prod && ng run frontend-translation:server:production",
     "serve:ssr:translation": "node dist/apps/frontend/translation/server/main.js",
     "build:ssr:store": "ng build frontend-store --prod && ng run frontend-store:server:production",

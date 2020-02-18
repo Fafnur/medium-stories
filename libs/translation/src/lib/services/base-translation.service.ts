@@ -17,7 +17,10 @@ export class BaseTranslationService implements TranslationService {
     @Inject(TRANSLATION_CONFIG) private translationConfig: TranslationConfig
   ) {}
 
-  init(config: TranslationConfig): Observable<any> {
+  init(config?: TranslationConfig): Observable<any> {
+    if (!config) {
+      config = this.getConfig();
+    }
     this.translateService.addLangs(config.languages);
     this.translateService.setDefaultLang(config.language);
     this.translationStorage.setLanguage(config.currentLanguage);

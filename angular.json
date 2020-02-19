@@ -47,7 +47,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/backend/api/jest.config.js",
-            "tsConfig": "apps/backend/api/tsconfig.spec.json"
+            "tsConfig": "apps/backend/api/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -136,7 +137,8 @@
           "options": {
             "jestConfig": "apps/frontend/base/jest.config.js",
             "tsConfig": "apps/frontend/base/tsconfig.spec.json",
-            "setupFile": "apps/frontend/base/src/test-setup.ts"
+            "setupFile": "apps/frontend/base/src/test-setup.ts",
+            "passWithNoTests": true
           }
         },
         "server": {
@@ -301,7 +303,8 @@
           "options": {
             "jestConfig": "apps/frontend/common-styles/jest.config.js",
             "tsConfig": "apps/frontend/common-styles/tsconfig.spec.json",
-            "setupFile": "apps/frontend/common-styles/src/test-setup.ts"
+            "setupFile": "apps/frontend/common-styles/src/test-setup.ts",
+            "passWithNoTests": true
           }
         },
         "server": {
@@ -450,7 +453,8 @@
           "options": {
             "jestConfig": "apps/frontend/forms/jest.config.js",
             "tsConfig": "apps/frontend/forms/tsconfig.spec.json",
-            "setupFile": "apps/frontend/forms/src/test-setup.ts"
+            "setupFile": "apps/frontend/forms/src/test-setup.ts",
+            "passWithNoTests": true
           }
         },
         "server": {
@@ -599,7 +603,8 @@
           "options": {
             "jestConfig": "apps/frontend/graphql/jest.config.js",
             "tsConfig": "apps/frontend/graphql/tsconfig.spec.json",
-            "setupFile": "apps/frontend/graphql/src/test-setup.ts"
+            "setupFile": "apps/frontend/graphql/src/test-setup.ts",
+            "passWithNoTests": true
           }
         },
         "server": {
@@ -748,7 +753,8 @@
           "options": {
             "jestConfig": "apps/frontend/markup/jest.config.js",
             "tsConfig": "apps/frontend/markup/tsconfig.spec.json",
-            "setupFile": "apps/frontend/markup/src/test-setup.ts"
+            "setupFile": "apps/frontend/markup/src/test-setup.ts",
+            "passWithNoTests": true
           }
         },
         "server": {
@@ -888,7 +894,8 @@
           "options": {
             "jestConfig": "apps/frontend/responsive/jest.config.js",
             "tsConfig": "apps/frontend/responsive/tsconfig.spec.json",
-            "setupFile": "apps/frontend/responsive/src/test-setup.ts"
+            "setupFile": "apps/frontend/responsive/src/test-setup.ts",
+            "passWithNoTests": true
           }
         },
         "server": {
@@ -1028,7 +1035,8 @@
           "options": {
             "jestConfig": "apps/frontend/shared/jest.config.js",
             "tsConfig": "apps/frontend/shared/tsconfig.spec.json",
-            "setupFile": "apps/frontend/shared/src/test-setup.ts"
+            "setupFile": "apps/frontend/shared/src/test-setup.ts",
+            "passWithNoTests": true
           }
         },
         "server": {
@@ -1165,7 +1173,8 @@
           "options": {
             "jestConfig": "apps/frontend/storage/jest.config.js",
             "tsConfig": "apps/frontend/storage/tsconfig.spec.json",
-            "setupFile": "apps/frontend/storage/src/test-setup.ts"
+            "setupFile": "apps/frontend/storage/src/test-setup.ts",
+            "passWithNoTests": true
           }
         },
         "server": {
@@ -1299,7 +1308,8 @@
           "options": {
             "jestConfig": "apps/frontend/store/jest.config.js",
             "tsConfig": "apps/frontend/store/tsconfig.spec.json",
-            "setupFile": "apps/frontend/store/src/test-setup.ts"
+            "setupFile": "apps/frontend/store/src/test-setup.ts",
+            "passWithNoTests": true
           }
         },
         "server": {
@@ -1436,7 +1446,8 @@
           "options": {
             "jestConfig": "apps/frontend/theming/jest.config.js",
             "tsConfig": "apps/frontend/theming/tsconfig.spec.json",
-            "setupFile": "apps/frontend/theming/src/test-setup.ts"
+            "setupFile": "apps/frontend/theming/src/test-setup.ts",
+            "passWithNoTests": true
           }
         },
         "server": {
@@ -1581,7 +1592,8 @@
           "options": {
             "jestConfig": "apps/frontend/translation/jest.config.js",
             "tsConfig": "apps/frontend/translation/tsconfig.spec.json",
-            "setupFile": "apps/frontend/translation/src/test-setup.ts"
+            "setupFile": "apps/frontend/translation/src/test-setup.ts",
+            "passWithNoTests": true
           }
         },
         "server": {
@@ -1726,7 +1738,8 @@
           "options": {
             "jestConfig": "apps/frontend/translation-state/jest.config.js",
             "tsConfig": "apps/frontend/translation-state/tsconfig.spec.json",
-            "setupFile": "apps/frontend/translation-state/src/test-setup.ts"
+            "setupFile": "apps/frontend/translation-state/src/test-setup.ts",
+            "passWithNoTests": true
           }
         },
         "server": {
@@ -1863,7 +1876,8 @@
           "options": {
             "jestConfig": "apps/frontend/universal/jest.config.js",
             "tsConfig": "apps/frontend/universal/tsconfig.spec.json",
-            "setupFile": "apps/frontend/universal/src/test-setup.ts"
+            "setupFile": "apps/frontend/universal/src/test-setup.ts",
+            "passWithNoTests": true
           }
         },
         "server": {
@@ -1934,7 +1948,8 @@
           "options": {
             "jestConfig": "libs/common/jest.config.js",
             "tsConfig": "libs/common/tsconfig.spec.json",
-            "setupFile": "libs/common/src/test-setup.ts"
+            "setupFile": "libs/common/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -1963,7 +1978,8 @@
           "options": {
             "jestConfig": "libs/dynamic-forms/jest.config.js",
             "tsConfig": "libs/dynamic-forms/tsconfig.spec.json",
-            "setupFile": "libs/dynamic-forms/src/test-setup.ts"
+            "setupFile": "libs/dynamic-forms/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -1990,7 +2006,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/entities/jest.config.js",
-            "tsConfig": "libs/entities/tsconfig.spec.json"
+            "tsConfig": "libs/entities/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       },
@@ -2019,7 +2036,8 @@
           "options": {
             "jestConfig": "libs/events/jest.config.js",
             "tsConfig": "libs/events/tsconfig.spec.json",
-            "setupFile": "libs/events/src/test-setup.ts"
+            "setupFile": "libs/events/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -2048,7 +2066,8 @@
           "options": {
             "jestConfig": "libs/layouts/jest.config.js",
             "tsConfig": "libs/layouts/tsconfig.spec.json",
-            "setupFile": "libs/layouts/src/test-setup.ts"
+            "setupFile": "libs/layouts/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -2077,7 +2096,8 @@
           "options": {
             "jestConfig": "libs/responsive/jest.config.js",
             "tsConfig": "libs/responsive/tsconfig.spec.json",
-            "setupFile": "libs/responsive/src/test-setup.ts"
+            "setupFile": "libs/responsive/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -2106,7 +2126,8 @@
           "options": {
             "jestConfig": "libs/shared/jest.config.js",
             "tsConfig": "libs/shared/tsconfig.spec.json",
-            "setupFile": "libs/shared/src/test-setup.ts"
+            "setupFile": "libs/shared/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -2135,7 +2156,8 @@
           "options": {
             "jestConfig": "libs/storage/jest.config.js",
             "tsConfig": "libs/storage/tsconfig.spec.json",
-            "setupFile": "libs/storage/src/test-setup.ts"
+            "setupFile": "libs/storage/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -2164,7 +2186,8 @@
           "options": {
             "jestConfig": "libs/store/jest.config.js",
             "tsConfig": "libs/store/tsconfig.spec.json",
-            "setupFile": "libs/store/src/test-setup.ts"
+            "setupFile": "libs/store/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -2193,7 +2216,8 @@
           "options": {
             "jestConfig": "libs/translation/jest.config.js",
             "tsConfig": "libs/translation/tsconfig.spec.json",
-            "setupFile": "libs/translation/src/test-setup.ts"
+            "setupFile": "libs/translation/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },

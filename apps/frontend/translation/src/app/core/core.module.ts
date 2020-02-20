@@ -6,7 +6,7 @@ import { NxModule } from '@nrwl/angular';
 
 import { StorageModule } from '@medium-stories/storage';
 import { RootStoreModule } from '@medium-stories/store';
-import { TranslationModule } from '@medium-stories/translation';
+import { TRANSLATION_PREFIX, TRANSLATION_PREFIX_DEFAULT, TranslationModule } from '@medium-stories/translation';
 
 import { environment } from '../../environments/environment';
 import { coreContainers, coreRoutes } from './core.common';
@@ -23,6 +23,12 @@ import { coreContainers, coreRoutes } from './core.common';
     RouterModule.forRoot(coreRoutes, { initialNavigation: 'enabled' }),
     !environment.production ? StoreDevtoolsModule.instrument({ logOnly: environment.production }) : []
   ],
-  declarations: [...coreContainers]
+  declarations: [...coreContainers],
+  providers: [
+    {
+      provide: TRANSLATION_PREFIX,
+      useValue: 'assets/locale'
+    }
+  ]
 })
 export class CoreModule {}

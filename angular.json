@@ -1513,8 +1513,15 @@
       "prefix": "medium-stories",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "customWebpackConfig": {
+              "path": "apps/frontend/translation/webpack.app.config.js",
+              "replaceDuplicatePlugins": true,
+              "mergeStrategies": {
+                "externals": "prepend"
+              }
+            },
             "outputPath": "dist/apps/frontend/translation/browser",
             "index": "apps/frontend/translation/src/index.html",
             "main": "apps/frontend/translation/src/main.browser.ts",
@@ -1564,8 +1571,15 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
+            "customWebpackConfig": {
+              "path": "apps/base/lk/webpack.app.config.js",
+              "replaceDuplicatePlugins": true,
+              "mergeStrategies": {
+                "externals": "prepend"
+              }
+            },
             "browserTarget": "frontend-translation:build"
           },
           "configurations": {

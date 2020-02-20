@@ -32,6 +32,7 @@
     "build:ssr:storage": "ng build frontend-storage --prod && ng run frontend-storage:server:production",
     "serve:ssr:storage": "node dist/apps/frontend/storage/server/main.js",
     "serve:ssr:translation:dev": "ng run frontend-translation:serve-ssr",
+    "serve:translation": "ng serve frontend-translation",
     "build:ssr:translation": "ng build frontend-translation --prod && ng run frontend-translation:server:production",
     "serve:ssr:translation": "node dist/apps/frontend/translation/server/main.js",
     "build:ssr:store": "ng build frontend-store --prod && ng run frontend-store:server:production",
@@ -142,7 +143,7 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-builders/custom-webpack": "^9.0.0-beta.7",
+    "@angular-builders/custom-webpack": "^9.0.0-beta.1",
     "@angular-devkit/build-angular": "~0.900.2",
     "@angular/cli": "^9.0.2",
     "@angular/compiler-cli": "^9.0.1",
@@ -170,6 +171,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "jest": "^24.9.0",
     "jest-preset-angular": "8.0.0",
+    "merge-jsons-webpack-plugin": "^1.0.20",
     "ng-mocks": "^9.0.0",
     "prettier": "^1.19.1",
     "ts-jest": "^24.3.0",

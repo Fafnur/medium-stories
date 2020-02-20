@@ -1,13 +1,3 @@
 {
-  "languages": {
-    "ru": "Русский",
-    "en": "English"
-  },
-  "home": {
-    "title": "Home page with ngx-translate",
-    "count": "Count",
-    "actions": {
-      "add": "Add"
-    }
-  }
+  "brand": "Medium stories"
 }

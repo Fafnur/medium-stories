@@ -27,6 +27,9 @@
     "frontend-graphql": {
       "tags": []
     },
+    "frontend-infinite-scroll": {
+      "tags": []
+    },
     "frontend-markup": {
       "tags": []
     },
@@ -49,6 +52,9 @@
       "tags": []
     },
     "frontend-translation-state": {
+      "tags": []
+    },
+    "frontend-universal": {
       "tags": []
     },
     "common": {
@@ -79,9 +85,6 @@
       "tags": []
     },
     "translation": {
-      "tags": []
-    },
-    "frontend-universal": {
       "tags": []
     }
   }

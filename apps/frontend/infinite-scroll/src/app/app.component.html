@@ -22,59 +22,29 @@
   <p>
     Here are some links to help you get started.
   </p>
-  <ul class="resources">
-    <li class="col-span-2">
-      <a class="resource flex" href="https://connect.nrwl.io/app/courses/nx-workspaces/intro">
-        Nx video course
-      </a>
-    </li>
-    <li class="col-span-2">
-      <a class="resource flex" href="https://nx.dev/angular/getting-started/what-is-nx">
-        Nx video tutorial
-      </a>
-    </li>
-    <li class="col-span-2">
-      <a class="resource flex" href="https://nx.dev/angular/tutorial/01-create-application">
-        Interactive tutorial
-      </a>
-    </li>
-    <li class="col-span-2">
-      <a class="resource flex" href="https://connect.nrwl.io/">
-        <img height="36" alt="Nrwl Connect" src="https://connect.nrwl.io/assets/img/CONNECT_ColorIcon.png" />
-        <span class="gutter-left">Nrwl Connect</span>
-      </a>
-    </li>
-  </ul>
-  <h2>Next Steps</h2>
-  <p>Here are some things you can do with Nx.</p>
-  <details open>
-    <summary>Add UI library</summary>
-    <pre>
-# Generate UI lib
-ng g @nrwl/angular:lib ui
-
-# Add a component
-ng g @nrwl/angular:component xyz --project ui</pre
-    >
-  </details>
-  <details>
-    <summary>View dependency graph</summary>
-    <pre>nx dep-graph</pre>
-  </details>
-  <details>
-    <summary>Run affected commands</summary>
-    <pre>
-# see what's been affected by changes
-ng affected:dep-graph
-
-# run tests for current changes
-ng affected:test
-
-# run e2e tests for current changes
-ng affected:e2e
-</pre
-    >
-  </details>
+  <ms-infinite-scroll (scrolled)="genContent()" class="infinite-scroll-with-root">
+    <div>
+      <p *ngFor="let contentItem of content">
+        {{ contentItem }}
+      </p>
+    </div>
+  </ms-infinite-scroll>
+  <p></p>
+  <p>
+    Ab aspernatur assumenda consectetur culpa, dignissimos doloribus, error, eum eveniet hic illo molestias mollitia nesciunt nihil non
+    nostrum officia pariatur porro quam quasi quo rem repellat tempora totam voluptate voluptatibus? Aspernatur inventore ipsa iste iusto
+    magni maxime nemo quae quidem repellat vero. Cumque in nemo sed. Aliquid deserunt, illum. Accusamus aperiam aspernatur atque dolore,
+    ducimus esse eum illo impedit iste laborum laudantium, maiores modi molestiae perferendis quo ullam unde voluptate. Architecto
+    distinctio, dolorum ducimus error est excepturi, fugiat fugit harum laudantium minima nesciunt provident quia, tempora tenetur velit
+    veritatis vero? Accusantium doloremque inventore labore nostrum odit sed similique sint voluptate?
+  </p>
+  <ms-infinite-scroll (scrolled)="genLinks()">
+    <ul class="resources">
+      <li class="col-span-2" *ngFor="let link of links">
+        <a class="resource flex" [routerLink]="[link.route]">{{ link.label }}</a>
+      </li>
+    </ul>
+  </ms-infinite-scroll>
 </main>
 
 <router-outlet></router-outlet>

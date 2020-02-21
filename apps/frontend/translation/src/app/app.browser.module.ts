@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 import { translateHttpFactory, TRANSLATION_PREFIX, TRANSLATION_SUFFIX } from '@medium-stories/translation';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 import { AppModule } from './app.module';
 import { AppComponent } from './core/containers/app/app.component';

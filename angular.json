@@ -657,6 +657,159 @@
         }
       }
     },
+    "frontend-infinite-scroll": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss",
+          "changeDetection": "onPush"
+        }
+      },
+      "root": "apps/frontend/infinite-scroll",
+      "sourceRoot": "apps/frontend/infinite-scroll/src",
+      "prefix": "medium-stories",
+      "architect": {
+        "build": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "customWebpackConfig": {
+              "path": "apps/frontend/translation/webpack.app.config.js",
+              "replaceDuplicatePlugins": true,
+              "mergeStrategies": {
+                "externals": "prepend"
+              }
+            },
+            "outputPath": "dist/apps/frontend/infinite-scroll/browser",
+            "index": "apps/frontend/infinite-scroll/src/index.html",
+            "main": "apps/frontend/infinite-scroll/src/main.browser.ts",
+            "polyfills": "apps/frontend/infinite-scroll/src/polyfills.ts",
+            "tsConfig": "apps/frontend/infinite-scroll/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/frontend/infinite-scroll/src/favicon.ico", "apps/frontend/infinite-scroll/src/assets"],
+            "styles": ["apps/frontend/infinite-scroll/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/infinite-scroll/src/environments/environment.ts",
+                  "with": "apps/frontend/infinite-scroll/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-builders/custom-webpack:dev-server",
+          "options": {
+            "customWebpackConfig": {
+              "path": "apps/frontend/infinite-scroll/webpack.app.config.js",
+              "replaceDuplicatePlugins": true,
+              "mergeStrategies": {
+                "externals": "prepend"
+              }
+            },
+            "browserTarget": "frontend-infinite-scroll:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-infinite-scroll:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "frontend-infinite-scroll:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/frontend/infinite-scroll/tsconfig.app.json", "apps/frontend/infinite-scroll/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/frontend/infinite-scroll/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/frontend/infinite-scroll/jest.config.js",
+            "tsConfig": "apps/frontend/infinite-scroll/tsconfig.spec.json",
+            "setupFile": "apps/frontend/infinite-scroll/src/test-setup.ts",
+            "passWithNoTests": true
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/apps/frontend/infinite-scroll/server",
+            "main": "apps/frontend/infinite-scroll/server.ts",
+            "tsConfig": "apps/frontend/infinite-scroll/tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/frontend/infinite-scroll/src/styles"]
+            }
+          },
+          "configurations": {
+            "production": {
+              "bundleDependencies": true,
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/infinite-scroll/src/environments/environment.ts",
+                  "with": "apps/frontend/infinite-scroll/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "frontend-infinite-scroll:build",
+            "serverTarget": "frontend-infinite-scroll:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-infinite-scroll:build:production",
+              "serverTarget": "frontend-infinite-scroll:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "frontend-infinite-scroll:build:production",
+            "serverTarget": "frontend-infinite-scroll:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
+          }
+        }
+      }
+    },
     "frontend-markup": {
       "projectType": "application",
       "schematics": {
@@ -1574,7 +1727,7 @@
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
             "customWebpackConfig": {
-              "path": "apps/base/lk/webpack.app.config.js",
+              "path": "apps/frontend/translation/webpack.app.config.js",
               "replaceDuplicatePlugins": true,
               "mergeStrategies": {
                 "externals": "prepend"

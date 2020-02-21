@@ -68,7 +68,11 @@
     "prerender": "ng run frontend-translation-state:prerender",
     "post:install": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "build:ssr:universal": "ng build frontend-universal --prod && ng run frontend-universal:server:production",
-    "serve:ssr:universal": "node dist/apps/frontend/universal/server/main.js"
+    "serve:ssr:universal": "node dist/apps/frontend/infinite-scroll/server/main.js",
+    "infinite-scroll:serve": "ng serve frontend-infinite-scroll",
+    "infinite-scroll:serve:ssr:dev": "ng run frontend-infinite-scroll:serve-ssr",
+    "infinite-scroll:build:ssr": "ng build frontend-infinite-scroll --prod && ng run frontend-infinite-scroll:server:production",
+    "infinite-scroll:serve:ssr": "node dist/apps/frontend/infinite-scroll/server/main.js"
   },
   "private": true,
   "dependencies": {
@@ -128,6 +132,7 @@
     "graphql-tools": "^4.0.7",
     "graphql-type-json": "^0.3.1",
     "hammerjs": "^2.0.8",
+    "intersection-observer": "^0.7.0",
     "ngx-cookie": "^4.1.2",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",

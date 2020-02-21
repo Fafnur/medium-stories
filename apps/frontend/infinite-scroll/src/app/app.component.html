@@ -1,0 +1,50 @@
+<header class="flex">
+  <img alt="Nx logo" width="75" src="https://nx.dev/assets/images/nx-logo-white.svg" />
+  <h1>Welcome to {{ title }}!</h1>
+</header>
+<main>
+  <h2>Resources &amp; Tools</h2>
+  <p>
+    Thank you for using and showing some ♥ for Nx.
+  </p>
+  <div class="flex github-star-container">
+    <a href="https://github.com/nrwl/nx" target="_blank" rel="noopener noreferrer">
+      If you like Nx, please give it a star:
+      <div class="github-star-badge">
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+        </svg>
+        Star
+      </div>
+    </a>
+  </div>
+  <p>
+    Here are some links to help you get started.
+  </p>
+  <ms-infinite-scroll (scrolled)="genContent()" class="infinite-scroll-with-root">
+    <div>
+      <p *ngFor="let contentItem of content">
+        {{ contentItem }}
+      </p>
+    </div>
+  </ms-infinite-scroll>
+  <p></p>
+  <p>
+    Ab aspernatur assumenda consectetur culpa, dignissimos doloribus, error, eum eveniet hic illo molestias mollitia nesciunt nihil non
+    nostrum officia pariatur porro quam quasi quo rem repellat tempora totam voluptate voluptatibus? Aspernatur inventore ipsa iste iusto
+    magni maxime nemo quae quidem repellat vero. Cumque in nemo sed. Aliquid deserunt, illum. Accusamus aperiam aspernatur atque dolore,
+    ducimus esse eum illo impedit iste laborum laudantium, maiores modi molestiae perferendis quo ullam unde voluptate. Architecto
+    distinctio, dolorum ducimus error est excepturi, fugiat fugit harum laudantium minima nesciunt provident quia, tempora tenetur velit
+    veritatis vero? Accusantium doloremque inventore labore nostrum odit sed similique sint voluptate?
+  </p>
+  <ms-infinite-scroll (scrolled)="genLinks()">
+    <ul class="resources">
+      <li class="col-span-2" *ngFor="let link of links">
+        <a class="resource flex" [routerLink]="[link.route]">{{ link.label }}</a>
+      </li>
+    </ul>
+  </ms-infinite-scroll>
+</main>
+
+<router-outlet></router-outlet>

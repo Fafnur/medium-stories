@@ -6,8 +6,8 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { RootStoreModule } from '@medium-stories/store';
 
+import { routes } from './app.common';
 import { AppComponent } from './app.component';
-import { UsersModule } from './users/users.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,9 +15,8 @@ import { UsersModule } from './users/users.module';
     BrowserModule.withServerTransition({ appId: 'medium-stories' }),
     HttpClientModule,
     RootStoreModule,
-    UsersModule,
     EffectsModule.forRoot([]),
-    RouterModule.forRoot([], { initialNavigation: 'enabled' })
+    RouterModule.forRoot(routes, { initialNavigation: 'enabled' })
   ],
   bootstrap: [AppComponent]
 })

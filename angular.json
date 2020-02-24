@@ -662,7 +662,7 @@
       "schematics": {
         "@nrwl/angular:component": {
           "style": "scss",
-          "changeDetection": "onPush"
+          "changeDetection": "OnPush"
         }
       },
       "root": "apps/frontend/infinite-scroll",
@@ -965,7 +965,7 @@
       "schematics": {
         "@nrwl/angular:component": {
           "style": "scss",
-          "changeDetection": "onPush"
+          "changeDetection": "OnPush"
         }
       },
       "root": "apps/frontend/redux",

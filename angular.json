@@ -673,7 +673,7 @@
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "customWebpackConfig": {
-              "path": "apps/frontend/translation/webpack.app.config.js",
+              "path": "apps/frontend/infinite-scroll/webpack.app.config.js",
               "replaceDuplicatePlugins": true,
               "mergeStrategies": {
                 "externals": "prepend"
@@ -952,6 +952,159 @@
           "options": {
             "browserTarget": "frontend-markup:build:production",
             "serverTarget": "frontend-markup:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
+          }
+        }
+      }
+    },
+    "frontend-redux": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss",
+          "changeDetection": "onPush"
+        }
+      },
+      "root": "apps/frontend/redux",
+      "sourceRoot": "apps/frontend/redux/src",
+      "prefix": "medium-stories",
+      "architect": {
+        "build": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "customWebpackConfig": {
+              "path": "apps/frontend/redux/webpack.app.config.js",
+              "replaceDuplicatePlugins": true,
+              "mergeStrategies": {
+                "externals": "prepend"
+              }
+            },
+            "outputPath": "dist/apps/frontend/redux/browser",
+            "index": "apps/frontend/redux/src/index.html",
+            "main": "apps/frontend/redux/src/main.browser.ts",
+            "polyfills": "apps/frontend/redux/src/polyfills.ts",
+            "tsConfig": "apps/frontend/redux/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/frontend/redux/src/favicon.ico", "apps/frontend/redux/src/assets"],
+            "styles": ["apps/frontend/redux/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/redux/src/environments/environment.ts",
+                  "with": "apps/frontend/redux/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-builders/custom-webpack:dev-server",
+          "options": {
+            "customWebpackConfig": {
+              "path": "apps/frontend/redux/webpack.app.config.js",
+              "replaceDuplicatePlugins": true,
+              "mergeStrategies": {
+                "externals": "prepend"
+              }
+            },
+            "browserTarget": "frontend-redux:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-redux:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "frontend-redux:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/frontend/redux/tsconfig.app.json", "apps/frontend/redux/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/frontend/redux/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/frontend/redux/jest.config.js",
+            "tsConfig": "apps/frontend/redux/tsconfig.spec.json",
+            "setupFile": "apps/frontend/redux/src/test-setup.ts",
+            "passWithNoTests": true
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/apps/frontend/redux/server",
+            "main": "apps/frontend/redux/server.ts",
+            "tsConfig": "apps/frontend/redux/tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/frontend/redux/src/styles"]
+            }
+          },
+          "configurations": {
+            "production": {
+              "bundleDependencies": true,
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/redux/src/environments/environment.ts",
+                  "with": "apps/frontend/redux/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "frontend-redux:build",
+            "serverTarget": "frontend-redux:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-redux:build:production",
+              "serverTarget": "frontend-redux:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "frontend-redux:build:production",
+            "serverTarget": "frontend-redux:server:production",
             "routes": ["/"]
           },
           "configurations": {

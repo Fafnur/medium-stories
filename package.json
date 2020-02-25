@@ -72,7 +72,11 @@
     "infinite-scroll:serve": "ng serve frontend-infinite-scroll",
     "infinite-scroll:serve:ssr:dev": "ng run frontend-infinite-scroll:serve-ssr",
     "infinite-scroll:build:ssr": "ng build frontend-infinite-scroll --prod && ng run frontend-infinite-scroll:server:production",
-    "infinite-scroll:serve:ssr": "node dist/apps/frontend/infinite-scroll/server/main.js"
+    "infinite-scroll:serve:ssr": "node dist/apps/frontend/infinite-scroll/server/main.js",
+    "redux:serve": "ng serve frontend-redux",
+    "redux:serve:ssr:dev": "ng run frontend-redux:serve-ssr",
+    "redux:build:ssr": "ng build frontend-redux --prod && ng run frontend-redux:server:production",
+    "redux:serve:ssr": "node dist/apps/frontend/redux/server/main.js"
   },
   "private": true,
   "dependencies": {

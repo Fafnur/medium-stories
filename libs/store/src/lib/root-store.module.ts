@@ -12,12 +12,7 @@ import { StoreRouterStateSerializer } from './services/store-router-state-serial
   imports: [
     RouterModule,
     StoreModule.forRoot(reducers, {
-      initialState: rootInitialState,
-      metaReducers: [],
-      runtimeChecks: {
-        strictActionImmutability: true,
-        strictStateImmutability: true
-      }
+      initialState: rootInitialState
     }),
     StoreRouterConnectingModule.forRoot({
       serializer: StoreRouterStateSerializer

@@ -2547,6 +2547,36 @@
           "changeDetection": "OnPush"
         }
       }
+    },
+    "users": {
+      "projectType": "library",
+      "root": "libs/users",
+      "sourceRoot": "libs/users/src",
+      "prefix": "medium-stories",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/users/tsconfig.lib.json", "libs/users/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/users/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/users/jest.config.js",
+            "tsConfig": "libs/users/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/users/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush"
+        }
+      }
     }
   },
   "cli": {

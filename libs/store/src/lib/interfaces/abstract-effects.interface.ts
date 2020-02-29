@@ -1,3 +1,7 @@
+import { isPlatformBrowser } from '@angular/common';
+import { Action } from '@ngrx/store';
+import { TypedAction } from '@ngrx/store/src/models';
+
 import { DEFAULT_GENERIC_RETRY_STRATEGY, GenericRetryStrategyOptions } from '../utils/generic-retry-strategy.util';
 import { md5 } from '../utils/md5.util';
 
@@ -11,6 +15,12 @@ export abstract class AbstractEffects<T = any> {
   protected genericRetryStrategyOptions = DEFAULT_GENERIC_RETRY_STRATEGY;
 
   protected constructor(protected readonly key: string) {}
+
+  protected platformId: any;
+
+  get isBrowser(): boolean {
+    return isPlatformBrowser(this.platformId);
+  }
 
   /**
    * Return effect id by payload
@@ -37,5 +47,22 @@ export abstract class AbstractEffects<T = any> {
    */
   setRetryStrategyOptions(options: Partial<GenericRetryStrategyOptions>): void {
     this.genericRetryStrategyOptions = { ...this.genericRetryStrategyOptions, ...options };
+  }
+
+  /**
+   * Effect error handler
+   * @param action Action
+   * @param error Error
+   * @param responseAction Response action
+   * @param debug Debug
+   */
+  errorHandler(action: Action, error: object = {}, responseAction?: (error?: any) => TypedAction<any>, debug = false): Action | never {
+    if (debug) {
+      console.error(error);
+    }
+
+    if (responseAction) {
+      return responseAction({ error });
+    }
   }
 }

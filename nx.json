@@ -60,6 +60,9 @@
     "frontend-universal": {
       "tags": []
     },
+    "auth": {
+      "tags": []
+    },
     "common": {
       "tags": []
     },

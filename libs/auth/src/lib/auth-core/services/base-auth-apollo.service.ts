@@ -5,7 +5,7 @@ import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 import { ApolloResponse, extractApolloResponse } from '@medium-stories/common';
-import { SignInResponse, User } from '@medium-stories/entities';
+import { SignInPayload, SignInResponse, User } from '@medium-stories/entities';
 
 import * as AuthQueries from '../graphql/auth.queries';
 import { AuthApollo } from '../interfaces/auth-apollo.interface';
@@ -14,9 +14,9 @@ import { AuthApollo } from '../interfaces/auth-apollo.interface';
 export class BaseAuthApollo implements AuthApollo {
   constructor(private apollo: Apollo) {}
 
-  signIn(queryParams: object = {}): ApolloResponse<SignInResponse> {
+  signIn(payload: SignInPayload, queryParams: object = {}): ApolloResponse<SignInResponse> {
     return this.apollo
-      .query<{ user: User }>({ query: AuthQueries.loginRequest.query })
+      .query<{ user: User }>({ query: AuthQueries.loginRequest.query, variables: payload })
       .pipe(
         map(result => extractApolloResponse(result, AuthQueries.loginRequest.keys)),
         catchError((error: ApolloError) => throwError(error))

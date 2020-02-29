@@ -1,3 +1,4 @@
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -21,7 +22,11 @@ export class AuthCoreModule {
     return {
       ngModule: AuthCoreModule,
       providers: [
-        AuthInterceptor,
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: AuthInterceptor,
+          multi: true
+        },
         {
           provide: AuthApollo,
           useClass: options.apollo || BaseAuthApollo

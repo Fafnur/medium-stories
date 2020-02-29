@@ -1,15 +1,15 @@
 import { async, TestBed } from '@angular/core/testing';
 
-import { AuthCoreModule } from './auth-core.module';
+import { UsersSharedModule } from './users-shared.module';
 
-describe('AuthModule', () => {
+describe('UsersSharedModule', () => {
   beforeEach(async(() => {
     return TestBed.configureTestingModule({
-      imports: [AuthCoreModule]
+      imports: [UsersSharedModule]
     }).compileComponents();
   }));
 
   it('should create', () => {
-    expect(AuthCoreModule).toBeTruthy();
+    expect(UsersSharedModule).toBeTruthy();
   });
 });

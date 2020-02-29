@@ -16,7 +16,7 @@ export abstract class AbstractEffects<T = any> {
 
   protected constructor(protected readonly key: string) {}
 
-  protected platformId: any;
+  protected platformId?: any;
 
   get isBrowser(): boolean {
     return isPlatformBrowser(this.platformId);

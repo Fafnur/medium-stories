@@ -5,8 +5,8 @@ import { ApolloRequest } from '@medium-stories/common';
 export const loginRequest: ApolloRequest = {
   keys: ['login'],
   query: gql`
-    query {
-      login {
+    query($username: String!, $password: String!) {
+      login(username: $username, password: $password) {
         expiresIn
         accessToken
         id

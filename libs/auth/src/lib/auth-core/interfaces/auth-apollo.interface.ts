@@ -1,6 +1,6 @@
 import { ApolloResponse } from '@medium-stories/common';
 
-import { SignInResponse } from '@medium-stories/entities';
+import { SignInPayload, SignInResponse } from '@medium-stories/entities';
 
 /**
  * Auth apollo
@@ -9,7 +9,7 @@ export abstract class AuthApollo {
   /**
    * Login
    */
-  abstract signIn(queryParams?: object): ApolloResponse<SignInResponse>;
+  abstract signIn(payload: SignInPayload, queryParams?: object): ApolloResponse<SignInResponse>;
 
   /**
    * Logout

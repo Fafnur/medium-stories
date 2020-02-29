@@ -1,5 +1,5 @@
 import { UserEntity } from './user.models';
-import { State, userAdapter, initialState } from './user.reducer';
+import { UserState, userAdapter, userInitialState } from './user.reducer';
 import * as UserSelectors from './user.selectors';
 
 describe('User Selectors', () => {
@@ -16,7 +16,7 @@ describe('User Selectors', () => {
   beforeEach(() => {
     state = {
       user: userAdapter.addAll([createUserEntity('PRODUCT-AAA'), createUserEntity('PRODUCT-BBB'), createUserEntity('PRODUCT-CCC')], {
-        ...initialState,
+        ...userInitialState,
         selectedId: 'PRODUCT-BBB',
         error: ERROR_MSG,
         loaded: true
@@ -41,13 +41,13 @@ describe('User Selectors', () => {
     });
 
     it("getUserLoaded() should return the current 'loaded' status", () => {
-      const result = UserSelectors.getUserLoaded(state);
+      const result = UserSelectors.getUserLoadRun(state);
 
       expect(result).toBe(true);
     });
 
     it("getUserError() should return the current 'error' state", () => {
-      const result = UserSelectors.getUserError(state);
+      const result = UserSelectors.getUserLoadError(state);
 
       expect(result).toBe(ERROR_MSG);
     });

@@ -13,10 +13,10 @@ import { UserFacade } from './user.facade';
 
 import * as UserSelectors from './user.selectors';
 import * as UserActions from './user.actions';
-import { USER_FEATURE_KEY, State, initialState, reducer } from './user.reducer';
+import { USER_FEATURE_KEY, UserState, userInitialState, reducer } from './user.reducer';
 
 interface TestSchema {
-  user: State;
+  user: UserState;
 }
 
 describe('UserFacade', () => {

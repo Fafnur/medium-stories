@@ -1,11 +1,9 @@
 import { createAction, props } from '@ngrx/store';
 
 import { User } from '@medium-stories/entities';
-import { ActionErrorPayload, ActionPropsPayload } from '@medium-stories/store';
+import { ActionErrorPayload, ActionPropsForcePayload, ActionPropsPayload } from '@medium-stories/store';
 
-import { UserLoadPayload } from '../interfaces/user.interface';
-
-export const loadUser = createAction('[User] Load User', props<ActionPropsPayload<UserLoadPayload>>());
+export const loadUser = createAction('[User] Load User', props<ActionPropsForcePayload>());
 
 export const loadUserCancel = createAction('[User] Load User Cancel');
 

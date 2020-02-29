@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 
-import { select, Store, Action } from '@ngrx/store';
-
+import { UserFacade } from '../interfaces/user-facade.interface';
+import * as UserActions from './user.actions';
 import * as fromUser from './user.reducer';
 import * as UserSelectors from './user.selectors';
 
 @Injectable()
-export class UserFacade {
-  loaded$ = this.store.pipe(select(UserSelectors.getUserLoaded));
-  allUser$ = this.store.pipe(select(UserSelectors.getAllUser));
-  selectedUser$ = this.store.pipe(select(UserSelectors.getSelected));
+export class BaseUserFacade implements UserFacade {
+  user$ = this.store.pipe(select(UserSelectors.getUser));
+
+  userLoadError$ = this.store.pipe(select(UserSelectors.getUserLoadError));
+
+  userLoadRun$ = this.store.pipe(select(UserSelectors.getUserLoadRun));
 
   constructor(private store: Store<fromUser.UserPartialState>) {}
 
-  dispatch(action: Action) {
-    this.store.dispatch(action);
+  loadUser(force?: boolean): void {
+    this.store.dispatch(UserActions.loadUser({ payload: { force } }));
   }
 }

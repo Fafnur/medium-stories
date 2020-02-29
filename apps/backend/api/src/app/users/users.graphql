@@ -3,6 +3,10 @@ type Query {
 }
 
 type User {
+  id: Int
   username: String
+  email: String
+  phone: String
   created: Date
+  updated: Date
 }

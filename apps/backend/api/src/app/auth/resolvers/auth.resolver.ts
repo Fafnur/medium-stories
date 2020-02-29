@@ -10,12 +10,12 @@ export class AuthResolver {
   constructor(private readonly authService: AuthService) {}
 
   @Query('login')
-  async getLogin(@SignIn() signInPayload: SignInPayload): Promise<SignInResponse> {
+  async login(@SignIn() signInPayload: SignInPayload): Promise<SignInResponse> {
     return await this.authService.login(signInPayload);
   }
 
   @Query('logout')
-  async getAuth(@Args('token') token: string): Promise<boolean> {
+  async logout(): Promise<boolean> {
     return true;
   }
 }

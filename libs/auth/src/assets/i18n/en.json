@@ -1,0 +1,11 @@
+{
+  "languages": {
+    "ru": "Русский",
+    "en": "English"
+  },
+  "signIn": {
+    "actions": {
+      "signIn": "Sign in"
+    }
+  }
+}

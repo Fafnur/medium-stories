@@ -16,6 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@medium-stories/auth": ["libs/auth/src/index.ts"],
+      "@medium-stories/auth/testing": ["libs/auth/src/testing/index.ts"],
       "@medium-stories/common": ["libs/common/src/index.ts"],
       "@medium-stories/common/testing": ["libs/common/src/testing/index.ts"],
       "@medium-stories/dynamic-forms": ["libs/dynamic-forms/src/index.ts"],
@@ -34,7 +36,9 @@
       "@medium-stories/store": ["libs/store/src/index.ts"],
       "@medium-stories/store/testing": ["libs/store/src/testing/index.ts"],
       "@medium-stories/translation": ["libs/translation/src/index.ts"],
-      "@medium-stories/translation/testing": ["libs/translation/src/testing/index.ts"]
+      "@medium-stories/translation/testing": ["libs/translation/src/testing/index.ts"],
+      "@medium-stories/users": ["libs/users/src/index.ts"],
+      "@medium-stories/users/testing": ["libs/users/src/testing/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

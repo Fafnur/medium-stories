@@ -1,6 +1,6 @@
 type Query {
   login(username: String!, password: String!): SignInResponse
-  logout(token: String): Boolean
+  logout: Boolean
 }
 
 type SignInResponse {

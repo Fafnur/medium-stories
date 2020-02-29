@@ -28,7 +28,7 @@ export interface User {
   /**
    * Password
    */
-  password: string;
+  password?: string;
 
   /**
    * Username

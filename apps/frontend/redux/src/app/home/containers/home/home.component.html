@@ -1,9 +1,9 @@
 <header class="flex">
   <img alt="Nx logo" width="75" src="https://nx.dev/assets/images/nx-logo-white.svg" />
-  <h1>Welcome to {{ title }}!</h1>
+  <h1>{{ 'home.welcome' | translate }} {{ title }}!</h1>
 </header>
 <main>
-  <h2>Login & Load</h2>
+  <h2>{{ 'home.title' | translate }}</h2>
   <div>
     <medium-stories-auth-login-button></medium-stories-auth-login-button>
     <medium-stories-user-load-button></medium-stories-user-load-button>

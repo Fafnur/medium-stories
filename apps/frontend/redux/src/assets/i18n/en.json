@@ -1,0 +1,18 @@
+{
+  "languages": {
+    "ru": "Русский",
+    "en": "English"
+  },
+  "home": {
+    "welcome": "Welcome to",
+    "title": "Login & Load",
+    "actions": {
+      "add": "Add"
+    }
+  },
+  "users": {
+    "actions": {
+      "load": "Load current user"
+    }
+  }
+}

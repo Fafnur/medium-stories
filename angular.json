@@ -1695,6 +1695,9 @@
             "aot": true,
             "assets": ["apps/frontend/testing/src/favicon.ico", "apps/frontend/testing/src/assets"],
             "styles": ["apps/frontend/testing/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/frontend/testing/src/styles"]
+            },
             "scripts": []
           },
           "configurations": {

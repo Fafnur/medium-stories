@@ -1,1 +1,1 @@
-export const eventTest = 1;
+export * from './stubs/event.stub';

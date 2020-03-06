@@ -1,0 +1,15 @@
+<ng-container *ngTemplateOutlet="userBoxTpl; context: { loading: preload$ | async }"></ng-container>
+
+<ng-template #userBoxTpl let-loading="loading">
+  <ng-container *ngIf="loading; else preloaderTpl">
+    <ng-container *ngTemplateOutlet="userBoxCardTpl"></ng-container>
+  </ng-container>
+</ng-template>
+
+<ng-template #userBoxCardTpl let-loading="loading">
+  <h3>{{ user.username }}</h3>
+</ng-template>
+
+<ng-template #preloaderTpl>
+  <h3>Loading...</h3>
+</ng-template>

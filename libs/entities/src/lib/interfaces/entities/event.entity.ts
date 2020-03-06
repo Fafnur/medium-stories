@@ -19,7 +19,7 @@ export interface Event {
   /**
    * End date
    */
-  end: number;
+  end: string;
 
   /**
    * ID

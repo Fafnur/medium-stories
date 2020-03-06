@@ -1,22 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
+import { TranslateModule } from '@ngx-translate/core';
 
-import { UserEffects } from './+state/user.effects';
-import { UserFacade } from './+state/user.facade';
-import * as fromUser from './+state/user.reducer';
-import { usersContainers, usersRoutes } from './users.common';
+import { EventsCoreModule } from '@medium-stories/events';
+import { UsersCoreModule } from '@medium-stories/users';
+
+import { usersComponents, usersContainers, usersRoutes } from './users.common';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(usersRoutes),
-    StoreModule.forFeature(fromUser.USER_FEATURE_KEY, fromUser.reducer),
-    EffectsModule.forFeature([UserEffects])
-  ],
-  declarations: [...usersContainers],
-  providers: [UserFacade]
+  imports: [CommonModule, UsersCoreModule.forRoot(), EventsCoreModule.forRoot(), RouterModule.forChild(usersRoutes), TranslateModule],
+  declarations: [...usersComponents, ...usersContainers]
 })
 export class UsersModule {}

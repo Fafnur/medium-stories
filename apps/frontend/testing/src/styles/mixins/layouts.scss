@@ -1,0 +1,7 @@
+@mixin layout-padding-top($mobileSize: 4rem, $size: 7rem) {
+  padding-top: $mobileSize;
+
+  @include media-breakpoint-up($mobile) {
+    padding-top: $size;
+  }
+}

@@ -76,7 +76,11 @@
     "redux:serve": "ng serve frontend-redux",
     "redux:serve:ssr:dev": "ng run frontend-redux:serve-ssr",
     "redux:build:ssr": "ng build frontend-redux --prod && ng run frontend-redux:server:production",
-    "redux:serve:ssr": "node dist/apps/frontend/redux/server/main.js"
+    "redux:serve:ssr": "node dist/apps/frontend/redux/server/main.js",
+    "testing:serve": "ng serve frontend-testing",
+    "testing:serve:ssr:dev": "ng run frontend-testing:serve-ssr",
+    "testing:build:ssr": "ng build frontend-testing --prod && ng run frontend-testing:server:production",
+    "testing:serve:ssr": "node dist/apps/frontend/testing/server/main.js"
   },
   "private": true,
   "dependencies": {

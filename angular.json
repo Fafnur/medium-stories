@@ -1665,6 +1665,159 @@
         }
       }
     },
+    "frontend-testing": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush"
+        }
+      },
+      "root": "apps/frontend/testing",
+      "sourceRoot": "apps/frontend/testing/src",
+      "prefix": "medium-stories",
+      "architect": {
+        "build": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "customWebpackConfig": {
+              "path": "apps/frontend/testing/webpack.app.config.js",
+              "replaceDuplicatePlugins": true,
+              "mergeStrategies": {
+                "externals": "prepend"
+              }
+            },
+            "outputPath": "dist/apps/frontend/testing/browser",
+            "index": "apps/frontend/testing/src/index.html",
+            "main": "apps/frontend/testing/src/main.browser.ts",
+            "polyfills": "apps/frontend/testing/src/polyfills.ts",
+            "tsConfig": "apps/frontend/testing/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/frontend/testing/src/favicon.ico", "apps/frontend/testing/src/assets"],
+            "styles": ["apps/frontend/testing/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/testing/src/environments/environment.ts",
+                  "with": "apps/frontend/testing/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-builders/custom-webpack:dev-server",
+          "options": {
+            "customWebpackConfig": {
+              "path": "apps/frontend/testing/webpack.app.config.js",
+              "replaceDuplicatePlugins": true,
+              "mergeStrategies": {
+                "externals": "prepend"
+              }
+            },
+            "browserTarget": "frontend-testing:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-testing:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "frontend-testing:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/frontend/testing/tsconfig.app.json", "apps/frontend/testing/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/frontend/testing/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/frontend/testing/jest.config.js",
+            "tsConfig": "apps/frontend/testing/tsconfig.spec.json",
+            "setupFile": "apps/frontend/testing/src/test-setup.ts",
+            "passWithNoTests": true
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/apps/frontend/testing/server",
+            "main": "apps/frontend/testing/server.ts",
+            "tsConfig": "apps/frontend/testing/tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/frontend/testing/src/styles"]
+            }
+          },
+          "configurations": {
+            "production": {
+              "bundleDependencies": true,
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/testing/src/environments/environment.ts",
+                  "with": "apps/frontend/testing/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "frontend-testing:build",
+            "serverTarget": "frontend-testing:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-testing:build:production",
+              "serverTarget": "frontend-testing:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "frontend-testing:build:production",
+            "serverTarget": "frontend-testing:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
+          }
+        }
+      }
+    },
     "frontend-theming": {
       "projectType": "application",
       "schematics": {

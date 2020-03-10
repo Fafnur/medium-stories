@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
+import { eventStub } from '@medium-stories/events/testing';
+import { cold, getTestScheduler } from '@nrwl/angular/testing';
 
 import { EventFacade } from '@medium-stories/events';
 import { UserFacade } from '@medium-stories/users';
@@ -20,13 +21,13 @@ describe('UserBoxComponent', () => {
         {
           provide: EventFacade,
           useValue: {
-            eventLast$: of()
+            eventLast$: cold('-a|', { a: eventStub })
           }
         },
         {
           provide: UserFacade,
           useValue: {
-            user$: of()
+            user$: cold('-a|', { a: userStub })
           }
         }
       ]
@@ -44,5 +45,15 @@ describe('UserBoxComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('preload$ should return loading or username', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('h3').textContent).toContain('Loading...');
+
+    // update observables
+    getTestScheduler().flush();
+    fixture.detectChanges();
+    expect(compiled.querySelector('h3').textContent).toContain(userStub.username);
   });
 });

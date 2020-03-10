@@ -16,7 +16,7 @@ export class UserBoxComponent {
   @Input() user: User;
 
   preload$ = combineLatest([this.eventFacade.eventLast$, this.userFacade.user$]).pipe(
-    map<[Event, User], boolean>(data => data.every(value => value != null))
+    map<[Event, User], boolean>(data => data.every(value => !!value))
   );
 
   constructor(private eventFacade: EventFacade, private userFacade: UserFacade) {}

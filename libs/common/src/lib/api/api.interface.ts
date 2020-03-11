@@ -29,14 +29,15 @@ export type ApiResponse<T = any, E = any> = Observable<T | ApiError<E>>;
  * @param queryParams Query params
  * @param headers Http headers
  */
-export function getHttpOptions<T extends object = any>(
-  queryParams: T,
+export function getHttpOptions(
+  queryParams: object = {},
   headers?: HttpHeaders
 ): {
   headers?: HttpHeaders | { [header: string]: string | string[] };
   params?: HttpParams | { [param: string]: string | string[] };
 } {
   let params = new HttpParams();
+
   for (const propKey of Object.keys(queryParams).sort()) {
     if (queryParams.hasOwnProperty(propKey) && queryParams[propKey] !== undefined) {
       if (Array.isArray(queryParams[propKey])) {

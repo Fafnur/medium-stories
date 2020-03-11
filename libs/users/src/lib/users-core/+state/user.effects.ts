@@ -1,3 +1,4 @@
+import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { createEffect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
@@ -16,7 +17,7 @@ export class UserEffects extends AbstractEffects<UserState> {
   loadUser$ = createEffect(() =>
     this.dataPersistence.fetch(UserActions.loadUser, {
       run: (action: ActionPayload<ActionPropsForcePayload>, store: UserPartialState) =>
-        this.isBrowser && (!this.getState(store).userLoadRun || action.payload.force)
+        isPlatformBrowser(this.platformId) && (!this.getState(store).userLoadRun || action.payload.force)
           ? UserActions.loadUserRun()
           : UserActions.loadUserCancel(),
       onError: (action, error) => this.errorHandler(action, error)
@@ -36,7 +37,7 @@ export class UserEffects extends AbstractEffects<UserState> {
   constructor(
     private dataPersistence: DataPersistence<UserPartialState>,
     private userApollo: UserApollo,
-    @Inject(PLATFORM_ID) protected platformId: any
+    @Inject(PLATFORM_ID) private platformId: any
   ) {
     super(USER_FEATURE_KEY);
   }

@@ -16,12 +16,6 @@ export abstract class AbstractEffects<T = any> {
 
   protected constructor(protected readonly key: string) {}
 
-  protected platformId?: any;
-
-  get isBrowser(): boolean {
-    return isPlatformBrowser(this.platformId);
-  }
-
   /**
    * Return effect id by payload
    * @param payload payload

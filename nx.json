@@ -48,6 +48,9 @@
     "frontend-store": {
       "tags": []
     },
+    "frontend-testing": {
+      "tags": []
+    },
     "frontend-theming": {
       "tags": []
     },

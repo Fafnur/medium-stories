@@ -1,3 +1,4 @@
+export * from './lib/events-core/+state/event.facade';
 export * from './lib/events-core/interfaces/event.interface';
 export * from './lib/events-core/interfaces/event-apollo.interface';
 export * from './lib/events-core/interfaces/events-core-options.interface';

@@ -3,5 +3,8 @@
   "rules": {
     "directive-selector": [true, "attribute", "ms", "mediumStories", "camelCase"],
     "component-selector": [true, "element", "ms", "medium-stories", "kebab-case"]
+  },
+  "linterOptions": {
+    "exclude": ["!**/*"]
   }
 }

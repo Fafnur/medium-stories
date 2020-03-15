@@ -1,4 +1,3 @@
-import { isPlatformBrowser } from '@angular/common';
 import { Action } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
 
@@ -50,13 +49,13 @@ export abstract class AbstractEffects<T = any> {
    * @param responseAction Response action
    * @param debug Debug
    */
-  errorHandler(action: Action, error: object = {}, responseAction?: (error?: any) => TypedAction<any>, debug = false): Action | never {
+  errorHandler(action: Action, error: object = {}, responseAction?: (payload?: any) => TypedAction<any>, debug = false): Action | never {
     if (debug) {
       console.error(error);
     }
 
     if (responseAction) {
-      return responseAction({ error });
+      return responseAction({ payload: error });
     }
   }
 }

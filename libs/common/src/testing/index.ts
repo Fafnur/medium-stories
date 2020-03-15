@@ -1,1 +1,1 @@
-export const commonTest = 1;
+export * from './stub/error.stub';

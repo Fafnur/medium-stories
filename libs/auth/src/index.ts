@@ -5,5 +5,6 @@ export * from './lib/auth-core/interfaces/auth-facade.interface';
 export * from './lib/auth-core/interfaces/auth-storage.interface';
 export * from './lib/auth-core/auth-core.module';
 
+export * from './lib/auth-shared/components/auth-login-button/auth-login-button.component';
 export * from './lib/auth-shared/auth-shared.common';
 export * from './lib/auth-shared/auth-shared.module';

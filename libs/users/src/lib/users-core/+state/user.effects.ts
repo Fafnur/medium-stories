@@ -10,7 +10,7 @@ import { AbstractEffects, ActionEffectPayload, ActionForcePayload } from '@mediu
 
 import { UserApollo } from '../interfaces/user-apollo.interface';
 import * as UserActions from './user.actions';
-import { USER_FEATURE_KEY, UserPartialState, UserState } from './user.reducer';
+import { UserPartialState, UserState, USER_FEATURE_KEY } from './user.reducer';
 
 @Injectable()
 export class UserEffects extends AbstractEffects<UserState> {

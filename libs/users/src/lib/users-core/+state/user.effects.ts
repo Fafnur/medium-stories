@@ -6,7 +6,7 @@ import { DataPersistence } from '@nrwl/angular';
 import { map } from 'rxjs/operators';
 
 import { User } from '@medium-stories/entities';
-import { AbstractEffects, ActionPayload, ActionPropsForcePayload } from '@medium-stories/store';
+import { AbstractEffects, ActionEffectPayload, ActionForcePayload } from '@medium-stories/store';
 
 import { UserApollo } from '../interfaces/user-apollo.interface';
 import * as UserActions from './user.actions';
@@ -15,8 +15,8 @@ import { USER_FEATURE_KEY, UserPartialState, UserState } from './user.reducer';
 @Injectable()
 export class UserEffects extends AbstractEffects<UserState> {
   loadUser$ = createEffect(() =>
-    this.dataPersistence.fetch(UserActions.loadUser, {
-      run: (action: ActionPayload<ActionPropsForcePayload>, store: UserPartialState) =>
+    this.dataPersistence.fetch<ActionEffectPayload<ActionForcePayload>>(UserActions.loadUser, {
+      run: (action, store) =>
         isPlatformBrowser(this.platformId) && (!this.getState(store).userLoadRun || action.payload.force)
           ? UserActions.loadUserRun()
           : UserActions.loadUserCancel(),

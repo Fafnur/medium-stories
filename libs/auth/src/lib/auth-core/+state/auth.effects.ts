@@ -6,7 +6,7 @@ import { DataPersistence } from '@nrwl/angular';
 import { map } from 'rxjs/operators';
 
 import { SignInResponse } from '@medium-stories/entities';
-import { AbstractEffects, ActionPayload, ActionPropsForcePayload } from '@medium-stories/store';
+import { AbstractEffects, ActionEffectPayload, ActionForcePayload } from '@medium-stories/store';
 
 import { AuthApollo } from '../interfaces/auth-apollo.interface';
 import { AuthStorage } from '../interfaces/auth-storage.interface';
@@ -16,8 +16,8 @@ import { AUTH_FEATURE_KEY, AuthPartialState, AuthState } from './auth.reducer';
 @Injectable()
 export class AuthEffects extends AbstractEffects<AuthState> {
   signIn$ = createEffect(() =>
-    this.dataPersistence.fetch(AuthActions.signIn, {
-      run: (action: ActionPayload<ActionPropsForcePayload>, state) => {
+    this.dataPersistence.fetch<ActionEffectPayload<ActionForcePayload>>(AuthActions.signIn, {
+      run: (action, state) => {
         return isPlatformBrowser(this.platformId) && (!this.getState(state).signInRun || action.payload.force)
           ? AuthActions.signInRun()
           : AuthActions.signInCancel();
@@ -50,8 +50,8 @@ export class AuthEffects extends AbstractEffects<AuthState> {
   // );
 
   signOut$ = createEffect(() =>
-    this.dataPersistence.fetch(AuthActions.signOut, {
-      run: (action: ActionPayload<ActionPropsForcePayload>, state) => {
+    this.dataPersistence.fetch<ActionEffectPayload<ActionForcePayload>>(AuthActions.signOut, {
+      run: (action, state) => {
         return isPlatformBrowser(this.platformId) && (!this.getState(state).signOutRun || action.payload.force)
           ? AuthActions.signOutRun()
           : AuthActions.signOutCancel();
@@ -62,7 +62,7 @@ export class AuthEffects extends AbstractEffects<AuthState> {
 
   signOutRun$ = createEffect(() =>
     this.dataPersistence.fetch(AuthActions.signOutRun, {
-      run: (action, state) => {
+      run: () => {
         return this.authApollo.signOut().pipe(
           map<void, Action>(() => {
             this.authStorage.removeAccessToken();

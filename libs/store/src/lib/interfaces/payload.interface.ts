@@ -1,6 +1,4 @@
-import { TypedAction } from '@ngrx/store/src/models';
-
-export type ActionPayload<T = object, A extends string = any> = T & TypedAction<A>;
+import { Action } from '@ngrx/store';
 
 /**
  * Action force payload
@@ -10,24 +8,8 @@ export interface ActionForcePayload {
 }
 
 /**
- * Action props payload
+ * Action effect payload
  */
-export interface ActionPropsPayload<T = any> {
+export interface ActionEffectPayload<T = any> extends Action {
   payload: T;
-}
-
-/**
- * Action props payload
- */
-export interface ActionPropsForcePayload {
-  payload: {
-    force?: boolean;
-  };
-}
-
-/**
- * Action error payload
- */
-export interface ActionErrorPayload<T = any> {
-  error: T;
 }

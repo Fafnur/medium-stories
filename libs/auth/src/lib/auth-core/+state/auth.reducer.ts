@@ -66,9 +66,9 @@ const authReducer = createReducer(
     signIn: null,
     signInRun: false
   })),
-  on(AuthActions.signInFailure, (state, { error }) => ({
+  on(AuthActions.signInFailure, (state, { payload }) => ({
     ...state,
-    signInError: error,
+    signInError: payload,
     signInRun: false
   })),
   on(AuthActions.signOutRun, state => ({
@@ -80,9 +80,9 @@ const authReducer = createReducer(
     ...state,
     signOutRun: false
   })),
-  on(AuthActions.signOutFailure, (state, { error }) => ({
+  on(AuthActions.signOutFailure, (state, { payload }) => ({
     ...state,
-    signOutError: error,
+    signOutError: payload,
     signOutRun: false
   }))
 );

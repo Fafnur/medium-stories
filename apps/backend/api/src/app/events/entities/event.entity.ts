@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 import { Event, Locale, Media, User } from '@medium-stories/entities';
 
@@ -16,7 +16,7 @@ export class EventEntity implements Event {
   created: string;
 
   @Column({ type: 'timestamp' })
-  end: number;
+  end: string;
 
   @PrimaryGeneratedColumn()
   id: number;
@@ -28,13 +28,7 @@ export class EventEntity implements Event {
   )
   image: Media;
 
-  @ManyToOne(
-    type => UserEntity,
-    user => user.events,
-    {
-      onDelete: 'CASCADE'
-    }
-  )
+  @ManyToOne(type => UserEntity)
   owner: User;
 
   @Column('simple-json', { nullable: true })

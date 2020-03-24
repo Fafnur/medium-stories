@@ -3,5 +3,14 @@ export const environment = {
   jwt: {
     secret: 'MyJWTSecret',
     expiresIn: 15000000
+  },
+  connection: {
+    type: 'postgres' as any,
+    host: 'localhost',
+    port: 5432,
+    username: 'postgres',
+    password: '123456',
+    database: 'medium',
+    synchronize: true
   }
 };

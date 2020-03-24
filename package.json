@@ -80,7 +80,11 @@
     "testing:serve": "ng serve frontend-testing",
     "testing:serve:ssr:dev": "ng run frontend-testing:serve-ssr",
     "testing:build:ssr": "ng build frontend-testing --prod && ng run frontend-testing:server:production",
-    "testing:serve:ssr": "node dist/apps/frontend/testing/server/main.js"
+    "testing:serve:ssr": "node dist/apps/frontend/testing/server/main.js",
+    "localization:serve": "ng serve frontend-localization",
+    "localization:serve:ssr:dev": "ng run frontend-localization:serve-ssr",
+    "localization:build:ssr": "ng build frontend-localization --prod && ng run frontend-localization:server:production",
+    "localization:serve:ssr": "node dist/apps/frontend/localization/server/main.js"
   },
   "private": true,
   "dependencies": {

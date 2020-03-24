@@ -54,7 +54,13 @@
     "no-var-keyword": true,
     "no-var-requires": false,
     "object-literal-sort-keys": false,
-    "ordered-imports": true,
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order": "lowercase-last",
+        "named-imports-order": "lowercase-last"
+      }
+    ],
     "prefer-const": true,
     "prettier": true,
     "radix": true,

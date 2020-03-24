@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Pipe, PipeTransform } from '@angular/core';
+import { Inject, LOCALE_ID, Optional, Pipe, PipeTransform } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Pipe({
@@ -7,9 +7,10 @@ import { TranslateService } from '@ngx-translate/core';
   pure: false
 })
 export class LocalizedDatePipe implements PipeTransform {
-  constructor(private translateService: TranslateService) {}
+  constructor(@Inject(LOCALE_ID) private localeId: string, @Optional() private translateService: TranslateService) {}
 
   transform(value: any, format?: string, timezone?: string, locale?: string): string {
-    return new DatePipe(this.translateService.currentLang).transform(value, format, timezone, locale);
+    const lang = this.translateService ? this.translateService.currentLang : this.localeId;
+    return new DatePipe(lang).transform(value, format, timezone, locale);
   }
 }

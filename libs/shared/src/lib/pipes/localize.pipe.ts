@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Inject, LOCALE_ID, Optional, Pipe, PipeTransform } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 import { Locale } from '@medium-stories/entities';
@@ -10,10 +10,13 @@ import { Locale } from '@medium-stories/entities';
 export class LocalizePipe implements PipeTransform {
   static prefix = 'languages.full.';
 
-  constructor(private translateService: TranslateService) {}
+  constructor(@Inject(LOCALE_ID) private localeId: string, @Optional() private translateService: TranslateService) {}
 
-  transform(locale: Locale, lang = this.translateService.currentLang): string {
+  transform(locale: Locale, lang?: string): string {
     let translate = '';
+    if (!lang) {
+      lang = this.translateService ? this.translateService.currentLang : this.localeId;
+    }
     if (lang in locale) {
       translate = locale[lang];
     } else {

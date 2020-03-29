@@ -822,6 +822,14 @@
       "root": "apps/frontend/localization",
       "sourceRoot": "apps/frontend/localization/src",
       "prefix": "medium-stories",
+      "i18n": {
+        "sourceLocale": "en",
+        "locales": {
+          "ru": {
+            "translation": "apps/frontend/localization/src/locales/messages.ru.xlf"
+          }
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -832,6 +840,7 @@
             "polyfills": "apps/frontend/localization/src/polyfills.ts",
             "tsConfig": "apps/frontend/localization/tsconfig.app.json",
             "aot": true,
+            "localize": true,
             "assets": ["apps/frontend/localization/src/favicon.ico", "apps/frontend/localization/src/assets"],
             "styles": ["apps/frontend/localization/src/styles.scss"],
             "scripts": []
@@ -864,6 +873,9 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "ru": {
+              "localize": ["ru"]
             }
           }
         },
@@ -875,6 +887,9 @@
           "configurations": {
             "production": {
               "browserTarget": "frontend-localization:build:production"
+            },
+            "ru": {
+              "browserTarget": "frontend-localization:build:ru"
             }
           }
         },
@@ -908,7 +923,8 @@
             "tsConfig": "apps/frontend/localization/tsconfig.server.json",
             "stylePreprocessorOptions": {
               "includePaths": ["apps/frontend/localization/src/styles"]
-            }
+            },
+            "localize": ["en", "ru"]
           },
           "configurations": {
             "production": {

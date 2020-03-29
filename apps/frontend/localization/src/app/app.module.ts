@@ -1,4 +1,6 @@
+import { registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import localeRu from '@angular/common/locales/ru';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -16,6 +18,8 @@ import { UsersCoreModule } from '@medium-stories/users';
 import { environment } from '../environments/environment';
 import { routes } from './app.common';
 import { AppComponent } from './app.component';
+
+registerLocaleData(localeRu, 'ru-RU');
 
 export function createApollo(httpLink: HttpLink) {
   return {

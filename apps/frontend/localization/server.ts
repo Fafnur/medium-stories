@@ -12,8 +12,9 @@ import { AppServerModule } from './src/main.server';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
+  const lang = process.env.lang || 'en';
   const server = express();
-  const distFolder = join(process.cwd(), 'dist/apps/frontend/localization/browser');
+  const distFolder = join(process.cwd(), `dist/apps/frontend/localization/browser/${lang}`);
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)

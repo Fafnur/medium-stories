@@ -14,7 +14,8 @@
             "outputPath": "dist/apps/backend/api",
             "main": "apps/backend/api/src/main.ts",
             "tsConfig": "apps/backend/api/tsconfig.app.json",
-            "assets": ["apps/backend/api/src/assets"]
+            "assets": ["apps/backend/api/src/assets"],
+            "buildLibsFromSource": true
           },
           "configurations": {
             "production": {

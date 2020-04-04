@@ -658,6 +658,145 @@
         }
       }
     },
+    "frontend-hybrid": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush"
+        }
+      },
+      "root": "apps/frontend/hybrid",
+      "sourceRoot": "apps/frontend/hybrid/src",
+      "prefix": "medium-stories",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/frontend/hybrid/browser",
+            "index": "apps/frontend/hybrid/src/index.html",
+            "main": "apps/frontend/hybrid/src/main.browser.ts",
+            "polyfills": "apps/frontend/hybrid/src/polyfills.ts",
+            "tsConfig": "apps/frontend/hybrid/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/frontend/hybrid/src/favicon.ico", "apps/frontend/hybrid/src/assets"],
+            "styles": ["apps/frontend/hybrid/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/hybrid/src/environments/environment.ts",
+                  "with": "apps/frontend/hybrid/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "frontend-hybrid:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-hybrid:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "frontend-hybrid:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/frontend/hybrid/tsconfig.app.json", "apps/frontend/hybrid/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/frontend/hybrid/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/frontend/hybrid/jest.config.js",
+            "tsConfig": "apps/frontend/hybrid/tsconfig.spec.json",
+            "setupFile": "apps/frontend/hybrid/src/test-setup.ts",
+            "passWithNoTests": true
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/apps/frontend/hybrid/server",
+            "main": "apps/frontend/hybrid/server.ts",
+            "tsConfig": "apps/frontend/hybrid/tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/frontend/hybrid/src/styles"]
+            }
+          },
+          "configurations": {
+            "production": {
+              "bundleDependencies": true,
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/hybrid/src/environments/environment.ts",
+                  "with": "apps/frontend/hybrid/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "frontend-hybrid:build",
+            "serverTarget": "frontend-hybrid:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend-hybrid:build:production",
+              "serverTarget": "frontend-hybrid:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "frontend-hybrid:build:production",
+            "serverTarget": "frontend-hybrid:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
+          }
+        }
+      }
+    },
     "frontend-infinite-scroll": {
       "projectType": "application",
       "schematics": {

@@ -53,7 +53,7 @@
     "backend:db:start": "cd docker-compose && docker-compose up -d",
     "backend:db:stop": "cd docker-compose && docker-compose stop",
     "backend:api:migration:creare": "node_modules/.bin/ts-node node_modules/.bin/typeorm migration:create -n",
-    "backend:api:migrations:run": "node_modules/.bin/tsc --project apps/backend/api/tsconfig.migrations.json && node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run -t=false",
+    "backend:api:migrations:run": "node_modules/.bin/tsc --project apps/backend/api/tsconfig.migrations.json && node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run",
     "backend:api:entities": "./node_modules/.bin/tsc --project apps/backend/api/tsconfig.entities.json",
     "serve:backend:api": "ng serve backend-api",
     "build:ssr:graphql": "ng build frontend-graphql --prod && ng run frontend-graphql:server:production",

@@ -13,6 +13,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { AuthCoreModule } from '@medium-stories/auth';
 import { StorageModule } from '@medium-stories/storage';
 import { RootStoreModule } from '@medium-stories/store';
+import { TranslationModule } from '@medium-stories/translation';
 import { UsersCoreModule } from '@medium-stories/users';
 
 import { environment } from '../environments/environment';
@@ -38,6 +39,9 @@ export function createApollo(httpLink: HttpLink) {
     AuthCoreModule.forRoot(),
     RootStoreModule,
     StorageModule.forRoot(),
+    TranslationModule.forRoot({
+      config: environment.translation
+    }),
     EffectsModule.forRoot([]),
     RouterModule.forRoot(routes, { initialNavigation: 'enabled' })
   ],

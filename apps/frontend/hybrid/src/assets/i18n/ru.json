@@ -1,0 +1,15 @@
+{
+  "languages": {
+    "full": {
+      "ru": "Русский",
+      "en": "English"
+    },
+    "short": {
+      "ru": "Ру",
+      "en": "En"
+    }
+  },
+  "home": {
+    "title": "Главная"
+  }
+}

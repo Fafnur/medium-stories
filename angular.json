@@ -823,10 +823,11 @@
       "sourceRoot": "apps/frontend/localization/src",
       "prefix": "medium-stories",
       "i18n": {
-        "sourceLocale": "en",
+        "sourceLocale": "en-US",
         "locales": {
           "ru": {
-            "translation": "apps/frontend/localization/src/locales/messages.ru.xlf"
+            "translation": "apps/frontend/localization/src/locales/messages.ru.xlf",
+            "baseHref": ""
           }
         }
       },
@@ -875,7 +876,7 @@
               ]
             },
             "ru": {
-              "localize": ["ru"]
+              "localize": ["ru", "en-US"]
             }
           }
         },
@@ -923,8 +924,7 @@
             "tsConfig": "apps/frontend/localization/tsconfig.server.json",
             "stylePreprocessorOptions": {
               "includePaths": ["apps/frontend/localization/src/styles"]
-            },
-            "localize": ["en", "ru"]
+            }
           },
           "configurations": {
             "production": {

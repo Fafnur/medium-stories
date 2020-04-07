@@ -4,7 +4,6 @@
     <body>
       <trans-unit id="8b806f06ee7d72d91e642c7e6b94c064218606f3" datatype="html">
         <source>Hello!</source>
-        <target>Привет!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/containers/home/home.component.html</context>
           <context context-type="linenumber">2</context>
@@ -13,7 +12,6 @@
       </trans-unit>
       <trans-unit id="51c2550646745ebca622de970345ceb0ce2f2bfd" datatype="html">
         <source>Set russian</source>
-        <target>Установить русский</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/containers/home/home.component.html</context>
           <context context-type="linenumber">8</context>
@@ -22,7 +20,6 @@
       </trans-unit>
       <trans-unit id="ede18fe33f87fba901b51d243869df8142b41ff2" datatype="html">
         <source>Set english</source>
-        <target>Установить английский</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/containers/home/home.component.html</context>
           <context context-type="linenumber">11</context>

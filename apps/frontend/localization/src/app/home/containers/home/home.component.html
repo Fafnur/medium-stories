@@ -1,4 +1,14 @@
 <header>
-  <h1 i18n="sss">Hello!</h1>
+  <h1 i18n="hello">Hello!</h1>
 </header>
-<main></main>
+
+<main>
+  <ul>
+    <li>
+      <button type="button" (click)="onChangeLang('ru')" i18n="setRu">Set russian</button>
+    </li>
+    <li>
+      <button type="button" (click)="onChangeLang('en-US')" i18n="setEn">Set english</button>
+    </li>
+  </ul>
+</main>

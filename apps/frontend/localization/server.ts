@@ -11,9 +11,9 @@ import { join } from 'path';
 import { AppServerModule } from './src/main.server';
 
 // The Express app is exported so that it can be used by serverless Functions.
-export function app() {
+export function app(language) {
   const server = express();
-  const distFolder = join(process.cwd(), `dist/apps/frontend/localization/browser/ru`);
+  const distFolder = join(process.cwd(), 'dist/apps/frontend/localization/browser', language);
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
@@ -54,11 +54,12 @@ export function app() {
 
 function run() {
   const port = process.env.PORT || 4000;
+  const language = process.env.LANGUAGE || 'en';
 
   // Start up the Node server
-  const server = app();
+  const server = app(language);
   server.listen(port, () => {
-    console.log(`Node Express server listening on http://localhost:${port}`);
+    console.log(`Node Express server listening on http://localhost:${port} with language ${language}`);
   });
 }
 

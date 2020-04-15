@@ -84,8 +84,9 @@
     "localization:serve": "ng serve frontend-localization",
     "localization:serve:ru": "ng serve frontend-localization --configuration=ru",
     "localization:serve:ssr:dev": "ng run frontend-localization:serve-ssr",
-    "localization:build:ssr": "ng build frontend-localization --prod && ng run frontend-localization:server:production",
-    "localization:serve:ssr": "node dist/apps/frontend/localization/server/main.js",
+    "localization:build:ssr": "ng build frontend-localization --configuration=production,ru && ng run frontend-localization:server:production",
+    "localization:serve:ssr:en": "PORT=4000 LANGUAGE=en node dist/apps/frontend/localization/server/en/main.js",
+    "localization:serve:ssr:ru": "PORT=4001 LANGUAGE=ru node dist/apps/frontend/localization/server/ru/main.js",
     "localization:generate:translate": "ng xi18n --output-path src/locales --project=frontend-localization"
   },
   "private": true,

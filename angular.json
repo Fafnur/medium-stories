@@ -828,6 +828,10 @@
           "ru": {
             "translation": "apps/frontend/localization/src/locales/messages.ru.xlf",
             "baseHref": ""
+          },
+          "en": {
+            "translation": "apps/frontend/localization/src/locales/messages.en.xlf",
+            "baseHref": ""
           }
         }
       },
@@ -876,7 +880,7 @@
               ]
             },
             "ru": {
-              "localize": ["ru", "en-US"]
+              "localize": ["ru", "en"]
             }
           }
         },
@@ -924,7 +928,8 @@
             "tsConfig": "apps/frontend/localization/tsconfig.server.json",
             "stylePreprocessorOptions": {
               "includePaths": ["apps/frontend/localization/src/styles"]
-            }
+            },
+            "localize": ["en", "ru"]
           },
           "configurations": {
             "production": {

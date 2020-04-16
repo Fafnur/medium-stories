@@ -10,22 +10,6 @@
         </context-group>
         <note priority="1" from="description">hello</note>
       </trans-unit>
-      <trans-unit id="51c2550646745ebca622de970345ceb0ce2f2bfd" datatype="html">
-        <source>Set russian</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/home/containers/home/home.component.html</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-        <note priority="1" from="description">setRu</note>
-      </trans-unit>
-      <trans-unit id="ede18fe33f87fba901b51d243869df8142b41ff2" datatype="html">
-        <source>Set english</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/home/containers/home/home.component.html</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
-        <note priority="1" from="description">setEn</note>
-      </trans-unit>
     </body>
   </file>
 </xliff>

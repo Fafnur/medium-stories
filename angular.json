@@ -877,10 +877,11 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "localize": ["ru", "en"]
             },
             "ru": {
-              "localize": ["ru", "en"]
+              "localize": ["ru"]
             }
           }
         },
@@ -929,7 +930,7 @@
             "stylePreprocessorOptions": {
               "includePaths": ["apps/frontend/localization/src/styles"]
             },
-            "localize": ["en", "ru"]
+            "localize": false
           },
           "configurations": {
             "production": {
@@ -941,7 +942,8 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": true
+              "optimization": true,
+              "localize": ["en", "ru"]
             }
           }
         },
@@ -955,6 +957,10 @@
             "production": {
               "browserTarget": "frontend-localization:build:production",
               "serverTarget": "frontend-localization:server:production"
+            },
+            "ru": {
+              "browserTarget": "frontend-localization:build:ru",
+              "serverTarget": "frontend-localization:server"
             }
           }
         },

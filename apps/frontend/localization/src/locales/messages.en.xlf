@@ -4,7 +4,7 @@
     <body>
       <trans-unit id="8b806f06ee7d72d91e642c7e6b94c064218606f3" datatype="html">
         <source>Hello!</source>
-        <target>Привет!</target>
+        <target>Hello!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/containers/home/home.component.html</context>
           <context context-type="linenumber">2</context>

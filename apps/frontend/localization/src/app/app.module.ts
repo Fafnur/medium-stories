@@ -10,6 +10,8 @@ import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
 import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
+registerLocaleData(localeRu);
+
 import { AuthCoreModule } from '@medium-stories/auth';
 import { StorageModule } from '@medium-stories/storage';
 import { RootStoreModule } from '@medium-stories/store';
@@ -18,8 +20,6 @@ import { UsersCoreModule } from '@medium-stories/users';
 import { environment } from '../environments/environment';
 import { routes } from './app.common';
 import { AppComponent } from './app.component';
-
-registerLocaleData(localeRu, 'ru-RU');
 
 export function createApollo(httpLink: HttpLink) {
   return {

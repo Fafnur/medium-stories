@@ -7,5 +7,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent {
-  title = 'frontend-redux';
 }

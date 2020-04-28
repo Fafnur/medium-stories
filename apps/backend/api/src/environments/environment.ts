@@ -7,7 +7,7 @@ export const environment = {
   connection: {
     type: 'postgres' as any,
     host: 'localhost',
-    port: 5432,
+    port: 5433,
     username: 'postgres',
     password: '123456',
     database: 'medium',

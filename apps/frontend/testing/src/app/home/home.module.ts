@@ -3,13 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { AuthSharedModule } from '@medium-stories/auth';
-import { UsersSharedModule } from '@medium-stories/users';
-
-import { homeContainers, homeRoutes } from './home.common';
+import { homeComponents, homeContainers, homeProviders, homeRoutes } from './home.common';
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(homeRoutes), AuthSharedModule, UsersSharedModule, TranslateModule],
-  declarations: [...homeContainers]
+  imports: [CommonModule, RouterModule.forChild(homeRoutes), TranslateModule],
+  declarations: [...homeComponents, ...homeContainers],
+  providers: [...homeProviders]
 })
 export class HomeModule {}

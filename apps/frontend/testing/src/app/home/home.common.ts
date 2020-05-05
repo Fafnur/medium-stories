@@ -1,5 +1,8 @@
 import { Routes } from '@angular/router';
 
+import { BannerEditComponent } from './components/banner-edit/banner-edit.component';
+import { BannerTitleComponent } from './components/banner-title/banner-title.component';
+import { BannerComponent } from './components/banner/banner.component';
 import { DashboardHeroComponent } from './components/dashboard-hero/dashboard-hero.component';
 import { LightswitchComponent } from './components/lightswitch/lightswitch.component';
 import { WelcomeMockComponent } from './components/welcome-mock/welcome-mock.component';
@@ -8,7 +11,15 @@ import { HomeComponent } from './containers/home/home.component';
 import { FakeHardUserService } from './services/fake-hard-user.service';
 import { FakeUserService } from './services/fake-user.service';
 
-export const homeComponents: any[] = [LightswitchComponent, DashboardHeroComponent, WelcomeComponent, WelcomeMockComponent];
+export const homeComponents: any[] = [
+  LightswitchComponent,
+  DashboardHeroComponent,
+  WelcomeComponent,
+  WelcomeMockComponent,
+  BannerComponent,
+  BannerTitleComponent,
+  BannerEditComponent
+];
 
 export const homeContainers: any[] = [HomeComponent];
 

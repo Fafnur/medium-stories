@@ -1,0 +1,7 @@
+<div *ngIf="banner">
+  <h2>{{ banner.name | uppercase }}</h2>
+  <div><span>id: </span>{{ banner.id }}</div>
+  <div>
+    <label> name: <input [(ngModel)]="banner.name" placeholder="name" /> </label>
+  </div>
+</div>

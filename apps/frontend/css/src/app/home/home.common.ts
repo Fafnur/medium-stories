@@ -6,4 +6,9 @@ export const homeComponents: any[] = [];
 
 export const homeContainers: any[] = [HomeComponent];
 
-export const homeRoutes: Routes = [];
+export const homeRoutes: Routes = [
+  {
+    path: '',
+    component: HomeComponent
+  }
+];

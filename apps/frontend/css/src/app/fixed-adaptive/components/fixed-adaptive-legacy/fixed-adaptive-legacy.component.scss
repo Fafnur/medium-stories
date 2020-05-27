@@ -1,0 +1,34 @@
+//@import 'utils';
+@import '~bootstrap/scss/mixins/clearfix';
+
+.box {
+  $size: 10rem;
+  @include clearfix();
+
+  &-aside {
+    float: left;
+    width: $size;
+  }
+
+  &-content {
+    float: none;
+    margin-left: $size;
+  }
+
+  &_colors &-aside {
+    background-color: #5e2750;
+    color: white;
+    padding: 1rem;
+    font-size: 1.5rem;
+    min-height: 10rem;
+    font-weight: 700;
+  }
+
+  &_colors &-content {
+    background-color: #f08763;
+    color: white;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+}

@@ -15,6 +15,10 @@ $new-adaptive-breakpoints: (
   flex-wrap: wrap;
   margin-right: -$new-gutter-column;
   margin-left: -$new-gutter-column;
+
+  &_styles {
+    background-color: #f08763;
+  }
 }
 
 .new-column,
@@ -36,23 +40,11 @@ $new-adaptive-breakpoints: (
   }
 }
 
-.new-column {
-  &_v1 {
-    background-color: #0094ba;
-  }
-  &_v2 {
-    background-color: darkorchid;
-  }
-  &_v3 {
-    background-color: pink;
-  }
-}
 .new-content {
   background-color: #5e2750;
   color: white;
-  //min-height: 100px;
+  min-height: 100px;
   padding: 15px;
   font-size: 26px;
   font-weight: 700;
-  margin-bottom: 10px;
 }

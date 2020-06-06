@@ -1,0 +1,50 @@
+@import 'utils';
+
+$new-columns: 12;
+$new-gutter: 30px;
+$new-gutter-column: $new-gutter / 2;
+$new-adaptive-breakpoints: (
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+);
+
+.new-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$new-gutter-column;
+  margin-left: -$new-gutter-column;
+
+  &_styles {
+    background-color: #f08763;
+  }
+}
+
+.new-column,
+[class^='new-column-'] {
+  position: relative;
+  width: 100%;
+  padding-right: $new-gutter-column;
+  padding-left: $new-gutter-column;
+}
+
+@each $size in map-keys($new-adaptive-breakpoints) {
+  @media (min-width: map_get($new-adaptive-breakpoints, $size)) {
+    @for $i from 1 through $new-columns {
+      .new-column-#{$size}-#{$i} {
+        flex: 0 0 percentage($i / $new-columns);
+        max-width: percentage($i / $new-columns);
+      }
+    }
+  }
+}
+
+.new-content {
+  background-color: #5e2750;
+  color: white;
+  min-height: 100px;
+  padding: 15px;
+  font-size: 26px;
+  font-weight: 700;
+}

@@ -1,0 +1,47 @@
+@import 'utils';
+
+$feature-columns: 12;
+$feature-gutter: 30px;
+$feature-gutter-column: $feature-columns / 2;
+$feature-adaptive-breakpoints: (
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+);
+
+.feature-row {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: $feature-gutter;
+
+  &_styles {
+    background-color: #f08763;
+  }
+}
+
+.feature-column {
+  padding-left: $feature-gutter-column;
+  padding-right: $feature-gutter-column;
+}
+
+@each $size in map-keys($feature-adaptive-breakpoints) {
+  @media (min-width: map_get($feature-adaptive-breakpoints, $size)) {
+    .feature-row-#{$size} {
+      display: grid;
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: $feature-gutter;
+    }
+  }
+}
+
+.feature-content {
+  background-color: #5e2750;
+  color: white;
+  min-height: 100px;
+  padding: 15px;
+  font-size: 26px;
+  font-weight: 700;
+}

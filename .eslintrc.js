@@ -18,7 +18,16 @@ module.exports = {
     sourceType: 'module',
     createDefaultProgram: true,
   },
-  plugins: ['@angular-eslint/template', '@typescript-eslint', 'import', 'jsdoc', 'prefer-arrow', 'prettier', '@nrwl/nx'],
+  plugins: [
+    '@angular-eslint/template',
+    '@typescript-eslint',
+    'import',
+    'jsdoc',
+    'prefer-arrow',
+    'prettier',
+    '@nrwl/nx',
+    'simple-import-sort',
+  ],
   rules: {
     '@angular-eslint/component-class-suffix': 'error',
     '@angular-eslint/component-selector': [
@@ -208,6 +217,16 @@ module.exports = {
         depConstraints: [{ sourceTag: '*', onlyDependOnLibsWithTags: ['*'] }],
       },
     ],
+    'simple-import-sort/sort': [
+      'error',
+      {
+        groups: [['^\\u0000'], ['^@?(?!medium-stories)\\w'], ['^@medium-stories?\\w'], ['^[^.]'], ['^\\.']],
+      },
+    ],
+    'sort-imports': 'off',
+    'import/first': 'error',
+    'import/newline-after-import': 'error',
+    'import/no-duplicates': 'error',
   },
   overrides: [
     {

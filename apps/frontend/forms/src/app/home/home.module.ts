@@ -11,6 +11,6 @@ import { homeContainers, homeRoutes } from './home.common';
 
 @NgModule({
   imports: [CommonModule, LayoutsModule, ResponsiveModule, RouterModule.forChild(homeRoutes), SharedModule, TranslateModule],
-  declarations: [...homeContainers]
+  declarations: [...homeContainers],
 })
 export class HomeModule {}

@@ -1,45 +1,215 @@
+/*
+  This is a "Solution Style" tsconfig.json file, and is used by editors and TypeScript’s language server to improve development experience.
+  It is not intended to be used to perform a compilation.
+
+  To learn more about this file see: https://angular.io/config/solution-tsconfig.
+*/
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["esnext", "dom", "esnext.asynciterable"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@medium-stories/auth": ["libs/auth/src/index.ts"],
-      "@medium-stories/auth/testing": ["libs/auth/src/testing/index.ts"],
-      "@medium-stories/common": ["libs/common/src/index.ts"],
-      "@medium-stories/common/testing": ["libs/common/src/testing/index.ts"],
-      "@medium-stories/dynamic-forms": ["libs/dynamic-forms/src/index.ts"],
-      "@medium-stories/dynamic-forms/testing": ["libs/dynamic-forms/src/testing/index.ts"],
-      "@medium-stories/entities": ["libs/entities/src/index.ts"],
-      "@medium-stories/events": ["libs/events/src/index.ts"],
-      "@medium-stories/events/testing": ["libs/events/src/testing/index.ts"],
-      "@medium-stories/layouts": ["libs/layouts/src/index.ts"],
-      "@medium-stories/layouts/testing": ["libs/layouts/src/testing/index.ts"],
-      "@medium-stories/responsive": ["libs/responsive/src/index.ts"],
-      "@medium-stories/responsive/testing": ["libs/responsive/src/testing/index.ts"],
-      "@medium-stories/shared": ["libs/shared/src/index.ts"],
-      "@medium-stories/shared/testing": ["libs/shared/src/testing/index.ts"],
-      "@medium-stories/storage": ["libs/storage/src/index.ts"],
-      "@medium-stories/storage/testing": ["libs/storage/src/testing/index.ts"],
-      "@medium-stories/store": ["libs/store/src/index.ts"],
-      "@medium-stories/store/testing": ["libs/store/src/testing/index.ts"],
-      "@medium-stories/translation": ["libs/translation/src/index.ts"],
-      "@medium-stories/translation/testing": ["libs/translation/src/testing/index.ts"],
-      "@medium-stories/users": ["libs/users/src/index.ts"],
-      "@medium-stories/users/testing": ["libs/users/src/testing/index.ts"]
+  "files": [],
+  "references": [
+    {
+      "path": "./apps/backend/api/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/backend/api/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/frontend/base/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/frontend/base/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/frontend/base/tsconfig.server.json"
+    },
+    {
+      "path": "./apps/frontend/base-e2e/tsconfig.e2e.json"
+    },
+    {
+      "path": "./apps/frontend/common-styles/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/frontend/common-styles/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/frontend/common-styles/tsconfig.server.json"
+    },
+    {
+      "path": "./apps/frontend/css/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/frontend/css/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/frontend/forms/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/frontend/forms/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/frontend/forms/tsconfig.server.json"
+    },
+    {
+      "path": "./apps/frontend/graphql/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/frontend/graphql/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/frontend/graphql/tsconfig.server.json"
+    },
+    {
+      "path": "./apps/frontend/infinite-scroll/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/frontend/infinite-scroll/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/frontend/infinite-scroll/tsconfig.server.json"
+    },
+    {
+      "path": "./apps/frontend/localization/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/frontend/localization/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/frontend/localization/tsconfig.server.json"
+    },
+    {
+      "path": "./apps/frontend/markup/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/frontend/markup/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/frontend/markup/tsconfig.server.json"
+    },
+    {
+      "path": "./apps/frontend/redux/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/frontend/redux/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/frontend/redux/tsconfig.server.json"
+    },
+    {
+      "path": "./apps/frontend/responsive/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/frontend/responsive/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/frontend/responsive/tsconfig.server.json"
+    },
+    {
+      "path": "./apps/frontend/shared/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/frontend/shared/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/frontend/shared/tsconfig.server.json"
+    },
+    {
+      "path": "./apps/frontend/storage/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/frontend/storage/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/frontend/storage/tsconfig.server.json"
+    },
+    {
+      "path": "./apps/frontend/store/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/frontend/store/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/frontend/store/tsconfig.server.json"
+    },
+    {
+      "path": "./apps/frontend/testing/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/frontend/testing/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/frontend/testing/tsconfig.server.json"
+    },
+    {
+      "path": "./apps/frontend/theming/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/frontend/theming/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/frontend/theming/tsconfig.server.json"
+    },
+    {
+      "path": "./apps/frontend/translation/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/frontend/translation/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/frontend/translation/tsconfig.server.json"
+    },
+    {
+      "path": "./apps/frontend/translation-state/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/frontend/translation-state/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/frontend/translation-state/tsconfig.server.json"
+    },
+    {
+      "path": "./apps/frontend/universal/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/frontend/universal/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/frontend/universal/tsconfig.server.json"
+    },
+    {
+      "path": "./libs/auth/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/common/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/dynamic-forms/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/entities/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/events/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/layouts/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/responsive/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/shared/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/storage/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/store/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/translation/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/users/tsconfig.spec.json"
     }
-  },
-  "exclude": ["node_modules", "tmp"]
+  ]
 }

@@ -1,4 +1,4 @@
-import { ComponentRef, OnInit, Type } from '@angular/core';
+import { ComponentRef, OnInit, Type, Directive } from '@angular/core';
 import { AbstractControl, AbstractControlOptions, FormGroup, ValidatorFn } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -457,6 +457,7 @@ export abstract class WrapperComponent<T extends FormField = FormField> extends 
 /**
  * Abstract field component
  */
+@Directive()
 export abstract class FieldWithOptionsComponent<T extends FormFieldWithOptions = FormFieldWithOptions> extends FieldComponent<T>
   implements OnInit {
   /**

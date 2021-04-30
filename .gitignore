@@ -41,3 +41,4 @@ Thumbs.db
 # Custom
 /ormconfig.json
 /graphql.ts
+yarn.lock
